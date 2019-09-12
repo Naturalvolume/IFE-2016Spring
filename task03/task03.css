@@ -1,0 +1,57 @@
+  <style type="text/css">
+  .left-part,
+    .right-part,
+     {
+        background-color: white;
+        margin:20px;
+    }
+    
+    .left-part,
+    .right-part {
+        position: absolute;
+        border: 1px solid #999;
+        padding: 20px;
+        top: 40px;
+    }
+    
+    .contain {
+        background-color: #eee;
+        padding: 20px;
+    }
+    
+    .left-part {
+        width: 160px;
+        left:20px;
+        display: flex;
+    }
+    .left-part span {
+        padding-left: 20px;
+    }
+   
+    
+    .right-part {
+        width: 80px;
+        right: 20px;
+    }
+    
+    .mid-part {
+        margin: 0 160px 0 240px;
+        border: 1px solid #999;
+        padding: 20px;
+    }
+    
+    .right-part img {
+        padding: 10px 0;
+    }
+    
+    img {
+        transition: all .5s;
+    }
+    
+    img:hover {
+        -webkit-transform: rotate3d(20, 20, 20, 360deg);
+        transform: rotate3d(20, 20, 20, 360deg);
+        transition: all .5s;
+    }
+
+  </style>
