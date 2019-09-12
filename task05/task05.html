@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>2016SpringTask05</title>
+    
+    <link rel="stylesheet" type="text/css" href="task05.css">
+ <style type="text/css">
+       
+    .navigation,
+    footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #000;
+    height: 50px;
+    padding: 5px;
+    }
+    .navigation-title{
+    color:#FFF;
+    font-size: 25px;
+    margin: 5px;
+    padding: 5px;
+    }
+
+
+    .navigation-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    color: #FFF;
+    }
+    .navigation-nav li{
+        width: 110px;
+    }
+    .area{
+        display: flex;
+        flex-direction: row;
+    }
+    aside{
+        display: flex;
+        flex-direction: column;
+
+    }
+    article,
+    aside{
+
+        border:1px solid #FH0; 
+        padding: 30px;
+        margin: 30px;
+        box-shadow: 4px 4px 15px #333333;
+    }
+
+    h3{
+    
+        color: blue;
+
+    }
+    cite{
+        color: green;
+    }
+    .group{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    .picture{
+        border:1px solid green;
+        margin:10px;
+        padding: 10px;
+    }
+    table{
+        margin-bottom: 20px;
+    }
+    
+   footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+   }
+   footer p{
+
+    color: #FFF;
+  }
+  aside{
+    width: 400px;
+  }
+    .right-table {
+        font-size: .8rem;
+    }
+    
+    .right-table li {
+        padding-top: 10px;
+        list-style: none;
+    }
+    
+    .right-table li label,
+    h5 {
+        display: inline-block;
+        width: 110px;
+        text-align: right;
+    }
+    
+    .right-table .uniqe {
+        width: 20px;
+    }
+    
+    .confirm-btn {
+        display: block;
+        background-color: #3355D0;
+        color: white;
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 15px;
+    }
+    
+    .hint {
+        display: block;
+        margin-left: 33.5%;
+    }
+    </style>
+</head>
+<body>
+    <nav class="navigation">
+        <h1 class="navigation-title">网站一级标题</h1>
+        <ul class="navigation-nav">
+        	<li><a>导航链接一</a></li>
+        	<li><a>导航链接二</a></li>
+        	<li><a>导航链接三</a></li>
+        	<li><a>导航链接四</a></li>
+        </ul>
+    </nav>
+    <div class="area">
+        <div class="main">
+    <article>
+    	<h2>文章一级标题</h2>									
+    	<h3>文章二级标题</h3>
+    	<cite>作者文章 作者发表时间</cite>
+    	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，<b>这里有个粗体字</b>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落。</p>
+    	<img src="http://pkjy.github.io/ife-task/2016_spring/part1/img/logo.png">          ---
+    	<p style="text-indent: 2em">这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，换行了<br> 
+这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，<a href="http://ife.baidu.com/">这是一个连接到百度的链接</a></p>
+    </article>
+    <article>
+        <h2>另外一篇文章的一级标题</h2>	
+        <h3>文章二级标题</h3>
+        <cite>文章作者 文章发表时间</cite>
+        <p><span style="padding-left: 2em;"></span>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，<b>这里有个粗体字</b>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落。</p>
+        <img src="http://pkjy.github.io/ife-task/2016_spring/part1/img/logo.png">
+        <ul>
+        	<li>项目列表一</li>
+        	<li>项目列表二</li>
+        	<li>项目列表三</li>
+        	<li>项目列表四</li>
+        </ul>
+        </article>
+        <article>
+            <h3>图片</h3>
+            <div class="group">
+                <div class="picture">
+                    <p>好看的图片</p>
+                    <img src="http://pkjy.github.io/ife-task/2016_spring/part1/img/logo.png">
+                </div>
+                <div class="picture">
+                    <p>好看的图片</p>
+                    <img src="http://pkjy.github.io/ife-task/2016_spring/part1/img/logo.png">
+                </div>
+                <div class="picture">
+                    <p>好看的图片</p>
+                    <img src="http://pkjy.github.io/ife-task/2016_spring/part1/img/logo.png">
+                </div>
+                <div class="picture">
+                    <p>好看的图片</p>
+                    <img src="http://pkjy.github.io/ife-task/2016_spring/part1/img/logo.png">
+                </div>
+                <div class="picture">
+                    <p>好看的图片</p>
+                    <img src="http://pkjy.github.io/ife-task/2016_spring/part1/img/logo.png">
+                </div>
+    </article>
+    <article>
+    	<h2>最后一篇文章一级标题</h2>
+    	<h3>文章二级标题</h3>
+        <cite>文章作者 文章发表时间</cite>
+        <ol>
+        	<li>排名1</li>
+        	<li>排名2</li>
+        	<li>排名3</li>
+        </ol>
+        <p>下面是一个表格，给表格加了一个border="1"好让你看出来是一个表格</p>
+        <table border="1">								
+        	<tr>
+        		<th>表头</th>
+        		<th>表头</th>
+        		<th>表头</th>
+        	</tr>
+        	<tr>
+        		<td>表格内容</td>
+        		<td>单元格</td>
+        		<td><a href="#top">操作</a></td>
+        	</tr>
+        	<tr>
+        		<td>表格内容</td>
+        		<td>单元格</td>
+        		<td><a href="#top">操作</a></td>
+        	</tr>
+        	<tr>
+        		<td>表格内容</td>
+        		<td>单元格</td>
+        		<td><a href="#top">操作</a></td>
+        	</tr>
+        	<tr>
+        		<td>表格内容</td>
+        		<td>单元格</td>
+        		<td><a href="#top">操作</a></td>
+        	</tr>
+        	<tr>
+        		<td>总计</td>
+        		<td>1000</td>					
+        	</tr>
+        </table>
+    </article>
+</div>
+<div>
+    <aside>
+    	<h3 style="padding-left: 30px;">这里以后是个侧栏，这是侧栏的标题</h3>
+    	<form method="post" action="#" class="right-table">
+            <ul>
+                <li>
+                    <label for="mail_address">请输入邮箱地址</label>
+                    <input type="text" id="mail_address" value="这是一个文本输入框" name="mail_address" />
+                    <span class="hint">邮箱地址请按要求格式输入</span>
+                </li>
+                <li>
+                    <label for="password">请输入密码</label>
+                    <input type="password" id="password" value="这是一个文本输入框" />
+                    <br>
+                </li>
+                <li>
+                    <label for="confirm-password">请重复输入密码</label>
+                    <input type="password" id="confirm-password" value="这是一个文本输入框" name="password" />
+                    <span class="hint">密码请为6-16位英文数字</span>
+                </li>
+                <li>
+                    <h5>性别</h5>
+                    <input type="radio" name="sex" value="男" id="male" checked="checked" />
+                    <label for="male" class="uniqe">男</label>
+                    <input type="radio" name="sex" value="女" id="female" />
+                    <label for="female" class="uniqe">女</label>
+                </li>
+                <li>
+                    <h5>城市</h5>
+                    <select name="cities">
+                        <option>北京</option>
+                        <option>长沙</option>
+                        <option>娄底</option>
+                        <option>怀化</option>
+                    </select>
+                </li>
+                <li>
+                    <h5>爱好</h5>
+                    <input type="checkbox" />运动
+                    <input type="checkbox" />艺术
+                    <input type="checkbox" />科学
+                </li>
+                <li>
+                    <h5 style="vertical-align: top;">个人描述</h5>
+                    <textarea cols="25" rows="5">这是一个多行输入框，输入您的个人描述</textarea>
+                </li>
+            </ul>
+            <input type="button" name="submit" value="确认提交" class="confirm-btn" />
+        </form>
+
+    </aside>
+</div>
+</div>
+    <footer><p style="text-align: center;">版权所有&nbsp;&nbsp;&nbsp;@kathy</p></footer>
+</body>
+</html>
