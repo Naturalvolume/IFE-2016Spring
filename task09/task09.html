@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>task09</title>
+	<link rel="stylesheet" type="text/css" href="task09.min.css">
+	<style type="text/css">
+
+		nav{
+			
+			background-color: #0EBEBE;
+		}
+		.person{
+			
+			margin: 10px 0 10px 200px; 
+			
+			width: 50px;
+			height: 50px;
+			border-radius: 5px;
+		}
+		nav form{
+			position: absolute;
+			right: 400px;
+			top: 25px;
+			display: flex;
+			direction: row;
+		}
+		.search{
+
+			
+            width: 200px;
+            height: 40px;
+            border-radius: 20px;
+		}
+		.btn{
+			height: 40px;
+		}
+		nav div{
+			position: absolute;
+            right: 20px;
+            top: 10px;
+		}
+		.contain{
+			display: flex;
+
+		}
+		aside{
+			
+			padding: 30px 30px 0px 30px;
+			width: 200px;
+			background-color: #303635;
+		}
+        .message{
+        	display: flex;
+        	flex-direction: column;
+        	align-items: center;
+        }
+
+        .message img{
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 50px;
+        }
+        p,
+        span,
+        li{
+        	font-size: 20px;
+        	color: #C4C4C4;
+        }
+        li:hover{
+  			cursor: pointer;
+		}
+		
+        .fans{
+        	display: flex;
+        	justify-content: center;
+        }
+        .fans div{
+        	width: 100px;
+        	display: flex;
+        	flex-direction: column;
+        	align-items: center;
+        	line-height: 30%;
+        }
+        .line{
+        	border-right: 2px solid #D2D7D6;
+        }
+        li{
+
+        	list-style: none;
+        	line-height: 50px;
+        }
+        main{
+        	width: 100%;
+        	padding: 10px;
+        	background-color: #E6E6E6;
+        	display: flex;
+        	flex-direction: column;
+        }
+        .shadow{
+        	border:1px solid #92A09D;
+        	box-shadow: #92A09D 15px 15px 10px 5px;
+        }
+        main div{
+        	margin: 40px auto;
+        	background-color: #FFF;
+        }
+        .path{
+        	margin: 0px;
+        }
+        .find,
+        select,
+        input{
+        	height: 25px;
+        }
+        .find{
+        	display: flex;
+        	height: 200px;
+        	padding: 50px;
+        }
+        .find form{
+
+        	margin: 20px;
+        }
+        .combine{
+        	display: flex;
+
+        }
+        .f-column{
+        	display: flex;
+        	flex-direction: column;
+        	margin: 0px;
+        }
+	</style>
+</head>
+<body>
+    <nav>
+    	<img class="person" src="http://pkjy.github.io/ife-task/2016_spring/part1/img/logo.png">
+    	<form>
+    		<input type="search" name="search" class="search" placeholder="请填写要查找的内容">
+    		<input type="button" name="btn" class="btn" value="搜索">
+    	</form>
+    	<div>
+    		<span style="font-size: 18px">登陆</span>
+    		<img style="width: 18px" src="http://pkjy.github.io/ife-task/2016_spring/part1/img/task09-header01.png">	
+    	</div>
+    </nav>
+    <div class="contain">
+    <aside>
+    	<div class="message">
+    		<img src="http://pkjy.github.io/ife-task/2016_spring/part1/img/pjy.jpg">
+    		<span>Kathy</span>
+    	</div>
+    	<div class="fans">
+    		<div class="line">
+    			<p>1018</p>
+    			<span>收藏</span>
+    		</div>
+    		<div>
+    			<p>6666</p>
+    			<p>粉丝</p>
+    		</div>
+    	</div>
+    	<ol>
+    		<li>
+    			<img src="http://pkjy.github.io/ife-task/2016_spring/part1/img/task09-aside09.png">
+    			<span>个人报表</span>
+    			<ol>
+    				<li>
+    					<img src="http://pkjy.github.io/ife-task/2016_spring/part1/img/task09-aside01.png">
+    					文件夹一
+    				</li>
+    				<li>
+    					<img src="http://pkjy.github.io/ife-task/2016_spring/part1/img/task09-aside02.png">
+    					文件夹二
+    				</li>
+    				    <ol>
+    				    	<li>
+    				    		<img src="http://pkjy.github.io/ife-task/2016_spring/part1/img/task09-aside05.png">
+    				    		文档一
+    				    	</li>
+    						<li>
+    				    		<img src="http://pkjy.github.io/ife-task/2016_spring/part1/img/task09-aside06.png">
+    				    		文档二
+    				    	</li>
+    				    </ol>
+    				<li>
+    					<img src="http://pkjy.github.io/ife-task/2016_spring/part1/img/task09-aside01.png">
+    					文件夹三
+    				</li>
+    			</ol>
+    		</li>
+    		<li>
+    			<img src="http://pkjy.github.io/ife-task/2016_spring/part1/img/task09-aside09.png">
+    			<span>个人报表</span>
+    		</li>
+    		<li>
+    			<img src="http://pkjy.github.io/ife-task/2016_spring/part1/img/task09-aside09.png">
+    			<span>个人报表</span>
+    		</li>
+    		<li>
+    			<img src="http://pkjy.github.io/ife-task/2016_spring/part1/img/task09-aside09.png">
+    			<span>个人报表</span>
+    		</li>
+    		<li>
+    			<img src="http://pkjy.github.io/ife-task/2016_spring/part1/img/task09-aside09.png">
+    			<span>个人报表</span>
+    		</li>
+    		<li>
+    			<img src="http://pkjy.github.io/ife-task/2016_spring/part1/img/task09-aside09.png">
+    			<span>个人报表</span>
+    		</li>
+    	</ol>
+    </aside>
+    <main>
+    	<div class="path">
+    		<p>Kathy/个人报表/文件夹一/<span style="color: blue;">文档一</span></p>
+    	</div>
+    	<div class="find shadow">
+    		<form class="combine">
+    			
+    			<span>查询项</span>
+    			<select name="1">
+    				<option>第一项</option>
+    				<option selected="selected">第二项</option>
+    				<option>第三项</option>
+    			</select>
+    		</form>
+    		<div class="f-column">
+    			<form class="combine">
+    			
+    			<span>买方</span>
+    			<select>
+    				<option>小一</option>
+    				<option>小二</option>
+    				<option>小三</option>
+    			</select>
+    		</form>
+    		<form class="combine">
+    			<span>卖方</span>
+    			<select>
+    				<option>小A</option>
+    				<option>小B</option>
+    				<option>小C</option>
+    			</select>
+    		
+    		</form>
+    		</div>
+    		
+    		<div class="f-column">
+    			<form class="combine">
+    			<span>日期</span>
+    			<input type="text" name="date" value="2019-9-17">
+    			</form>
+    			<form class="combine">
+    				<span>人数</span>
+    			<select>
+    				<option>10人</option>
+    				<option>12人</option>
+    				<option>14人</option>
+    			</select>
+    		</form>
+    		</div>
+    		<form>
+    			<input type="button" name="btn" value="搜索">
+    		</form>
+    	</div>
+    
+    </main>
+    </div>
+</body>
+</html>
