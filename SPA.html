@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li><a href='#/home'>首页</a></li>
+        <li><a href='#/news'>新闻列表</a></li>
+        <li><a href='#/profile'>个人中心</a></li>
+    </ul>
+    <hr>
+    <div id='container'></div>
+</body>
+<script>
+    // js监控url地址改变的api
+    window.onhashchange = function() {
+        // 地址栏改变自动触发
+        console.log(location);  // location中包含了url地址的相关信息
+                                // 其中location.hash对应了url的哈西地址
+        var hash = location.hash.substr(2);  // 因为location.hash原始值是 #/home
+        var _html = ''; // 存储页面信息
+        // 根据锚点转到相关页面
+        if(hash === 'home') {
+            // 加载home页面
+             _html = 'home';
+        } else if(hash === 'news') {
+            // 加载新闻页面
+             _html = 'news';
+        } else if(hash === 'profile') {
+            // 加载个人中心页面
+             _html = 'profiles';
+        }
+        // 填入页面对应信息
+        document.getElementById('container').innerHTML = _html;
+    }
+    
+</script>
+</html>
