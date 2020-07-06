@@ -1,0 +1,444 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>高阶函数之返回函数的函数 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    html
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    css
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    数据
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../data/deepclone.html">
+            
+                <a href="../data/deepclone.html">
+            
+                    
+                    数据深度克隆
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../data/objectJudge.html">
+            
+                <a href="../data/objectJudge.html">
+            
+                    
+                    空对象判断
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../data/arguments.html">
+            
+                <a href="../data/arguments.html">
+            
+                    
+                    类数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../data/distinct.html">
+            
+                <a href="../data/distinct.html">
+            
+                    
+                    数组去重
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    手写源码
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../origin/queryString.html">
+            
+                <a href="../origin/queryString.html">
+            
+                    
+                    url分割
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    面试常见
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.6.1" data-path="add.html">
+            
+                <a href="add.html">
+            
+                    
+                    高阶函数之返回函数的函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >高阶函数之返回函数的函数</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x9AD8;&#x9636;&#x51FD;&#x6570;&#x4E4B;&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;">&#x9AD8;&#x9636;&#x51FD;&#x6570;&#x4E4B;&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;</h1>
+<h3 id="&#x4E00;&#x3001;&#x7C7B;&#x578B;&#x5224;&#x65AD;&#x51FD;&#x6570;">&#x4E00;&#x3001;&#x7C7B;&#x578B;&#x5224;&#x65AD;&#x51FD;&#x6570;</h3>
+<p>&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;&#x4E5F;&#x662F;&#x9AD8;&#x9636;&#x51FD;&#x6570;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// &#x5E38;&#x89C4;&#x5B9E;&#x73B0;</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isType</span>(<span class="hljs-params">type</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.prototype.toString.call(obj) === <span class="hljs-string">&apos;[object &apos;</span> + type + <span class="hljs-string">&apos;]&apos;</span>
+  }
+}
+<span class="hljs-built_in">console</span>.log(isType(<span class="hljs-string">&apos;String&apos;</span>))       <span class="hljs-comment">// function (obj){}</span>
+<span class="hljs-built_in">console</span>.log(isType(<span class="hljs-string">&apos;String&apos;</span>)(<span class="hljs-string">&apos;123&apos;</span>))    <span class="hljs-comment">// true</span>
+
+<span class="hljs-comment">// &#x7BAD;&#x5934;&#x51FD;&#x6570;&#x5B9E;&#x73B0;</span>
+<span class="hljs-keyword">let</span> isType = type =&gt; obj =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.prototype.toString.call(obj) === <span class="hljs-string">&apos;[object &apos;</span> + type + <span class="hljs-string">&apos;]&apos;</span>
+}
+<span class="hljs-built_in">console</span>.log(isType(<span class="hljs-string">&apos;String&apos;</span>))   <span class="hljs-comment">// obj =&gt; {}</span>
+<span class="hljs-built_in">console</span>.log(isType(<span class="hljs-string">&apos;String&apos;</span>)(<span class="hljs-string">&apos;123&apos;</span>))  <span class="hljs-comment">//true</span>
+</code></pre>
+<h3 id="&#x4E8C;&#x3001;&#x65E0;&#x9650;&#x7D2F;&#x52A0;&#x51FD;&#x6570;">&#x4E8C;&#x3001;&#x65E0;&#x9650;&#x7D2F;&#x52A0;&#x51FD;&#x6570;</h3>
+<p>&#x8981;&#x5B9E;&#x73B0;&#x65E0;&#x9650;&#x7D2F;&#x52A0;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x9700;&#x8981;&#x77E5;&#x9053;&#x4E00;&#x4E2A;&#x77E5;&#x8BC6;&#x70B9;&#xFF1A;&#x6BCF;&#x6B21;<code>console.log</code>&#x7684;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x8F93;&#x51FA;&#x5BF9;&#x8C61;&#x7684;<code>toString</code>&#x65B9;&#x6CD5;&#xFF0C;&#x4E0B;&#x9762;&#x76F4;&#x63A5;&#x770B;&#x4EE3;&#x7801;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a</span>) </span>{
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">b</span>) </span>{ <span class="hljs-comment">// &#x4F7F;&#x7528;&#x95ED;&#x5305;</span>
+      <span class="hljs-built_in">console</span>.log(b)
+      a = a + b; <span class="hljs-comment">// &#x7D2F;&#x52A0;</span>
+      <span class="hljs-comment">// &#x6BCF;&#x6B21;&#x90FD;&#x8FD4;&#x56DE; sum &#x51FD;&#x6570;</span>
+      <span class="hljs-keyword">return</span> sum;
+    }
+    sum.toString = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-comment">// &#x91CD;&#x5199;toString()&#x65B9;&#x6CD5;</span>
+      <span class="hljs-keyword">return</span> a;
+    }
+    <span class="hljs-keyword">return</span> sum; <span class="hljs-comment">// &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x51FD;&#x6570;</span>
+}
+
+<span class="hljs-built_in">console</span>.log(add(<span class="hljs-number">1</span>))   <span class="hljs-comment">// f 1</span>
+<span class="hljs-built_in">console</span>.log(add(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>))  <span class="hljs-comment">// 2</span>
+                        <span class="hljs-comment">// f 3</span>
+<span class="hljs-built_in">console</span>.log(add(<span class="hljs-number">1</span>)(<span class="hljs-number">5</span>)) <span class="hljs-comment">// 5</span>
+                        <span class="hljs-comment">// f 6</span>
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x4EE3;&#x7801;&#x7684;&#x8FC7;&#x7A0B;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
+<ol>
+<li>&#x5F53;<code>console.log(add(1))</code>&#x65F6;
+&#x5148;&#x662F;&#x5F62;&#x53C2;<code>a=1</code>&#xFF0C;<code>sum</code>&#x51FD;&#x6570;&#x4E0D;&#x6267;&#x884C;&#xFF0C;&#x6700;&#x540E;return<code>sum</code>&#x51FD;&#x6570;&#xFF0C;<code>console.log</code>&#x65F6;&#xFF0C;&#x8C03;&#x7528;&#x8FD4;&#x56DE;&#x7684;sum&#x5BF9;&#x8C61;&#x7684;<code>toString</code>&#x65B9;&#x6CD5;&#xFF0C;&#x8FD4;&#x56DE;<code>a</code>&#x3002;<pre><code class="lang-javascript"><span class="hljs-comment">// &#x5F62;&#x53C2; a=1</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a</span>) </span>{
+<span class="hljs-comment">// &#x4E0D;&#x6267;&#x884C;</span>
+ <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">b</span>) </span>{ 
+   <span class="hljs-built_in">console</span>.log(b)
+   a = a + b;
+   <span class="hljs-keyword">return</span> sum;
+ }
+ sum.toString = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ 
+   <span class="hljs-keyword">return</span> a;
+ }
+<span class="hljs-comment">// &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;add(1)&#x4E4B;&#x540E;&#x53D8;&#x6210;&#x4E86; sum</span>
+ <span class="hljs-keyword">return</span> sum; 
+}
+</code></pre>
+</li>
+<li>&#x5F53;<code>console.log(add(1)(2))</code>&#x65F6;
+<code>add(1)</code>&#x8FD4;&#x56DE;&#x4E86;<code>sum</code>&#x51FD;&#x6570;&#xFF0C;&#x4E14;&#x7ED9;<code>a</code>&#x8D4B;&#x503C;1&#xFF0C;&#x6240;&#x4EE5;&#x63A5;&#x4E0B;&#x6765;&#x6267;&#x884C;<code>sum(2)</code>&#xFF0C;&#x6253;&#x5370;&#x51FA;b&#x7684;&#x503C;2&#xFF0C;a&#x7D2F;&#x52A0;&#x4E3A;3&#xFF0C;&#x8FD4;&#x56DE;<code>sum</code>&#x51FD;&#x6570;&#xFF0C;&#x6700;&#x540E;<code>console.log(sum)</code>&#x81EA;&#x52A8;&#x8C03;&#x7528;<code>toString()</code>&#x65B9;&#x6CD5;&#x6253;&#x5370;&#x51FA;3</li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"高阶函数之返回函数的函数","level":"1.6.1","depth":2,"previous":{"title":"面试常见","level":"1.6","depth":1,"ref":"","articles":[{"title":"高阶函数之返回函数的函数","level":"1.6.1","depth":2,"path":"interview/add.md","ref":"./interview/add.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interview/add.md","mtime":"2020-07-06T08:09:23.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-06T13:36:24.001Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

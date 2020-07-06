@@ -1,0 +1,495 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>数组去重 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="arguments.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    html
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    css
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    数据
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="deepclone.html">
+            
+                <a href="deepclone.html">
+            
+                    
+                    数据深度克隆
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="objectJudge.html">
+            
+                <a href="objectJudge.html">
+            
+                    
+                    空对象判断
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="arguments.html">
+            
+                <a href="arguments.html">
+            
+                    
+                    类数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.4" data-path="distinct.html">
+            
+                <a href="distinct.html">
+            
+                    
+                    数组去重
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    手写源码
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../origin/queryString.html">
+            
+                <a href="../origin/queryString.html">
+            
+                    
+                    url分割
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    面试常见
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../interview/add.html">
+            
+                <a href="../interview/add.html">
+            
+                    
+                    高阶函数之返回函数的函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >数组去重</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x6570;&#x7EC4;&#x53BB;&#x91CD;">&#x6570;&#x7EC4;&#x53BB;&#x91CD;</h1>
+<h3 id="1-&#x53CC;&#x91CD;for&#x5FAA;&#x73AF;">1. &#x53CC;&#x91CD;for&#x5FAA;&#x73AF;</h3>
+<p>&#x66B4;&#x529B;&#x6CD5;&#xFF0C;&#x53CC;&#x5C42;&#x5FAA;&#x73AF;&#x9047;&#x5230;&#x76F8;&#x540C;&#x7684;&#x5143;&#x7D20;&#x5C31;&#x5220;&#x6389;&#xFF0C;&#x540C;&#x65F6;&#x8981;&#x4FEE;&#x6539;&#x7D22;&#x5F15;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x76F4;&#x63A5;&#x4FEE;&#x6539;&#x4E86;&#x539F;&#x6570;&#x7EC4;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">distinct</span>(<span class="hljs-params">arr</span>) </span>{
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>; i&lt;arr.length; i++) {
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = i+<span class="hljs-number">1</span>; j&lt;arr.length; j++) {
+      <span class="hljs-comment">// &#x8981;&#x7528;&#x5B8C;&#x5168;&#x76F8;&#x7B49;&#xFF0C;&#x5426;&#x5219;&#x6570;&#x5B57;&#x548C;&#x5B57;&#x7B26;&#x4F1A;&#x5206;&#x8FA8;&#x4E0D;&#x51FA;&#x6765;</span>
+      <span class="hljs-keyword">if</span>(arr[i] === arr[j]) {
+        arr.splice(j, <span class="hljs-number">1</span>)
+        <span class="hljs-comment">// &#x6539;&#x53D8;&#x4E86;&#x6570;&#x7EC4;&#xFF0C;&#x7D22;&#x5F15;&#x4E5F;&#x8981;&#x6539;&#x53D8;</span>
+        j--
+      }
+    }
+  }
+  <span class="hljs-keyword">return</span> arr
+}
+<span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]
+<span class="hljs-built_in">console</span>.log(distinct(arr))
+</code></pre>
+<p><strong>&#x9650;&#x5236;</strong> &#xFF1A;<code>===</code>&#x65E0;&#x6CD5;&#x53BB;&#x91CD;NaN&#x548C;&#x5BF9;&#x8C61;&#x3002;</p>
+<h3 id="2-for&#x5FAA;&#x73AF;&#x548C;indexof">2. for&#x5FAA;&#x73AF;&#x548C;indexOf</h3>
+<p>&#x7528;indexOf&#x7684;&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5728;&#x4EFB;&#x610F;&#x904D;&#x5386;&#x4E2D;&#x53BB;&#x9664;&#x91CD;&#x590D;&#x5143;&#x7D20;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-string">&apos;3&apos;</span>,<span class="hljs-string">&apos;4&apos;</span>,<span class="hljs-string">&apos;5&apos;</span>,<span class="hljs-literal">NaN</span>, <span class="hljs-literal">NaN</span>, <span class="hljs-regexp">/a/</span>,<span class="hljs-regexp">/a/</span>, {a:<span class="hljs-number">1</span>},{}]
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">distinct</span>(<span class="hljs-params">arr</span>) </span>{
+  <span class="hljs-keyword">let</span> newarr = []
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) {
+    <span class="hljs-keyword">if</span>(arr.indexOf(arr[i]) == i) newarr.push(arr[i])
+  }
+  <span class="hljs-keyword">return</span> newarr
+}
+
+<span class="hljs-built_in">console</span>.log(distinct(arr))  <span class="hljs-comment">//  [1, 2, 3, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, /a/, /a/, {&#x2026;}, {&#x2026;}]</span>
+</code></pre>
+<p><strong>&#x9650;&#x5236;</strong> &#xFF1A;<code>indexOf</code>&#x65E0;&#x6CD5;&#x8BC6;&#x522B;&#x51FA;NaN&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x76F4;&#x63A5;&#x5FFD;&#x7565;&#x6389;<code>NaN</code>&#xFF0C;&#x53E6;&#x5916;&#x5B83;&#x7684;&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x662F;<code>===</code>&#x5224;&#x65AD;&#xFF0C;&#x6240;&#x4EE5;indexOf &#x4E5F;&#x65E0;&#x6CD5;&#x53BB;&#x91CD; &#x5BF9;&#x8C61;&#x3002;</p>
+<h3 id="3-filter&#x548C;indexof">3. filter&#x548C;indexOf</h3>
+<p>&#x7528;&#x6570;&#x7EC4;&#x7684;&#x9AD8;&#x9636;&#x51FD;&#x6570;filter&#x548C;indexOf&#x8FC7;&#x6EE4;&#x91CD;&#x590D;&#x5143;&#x7D20;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">distinct</span>(<span class="hljs-params">arr</span>) </span>{
+  <span class="hljs-keyword">let</span> newarr = arr.filter((value, index) =&gt; {
+    <span class="hljs-keyword">return</span> arr.indexOf(value) == index
+  })
+  <span class="hljs-keyword">return</span> newarr
+}
+</code></pre>
+<p><strong>&#x9650;&#x5236;</strong> &#xFF1A;<code>indexOf</code>&#x65E0;&#x6CD5;&#x8BC6;&#x522B;&#x51FA;NaN&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x76F4;&#x63A5;&#x5FFD;&#x7565;&#x6389;<code>NaN</code>&#xFF0C;&#x53E6;&#x5916;&#x5B83;&#x7684;&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x662F;<code>===</code>&#x5224;&#x65AD;&#xFF0C;&#x6240;&#x4EE5;indexOf &#x4E5F;&#x65E0;&#x6CD5;&#x53BB;&#x91CD; &#x5BF9;&#x8C61;&#x3002;&#x5230; NaN &#x5143;&#x7D20;</p>
+<h3 id="4-set">4. Set</h3>
+<p>Set&#x662F;es6&#x65B0;&#x589E;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x4E0D;&#x5B58;&#x50A8;&#x91CD;&#x590D;&#x5143;&#x7D20;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">distinct</span>(<span class="hljs-params">arr</span>) </span>{
+  <span class="hljs-keyword">let</span> set = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>(arr)
+  <span class="hljs-keyword">return</span> [...set]
+}
+</code></pre>
+<p><strong>&#x9650;&#x5236;</strong>&#xFF1A;&#x5BF9;&#x8C61;&#x4E0D;&#x53BB;&#x91CD;&#xFF0C;&#x5982;<code>/a/</code>&#x3001;<code>{}</code>&#x7B49;</p>
+<p><strong>&#x4F18;&#x52BF;</strong>&#xFF1A;&#x867D;&#x7136; Set &#x5E95;&#x5C42;&#x4E5F;&#x662F;&#x7528;<code>===</code>&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x4F46;&#x662F; Set &#x8FD8;&#x662F;&#x80FD;&#x53BB;&#x91CD; NaN</p>
+<h3 id="5-object&#x952E;&#x503C;&#x5BF9;">5. Object&#x952E;&#x503C;&#x5BF9;</h3>
+<p>&#x5229;&#x7528;object&#x53BB;&#x91CD;&#xFF0C;&#x628A;&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x5F53;&#x4F5C;&#x5BF9;&#x8C61;&#x5BF9;&#x952E;&#x503C;&#xFF0C;&#x6700;&#x540E;&#x7528;<code>Object.keys(obj)</code>&#x8FD4;&#x56DE;&#x5BF9;&#x8C61;&#x7684;&#x952E;&#x503C;&#x6570;&#x7EC4;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-string">&apos;3&apos;</span>,<span class="hljs-string">&apos;4&apos;</span>,<span class="hljs-string">&apos;5&apos;</span>]
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">distinct</span>(<span class="hljs-params">arr</span>) </span>{
+  <span class="hljs-keyword">let</span> obj = {}
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>; i&lt;arr.length; i++) {
+    <span class="hljs-keyword">if</span>(!obj[arr[i]]) {
+      obj[arr[i]] = arr[i]
+    }
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.keys(obj)
+  <span class="hljs-comment">// &#x82E5;&#x662F;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x96C6;&#x5408; return Object.values(obj)</span>
+  <span class="hljs-comment">// &#x8FD4;&#x56DE; [1, 2, 3, &quot;4&quot;, &quot;5&quot;]</span>
+}
+<span class="hljs-comment">// &#x4E0D;&#x9700;&#x8981;&#x7528;&#x5C55;&#x5F00;&#x5B57;&#x7B26;&#x5C55;&#x5F00;</span>
+<span class="hljs-built_in">console</span>.log(distinct(arr))  <span class="hljs-comment">// [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;]</span>
+</code></pre>
+<p><strong>&#x9650;&#x5236;</strong>&#xFF1A;&#x56E0;&#x4E3A;&#x5BF9;&#x8C61;&#x7684;&#x952E;&#x662F;&#x5B57;&#x7B26;&#x7C7B;&#x578B;&#xFF0C;&#x6240;&#x4EE5;&#x7528;&#x952E;&#x503C;&#x6570;&#x7EC4;&#x8F93;&#x51FA;&#x7684;&#x5168;&#x90E8;&#x90FD;&#x662F;&#x5B57;&#x7B26;&#x7C7B;&#x578B;&#x5143;&#x7D20;&#xFF0C;&#x5E76;&#x4E14;&#x6570;&#x5B57;<code>3</code>&#x548C;&#x5B57;&#x7B26;<code>&apos;3&apos;</code>&#x4F1A;&#x88AB;&#x8BC6;&#x522B;&#x6210;&#x540C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x3002;</p>
+<p><strong>&#x4F18;&#x52BF;</strong>&#xFF1A;&#x53EF;&#x4EE5;&#x53BB;&#x91CD;NaN&#x548C;&#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x4E3A;<code>NaN.toString()</code>&#x4F1A;&#x662F;<code>NaN</code>&#x5B57;&#x7B26;&#x4E32;&#x3002;
+&#x5728;&#x952E;&#x503C;&#x4E2D;&#x52A0;&#x5165;&#x7C7B;&#x578B;&#x5224;&#x65AD;&#xFF0C;&#x7136;&#x540E;&#x53BB;&#x91CD;&#x89E3;&#x51B3;&#x65E0;&#x6CD5;&#x8BC6;&#x522B;&#x6570;&#x5B57;&#x548C;&#x5B57;&#x7B26;&#x7684;&#x95EE;&#x9898;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-string">&apos;3&apos;</span>,<span class="hljs-string">&apos;4&apos;</span>,<span class="hljs-string">&apos;5&apos;</span>,<span class="hljs-string">&apos;6&apos;</span>,<span class="hljs-number">33</span>,<span class="hljs-literal">NaN</span>, <span class="hljs-literal">NaN</span>, <span class="hljs-regexp">/a/</span>,<span class="hljs-regexp">/a/</span>, {a:<span class="hljs-number">1</span>},{}]
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">distinct</span>(<span class="hljs-params">arr</span>) </span>{
+  <span class="hljs-keyword">let</span> obj = {}
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>; i&lt;arr.length; i++) {
+    <span class="hljs-keyword">if</span>(!obj[<span class="hljs-keyword">typeof</span> arr[i]+arr[i]]) {
+      obj[<span class="hljs-keyword">typeof</span> arr[i]+arr[i]]= arr[i]
+    }
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.values(obj)
+  <span class="hljs-comment">// &#x82E5;&#x662F;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x96C6;&#x5408; return Object.values(obj)</span>
+  <span class="hljs-comment">// &#x8FD4;&#x56DE; [1, 2, 3, &quot;4&quot;, &quot;5&quot;]</span>
+}
+
+<span class="hljs-built_in">console</span>.log(distinct(arr))  
+<span class="hljs-comment">// [1, 2, 3, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, 33, NaN, /a/, {&#x2026;}]</span>
+</code></pre>
+<p><strong>&#x9650;&#x5236;</strong>&#xFF1A;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x4E00;&#x5F8B;&#x6309;&#x7167;<code>object[object Object]</code>&#x5904;&#x7406;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x7BA1;&#x5BF9;&#x8C61;&#x4E00;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x90FD;&#x53EA;&#x4FDD;&#x7559;&#x7B2C;&#x4E00;&#x4E2A;&#x51FA;&#x73B0;&#x7684;&#x5143;&#x7D20;&#x3002;</p>
+<h3 id="6-sort&#x6392;&#x5E8F;">6. sort&#x6392;&#x5E8F;</h3>
+<p>&#x7528;sort&#x5148;&#x5BF9;&#x6570;&#x7EC4;&#x6392;&#x5E8F;&#xFF0C;&#x7136;&#x540E;&#x5FAA;&#x73AF;&#x5224;&#x65AD;&#x76F8;&#x90BB;&#x5143;&#x7D20;&#x662F;&#x5426;&#x76F8;&#x540C;&#xFF0C;&#x76F8;&#x540C;&#x5C31;&#x5220;&#x6389;&#x91CD;&#x590D;&#x5143;&#x7D20;&#xFF0C;&#x76F4;&#x63A5;&#x5728;&#x539F;&#x6570;&#x7EC4;&#x4E0A;&#x66F4;&#x6539;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">distinct</span>(<span class="hljs-params">arr</span>) </span>{
+  arr.sort((a,b)=&gt; a-b)
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i=<span class="hljs-number">1</span>; i&lt;arr.length; i++) {
+    <span class="hljs-keyword">if</span>(arr[i] === arr[i<span class="hljs-number">-1</span>]) {
+      <span class="hljs-comment">// &#x53BB;&#x9664;&#x91CD;&#x590D;&#x5143;&#x7D20;</span>
+      arr.splice(i, <span class="hljs-number">1</span>)
+      <span class="hljs-comment">// &#x6062;&#x590D;&#x7D22;&#x5F15;</span>
+      i--
+    }
+  }
+  <span class="hljs-keyword">return</span> arr
+}
+</code></pre>
+<p><strong>&#x9650;&#x5236;</strong>&#xFF1A;&#x65E0;&#x6CD5;&#x53BB;&#x91CD;NaN&#x548C;&#x5BF9;&#x8C61;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="arguments.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 类数组">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"数组去重","level":"1.4.4","depth":2,"next":{"title":"手写源码","level":"1.5","depth":1,"ref":"","articles":[{"title":"url分割","level":"1.5.1","depth":2,"path":"origin/queryString.md","ref":"./origin/queryString.md","articles":[]}]},"previous":{"title":"类数组","level":"1.4.3","depth":2,"path":"data/arguments.md","ref":"./data/arguments.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"data/distinct.md","mtime":"2020-07-06T13:40:58.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-06T13:36:24.001Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
