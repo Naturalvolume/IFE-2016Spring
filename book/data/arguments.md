@@ -26,6 +26,7 @@ function test(a,b,c,d)
 ```
 - es6扩展运算符
 扩展运算符只能扩展具有`Symbol.iterator`属性的类数组，所以自己定义的`arguments`是不能用扩展运算符直接展开的。
+
 ```javascript
 // 错误
 let arr = [...arguments]  // error

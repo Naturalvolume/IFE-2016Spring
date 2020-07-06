@@ -1,0 +1,462 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>空对象判断 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="arguments.html" />
+    
+    
+    <link rel="prev" href="deepclone.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    html
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    css
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    数据
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="deepclone.html">
+            
+                <a href="deepclone.html">
+            
+                    
+                    数据深度克隆
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.2" data-path="objectJudge.html">
+            
+                <a href="objectJudge.html">
+            
+                    
+                    空对象判断
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="arguments.html">
+            
+                <a href="arguments.html">
+            
+                    
+                    类数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="distinct.html">
+            
+                <a href="distinct.html">
+            
+                    
+                    数组去重
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    手写源码
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../origin/queryString.html">
+            
+                <a href="../origin/queryString.html">
+            
+                    
+                    url分割
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    面试常见
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../interview/add.html">
+            
+                <a href="../interview/add.html">
+            
+                    
+                    高阶函数之返回函数的函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >空对象判断</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x5BF9;&#x8C61;">&#x5BF9;&#x8C61;</h1>
+<h3 id="&#x4E00;&#x3001;&#x5224;&#x65AD;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x4E3A;&#x7A7A;">&#x4E00;&#x3001;&#x5224;&#x65AD;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x4E3A;&#x7A7A;</h3>
+<ol>
+<li>Object.getOwnPropertyNames()
+&#x8FD4;&#x56DE;&#x5BF9;&#x8C61;&#x4E2D;&#x5C5E;&#x6027;&#x540D;&#x751F;&#x6210;&#x5BF9;&#x6570;&#x7EC4;<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> obj = {}
+<span class="hljs-built_in">Object</span>.getOwnPropertyNames(obj).length === <span class="hljs-number">0</span>; <span class="hljs-comment">// true</span>
+</code></pre>
+</li>
+<li>&#x628A;&#x5BF9;&#x8C61;&#x5185;&#x5BB9;&#x8F6C;&#x6362;&#x6210;&#x5B57;&#x7B26;&#x4E32;</li>
+</ol>
+<p>&#x4E0D;&#x80FD;&#x7528;<code>toString</code>&#x65B9;&#x6CD5;&#x8F6C;&#x6362;&#x5BF9;&#x8C61;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x56E0;&#x4E3A;<code>{}.toString()</code>&#xFF0C;&#x8F93;&#x51FA;<code>[object Object]</code></p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> obj = {};
+<span class="hljs-keyword">var</span> a = <span class="hljs-built_in">JSON</span>.stringify(obj);
+a === <span class="hljs-string">&quot;{}&quot;</span>; <span class="hljs-comment">// true</span>
+<span class="hljs-comment">// a === {}; // false</span>
+</code></pre>
+<ol>
+<li>for...in&#x5FAA;&#x73AF;</li>
+</ol>
+<p><code>for...in</code>&#x5FAA;&#x73AF;&#x80FD;&#x7528;&#x6765;&#x904D;&#x5386;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#xFF0C;&#x4F46;&#x662F;<code>for...of</code>&#x53EA;&#x80FD;&#x7528;&#x6765;&#x904D;&#x5386;&#x5177;&#x6709;<code>Symbol.iterator</code>&#x5C5E;&#x6027;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x6BD4;&#x5982;<code>Array&#x3001;Set&#x3001;Map</code>&#x7B49;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> obj = {};
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">judgeObj</span>(<span class="hljs-params">obj</span>) </span>{
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> key <span class="hljs-keyword">in</span> obj) {
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+};
+
+judgeObj(obj); <span class="hljs-comment">// true</span>
+</code></pre>
+<ol>
+<li>Object.keys(obj)</li>
+</ol>
+<p><code>Object.keys(obj)</code>&#x662F;<code>Object</code>&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD4;&#x56DE;<code>obj</code>&#x7684;&#x952E;&#x503C;&#xFF0C;&#x5B83;&#x4E0E;<code>Symbol.iterator</code>&#x5BF9;&#x8C61;&#x7684;<code>keys</code>&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> set = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>()
+set.add(<span class="hljs-number">1</span>)
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.keys(set))       <span class="hljs-comment">// []   &#x7A7A;&#x6570;&#x7EC4;&#xFF0C;&#x65E0;&#x952E;&#x503C;&#x4FE1;&#x606F;</span>
+<span class="hljs-built_in">console</span>.log(set.keys())       <span class="hljs-comment">// SetIterator {1}   &#x952E;&#x503C;&#x4FE1;&#x606F;</span>
+</code></pre>
+<p>&#x5224;&#x65AD;&#x662F;&#x5426;&#x4E3A;&#x7A7A;&#x6570;&#x7EC4;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> obj = {}
+<span class="hljs-built_in">Object</span>.keys(obj).length === <span class="hljs-number">0</span>; <span class="hljs-comment">// true</span>
+<span class="hljs-comment">// &#x6216;&#x8005;&#x7528;&#x503C;</span>
+<span class="hljs-built_in">Object</span>.values(obj).length === <span class="hljs-number">0</span>; <span class="hljs-comment">// true</span>
+</code></pre>
+<h3 id="&#x4E8C;&#x3001;&#x5BF9;&#x8C61;&#x7684;&#x5E38;&#x7528;&#x51FD;&#x6570;">&#x4E8C;&#x3001;&#x5BF9;&#x8C61;&#x7684;&#x5E38;&#x7528;&#x51FD;&#x6570;</h3>
+<ul>
+<li>Object.prototype.hasOwnProperty(prop)
+&#x5224;&#x65AD;&#x5BF9;&#x8C61;&#x81EA;&#x8EAB;&#x5C5E;&#x6027;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x539F;&#x578B;&#x94FE;&#x7EE7;&#x627F;&#x5230;&#x7684;&#x5C5E;&#x6027;&#x3002;</li>
+<li>Object.create(parent, descr) (ES5)
+&#x521B;&#x5EFA;&#x65B0;&#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x5B83;&#x7684;&#x539F;&#x578B;&#xFF08;parent&#xFF09;&#xFF0C;&#x548C;&#x503C;&#xFF08;descr&#xFF09;&#x3002;<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> parent = {hi: <span class="hljs-string">&apos;Hello&apos;</span>};
+<span class="hljs-keyword">var</span> o = <span class="hljs-built_in">Object</span>.create(parent, {
+  prop: {
+      value: <span class="hljs-number">1</span>
+  }
+});
+o.hi; <span class="hljs-comment">// &apos;Hello&apos;</span>
+<span class="hljs-comment">// &#x83B7;&#x5F97;&#x5B83;&#x7684;&#x539F;&#x578B;</span>
+<span class="hljs-built_in">Object</span>.getPrototypeOf(parent) === <span class="hljs-built_in">Object</span>.prototype; <span class="hljs-comment">// true &#x8BF4;&#x660E;parent&#x7684;&#x539F;&#x578B;&#x662F;Object.prototype</span>
+<span class="hljs-built_in">Object</span>.getPrototypeOf(o); <span class="hljs-comment">// {hi: &quot;Hello&quot;} // &#x8BF4;&#x660E;o&#x7684;&#x539F;&#x578B;&#x662F;{hi: &quot;Hello&quot;}</span>
+o.hasOwnProperty(<span class="hljs-string">&apos;hi&apos;</span>); <span class="hljs-comment">// false &#x8BF4;&#x660E;hi&#x662F;&#x539F;&#x578B;&#x4E0A;&#x7684;</span>
+o.hasOwnProperty(<span class="hljs-string">&apos;prop&apos;</span>); <span class="hljs-comment">// true &#x8BF4;&#x660E;prop&#x662F;&#x539F;&#x578B;&#x4E0A;&#x7684;&#x81EA;&#x8EAB;&#x4E0A;&#x7684;&#x5C5E;&#x6027;&#x3002;</span>
+</code></pre>
+</li>
+<li>Object.getPrototypeOf(obj)
+&#x83B7;&#x53D6;&#x5BF9;&#x8C61;<code>obj</code>&#x7684;&#x539F;&#x578B;&#x3002;</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="deepclone.html" class="navigation navigation-prev " aria-label="Previous page: 数据深度克隆">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="arguments.html" class="navigation navigation-next " aria-label="Next page: 类数组">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"空对象判断","level":"1.4.2","depth":2,"next":{"title":"类数组","level":"1.4.3","depth":2,"path":"data/arguments.md","ref":"./data/arguments.md","articles":[]},"previous":{"title":"数据深度克隆","level":"1.4.1","depth":2,"path":"data/deepclone.md","ref":"./data/deepclone.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"data/objectJudge.md","mtime":"2020-07-06T13:39:31.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-06T13:36:24.001Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

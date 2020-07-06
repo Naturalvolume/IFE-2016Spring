@@ -1,10 +1,31 @@
-# 无限累加函数
+# 高阶函数之返回函数的函数
+### 一、类型判断函数
+返回函数的函数也是高阶函数。
+```javascript
+// 常规实现
+function isType(type) {
+  return function (obj) {
+    return Object.prototype.toString.call(obj) === '[object ' + type + ']'
+  }
+}
+console.log(isType('String'))       // function (obj){}
+console.log(isType('String')('123'))    // true
+
+// 箭头函数实现
+let isType = type => obj => {
+  return Object.prototype.toString.call(obj) === '[object ' + type + ']'
+}
+console.log(isType('String'))   // obj => {}
+console.log(isType('String')('123'))  //true
+```
+### 二、无限累加函数
 要实现无限累加的函数，需要知道一个知识点：每次`console.log`的时候都会调用输出对象的`toString`方法，下面直接看代码。
 ```javascript
 function add(a) {
     function sum(b) { // 使用闭包
       console.log(b)
       a = a + b; // 累加
+      // 每次都返回 sum 函数
       return sum;
     }
     sum.toString = function() { // 重写toString()方法
