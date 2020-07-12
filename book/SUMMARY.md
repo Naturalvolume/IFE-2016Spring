@@ -2,6 +2,7 @@
 * html
 * css
   * [用css实现弹出框](./css/popup.md)
+  * [css3动画](./css/animate.md)
 * JavaScript基础
   * [数据深度克隆](./data/deepclone.md)
   * [空对象判断](./data/objectJudge.md)

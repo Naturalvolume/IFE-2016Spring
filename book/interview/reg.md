@@ -1,3 +1,96 @@
+# 正则表达式
+### global修饰符
+**global/g**：全文搜索，和 lastIndex 属性配合，每次保存上一次匹配结束的位置，下一次继续在该位置搜索。
+
+只在正则对象的方法中起作用，如`RegExp.prototype.test(str)`和`RegExp.prototype.exec(str)`，对字符串的方法不起作用。
+### RegExp.prototype.test(str) 和 String.prototype.search(reg)
+这两个方法都可以用来查找字符串 str 中是否有对应的正则表达式字符串，但有以下不同：
+- text 是正则对象的方法，search 是字符串对象的方法
+- text 在全局模式下与 RegExp.lastIndex 配合使用，每次都从上一次匹配的位置出发
+- text 返回布尔值，只判断是否存在匹配，而 search 返回第一个匹配到的位置，没有则返回 -1
+```javascript
+let str = "k is so k"
+// 全局模式
+let reg = new RegExp("k", "g")
+console.log(reg.test(str))    //true
+console.log(reg.lastIndex)    // 1
+console.log(reg.test(str))    //true
+console.log(reg.lastIndex)    // 9
+```
+```javascript
+// 全局模式
+let str = "k is so k"
+let reg = new RegExp("k", "g")
+console.log(str.search(reg))  // 0
+console.log(reg.lastIndex)    //0
+console.log(str.search(reg))  //0
+console.log(reg.lastIndex)    // 0
+```
+### RegExp.prototype.exec(str) 和 String.prototype.match(reg)
+exec 和 match 方法都可以返回有 索引位置index 属性的对象，但两者的具体使用与是否在全局模式下有关系。
+
+- exec 在非全局模式下每次返回第一个匹配对象，在全局模式下和 lastIndex 属性配合使用，每次都向后查找一个，返回对应的匹配对象。
+```javascript
+let str = "k is so k"
+// 非全局模式
+let reg = new RegExp("k")
+console.log(reg.exec(str))    // {"0: "k"
+                              // groups: undefined
+                              // index: 0
+                              // input: "k is so k k k"
+                              // length: 1"}
+console.log(reg.lastIndex)    //  0
+console.log(reg.exec(str))    // 同上
+console.log(reg.lastIndex)     // 0
+// 全局模式
+let str = "k is so k"
+
+// 非全局模式
+let reg = new RegExp("k", "g")
+console.log(reg.exec(str))    // {"0: "k"
+                              // groups: undefined
+                              // index: 0
+                              // input: "k is so k"
+                              // length: 1"}
+console.log(reg.lastIndex)    //  0
+console.log(reg.exec(str))    // {"0: "k"
+                              // groups: undefined
+                              // index: 8
+                              // input: "k is so k"
+                              // length: 1"}
+console.log(reg.lastIndex)     // 9
+```
+- match 在全局模式下直接返回 匹配对象数组，没有位置 index 等信息，在非全局模式下返回第一个对象的匹配对象，包含 index 等信息。
+```javascript
+// 全局模式
+let str = "k is so k"
+let reg = new RegExp("k", "g")
+console.log(str.match(reg))   // ["k", "k"]
+console.log(reg.lastIndex)    // 0
+console.log(str.match(reg))   // ["k", "k"]
+console.log(reg.lastIndex)    // 0
+
+// 非全局模式
+let str = "k is so k"
+let reg = new RegExp("k", "g")
+console.log(str.match(reg))   // {"0: "k"
+                              // groups: undefined
+                              // index: 0
+                              // input: "k is so k"
+                              // length: 1"}
+console.log(reg.lastIndex)    // 0
+console.log(str.match(reg))   // 同上
+console.log(reg.lastIndex)    // 0
+```
+### String.prototype.replace(reg, replacement)
+replace 方法用 replacement 替换对应的匹配，返回替换后的字符串。
+
+replacement 可以是
+- 字符串
+- 函数，函数的参数是匹配到的字符串
+但是不能是箭头函数，因为箭头函数不能取到匹配到的字符串。
+
+下面是几个 replace 的例子：
 ```javascript
 // 1.get-element变成驼峰式
 function commal(str) {
@@ -10,7 +103,40 @@ function commal(str) {
     return $0.slice(1).toUpperCase()
   })
 }
-commal('ab-gi-du')
+
+console.log(commal('ab-gi-du'))    // abGiDu
+```
+
+```javascript
+// 2.分割数字每三个以一个逗号划分
+function slicestr(str) {
+  let reg = /\d{3}/
+  // 这个是正确的，不会出现 123,256, 的情况
+  //let reg = /(\d)(?=(\d{3})+$)/g;
+ 
+  // 使用箭头函数，取不到 匹配到的字符串，最后返回 undefined
+  /* return str.replace(reg, (word) => {
+    word + ','
+  }) */
+  return str.replace(reg, function(word) {
+    return word + ','
+  })
+}
+```
+### $ 的用法
+$0,$1....$9 是表示正则匹配的组
+
+### 正则表达式的使用
+```javascript
+// 1. 在键值对字符串中，匹配到 -webkit 返回浏览器内核
+// "key1 = value, key2 = value, -webkit = google, key3 = value, -webkit = google, -webkit = google"
+function keyValue(str) {
+  let reg = new RegExp('-webkit')
+  let index = str.match(reg).index
+  // 截取对应字符
+  return str.substr(index, 16)
+}
+
 // 2 . 匹配二进制数字
 function two(str) {
   // 字面量表达式
@@ -46,21 +172,4 @@ function brackets(str) {
   let reg = /<a[^>]+>/g
   return reg.exec(str)
 }
-//console.log(brackets('<abbbbb>'))
-// 7.分割数字每三个以一个逗号划分
-function slicestr(str) {
-  let reg = /\d{3}/
-  // 这里等号是啥意思
-  //let reg = /(\d)(?=(\d{3})+$)/g;
-  console.log(reg.exec(str))
- 
-  // 不能用split
-  // $1指代匹配到的每个子字符串，为啥自己写的那个不能用呢
-  //return str.replace(reg, '$1,')
-  return str.replace(reg, function(word) {
-    return word + ','
-  })
-}
-// 一堆问题：exec为啥返回的不是所有的
-console.log(slicestr('12345678998'))
 ```
