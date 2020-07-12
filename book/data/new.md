@@ -20,7 +20,7 @@ function newNew(n, a) {
 let person = newNew('kathy', 18)
 console.log(person)   // {age: 18, name: "kathy", __proto__: Object}
 ```
-### 复杂版本new
+### 可以继承其他对象的new
 用 apply 实现 this 指向的变化
 ```javascript
 function A(name, age) {
