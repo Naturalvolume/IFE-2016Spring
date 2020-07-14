@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>类数组 · GitBook</title>
+        <title>底层数据结构 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="distinct.html" />
+    <link rel="next" href="deepclone.html" />
     
-    
-    <link rel="prev" href="objectJudge.html" />
     
 
     </head>
@@ -193,7 +191,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="data.html">
+        <li class="chapter active" data-level="1.4.1" data-path="data.html">
             
                 <a href="data.html">
             
@@ -232,7 +230,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.4" data-path="arguments.html">
+        <li class="chapter " data-level="1.4.4" data-path="arguments.html">
             
                 <a href="arguments.html">
             
@@ -558,7 +556,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >类数组</a>
+        <a href=".." >底层数据结构</a>
     </h1>
 </div>
 
@@ -573,43 +571,51 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x7C7B;&#x6570;&#x7EC4;">&#x7C7B;&#x6570;&#x7EC4;</h1>
-<p>&#x7C7B;&#x6570;&#x7EC4;&#x662F;&#x770B;&#x8D77;&#x6765;&#x50CF;&#x6570;&#x7EC4;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x4E0D;&#x662F;&#x6570;&#x7EC4;&#xFF0C;&#x800C;&#x662F;&#x952E;&#x503C;&#x4E3A;&#x6570;&#x5B57;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x6570;&#x7EC4;&#x65B9;&#x6CD5;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x5B83;&#x53EA;&#x6709;&#x81EA;&#x8EAB;&#x5B9A;&#x4E49;&#x7684;<code>length</code>&#x5C5E;&#x6027;&#x662F;&#x8DDF;&#x6570;&#x7EC4;&#x4E00;&#x6837;&#x7684;&#x3002;</p>
-<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> <span class="hljs-built_in">arguments</span> = {
-  <span class="hljs-comment">// &#x952E;&#x503C;&#x4ECE; 0-n</span>
-    <span class="hljs-string">&apos;0&apos;</span>: <span class="hljs-string">&apos;a&apos;</span>,
-    <span class="hljs-string">&apos;1&apos;</span>: <span class="hljs-string">&apos;b&apos;</span>,
-    <span class="hljs-string">&apos;2&apos;</span>: <span class="hljs-string">&apos;c&apos;</span>,
-    <span class="hljs-comment">// &#x6709; length &#x5C5E;&#x6027;</span>
-    length: <span class="hljs-number">3</span>
-};
-</code></pre>
-<p>&#x7C7B;&#x6570;&#x7EC4;&#x53D8;&#x6210;&#x6570;&#x7EC4;&#x7684;&#x51E0;&#x79CD;&#x65B9;&#x5F0F;</p>
+                                <h1 id="javascript-&#x5E95;&#x5C42;&#x6570;&#x636E;&#x7ED3;&#x6784;">javascript &#x5E95;&#x5C42;&#x6570;&#x636E;&#x7ED3;&#x6784;</h1>
+<h3 id="&#x5185;&#x7F6E;&#x7C7B;&#x578B;">&#x5185;&#x7F6E;&#x7C7B;&#x578B;</h3>
+<p>javascript &#x76EE;&#x524D;&#x6709;&#x516B;&#x79CD;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF1A;number string boolean null undefined symbol Bigint object&#x3002; </p>
 <ul>
-<li>Array.from<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> arr = <span class="hljs-built_in">Array</span>.from(<span class="hljs-built_in">arguments</span>) <span class="hljs-comment">// [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;]</span>
+<li>number &#x6570;&#x636E;&#x8868;&#x793A;&#x7684;&#x662F;&#x53CC;&#x7CBE;&#x5EA6;64&#x4F4D;&#x6D6E;&#x70B9;&#x6570;&#xFF0C;&#x80FD;&#x8868;&#x793A;&#x7684;&#x8303;&#x56F4;&#x4E3A;-9007199254740991(-(2^53-1))&#x548C;9007199254740991&#xFF08;(2^53-1)&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x8D85;&#x8FC7;&#x6B64;&#x8303;&#x56F4;&#x7684;&#x4F1A;&#x5931;&#x53BB;&#x7CBE;&#x5EA6;&#x3002;<pre><code class="lang-javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-number">999999999999999</span>);  <span class="hljs-comment">//=&gt;10000000000000000</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-number">9007199254740992</span> === <span class="hljs-number">9007199254740993</span>;)    <span class="hljs-comment">// &#x2192; true &#x5C45;&#x7136;&#x662F;true!</span>
 </code></pre>
 </li>
-<li>ES5&#x4E2D; Array.prototype.slice.call()<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params">a,b,c,d</span>) 
- </span>{ 
-    <span class="hljs-keyword">var</span> arg = <span class="hljs-built_in">Array</span>.prototype.slice.call(<span class="hljs-built_in">arguments</span>,<span class="hljs-number">1</span>); 
-    <span class="hljs-built_in">console</span>.log(arg); 
- } 
- test(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>,<span class="hljs-string">&quot;d&quot;</span>); <span class="hljs-comment">//b,c,d</span>
-</code></pre>
+<li>Bigint&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x8D85;&#x8FC7; number &#x8303;&#x56F4;&#x7684;&#x6570;&#xFF0C;&#x514B;&#x670D;&#x5927;&#x6570;&#x636E;&#x7684;&#x7CBE;&#x5EA6;&#x635F;&#x5931;&#x95EE;&#x9898;&#xFF0C;&#x4F7F;&#x7528;Bigint&#x53EA;&#x9700;&#x8981;&#x5728;&#x6570;&#x5B57;&#x672B;&#x5C3E;&#x8FFD;&#x52A0;<code>n</code>&#x5373;&#x53EF;&#x6216;&#x4F7F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;<code>new Bigint</code>&#xFF0C;&#x5177;&#x4F53;&#x53EF;&#x770B;<a href="http://47.98.159.95/my_blog/js-base/007.html#%E4%BB%80%E4%B9%88%E6%98%AFbigint" target="_blank">&#x8C08;&#x8C08;&#x5BF9;bigint&#x5BF9;&#x7406;&#x89E3;</a></li>
+<li>Symbol&#x514B;&#x670D;&#x4E86;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;&#x91CD;&#x53E0;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5177;&#x4F53;&#x770B;<a href="https://juejin.im/post/5cc94723f265da034c7036e6" target="_blank">javascript&#x53D8;&#x91CF;&#x548C;&#x57FA;&#x672C;&#x7C7B;&#x578B;</a><h3 id="&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;symbol">&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;symbol</h3>
 </li>
-<li>es6&#x6269;&#x5C55;&#x8FD0;&#x7B97;&#x7B26;
-&#x6269;&#x5C55;&#x8FD0;&#x7B97;&#x7B26;&#x53EA;&#x80FD;&#x6269;&#x5C55;&#x5177;&#x6709;<code>Symbol.iterator</code>&#x5C5E;&#x6027;&#x7684;&#x7C7B;&#x6570;&#x7EC4;&#xFF0C;&#x6240;&#x4EE5;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49;&#x7684;<code>arguments</code>&#x662F;&#x4E0D;&#x80FD;&#x7528;&#x6269;&#x5C55;&#x8FD0;&#x7B97;&#x7B26;&#x76F4;&#x63A5;&#x5C55;&#x5F00;&#x7684;&#x3002;</li>
 </ul>
-<pre><code class="lang-javascript"><span class="hljs-comment">// &#x9519;&#x8BEF;</span>
-<span class="hljs-keyword">let</span> arr = [...arguments]  <span class="hljs-comment">// error</span>
+<h3 id="typeof-null--object">typeof null === &apos;object&apos;</h3>
+<p><code>typeof</code>&#x53EF;&#x4EE5;&#x51C6;&#x786E;&#x8F93;&#x51FA;&#x6240;&#x6709;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x9664;&#x4E86;<code>null</code>&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;javascript&#x6570;&#x636E;&#x5728;&#x5E95;&#x5C42;&#x90FD;&#x662F;&#x4EE5;<strong>32&#x4F4D;&#x4E8C;&#x8FDB;&#x5236;</strong>&#x5B58;&#x50A8;&#x7684;&#xFF0C;&#x51FA;&#x4E8E;&#x6027;&#x80FD;&#x8003;&#x8651;&#x7528;&#x4F4E;&#x4F4D;&#x5B58;&#x50A8;&#x53D8;&#x91CF;&#x7684;&#x7C7B;&#x578B;&#x4FE1;&#x606F;&#xFF0C;&#x5982;&#x524D;&#x4E09;&#x4F4D;&#x4E3A;0&#x7684;&#x4F1A;&#x88AB;&#x8BC6;&#x522B;&#x6210;<code>object</code>&#xFF0C;&#x800C;<code>null</code>&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x662F;<code>00..0000</code>&#xFF0C;&#x5C31;&#x4F1A;&#x88AB;&#x8BC6;&#x522B;&#x6210;<code>object</code>&#xFF0C;&#x8FD9;&#x662F;js&#x5E95;&#x5C42;&#x7684;&#x9057;&#x7559;&#x95EE;&#x9898;&#x3002;</p>
+<h3 id="&#x57FA;&#x672C;&#x5305;&#x88C5;&#x7C7B;&#x578B;">&#x57FA;&#x672C;&#x5305;&#x88C5;&#x7C7B;&#x578B;</h3>
+<p><strong>&#x57FA;&#x672C;&#x5305;&#x88C5;&#x7C7B;&#x578B;</strong>&#x662F;&#x57FA;&#x672C;&#x7C7B;&#x578B;<code>string</code>&#x3001;<code>number</code>&#x3001;<code>boolean</code>&#xFF0C;&#x5B83;&#x4EEC;&#x5728;&#x4E00;&#x5B9A;&#x6761;&#x4EF6;&#x4E0B;&#x80FD;&#x4ECE;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x6210;&#x5BF9;&#x8C61;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x539F;&#x59CB;&#x7C7B;&#x578B;&#x7684;<strong>&#x5305;&#x88C5;&#x5BF9;&#x8C61;</strong>&#xFF0C;&#x5373;<code>Number``String``Boolean</code>&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x8BA9;&#x5BF9;&#x8C61;&#x6DB5;&#x76D6;&#x6240;&#x6709;&#x7C7B;&#x578B;&#x7684;&#x503C;&#xFF0C;&#x5E76;&#x4E14;&#x8BA9;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5982;<code>length</code>&#x7B49;&#x3002;</p>
+<p>&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x53EF;&#x4EE5;&#x88AB;&#x5F53;&#x4F5C;&#x5305;&#x88C5;&#x5BF9;&#x8C61;&#x4F7F;&#x7528;&#xFF0C;&#x5982;&#x8C03;&#x7528;<code>toString</code>&#x548C;<code>valueOf</code>&#xFF0C;javascript &#x5F15;&#x64CE;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x4F1A;&#x81EA;&#x52A8;&#x628A;<strong>&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x7684;&#x503C;</strong>&#x8F6C;&#x6362;&#x6210;<strong>&#x5305;&#x88C5;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;</strong>&#xFF0C;&#x4F7F;&#x7528;&#x5B8C;&#x540E;&#x7ACB;&#x5373;&#x9500;&#x6BC1;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;<code>num = 1</code>&#x548C;<code>Number(1)</code>&#x7684;&#x533A;&#x522B;&#x3002;</p>
+<p><strong>&#x62C6;&#x7BB1;&#x64CD;&#x4F5C;</strong>&#xFF1A;&#x4ECE;&#x5305;&#x88C5;&#x5BF9;&#x8C61;&#x8F6C;&#x6210;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#xFF0C;&#x7528; valueOf &#x6216; toString
+<strong>&#x88C5;&#x7BB1;&#x64CD;&#x4F5C;</strong>&#xFF1A;&#x4ECE;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x8F6C;&#x6210;&#x5305;&#x88C5;&#x5BF9;&#x8C61;&#xFF0C;&#x5206;&#x4E3A; &#x9690;&#x5F0F;&#x88C5;&#x7BB1; &#x548C; &#x663E;&#x5F0F;&#x88C5;&#x7BB1;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// &#x9690;&#x5F0F;&#x88C5;&#x7BB1;</span>
+<span class="hljs-keyword">let</span> a = <span class="hljs-string">&apos;sun&apos;</span>
+    <span class="hljs-keyword">let</span> b = a.indexof(<span class="hljs-string">&apos;s&apos;</span>) <span class="hljs-comment">// 0 // &#x8FD4;&#x56DE;&#x4E0B;&#x6807;</span>
+    <span class="hljs-comment">// &#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x5728;&#x540E;&#x53F0;&#x5B9E;&#x9645;&#x7684;&#x6B65;&#x9AA4;&#x4E3A;&#xFF1A;</span>
+    <span class="hljs-keyword">let</span> a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">String</span>(<span class="hljs-string">&apos;sun&apos;</span>)
+    <span class="hljs-keyword">let</span> b = a.indexof(<span class="hljs-string">&apos;s&apos;</span>)
+    a = <span class="hljs-literal">null</span>
 
-<span class="hljs-comment">// &#x6B63;&#x786E;&#xFF0C;&#x5F62;&#x53C2;&#x662F;&#x7C7B;&#x6570;&#x7EC4;</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params">b,c,d</span>) </span>{
-  <span class="hljs-built_in">console</span>.log([...arguments]) <span class="hljs-comment">// 1,2,3</span>
-}
-a(<span class="hljs-string">&apos;1&apos;</span>,<span class="hljs-string">&apos;2&apos;</span>,<span class="hljs-string">&apos;3&apos;</span>)
+<span class="hljs-comment">// &#x663E;&#x5F0F;&#x88C5;&#x7BB1;</span>
+<span class="hljs-keyword">let</span> a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">String</span>(<span class="hljs-string">&apos;sun    &apos;</span>)
 </code></pre>
-<p>&#x4EE5;&#x4E0A;&#x4E09;&#x4E2A;&#x65B9;&#x6CD5;&#x90FD;&#x662F;&#x53EA;&#x80FD;&#x5728;&#x952E;&#x503C;&#x4E25;&#x683C;&#x7B26;&#x5408;&#x6570;&#x7EC4;&#x4E0B;&#x6807;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x8D77;&#x4F5C;&#x7528;&#x3002;</p>
+<p><strong>&#x6CE8;&#x610F;</strong>&#xFF1A;&#x5305;&#x88C5;&#x5BF9;&#x8C61;&#x662F;&#x53EA;&#x8BFB;&#x7684;&#xFF0C;&#x4E0D;&#x80FD;&#x4FEE;&#x6539;&#x503C;</p>
+<h3 id="javascript-&#x5E95;&#x5C42;&#x5B58;&#x50A8;&#x7ED3;&#x6784;">javascript &#x5E95;&#x5C42;&#x5B58;&#x50A8;&#x7ED3;&#x6784;</h3>
+<p>&#x5E38;&#x89C1;&#x7684;&#x6570;&#x636E;&#x5B58;&#x50A8;&#x7C7B;&#x578B;&#x6709;&#xFF1A;&#x6570;&#x7EC4;&#x3001;&#x961F;&#x5217;&#x3001;&#x94FE;&#x8868;&#x3001;&#x6808;&#x3001;&#x5806;&#x3001;&#x6811;&#x3001;&#x56FE;&#x3001;&#x6563;&#x5217;&#x8868;&#xFF0C;&#x5728;javascript&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x5806;&#x548C;&#x6808;&#xFF1A;</p>
+<ul>
+<li>&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6309;&#x503C;&#x76F4;&#x63A5;&#x5B58;&#x50A8;&#x5728;&#x6808;&#x4E2D;&#xFF0C;&#x8FD9;&#x6837;&#x6BCF;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x5927;&#x5C0F;&#x662F;&#x786E;&#x5B9A;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x7531;&#x7CFB;&#x7EDF;&#x81EA;&#x52A8;&#x5206;&#x914D;&#x548C;&#x91CA;&#x653E;&#xFF0C;&#x4F18;&#x52BF;&#x6709;&#xFF1A;&#x5185;&#x5B58;&#x53EF;&#x4EE5;&#x53CA;&#x65F6;&#x5F97;&#x5230;&#x56DE;&#x6536;&#x3001;&#x6BD4;&#x5806;&#x66F4;&#x65B9;&#x4FBF;&#x7BA1;&#x7406;&#x5185;&#x5B58;&#x7B49;&#xFF1B;</li>
+<li>&#x5F15;&#x7528;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x5730;&#x5740;&#x7528;&#x6808;&#x5B58;&#x50A8;&#xFF0C;&#x6570;&#x636E;&#x7528;&#x5806;&#x5B58;&#x50A8;&#xFF0C;<code>new</code>&#x51FA;&#x6765;&#x7684;&#x5E03;&#x5C14;&#x3001;&#x6570;&#x5B57;&#x4E5F;&#x5B58;&#x50A8;&#x5728;&#x5806;&#x4E2D;&#x3002;<h3 id="&#x5BF9;&#x8C61;&#x7684;&#x5E95;&#x5C42;&#x5B9E;&#x73B0;">&#x5BF9;&#x8C61;&#x7684;&#x5E95;&#x5C42;&#x5B9E;&#x73B0;</h3>
+&#x6563;&#x5217;&#x8868;&#xFF0F;&#x54C8;&#x897F;&#x8868;
+&#x66F4;&#x5E95;&#x5C42;&#x7684;&#x53EF;&#x770B;&#xFF1A;<a href="https://www.cnblogs.com/full-stack-engineer/p/9684072.html" target="_blank">javascript&#x5BF9;&#x8C61;&#x5E95;&#x5C42;&#x539F;&#x7406;</a><h3 id="01--02--03">0.1 + 0.2 != 0.3</h3>
+0.1 &#x548C; 0.2 &#x88AB;&#x8F6C;&#x6362;&#x6210;&#x4E8C;&#x8FDB;&#x5236;&#x65F6;&#x4F1A;&#x65E0;&#x9650;&#x5FAA;&#x73AF;&#xFF0C;&#x7531;&#x4E8E;&#x4F4D;&#x6570;&#x9650;&#x5236;&#xFF0C;&#x540E;&#x9762;&#x591A;&#x4F59;&#x7684;&#x4F4D;&#x6570;&#x4F1A;&#x88AB;&#x622A;&#x6389;&#xFF0C;&#x6B64;&#x65F6;&#x4F1A;&#x6709;&#x7CBE;&#x5EA6;&#x635F;&#x5931;&#xFF0C;&#x6240;&#x4EE5;&#x76F8;&#x52A0;&#x540E;&#x518D;&#x8F6C;&#x6362;&#x6210;&#x5341;&#x8FDB;&#x5236;&#x4F1A;&#x7F16;&#x7A0B; 0.30000000000000004&#x3002;</li>
+</ul>
+<h3 id="&#x5904;&#x7406;&#x7CBE;&#x5EA6;&#x635F;&#x5931;&#x7684;&#x65B9;&#x6CD5;">&#x5904;&#x7406;&#x7CBE;&#x5EA6;&#x635F;&#x5931;&#x7684;&#x65B9;&#x6CD5;</h3>
+<ul>
+<li>&#x7528; Bigint</li>
+<li>&#x7528;&#x5B57;&#x7B26;&#x4E32;</li>
+</ul>
 
                                 
                                 </section>
@@ -637,12 +643,8 @@ a(<span class="hljs-string">&apos;1&apos;</span>,<span class="hljs-string">&apos
 
             
                 
-                <a href="objectJudge.html" class="navigation navigation-prev " aria-label="Previous page: 空对象判断">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
-                
-                <a href="distinct.html" class="navigation navigation-next " aria-label="Next page: 数组去重">
+                <a href="deepclone.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 数据深度克隆">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -653,7 +655,7 @@ a(<span class="hljs-string">&apos;1&apos;</span>,<span class="hljs-string">&apos
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"类数组","level":"1.4.4","depth":2,"next":{"title":"数组去重","level":"1.4.5","depth":2,"path":"data/distinct.md","ref":"./data/distinct.md","articles":[]},"previous":{"title":"空对象判断","level":"1.4.3","depth":2,"path":"data/objectJudge.md","ref":"./data/objectJudge.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"data/arguments.md","mtime":"2020-07-06T13:40:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-13T03:33:35.219Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"底层数据结构","level":"1.4.1","depth":2,"next":{"title":"数据深度克隆","level":"1.4.2","depth":2,"path":"data/deepclone.md","ref":"./data/deepclone.md","articles":[]},"previous":{"title":"JavaScript基础","level":"1.4","depth":1,"ref":"","articles":[{"title":"底层数据结构","level":"1.4.1","depth":2,"path":"data/data.md","ref":"./data/data.md","articles":[]},{"title":"数据深度克隆","level":"1.4.2","depth":2,"path":"data/deepclone.md","ref":"./data/deepclone.md","articles":[]},{"title":"空对象判断","level":"1.4.3","depth":2,"path":"data/objectJudge.md","ref":"./data/objectJudge.md","articles":[]},{"title":"类数组","level":"1.4.4","depth":2,"path":"data/arguments.md","ref":"./data/arguments.md","articles":[]},{"title":"数组去重","level":"1.4.5","depth":2,"path":"data/distinct.md","ref":"./data/distinct.md","articles":[]},{"title":"this指向","level":"1.4.6","depth":2,"path":"data/this.md","ref":"./data/this.md","articles":[]},{"title":"实现new","level":"1.4.7","depth":2,"path":"data/new.md","ref":"./data/new.md","articles":[]},{"title":"手动实现instanceof","level":"1.4.8","depth":2,"path":"data/instanceof.md","ref":"./data/instanceof.md","articles":[]},{"title":"作用域","level":"1.4.9","depth":2,"path":"data/scope.md","ref":"./data/scope.md","articles":[]},{"title":"es6 class的底层实现","level":"1.4.10","depth":2,"path":"data/class.md","ref":"./data/class.md","articles":[]},{"title":"内存泄露和堆栈溢出","level":"1.4.11","depth":2,"path":"data/overflow.md","ref":"./data/overflow.md","articles":[]},{"title":"promise","level":"1.4.12","depth":2,"path":"data/promise.md","ref":"./data/promise.md","articles":[]},{"title":"自定义类型的错误对象","level":"1.4.13","depth":2,"path":"data/throw.md","ref":"./data/throw.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"data/data.md","mtime":"2020-07-12T13:47:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-13T03:33:35.219Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
