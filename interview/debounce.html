@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>高阶函数之返回函数的函数 · GitBook</title>
+        <title>节流 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="screen.html" />
+    <link rel="next" href="reg.html" />
     
+    
+    <link rel="prev" href="throttle.html" />
     
 
     </head>
@@ -515,7 +517,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.6.1" data-path="add.html">
+        <li class="chapter " data-level="1.6.1" data-path="add.html">
             
                 <a href="add.html">
             
@@ -554,7 +556,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.4" data-path="debounce.html">
+        <li class="chapter active" data-level="1.6.4" data-path="debounce.html">
             
                 <a href="debounce.html">
             
@@ -660,7 +662,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >高阶函数之返回函数的函数</a>
+        <a href=".." >节流</a>
     </h1>
 </div>
 
@@ -675,68 +677,44 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x9AD8;&#x9636;&#x51FD;&#x6570;&#x4E4B;&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;">&#x9AD8;&#x9636;&#x51FD;&#x6570;&#x4E4B;&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;</h1>
-<h3 id="&#x4E00;&#x3001;&#x7C7B;&#x578B;&#x5224;&#x65AD;&#x51FD;&#x6570;">&#x4E00;&#x3001;&#x7C7B;&#x578B;&#x5224;&#x65AD;&#x51FD;&#x6570;</h3>
-<p>&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;&#x4E5F;&#x662F;&#x9AD8;&#x9636;&#x51FD;&#x6570;&#x3002;</p>
-<pre><code class="lang-javascript"><span class="hljs-comment">// &#x5E38;&#x89C4;&#x5B9E;&#x73B0;</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isType</span>(<span class="hljs-params">type</span>) </span>{
-  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj</span>) </span>{
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.prototype.toString.call(obj) === <span class="hljs-string">&apos;[object &apos;</span> + type + <span class="hljs-string">&apos;]&apos;</span>
-  }
-}
-<span class="hljs-built_in">console</span>.log(isType(<span class="hljs-string">&apos;String&apos;</span>))       <span class="hljs-comment">// function (obj){}</span>
-<span class="hljs-built_in">console</span>.log(isType(<span class="hljs-string">&apos;String&apos;</span>)(<span class="hljs-string">&apos;123&apos;</span>))    <span class="hljs-comment">// true</span>
+                                <h2 id="&#x9632;&#x6296;">&#x9632;&#x6296;</h2>
+<p>&#x9632;&#x6296;&#x5C31;&#x50CF;&#x662F;&#x4F60;&#x6309;&#x4E86;&#x4E00;&#x4E2A;&#x6309;&#x94AE;&#xFF0C;&#x5728;&#x91CA;&#x653E;&#x6309;&#x94AE;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4F1A;&#x65E0;&#x6570;&#x6B21;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#xFF0C;&#x4F46;&#x4F60;&#x53EA;&#x8BA4;&#x4E3A;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x89E6;&#x53D1;&#x7684;&#x4E8B;&#x4EF6;&#x662F;&#x6B63;&#x786E;&#x7684;&#xFF0C;&#x7528;&#x6765;&#x9632;&#x6B62;&#x91CD;&#x590D;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#x3002;</p>
+<pre><code class="lang-javascript">    <span class="hljs-comment">// &#x4E09;&#x3001;&#x9632;&#x6296;&#xFF0C;&#x53EA;&#x6267;&#x884C;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x51FD;&#x6570;</span>
+    <span class="hljs-comment">// 1.&#x975E;&#x7ACB;&#x5373;&#x6267;&#x884C; &#x5B9A;&#x65F6;&#x5668;&#x7248;</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">debounce1</span>(<span class="hljs-params">func, wait</span>) </span>{
+      <span class="hljs-keyword">let</span> timeout;
+      <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">let</span> context = <span class="hljs-keyword">this</span>;
+        <span class="hljs-keyword">let</span> args = <span class="hljs-built_in">arguments</span>;
+        <span class="hljs-comment">// &#x5982;&#x679C;timeout&#x4FDD;&#x5B58;&#x4E86;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x5C31;&#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;</span>
+        <span class="hljs-keyword">if</span> (timeout) clearTimeout(timeout);
 
-<span class="hljs-comment">// &#x7BAD;&#x5934;&#x51FD;&#x6570;&#x5B9E;&#x73B0;</span>
-<span class="hljs-keyword">let</span> isType = type =&gt; obj =&gt; {
-  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.prototype.toString.call(obj) === <span class="hljs-string">&apos;[object &apos;</span> + type + <span class="hljs-string">&apos;]&apos;</span>
-}
-<span class="hljs-built_in">console</span>.log(isType(<span class="hljs-string">&apos;String&apos;</span>))   <span class="hljs-comment">// obj =&gt; {}</span>
-<span class="hljs-built_in">console</span>.log(isType(<span class="hljs-string">&apos;String&apos;</span>)(<span class="hljs-string">&apos;123&apos;</span>))  <span class="hljs-comment">//true</span>
-</code></pre>
-<h3 id="&#x4E8C;&#x3001;&#x65E0;&#x9650;&#x7D2F;&#x52A0;&#x51FD;&#x6570;">&#x4E8C;&#x3001;&#x65E0;&#x9650;&#x7D2F;&#x52A0;&#x51FD;&#x6570;</h3>
-<p>&#x8981;&#x5B9E;&#x73B0;&#x65E0;&#x9650;&#x7D2F;&#x52A0;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x9700;&#x8981;&#x77E5;&#x9053;&#x4E00;&#x4E2A;&#x77E5;&#x8BC6;&#x70B9;&#xFF1A;&#x6BCF;&#x6B21;<code>console.log</code>&#x7684;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x8F93;&#x51FA;&#x5BF9;&#x8C61;&#x7684;<code>toString</code>&#x65B9;&#x6CD5;&#xFF0C;&#x4E0B;&#x9762;&#x76F4;&#x63A5;&#x770B;&#x4EE3;&#x7801;&#x3002;</p>
-<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a</span>) </span>{
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">b</span>) </span>{ <span class="hljs-comment">// &#x4F7F;&#x7528;&#x95ED;&#x5305;</span>
-      <span class="hljs-built_in">console</span>.log(b)
-      a = a + b; <span class="hljs-comment">// &#x7D2F;&#x52A0;</span>
-      <span class="hljs-comment">// &#x6BCF;&#x6B21;&#x90FD;&#x8FD4;&#x56DE; sum &#x51FD;&#x6570;</span>
-      <span class="hljs-keyword">return</span> sum;
+        timeout = setTimeout(() =&gt; {
+            func.apply(context, args)
+        }, wait);
+      }
     }
-    sum.toString = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-comment">// &#x91CD;&#x5199;toString()&#x65B9;&#x6CD5;</span>
-      <span class="hljs-keyword">return</span> a;
-    }
-    <span class="hljs-keyword">return</span> sum; <span class="hljs-comment">// &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x51FD;&#x6570;</span>
-}
+    <span class="hljs-comment">// content.onmousemove = debounce1(count, 1000)</span>
+    <span class="hljs-comment">// 2.&#x7ACB;&#x5373;&#x6267;&#x884C; &#x5B9A;&#x65F6;&#x5668;&#x7248;&#xFF0C;&#x89E6;&#x53D1;&#x51FD;&#x6570;&#x540E;&#x7ACB;&#x5373;&#x6267;&#x884C;&#xFF0C;&#x5728;&#x56FA;&#x5B9A;&#x4E8B;&#x4EF6;&#x5185;&#x518D;&#x6B21;&#x89E6;&#x53D1;&#x90FD;&#x4F1A;&#x88AB;&#x6D88;&#x9664;</span>
+    <span class="hljs-comment">// &#x7ACB;&#x5373;&#x6267;&#x884C;&#x7248;&#x7684;&#x610F;&#x601D;&#x662F;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#x540E;&#x51FD;&#x6570;&#x4F1A;&#x7ACB;&#x5373;&#x6267;&#x884C;&#xFF0C;&#x7136;&#x540E; n &#x79D2;&#x5185;&#x4E0D;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#x624D;&#x80FD;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x51FD;&#x6570;&#x7684;&#x6548;&#x679C;&#x3002;</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">debounce2</span>(<span class="hljs-params">func,wait</span>) </span>{
+      <span class="hljs-keyword">let</span> timeout;
+      <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">let</span> context = <span class="hljs-keyword">this</span>;
+        <span class="hljs-keyword">let</span> args = <span class="hljs-built_in">arguments</span>;
+        <span class="hljs-comment">// &#x8FD9;&#x91CC;&#x8FD9;&#x662F;&#x6E05;&#x9664;&#x4E86;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x628A;timeout&#x53D8;&#x4E3A;null</span>
+        <span class="hljs-keyword">if</span>(timeout) clearTimeout(timeout);
 
-<span class="hljs-built_in">console</span>.log(add(<span class="hljs-number">1</span>))   <span class="hljs-comment">// f 1</span>
-<span class="hljs-built_in">console</span>.log(add(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>))  <span class="hljs-comment">// 2</span>
-                        <span class="hljs-comment">// f 3</span>
-<span class="hljs-built_in">console</span>.log(add(<span class="hljs-number">1</span>)(<span class="hljs-number">5</span>)) <span class="hljs-comment">// 5</span>
-                        <span class="hljs-comment">// f 6</span>
+        <span class="hljs-keyword">let</span> callNow = !timeout;
+        timeout = setTimeout(() =&gt; {
+          <span class="hljs-comment">// &#x5728;&#x5B9A;&#x65F6;&#x5668;&#x91CC;&#x624D;&#x628A;&#x5B83;&#x53D8;&#x4E3A;null</span>
+            timeout = <span class="hljs-literal">null</span>;
+        }, wait)
+
+        <span class="hljs-keyword">if</span>(callNow) func.apply(context, args)
+      }
+    }
 </code></pre>
-<p>&#x8FD9;&#x4E2A;&#x4EE3;&#x7801;&#x7684;&#x8FC7;&#x7A0B;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
-<ol>
-<li>&#x5F53;<code>console.log(add(1))</code>&#x65F6;
-&#x5148;&#x662F;&#x5F62;&#x53C2;<code>a=1</code>&#xFF0C;<code>sum</code>&#x51FD;&#x6570;&#x4E0D;&#x6267;&#x884C;&#xFF0C;&#x6700;&#x540E;return<code>sum</code>&#x51FD;&#x6570;&#xFF0C;<code>console.log</code>&#x65F6;&#xFF0C;&#x8C03;&#x7528;&#x8FD4;&#x56DE;&#x7684;sum&#x5BF9;&#x8C61;&#x7684;<code>toString</code>&#x65B9;&#x6CD5;&#xFF0C;&#x8FD4;&#x56DE;<code>a</code>&#x3002;<pre><code class="lang-javascript"><span class="hljs-comment">// &#x5F62;&#x53C2; a=1</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a</span>) </span>{
-<span class="hljs-comment">// &#x4E0D;&#x6267;&#x884C;</span>
- <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">b</span>) </span>{ 
-   <span class="hljs-built_in">console</span>.log(b)
-   a = a + b;
-   <span class="hljs-keyword">return</span> sum;
- }
- sum.toString = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ 
-   <span class="hljs-keyword">return</span> a;
- }
-<span class="hljs-comment">// &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;add(1)&#x4E4B;&#x540E;&#x53D8;&#x6210;&#x4E86; sum</span>
- <span class="hljs-keyword">return</span> sum; 
-}
-</code></pre>
-</li>
-<li>&#x5F53;<code>console.log(add(1)(2))</code>&#x65F6;
-<code>add(1)</code>&#x8FD4;&#x56DE;&#x4E86;<code>sum</code>&#x51FD;&#x6570;&#xFF0C;&#x4E14;&#x7ED9;<code>a</code>&#x8D4B;&#x503C;1&#xFF0C;&#x6240;&#x4EE5;&#x63A5;&#x4E0B;&#x6765;&#x6267;&#x884C;<code>sum(2)</code>&#xFF0C;&#x6253;&#x5370;&#x51FA;b&#x7684;&#x503C;2&#xFF0C;a&#x7D2F;&#x52A0;&#x4E3A;3&#xFF0C;&#x8FD4;&#x56DE;<code>sum</code>&#x51FD;&#x6570;&#xFF0C;&#x6700;&#x540E;<code>console.log(sum)</code>&#x81EA;&#x52A8;&#x8C03;&#x7528;<code>toString()</code>&#x65B9;&#x6CD5;&#x6253;&#x5370;&#x51FA;3</li>
-</ol>
 
                                 
                                 </section>
@@ -764,8 +742,12 @@
 
             
                 
+                <a href="throttle.html" class="navigation navigation-prev " aria-label="Previous page: 防抖">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="screen.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 首屏渲染">
+                
+                <a href="reg.html" class="navigation navigation-next " aria-label="Next page: 正则表达式">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -776,7 +758,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"高阶函数之返回函数的函数","level":"1.6.1","depth":2,"next":{"title":"首屏渲染","level":"1.6.2","depth":2,"path":"interview/screen.md","ref":"./interview/screen.md","articles":[]},"previous":{"title":"面试常见","level":"1.6","depth":1,"ref":"","articles":[{"title":"高阶函数之返回函数的函数","level":"1.6.1","depth":2,"path":"interview/add.md","ref":"./interview/add.md","articles":[]},{"title":"首屏渲染","level":"1.6.2","depth":2,"path":"interview/screen.md","ref":"./interview/screen.md","articles":[]},{"title":"防抖","level":"1.6.3","depth":2,"path":"interview/throttle.md","ref":"./interview/throttle.md","articles":[]},{"title":"节流","level":"1.6.4","depth":2,"path":"interview/debounce.md","ref":"./interview/debounce.md","articles":[]},{"title":"正则表达式","level":"1.6.5","depth":2,"path":"interview/reg.md","ref":"./interview/reg.md","articles":[]},{"title":"setTimeout 和 setInterval","level":"1.6.6","depth":2,"path":"interview/setInterval.md","ref":"./interview/setInterval.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interview/add.md","mtime":"2020-07-06T08:09:23.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-15T08:19:07.191Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"节流","level":"1.6.4","depth":2,"next":{"title":"正则表达式","level":"1.6.5","depth":2,"path":"interview/reg.md","ref":"./interview/reg.md","articles":[]},"previous":{"title":"防抖","level":"1.6.3","depth":2,"path":"interview/throttle.md","ref":"./interview/throttle.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interview/debounce.md","mtime":"2020-07-08T14:12:10.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-15T08:19:07.191Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

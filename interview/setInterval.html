@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>高阶函数之返回函数的函数 · GitBook</title>
+        <title>setTimeout 和 setInterval · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="screen.html" />
     
+    <link rel="prev" href="reg.html" />
     
 
     </head>
@@ -515,7 +515,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.6.1" data-path="add.html">
+        <li class="chapter " data-level="1.6.1" data-path="add.html">
             
                 <a href="add.html">
             
@@ -580,7 +580,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.6" data-path="setInterval.html">
+        <li class="chapter active" data-level="1.6.6" data-path="setInterval.html">
             
                 <a href="setInterval.html">
             
@@ -660,7 +660,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >高阶函数之返回函数的函数</a>
+        <a href=".." >setTimeout 和 setInterval</a>
     </h1>
 </div>
 
@@ -675,68 +675,75 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x9AD8;&#x9636;&#x51FD;&#x6570;&#x4E4B;&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;">&#x9AD8;&#x9636;&#x51FD;&#x6570;&#x4E4B;&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;</h1>
-<h3 id="&#x4E00;&#x3001;&#x7C7B;&#x578B;&#x5224;&#x65AD;&#x51FD;&#x6570;">&#x4E00;&#x3001;&#x7C7B;&#x578B;&#x5224;&#x65AD;&#x51FD;&#x6570;</h3>
-<p>&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;&#x4E5F;&#x662F;&#x9AD8;&#x9636;&#x51FD;&#x6570;&#x3002;</p>
-<pre><code class="lang-javascript"><span class="hljs-comment">// &#x5E38;&#x89C4;&#x5B9E;&#x73B0;</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isType</span>(<span class="hljs-params">type</span>) </span>{
-  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj</span>) </span>{
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.prototype.toString.call(obj) === <span class="hljs-string">&apos;[object &apos;</span> + type + <span class="hljs-string">&apos;]&apos;</span>
-  }
-}
-<span class="hljs-built_in">console</span>.log(isType(<span class="hljs-string">&apos;String&apos;</span>))       <span class="hljs-comment">// function (obj){}</span>
-<span class="hljs-built_in">console</span>.log(isType(<span class="hljs-string">&apos;String&apos;</span>)(<span class="hljs-string">&apos;123&apos;</span>))    <span class="hljs-comment">// true</span>
-
-<span class="hljs-comment">// &#x7BAD;&#x5934;&#x51FD;&#x6570;&#x5B9E;&#x73B0;</span>
-<span class="hljs-keyword">let</span> isType = type =&gt; obj =&gt; {
-  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.prototype.toString.call(obj) === <span class="hljs-string">&apos;[object &apos;</span> + type + <span class="hljs-string">&apos;]&apos;</span>
-}
-<span class="hljs-built_in">console</span>.log(isType(<span class="hljs-string">&apos;String&apos;</span>))   <span class="hljs-comment">// obj =&gt; {}</span>
-<span class="hljs-built_in">console</span>.log(isType(<span class="hljs-string">&apos;String&apos;</span>)(<span class="hljs-string">&apos;123&apos;</span>))  <span class="hljs-comment">//true</span>
-</code></pre>
-<h3 id="&#x4E8C;&#x3001;&#x65E0;&#x9650;&#x7D2F;&#x52A0;&#x51FD;&#x6570;">&#x4E8C;&#x3001;&#x65E0;&#x9650;&#x7D2F;&#x52A0;&#x51FD;&#x6570;</h3>
-<p>&#x8981;&#x5B9E;&#x73B0;&#x65E0;&#x9650;&#x7D2F;&#x52A0;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x9700;&#x8981;&#x77E5;&#x9053;&#x4E00;&#x4E2A;&#x77E5;&#x8BC6;&#x70B9;&#xFF1A;&#x6BCF;&#x6B21;<code>console.log</code>&#x7684;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x8F93;&#x51FA;&#x5BF9;&#x8C61;&#x7684;<code>toString</code>&#x65B9;&#x6CD5;&#xFF0C;&#x4E0B;&#x9762;&#x76F4;&#x63A5;&#x770B;&#x4EE3;&#x7801;&#x3002;</p>
-<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a</span>) </span>{
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">b</span>) </span>{ <span class="hljs-comment">// &#x4F7F;&#x7528;&#x95ED;&#x5305;</span>
-      <span class="hljs-built_in">console</span>.log(b)
-      a = a + b; <span class="hljs-comment">// &#x7D2F;&#x52A0;</span>
-      <span class="hljs-comment">// &#x6BCF;&#x6B21;&#x90FD;&#x8FD4;&#x56DE; sum &#x51FD;&#x6570;</span>
-      <span class="hljs-keyword">return</span> sum;
-    }
-    sum.toString = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-comment">// &#x91CD;&#x5199;toString()&#x65B9;&#x6CD5;</span>
-      <span class="hljs-keyword">return</span> a;
-    }
-    <span class="hljs-keyword">return</span> sum; <span class="hljs-comment">// &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x51FD;&#x6570;</span>
-}
-
-<span class="hljs-built_in">console</span>.log(add(<span class="hljs-number">1</span>))   <span class="hljs-comment">// f 1</span>
-<span class="hljs-built_in">console</span>.log(add(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>))  <span class="hljs-comment">// 2</span>
-                        <span class="hljs-comment">// f 3</span>
-<span class="hljs-built_in">console</span>.log(add(<span class="hljs-number">1</span>)(<span class="hljs-number">5</span>)) <span class="hljs-comment">// 5</span>
-                        <span class="hljs-comment">// f 6</span>
-</code></pre>
-<p>&#x8FD9;&#x4E2A;&#x4EE3;&#x7801;&#x7684;&#x8FC7;&#x7A0B;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
-<ol>
-<li>&#x5F53;<code>console.log(add(1))</code>&#x65F6;
-&#x5148;&#x662F;&#x5F62;&#x53C2;<code>a=1</code>&#xFF0C;<code>sum</code>&#x51FD;&#x6570;&#x4E0D;&#x6267;&#x884C;&#xFF0C;&#x6700;&#x540E;return<code>sum</code>&#x51FD;&#x6570;&#xFF0C;<code>console.log</code>&#x65F6;&#xFF0C;&#x8C03;&#x7528;&#x8FD4;&#x56DE;&#x7684;sum&#x5BF9;&#x8C61;&#x7684;<code>toString</code>&#x65B9;&#x6CD5;&#xFF0C;&#x8FD4;&#x56DE;<code>a</code>&#x3002;<pre><code class="lang-javascript"><span class="hljs-comment">// &#x5F62;&#x53C2; a=1</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a</span>) </span>{
-<span class="hljs-comment">// &#x4E0D;&#x6267;&#x884C;</span>
- <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">b</span>) </span>{ 
-   <span class="hljs-built_in">console</span>.log(b)
-   a = a + b;
-   <span class="hljs-keyword">return</span> sum;
- }
- sum.toString = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ 
-   <span class="hljs-keyword">return</span> a;
- }
-<span class="hljs-comment">// &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;add(1)&#x4E4B;&#x540E;&#x53D8;&#x6210;&#x4E86; sum</span>
- <span class="hljs-keyword">return</span> sum; 
-}
-</code></pre>
+                                <h3 id="settimeout">setTimeout</h3>
+<p>setTimeout(callback, time) &#x662F;&#x5904;&#x7406;&#x5F02;&#x6B65;&#x7684;&#x4E00;&#x79CD;&#x4F20;&#x7EDF;&#x65B9;&#x5F0F;&#xFF0C;&#x5728; time &#x6BEB;&#x79D2;&#x540E;&#x6267;&#x884C;&#x56DE;&#x8C03;&#x51FD;&#x6570; callback&#x3002;</p>
+<p><strong>&#x6CE8;&#x610F;&#x7684;&#x70B9;</strong></p>
+<ul>
+<li>setTimeout&#x662F;&#x5B8F;&#x4EFB;&#x52A1;</li>
+<li>&#x6700;&#x540E;&#x6267;&#x884C;&#x7684;&#x65F6;&#x95F4;&#x4F1A; &#x5927;&#x4E8E;&#x7B49;&#x4E8E; time </li>
+<li>&#x4F1A;&#x51FA;&#x73B0;&#x56DE;&#x8C03;&#x5730;&#x72F1;</li>
+<li><p>&#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;&#x7528; clearTimeout</p>
+<h3 id="setinterval">setInterval</h3>
+<p>setInterval(callback, time) &#x662F;&#x95F4;&#x9694; time &#x65F6;&#x95F4;&#x5FAA;&#x73AF;&#x6267;&#x884C;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x9664;&#x975E;&#x6E05;&#x9664;setInterval</p>
 </li>
-<li>&#x5F53;<code>console.log(add(1)(2))</code>&#x65F6;
-<code>add(1)</code>&#x8FD4;&#x56DE;&#x4E86;<code>sum</code>&#x51FD;&#x6570;&#xFF0C;&#x4E14;&#x7ED9;<code>a</code>&#x8D4B;&#x503C;1&#xFF0C;&#x6240;&#x4EE5;&#x63A5;&#x4E0B;&#x6765;&#x6267;&#x884C;<code>sum(2)</code>&#xFF0C;&#x6253;&#x5370;&#x51FA;b&#x7684;&#x503C;2&#xFF0C;a&#x7D2F;&#x52A0;&#x4E3A;3&#xFF0C;&#x8FD4;&#x56DE;<code>sum</code>&#x51FD;&#x6570;&#xFF0C;&#x6700;&#x540E;<code>console.log(sum)</code>&#x81EA;&#x52A8;&#x8C03;&#x7528;<code>toString()</code>&#x65B9;&#x6CD5;&#x6253;&#x5370;&#x51FA;3</li>
-</ol>
+<li><p>&#x6E05;&#x9664; clearInterval
+<strong>setInterval&#x7684;&#x7F3A;&#x70B9;</strong>&#xFF1A;</p>
+</li>
+<li>&#x4E0D;&#x5173;&#x5FC3;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x662F;&#x5426;&#x8FD8;&#x5728;&#x8FD0;&#x884C;
+&#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x6267;&#x884C;&#x7684;&#x65F6;&#x95F4;&#x5927;&#x4E8E;&#x5B9A;&#x4E49;&#x7684;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#xFF0C;&#x6BD4;&#x5982; &#x5BA2;&#x6237;&#x7AEF;&#x6BCF;&#x9694;5s&#x5BF9;&#x670D;&#x52A1;&#x5668;&#x8FDB;&#x884C;&#x8F6E;&#x8BE2;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x65E0;&#x54CD;&#x5E94;&#x6216;&#x5176;&#x4ED6;&#x56E0;&#x7D20;&#x4F1A;&#x963B;&#x6B62;&#x8BF7;&#x6C42;&#x6309;&#x65F6;&#x5B8C;&#x6210;&#xFF0C;&#x7ED3;&#x679C;&#x5BFC;&#x81F4;&#x8FD4;&#x56DE;&#x4E00;&#x4E32;&#x961F;&#x5217;&#x8BF7;&#x6C42;&#x3002;</li>
+<li>&#x5FFD;&#x89C6;&#x9519;&#x8BEF;
+&#x4EE3;&#x7801;&#x4E2D;&#x51FA;&#x73B0;&#x9519;&#x8BEF;&#xFF0C;setInterval&#x4E0D;&#x4F1A;&#x4E2D;&#x6B62;&#x6267;&#x884C;&#x800C;&#x662F;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x9519;&#x8BEF;&#x7684;&#x4EE3;&#x7801;&#x3002;</li>
+<li>&#x7F3A;&#x4E4F;&#x7075;&#x6D3B;&#x6027;
+&#x53EA;&#x8981;&#x4E0D;&#x624B;&#x52A8;&#x4E2D;&#x6B62;&#xFF0C;&#x4F1A;&#x4E00;&#x76F4;&#x6267;&#x884C;&#x4E0B;&#x53BB;&#xFF0C;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x5982;&#x6267;&#x884C;&#x6B21;&#x6570;&#x4E00;&#x6837;&#x7684;&#x53C2;&#x6570;&#x3002;<h3 id="&#x7528;settimeout&#x5B9E;&#x73B0;setinterval">&#x7528;setTimeout&#x5B9E;&#x73B0;setInterval</h3>
+&#x603B;&#x4F53;&#x601D;&#x8DEF;&#x662F;&#x7528;&#x9012;&#x5F52;&#xFF0C;&#x5728;setTimeout&#x4E2D;&#x9012;&#x5F52;&#x8C03;&#x7528;setTimeout
+```javascript
+// &#x6709;&#x95EE;&#x9898;&#x7248;&#x672C;
+function timeInterval(time) {
+setTimeout(function(){
+  console.log(&apos;success&apos;)
+}, time)
+// setTimeout&#x662F;&#x8981;&#x5728;&#x4E0B;&#x4E00;&#x6B21;&#x5B8F;&#x4E8B;&#x4EF6;&#x4E2D;&#x6267;&#x884C;&#x7684;
+// &#x8FD9;&#x6837;&#x4F1A;&#x9020;&#x6210;&#x5185;&#x5B58;&#x6EA2;&#x51FA;
+timeInterval(1000)
+}
+timeInterval(5000)</li>
+</ul>
+<p>// &#x6B63;&#x786E;&#x7684;&#x7248;&#x672C;&#xFF0C;&#x5728;setTimeout&#x4E2D;&#x8C03;&#x7528;setTimeout
+function timeInterval(time) {
+  setTimeout(function(){
+    console.log(&apos;success&apos;)
+    timeInterval(1000)
+  }, time)</p>
+<p>}
+timeInterval(5000)</p>
+<p>// &#x6DFB;&#x52A0;&#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;&#x8BED;&#x53E5;&#xFF0C;&#x9632;&#x6B62;&#x5185;&#x5B58;&#x6EA2;&#x51FA;
+function timeInterval(time) {
+  let timer = setTimeout(function(){
+    console.log(&apos;success&apos;)
+    timeInterval(1000)
+    clearTimeout(timer)
+  }, time)</p>
+<p>}
+timeInterval(5000)</p>
+<p>// &#x52A0;&#x4E0A;&#x6267;&#x884C;&#x6B21;&#x6570;&#x53C2;&#x6570;
+function interval(func, w, t){
+    var interv = function(){
+      // &#x4E3A;&#x5B9A;&#x4E49;&#x6267;&#x884C;&#x6B21;&#x6570;t&#xFF0C;&#x5C31;&#x4F1A;&#x4E00;&#x76F4;&#x6267;&#x884C;
+        if(typeof t === &quot;undefined&quot; || t-- &gt; 0){
+            setTimeout(interv, w);
+            try{
+                func.call(null);
+            }
+            catch(e){
+                t = 0;
+                throw e.toString();
+            }
+        }
+    };</p>
+<pre><code>setTimeout(interv, w);
+</code></pre><p>};
+interval(()=&gt;{console.log(&apos;success&apos;)}, 1000,10)
+```</p>
 
                                 
                                 </section>
@@ -764,10 +771,10 @@
 
             
                 
-                
-                <a href="screen.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 首屏渲染">
-                    <i class="fa fa-angle-right"></i>
+                <a href="reg.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 正则表达式">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -776,7 +783,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"高阶函数之返回函数的函数","level":"1.6.1","depth":2,"next":{"title":"首屏渲染","level":"1.6.2","depth":2,"path":"interview/screen.md","ref":"./interview/screen.md","articles":[]},"previous":{"title":"面试常见","level":"1.6","depth":1,"ref":"","articles":[{"title":"高阶函数之返回函数的函数","level":"1.6.1","depth":2,"path":"interview/add.md","ref":"./interview/add.md","articles":[]},{"title":"首屏渲染","level":"1.6.2","depth":2,"path":"interview/screen.md","ref":"./interview/screen.md","articles":[]},{"title":"防抖","level":"1.6.3","depth":2,"path":"interview/throttle.md","ref":"./interview/throttle.md","articles":[]},{"title":"节流","level":"1.6.4","depth":2,"path":"interview/debounce.md","ref":"./interview/debounce.md","articles":[]},{"title":"正则表达式","level":"1.6.5","depth":2,"path":"interview/reg.md","ref":"./interview/reg.md","articles":[]},{"title":"setTimeout 和 setInterval","level":"1.6.6","depth":2,"path":"interview/setInterval.md","ref":"./interview/setInterval.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interview/add.md","mtime":"2020-07-06T08:09:23.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-15T08:19:07.191Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"setTimeout 和 setInterval","level":"1.6.6","depth":2,"next":{"title":"框架","level":"1.7","depth":1,"ref":"","articles":[{"title":"路由","level":"1.7.1","depth":2,"path":"framework/router.md","ref":"./framework/router.md","articles":[]}]},"previous":{"title":"正则表达式","level":"1.6.5","depth":2,"path":"interview/reg.md","ref":"./interview/reg.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interview/setInterval.md","mtime":"2020-07-13T12:40:14.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-15T08:19:07.191Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

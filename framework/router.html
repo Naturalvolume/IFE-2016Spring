@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>高阶函数之返回函数的函数 · GitBook</title>
+        <title>路由 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -56,8 +56,6 @@
     <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
-    
-    <link rel="next" href="screen.html" />
     
     
 
@@ -515,9 +513,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.6.1" data-path="add.html">
+        <li class="chapter " data-level="1.6.1" data-path="../interview/add.html">
             
-                <a href="add.html">
+                <a href="../interview/add.html">
             
                     
                     高阶函数之返回函数的函数
@@ -528,9 +526,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="screen.html">
+        <li class="chapter " data-level="1.6.2" data-path="../interview/screen.html">
             
-                <a href="screen.html">
+                <a href="../interview/screen.html">
             
                     
                     首屏渲染
@@ -541,9 +539,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.3" data-path="throttle.html">
+        <li class="chapter " data-level="1.6.3" data-path="../interview/throttle.html">
             
-                <a href="throttle.html">
+                <a href="../interview/throttle.html">
             
                     
                     防抖
@@ -554,9 +552,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.4" data-path="debounce.html">
+        <li class="chapter " data-level="1.6.4" data-path="../interview/debounce.html">
             
-                <a href="debounce.html">
+                <a href="../interview/debounce.html">
             
                     
                     节流
@@ -567,9 +565,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.5" data-path="reg.html">
+        <li class="chapter " data-level="1.6.5" data-path="../interview/reg.html">
             
-                <a href="reg.html">
+                <a href="../interview/reg.html">
             
                     
                     正则表达式
@@ -580,9 +578,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.6" data-path="setInterval.html">
+        <li class="chapter " data-level="1.6.6" data-path="../interview/setInterval.html">
             
-                <a href="setInterval.html">
+                <a href="../interview/setInterval.html">
             
                     
                     setTimeout 和 setInterval
@@ -612,9 +610,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="../framework/router.html">
+        <li class="chapter active" data-level="1.7.1" data-path="router.html">
             
-                <a href="../framework/router.html">
+                <a href="router.html">
             
                     
                     路由
@@ -660,7 +658,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >高阶函数之返回函数的函数</a>
+        <a href=".." >路由</a>
     </h1>
 </div>
 
@@ -675,68 +673,72 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x9AD8;&#x9636;&#x51FD;&#x6570;&#x4E4B;&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;">&#x9AD8;&#x9636;&#x51FD;&#x6570;&#x4E4B;&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;</h1>
-<h3 id="&#x4E00;&#x3001;&#x7C7B;&#x578B;&#x5224;&#x65AD;&#x51FD;&#x6570;">&#x4E00;&#x3001;&#x7C7B;&#x578B;&#x5224;&#x65AD;&#x51FD;&#x6570;</h3>
-<p>&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;&#x4E5F;&#x662F;&#x9AD8;&#x9636;&#x51FD;&#x6570;&#x3002;</p>
-<pre><code class="lang-javascript"><span class="hljs-comment">// &#x5E38;&#x89C4;&#x5B9E;&#x73B0;</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isType</span>(<span class="hljs-params">type</span>) </span>{
-  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj</span>) </span>{
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.prototype.toString.call(obj) === <span class="hljs-string">&apos;[object &apos;</span> + type + <span class="hljs-string">&apos;]&apos;</span>
-  }
-}
-<span class="hljs-built_in">console</span>.log(isType(<span class="hljs-string">&apos;String&apos;</span>))       <span class="hljs-comment">// function (obj){}</span>
-<span class="hljs-built_in">console</span>.log(isType(<span class="hljs-string">&apos;String&apos;</span>)(<span class="hljs-string">&apos;123&apos;</span>))    <span class="hljs-comment">// true</span>
+                                <h1 id="&#x8DEF;&#x7531;">&#x8DEF;&#x7531;</h1>
+<h3 id="&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x8DEF;&#x7531;">&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x8DEF;&#x7531;</h3>
+<p>&#x8DEF;&#x7531;&#x6982;&#x5FF5;&#x8D77;&#x6E90;&#x4E8E;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x6839;&#x636E;http&#x8BF7;&#x6C42;&#x7684;url&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x8D44;&#x6E90;&#xFF1A;</p>
+<ul>
+<li>&#x9759;&#x6001;&#x8D44;&#x6E90;&#x5C31;&#x662F;&#x6587;&#x4EF6;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;</li>
+<li>&#x52A8;&#x6001;&#x8D44;&#x6E90;&#x662F;&#x6570;&#x636E;&#x5E93;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;&#xFF0C;&#x6216;&#x8005;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x5904;&#x7406;&#xFF0C;&#x5728;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7528;&#x76F8;&#x5E94;&#x7684;&#x6A21;&#x7248;&#x5BF9;&#x9875;&#x9762;&#x8FDB;&#x884C;&#x6E32;&#x67D3;&#xFF0C;&#x6700;&#x540E;&#x8FD4;&#x56DE;&#x6E32;&#x67D3;&#x5B8C;&#x6BD5;&#x5BF9;&#x9875;&#x9762;</li>
+</ul>
+<p>&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x8DEF;&#x7531;&#x7684;<strong>&#x4F18;&#x70B9;</strong>&#x662F;&#x5B89;&#x5168;&#x6027;&#x597D;&#xFF0C;&#x5229;&#x4E8E;seo&#xFF1B;<strong>&#x7F3A;&#x70B9;</strong>&#x662F;&#x52A0;&#x5927;&#x670D;&#x52A1;&#x5668;&#x538B;&#x529B;&#xFF0C;&#x4E0D;&#x5229;&#x4E8E;&#x7528;&#x6237;&#x4F53;&#x9A8C;&#xFF0C;&#x4EE3;&#x7801;&#x5197;&#x4F59;&#x4E0D;&#x597D;&#x7EF4;&#x62A4;&#x3002;</p>
+<h3 id="&#x524D;&#x7AEF;&#x8DEF;&#x7531;">&#x524D;&#x7AEF;&#x8DEF;&#x7531;</h3>
+<p>&#x5728;&#x5355;&#x9875;&#x9762;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x524D;&#x7AEF;&#x7684;&#x9875;&#x9762;&#x903B;&#x8F91;&#x590D;&#x6742;&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;&#x7528;&#x524D;&#x7AEF;&#x8DEF;&#x7531;&#x65B9;&#x4FBF;&#x5207;&#x6362;&#x9875;&#x9762;&#xFF0C;&#x4ECE;&#x7528;&#x6237;&#x89D2;&#x5EA6;&#x770B;&#xFF0C;&#x524D;&#x7AEF;&#x8DEF;&#x7531;&#x4E3B;&#x8981;&#x5B9E;&#x73B0;&#x4E24;&#x4E2A;&#x529F;&#x80FD;&#xFF1A;</p>
+<ul>
+<li>&#x8BB0;&#x5F55;&#x5F53;&#x524D;&#x9875;&#x9762;&#x7684;&#x72B6;&#x6001;&#xFF08;&#x4FDD;&#x5B58;&#x5F53;&#x524D;url&#xFF0C;&#x518D;&#x6B21;&#x6253;&#x5F00;url&#x65F6;&#xFF0C;&#x7F51;&#x9875;&#x8FD8;&#x662F;&#x4FDD;&#x5B58;&#x7740;&#x521A;&#x624D;&#x7684;&#x72B6;&#x6001;&#xFF09;</li>
+<li>&#x53EF;&#x4F7F;&#x7528;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x524D;&#x8FDB;&#x540E;&#x9000;&#x529F;&#x80FD;</li>
+</ul>
+<p>&#x5728;&#x5F00;&#x53D1;&#x8005;&#x89D2;&#x5EA6;&#xFF0C;&#x8981;&#x505A;&#x5230;&#xFF1A;</p>
+<ul>
+<li>&#x6539;&#x53D8; url &#x4F46;&#x4E0D;&#x8BA9;&#x6D4F;&#x89C8;&#x5668;&#x5411;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x51FA;&#x8BF7;&#x6C42;</li>
+<li>&#x68C0;&#x6D4B; url &#x7684;&#x53D8;&#x5316;</li>
+<li>&#x622A;&#x83B7; url &#x5730;&#x5740;&#xFF0C;&#x5E76;&#x89E3;&#x6790;&#x51FA;&#x9700;&#x8981;&#x7684;&#x4FE1;&#x606F;&#x5339;&#x914D;&#x8DEF;&#x7531;&#x89C4;&#x5219;</li>
+</ul>
+<p>&#x524D;&#x7AEF;&#x8DEF;&#x7531;&#x7684;<strong>&#x672C;&#x8D28;</strong>&#x662F;&#xFF1A;&#x6839;&#x636E;&#x8DEF;&#x7531;&#x7684;&#x6620;&#x5C04;&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;dom&#x7684;&#x663E;&#x793A;&#x548C;&#x9690;&#x85CF;&#x64CD;&#x4F5C;&#x3002;
+&#x5B9E;&#x73B0;&#x8DEF;&#x7531;&#x529F;&#x80FD;&#xFF0C;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#xFF1A;hash&#x6A21;&#x5F0F; &#x548C; html5&#x63D0;&#x4F9B;&#x7684;history&#x6A21;&#x5F0F;</p>
+<h3 id="&#x8DEF;&#x7531;&#x6A21;&#x5F0F;&#x4E00;&#xFF1A;hash&#x6A21;&#x5F0F;">&#x8DEF;&#x7531;&#x6A21;&#x5F0F;&#x4E00;&#xFF1A;hash&#x6A21;&#x5F0F;</h3>
+<p>hash &#x662F;&#x6307; url &#x6700;&#x540E;&#x7684;#&#x53F7;&#x4EE5;&#x53CA;&#x540E;&#x9762;&#x7684;&#x5B57;&#x7B26;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;css&#x4E2D;&#x7684;&#x951A;&#x70B9;&#xFF0C;&#x672C;&#x6765;&#x662F;&#x8D85;&#x94FE;&#x63A5;<code>a</code>&#x52A0;&#x951A;&#x70B9;&#x5B9E;&#x73B0;&#x9875;&#x9762;&#x4E2D;&#x4F4D;&#x7F6E;&#x8DF3;&#x8F6C;&#xFF0C;&#x5982;&#x70B9;&#x51FB;&#x7AE0;&#x8282;&#x540D;&#x8DF3;&#x8F6C;&#x5230;&#x5BF9;&#x5E94;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>hash &#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;<a href="https://github.com/Naturalvolume/IFE-2016Spring/blob/master/SPA.html" target="_blank">&#x7B80;&#x5355;&#x7684;&#x5355;&#x9875;&#x9762;&#x5E94;&#x7528;</a>&#xFF0C; &#x8FD9;&#x662F;&#x56E0;&#x4E3A;hash&#x5177;&#x6709;&#x4EE5;&#x4E0B;&#x7279;&#x70B9;&#xFF1A;</p>
+<ul>
+<li>url &#x4E2D;&#x7684; hash&#x503C;&#x53EA;&#x662F;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x4E00;&#x79CD;&#x72B6;&#x6001;&#xFF0C;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x65F6;&#x4E0D;&#x4F1A;&#x5E26;hash&#x503C;&#xFF0C;&#x6240;&#x4EE5;hash &#x503C;&#x53D8;&#x5316;&#x4E0D;&#x4F1A;&#x5BFC;&#x81F4;&#x6D4F;&#x89C8;&#x5668;&#x5411;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x9001;&#x8BF7;&#x6C42;</li>
+<li>hash &#x503C;&#x53D8;&#x5316;&#x4F1A;&#x89E6;&#x53D1; haschange &#x4E8B;&#x4EF6;</li>
+<li>hash &#x503C;&#x6539;&#x53D8;&#xFF0C;&#x4F1A;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x8BBF;&#x95EE;&#x5386;&#x53F2;&#x4E2D;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x8BB0;&#x5F55;&#xFF0C;&#x6240;&#x4EE5;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x524D;&#x8FDB;&#x540E;&#x9000;&#x80FD;&#x63A7;&#x5236; hash &#x7684;&#x5207;&#x6362;</li>
+</ul>
+<p>&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x89E6;&#x53D1; hash &#x53D8;&#x5316;&#xFF1A;</p>
+<ul>
+<li>&#x8BBE;&#x7F6E;<code>a</code>&#x6807;&#x7B7E;&#x7684;href&#x5C5E;&#x6027;&#xFF0C;&#x5F53;&#x7528;&#x6237;&#x70B9;&#x51FB;&#x8FD9;&#x4E2A;&#x6807;&#x7B7E;&#x540E;&#xFF0C;<code>url</code>&#x6539;&#x53D8;&#xFF0C;&#x5C31;&#x4F1A;&#x89E6;&#x53D1;<code>hashchange</code>&#x4E8B;&#x4EF6;</li>
+<li>&#x76F4;&#x63A5;&#x4F7F;&#x7528; js &#x6539;&#x53D8; <code>window.location.hash</code> &#x7684;&#x503C;&#xFF0C;&#x89E6;&#x53D1;<code>hashchange</code>&#x4E8B;&#x4EF6;
+```javascript
+// a &#x6807;&#x7B7E;&#x65B9;&#x6CD5;
+<a href="#search">search</a>
+// js&#x65B9;&#x6CD5;
+window.location.hash = &apos;qq&apos; // &#x8BBE;&#x7F6E; url &#x7684; hash&#xFF0C;&#x4F1A;&#x5728;&#x5F53;&#x524D;url&#x540E;&#x52A0;&#x4E0A; &apos;#qq&apos;</li>
+</ul>
+<p>window.addEventListener(&apos;hashchange&apos;, function(){ 
+    // &#x76D1;&#x542C;hash&#x53D8;&#x5316;&#xFF0C;&#x70B9;&#x51FB;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x524D;&#x8FDB;&#x540E;&#x9000;&#x4F1A;&#x89E6;&#x53D1;
+})</p>
+<pre><code>**&#x4F7F;&#x7528;&#x573A;&#x666F;**&#xFF1A;hash &#x6A21;&#x5F0F;&#x5E38;&#x7528;&#x4E8E;&#x5F00;&#x53D1;&#x9636;&#x6BB5;&#xFF0C;&#x65B9;&#x4FBF;&#x5F00;&#x53D1;
+**&#x9650;&#x5236;**&#xFF1A;&#x4E0D;&#x5229;&#x4E8E;seo&#xFF0C;&#x56E0;&#x4E3A;&#x4E00;&#x4E2A;hash&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x65B0;&#x7684;url&#x5730;&#x5740;&#xFF0C;&#x4E0D;&#x4F1A;&#x6536;&#x5F55;&#xFF1B;&#x57FA;&#x4E8E;url&#x7684;&#xFF0C;&#x4E0D;&#x5229;&#x4E8E;&#x4F20;&#x53C2;&#xFF0C;&#x590D;&#x6742;&#x6570;&#x636E;&#x6709;&#x4F53;&#x79EF;&#x9650;&#x5236;&#x3002;
+### &#x8DEF;&#x7531;&#x6A21;&#x5F0F;&#x4E8C;&#xFF1A;history
+history &#x662F;&#x6D4F;&#x89C8;&#x5668;&#x5386;&#x53F2;&#x8BB0;&#x5F55;&#x6808;&#x63D0;&#x4F9B;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x901A;&#x8FC7;`back()`&#x3001;`forward()`&#x3001;`go()`&#x7B49;&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x6D4F;&#x89C8;&#x5668;&#x5386;&#x53F2;&#x8BB0;&#x5F55;&#x6808;&#x4FE1;&#x606F;&#xFF0C;&#x8FDB;&#x884C;&#x5404;&#x79CD;&#x8DF3;&#x8F6C;&#x64CD;&#x4F5C;&#x3002;
 
-<span class="hljs-comment">// &#x7BAD;&#x5934;&#x51FD;&#x6570;&#x5B9E;&#x73B0;</span>
-<span class="hljs-keyword">let</span> isType = type =&gt; obj =&gt; {
-  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.prototype.toString.call(obj) === <span class="hljs-string">&apos;[object &apos;</span> + type + <span class="hljs-string">&apos;]&apos;</span>
-}
-<span class="hljs-built_in">console</span>.log(isType(<span class="hljs-string">&apos;String&apos;</span>))   <span class="hljs-comment">// obj =&gt; {}</span>
-<span class="hljs-built_in">console</span>.log(isType(<span class="hljs-string">&apos;String&apos;</span>)(<span class="hljs-string">&apos;123&apos;</span>))  <span class="hljs-comment">//true</span>
-</code></pre>
-<h3 id="&#x4E8C;&#x3001;&#x65E0;&#x9650;&#x7D2F;&#x52A0;&#x51FD;&#x6570;">&#x4E8C;&#x3001;&#x65E0;&#x9650;&#x7D2F;&#x52A0;&#x51FD;&#x6570;</h3>
-<p>&#x8981;&#x5B9E;&#x73B0;&#x65E0;&#x9650;&#x7D2F;&#x52A0;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x9700;&#x8981;&#x77E5;&#x9053;&#x4E00;&#x4E2A;&#x77E5;&#x8BC6;&#x70B9;&#xFF1A;&#x6BCF;&#x6B21;<code>console.log</code>&#x7684;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x8F93;&#x51FA;&#x5BF9;&#x8C61;&#x7684;<code>toString</code>&#x65B9;&#x6CD5;&#xFF0C;&#x4E0B;&#x9762;&#x76F4;&#x63A5;&#x770B;&#x4EE3;&#x7801;&#x3002;</p>
-<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a</span>) </span>{
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">b</span>) </span>{ <span class="hljs-comment">// &#x4F7F;&#x7528;&#x95ED;&#x5305;</span>
-      <span class="hljs-built_in">console</span>.log(b)
-      a = a + b; <span class="hljs-comment">// &#x7D2F;&#x52A0;</span>
-      <span class="hljs-comment">// &#x6BCF;&#x6B21;&#x90FD;&#x8FD4;&#x56DE; sum &#x51FD;&#x6570;</span>
-      <span class="hljs-keyword">return</span> sum;
-    }
-    sum.toString = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-comment">// &#x91CD;&#x5199;toString()&#x65B9;&#x6CD5;</span>
-      <span class="hljs-keyword">return</span> a;
-    }
-    <span class="hljs-keyword">return</span> sum; <span class="hljs-comment">// &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x51FD;&#x6570;</span>
-}
-
-<span class="hljs-built_in">console</span>.log(add(<span class="hljs-number">1</span>))   <span class="hljs-comment">// f 1</span>
-<span class="hljs-built_in">console</span>.log(add(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>))  <span class="hljs-comment">// 2</span>
-                        <span class="hljs-comment">// f 3</span>
-<span class="hljs-built_in">console</span>.log(add(<span class="hljs-number">1</span>)(<span class="hljs-number">5</span>)) <span class="hljs-comment">// 5</span>
-                        <span class="hljs-comment">// f 6</span>
-</code></pre>
-<p>&#x8FD9;&#x4E2A;&#x4EE3;&#x7801;&#x7684;&#x8FC7;&#x7A0B;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
-<ol>
-<li>&#x5F53;<code>console.log(add(1))</code>&#x65F6;
-&#x5148;&#x662F;&#x5F62;&#x53C2;<code>a=1</code>&#xFF0C;<code>sum</code>&#x51FD;&#x6570;&#x4E0D;&#x6267;&#x884C;&#xFF0C;&#x6700;&#x540E;return<code>sum</code>&#x51FD;&#x6570;&#xFF0C;<code>console.log</code>&#x65F6;&#xFF0C;&#x8C03;&#x7528;&#x8FD4;&#x56DE;&#x7684;sum&#x5BF9;&#x8C61;&#x7684;<code>toString</code>&#x65B9;&#x6CD5;&#xFF0C;&#x8FD4;&#x56DE;<code>a</code>&#x3002;<pre><code class="lang-javascript"><span class="hljs-comment">// &#x5F62;&#x53C2; a=1</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a</span>) </span>{
-<span class="hljs-comment">// &#x4E0D;&#x6267;&#x884C;</span>
- <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">b</span>) </span>{ 
-   <span class="hljs-built_in">console</span>.log(b)
-   a = a + b;
-   <span class="hljs-keyword">return</span> sum;
- }
- sum.toString = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ 
-   <span class="hljs-keyword">return</span> a;
- }
-<span class="hljs-comment">// &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;add(1)&#x4E4B;&#x540E;&#x53D8;&#x6210;&#x4E86; sum</span>
- <span class="hljs-keyword">return</span> sum; 
-}
-</code></pre>
-</li>
-<li>&#x5F53;<code>console.log(add(1)(2))</code>&#x65F6;
-<code>add(1)</code>&#x8FD4;&#x56DE;&#x4E86;<code>sum</code>&#x51FD;&#x6570;&#xFF0C;&#x4E14;&#x7ED9;<code>a</code>&#x8D4B;&#x503C;1&#xFF0C;&#x6240;&#x4EE5;&#x63A5;&#x4E0B;&#x6765;&#x6267;&#x884C;<code>sum(2)</code>&#xFF0C;&#x6253;&#x5370;&#x51FA;b&#x7684;&#x503C;2&#xFF0C;a&#x7D2F;&#x52A0;&#x4E3A;3&#xFF0C;&#x8FD4;&#x56DE;<code>sum</code>&#x51FD;&#x6570;&#xFF0C;&#x6700;&#x540E;<code>console.log(sum)</code>&#x81EA;&#x52A8;&#x8C03;&#x7528;<code>toString()</code>&#x65B9;&#x6CD5;&#x6253;&#x5370;&#x51FA;3</li>
-</ol>
+&#x5728;html5&#x4E2D;&#xFF0C;&#x65B0;&#x589E;&#x4E86;&#x4E24;&#x4E2A; history &#x65B9;&#x6CD5;&#xFF1A;`pushState()`&#x3001;`replaceState()`&#x53EF;&#x4EE5;&#x5728;**&#x4E0D;&#x5237;&#x65B0;&#x9875;&#x9762;**&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5B9E;&#x73B0;&#x5BF9;&#x6D4F;&#x89C8;&#x5668;&#x5386;&#x53F2;&#x8BB0;&#x5F55;&#x6808;&#x7684;&#x4FEE;&#x6539;.
+```javascript
+// &#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x5386;&#x53F2;&#x8BB0;&#x5F55;
+window.history.pushState(stateObject,title,url)
+// &#x66FF;&#x6362;&#x5F53;&#x524D;&#x7684;&#x5386;&#x53F2;&#x8BB0;&#x5F55;
+window.history,replaceState(stateObject,title,url)
+</code></pre><ul>
+<li>stateObject: &#x5F53;&#x6D4F;&#x89C8;&#x5668;&#x8DF3;&#x8F6C;&#x5230;&#x65B0;&#x7684;&#x72B6;&#x6001;&#x65F6;&#xFF0C;&#x5C06;&#x89E6;&#x53D1;popState&#x4E8B;&#x4EF6;&#xFF0C;&#x8BE5;&#x4E8B;&#x4EF6;&#x5C06;&#x643A;&#x5E26;&#x8FD9;&#x4E2A;stateObject&#x53C2;&#x6570;&#x7684;&#x526F;&#x672C;</li>
+<li>title: &#x6240;&#x6DFB;&#x52A0;&#x8BB0;&#x5F55;&#x7684;&#x6807;&#x9898;</li>
+<li>url: &#x6240;&#x6DFB;&#x52A0;&#x8BB0;&#x5F55;&#x7684;url
+&#x5F53;&#x8C03;&#x7528;&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x4FEE;&#x6539;&#x6D4F;&#x89C8;&#x5668;&#x5386;&#x53F2;&#x6808;&#x540E;&#xFF1A;</li>
+<li>&#x5B83;&#x4EEC;&#x7684;&#x6807;&#x9898;&#xFF08;title&#xFF09;&#x5C5E;&#x6027;&#xFF0C;&#x4E00;&#x822C;&#x6D4F;&#x89C8;&#x5668;&#x4F1A;&#x5FFD;&#x7565;&#xFF0C;&#x6700;&#x597D;&#x4F20;&#x5165;<code>null</code></li>
+<li>&#x7528; <code>popstate</code>&#x4E8B;&#x4EF6;&#x76D1;&#x542C; url &#x7684;&#x53D8;&#x5316;</li>
+<li>&#x5B83;&#x4EEC;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;<code>popstate</code>&#x4E8B;&#x4EF6;&#xFF0C;&#x9700;&#x8981;&#x624B;&#x52A8;&#x89E6;&#x53D1;&#x9875;&#x9762;&#x6E32;&#x67D3;
+<strong>&#x4F7F;&#x7528;&#x573A;&#x666F;</strong>&#xFF1A;hash &#x6A21;&#x5F0F;&#x5E38;&#x5728;&#x4E0A;&#x7EBF;&#x4E4B;&#x540E;&#x4F7F;&#x7528;&#xFF0C;history &#x6709;&#x5229;&#x4E8E;seo&#xFF0C;&#x4E14;url&#x7B80;&#x6D01;&#x7F8E;&#x89C2;
+<strong>&#x9650;&#x5236;</strong>&#xFF1A;&#x9700;&#x8981;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x5BF9;&#x8DEF;&#x7531;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x914D;&#x5408;&#x8BBE;&#x7F6E;</li>
+</ul>
+<h4 id="&#x53C2;&#x8003;&#xFF1A;&#x6DF1;&#x5EA6;&#x5256;&#x6790;&#xFF1A;&#x524D;&#x7AEF;&#x8DEF;&#x7531;&#x539F;&#x7406;">&#x53C2;&#x8003;&#xFF1A;<a href="https://juejin.im/post/5d469f1e5188254e1c49ae78#heading-11" target="_blank">&#x6DF1;&#x5EA6;&#x5256;&#x6790;&#xFF1A;&#x524D;&#x7AEF;&#x8DEF;&#x7531;&#x539F;&#x7406;</a></h4>
 
                                 
                                 </section>
@@ -765,10 +767,6 @@
             
                 
                 
-                <a href="screen.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 首屏渲染">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
             
         
     </div>
@@ -776,7 +774,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"高阶函数之返回函数的函数","level":"1.6.1","depth":2,"next":{"title":"首屏渲染","level":"1.6.2","depth":2,"path":"interview/screen.md","ref":"./interview/screen.md","articles":[]},"previous":{"title":"面试常见","level":"1.6","depth":1,"ref":"","articles":[{"title":"高阶函数之返回函数的函数","level":"1.6.1","depth":2,"path":"interview/add.md","ref":"./interview/add.md","articles":[]},{"title":"首屏渲染","level":"1.6.2","depth":2,"path":"interview/screen.md","ref":"./interview/screen.md","articles":[]},{"title":"防抖","level":"1.6.3","depth":2,"path":"interview/throttle.md","ref":"./interview/throttle.md","articles":[]},{"title":"节流","level":"1.6.4","depth":2,"path":"interview/debounce.md","ref":"./interview/debounce.md","articles":[]},{"title":"正则表达式","level":"1.6.5","depth":2,"path":"interview/reg.md","ref":"./interview/reg.md","articles":[]},{"title":"setTimeout 和 setInterval","level":"1.6.6","depth":2,"path":"interview/setInterval.md","ref":"./interview/setInterval.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interview/add.md","mtime":"2020-07-06T08:09:23.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-15T08:19:07.191Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"路由","level":"1.7.1","depth":2,"previous":{"title":"框架","level":"1.7","depth":1,"ref":"","articles":[{"title":"路由","level":"1.7.1","depth":2,"path":"framework/router.md","ref":"./framework/router.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"framework/router.md","mtime":"2020-07-08T13:50:30.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-15T08:19:07.191Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
