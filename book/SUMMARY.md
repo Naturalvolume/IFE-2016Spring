@@ -2,6 +2,7 @@
 * html
   * [页面加载海量数据而不冻结前端ui](./html/bigDate.md)
   * [html常用标签及其属性](./html/tag.md)
+  * [doctype和盒模型](./html/doctype.md)
 * css
   * [用css实现弹出框](./css/popup.md)
   * [css3动画](./css/animate.md)
@@ -10,7 +11,8 @@
   * [可继承属性](./css/inherit.md)
   * [完整的响应式布局方案](./css/media.md)
   * [css画几何图形](./css/geometric.md)
-  * [a标签周围为什么会有空格](.css/a.md)
+  * [a标签](./css/a.md)
+  * [三栏布局](./css/layout.md)
 * JavaScript基础
   * [底层数据结构](./data/data.md)
   * [数据深度克隆](./data/deepclone.md)
