@@ -22,8 +22,8 @@ console.log(isType('String')('123'))  //true
 要实现无限累加的函数，需要知道一个知识点：每次`console.log`的时候都会调用输出对象的`toString`方法，下面直接看代码。
 ```javascript
 function add(a) {
-    function sum(b) { // 使用闭包
-      console.log(b)
+  // 使用闭包，让形参 a 在这个作用域里面不释放
+    function sum(b) { 
       a = a + b; // 累加
       // 每次都返回 sum 函数
       return sum;

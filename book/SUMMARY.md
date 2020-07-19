@@ -19,6 +19,7 @@
   * [空对象判断](./data/objectJudge.md)
   * [类数组](./data/arguments.md)
   * [数组去重](./data/distinct.md)
+  * [数组扁平化](./data/flat.md)
   * [this指向](./data/this.md)
   * [实现new](./data/new.md)
   * [手动实现instanceof](./data/instanceof.md)
@@ -27,15 +28,18 @@
   * [内存泄露和堆栈溢出](./data/overflow.md)
   * [promise](./data/promise.md)
   * [自定义类型的错误对象](./data/throw.md)
+  * [数组、字符串的存储原理](./data/array.md)
 * 手写源码
   * [url分割](./origin/queryString.md) 
 * 面试常见
   * [高阶函数之返回函数的函数](./interview/add.md)
+  * [函数柯里化](./interview/currying.md)
   * [首屏渲染](./interview/screen.md)
   * [防抖](./interview/throttle.md)
   * [节流](./interview/debounce.md)
   * [正则表达式](./interview/reg.md)
   * [setTimeout 和 setInterval](./interview/setInterval.md)
+  
 * 框架
   * [路由](./framework/router.md)
   
