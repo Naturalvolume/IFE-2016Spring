@@ -9,7 +9,9 @@
     </div>
 </body>
 ```
-这样排列时就没有空格了
+所以，两个**display：inline-block**元素放到一起也会产生一段空白。
+### 解决方法
+1. 两个元素紧挨着写就没有空白了
 ```html
 <body>
     <div class="space">
@@ -18,3 +20,15 @@
 </body>
 ```
 参考：[a标签](https://www.jianshu.com/p/3df46e5b41f6)
+2. 父元素中设置font-size: 0，在子元素上重置正确的font-size
+3. 为子元素设置float:left
+```css
+.left{
+  float: left;
+  font-size: 14px;
+  background: red;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
+```

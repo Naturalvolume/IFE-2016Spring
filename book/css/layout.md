@@ -115,8 +115,7 @@ body {
 
 #left {
   width: 200px; 
-  /* 这里设置 margin-left: 200px 是一样的效果*/
-  margin-left: -100%;
+  margin-left: 100%;
   /* 一直以为浮动元素不能用定位了呢，孤陋寡闻了 */
   position: relative;
   right: 200px;
@@ -125,9 +124,10 @@ body {
 
 #right {
   width: 150px; 
-  /* 这里设置 margin-left: 100% 是一样的效果*/
-  margin-right: -150px; 
+  margin-left: -150px; 
   background: blue;
+  position: relative;
+  left: 150px;
 }
 
 #footer {
@@ -136,15 +136,19 @@ body {
 ```
 **优点**：中间盒子先渲染
 **缺点**：若高度不固定，三栏的高度会随内容变得不一致，不美观
+
+**浮动 float 的原理**：
+float，浮动，使元素的边界和相邻的同一个方向浮动的元素边界紧贴，如果没有相邻浮动元素，就和父元素边界紧贴。也就是说，设置了 float：left 的元素，会向左浮动，直到左边缘和同样设置了 float：left 的元素紧贴。如果左边没有浮动的元素，那么这个元素就会紧贴到父元素的边缘 
+**margin-left: -100%的原理**：
+这里 100% 的百分比是相对于父元素的宽度而言的。元素设置了 margin-left: -100%，就会往左边移动父元素的宽度的100%
+
 **问题**：
 - 为什么要给 body 设置 min-width: 550px;
 - 中间栏设置宽度 width: 100%; 是什么意思？若设置 width:1200px 会有什么现象？
-- left 和 right 栏设置 margin-left:-100% 或 margin-right:-100% 是什么意思？
-- 若设置 right 栏 margin-left:-100% 会是什么样子的？为什么？
 - 为什么 footer 要设置 clear:both，还有哪些方法可以实现同样的效果？
 
 ### 4.双飞翼布局
-双飞翼布局和圣杯布局非常相似，两者最大的区别是用 margin 还是用 padding 给左右栏预留位置。
+双飞翼布局和圣杯布局非常相似，两者最大的区别是用 margin 还是用 padding 给左右栏预留位置，以及只需要用负边距固定两侧栏，不需要用定位。
 ```html
   <div id="header"></div>
   <div id="container" class="column">

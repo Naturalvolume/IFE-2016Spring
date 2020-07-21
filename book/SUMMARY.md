@@ -11,7 +11,7 @@
   * [可继承属性](./css/inherit.md)
   * [完整的响应式布局方案](./css/media.md)
   * [css画几何图形](./css/geometric.md)
-  * [a标签](./css/a.md)
+  * [a标签（inline-block）空白问题](./css/a.md)
   * [三栏布局](./css/layout.md)
 * JavaScript基础
   * [底层数据结构](./data/data.md)
@@ -29,6 +29,9 @@
   * [promise](./data/promise.md)
   * [自定义类型的错误对象](./data/throw.md)
   * [数组、字符串的存储原理](./data/array.md)
+  * [caller和callee](./data/caller.md)
+  * [Object.defineProperty()](./data/defineProperty.md)
+  * [map forEach for...in for...of遍历的区别](./data/traversal.md)
 * 手写源码
   * [url分割](./origin/queryString.md) 
 * 面试常见
@@ -38,9 +41,10 @@
   * [防抖](./interview/throttle.md)
   * [节流](./interview/debounce.md)
   * [正则表达式](./interview/reg.md)
-  * [setTimeout 和 setInterval](./interview/setInterval.md)
-  
+  * [setTimeout 和 setInterval](./interview/setInterval.md) 
 * 框架
+  * [版本控制](./framework/git.md)
+  * [react和vue的区别](./framework/difference.md)
   * [路由](./framework/router.md)
   
 
