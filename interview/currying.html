@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>首屏渲染 · GitBook</title>
+        <title>函数柯里化 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="throttle.html" />
+    <link rel="next" href="screen.html" />
     
     
-    <link rel="prev" href="currying.html" />
+    <link rel="prev" href="add.html" />
     
 
     </head>
@@ -608,7 +608,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="currying.html">
+        <li class="chapter active" data-level="1.6.2" data-path="currying.html">
             
                 <a href="currying.html">
             
@@ -621,7 +621,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6.3" data-path="screen.html">
+        <li class="chapter " data-level="1.6.3" data-path="screen.html">
             
                 <a href="screen.html">
             
@@ -779,7 +779,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >首屏渲染</a>
+        <a href=".." >函数柯里化</a>
     </h1>
 </div>
 
@@ -794,14 +794,85 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x9996;&#x5C4F;&#x6E32;&#x67D3;">&#x9996;&#x5C4F;&#x6E32;&#x67D3;</h1>
-<h3 id="&#x4EA7;&#x751F;&#x539F;&#x56E0;">&#x4EA7;&#x751F;&#x539F;&#x56E0;</h3>
-<p>&#x524D;&#x540E;&#x7AEF;&#x5206;&#x79BB;&#x5E94;&#x7528;&#xFF0C;&#x6709;&#x4E00;&#x4E2A;&#x81F4;&#x547D;&#x7F3A;&#x70B9;&#xFF1A;&#x9996;&#x5C4F;&#x6E32;&#x67D3;&#x3002;&#x7528;&#x6237;&#x7B2C;&#x4E00;&#x6B21;&#x6253;&#x5F00;&#x9875;&#x9762;&#xFF0C;&#x8981;&#x901A;&#x8FC7;ajax&#x52A0;&#x8F7D;&#x540E;&#x7AEF;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x56E0;&#x4E3A;&#x662F;&#x9996;&#x6B21;&#x6253;&#x5F00;&#xFF0C;&#x6240;&#x4EE5;&#x8981;&#x52A0;&#x8F7D;&#x7684;&#x6570;&#x636E;&#x8F83;&#x591A;&#xFF0C;&#x7528;&#x6237;&#x5C31;&#x611F;&#x77E5;&#x5230;&#x4E86;&#x5EF6;&#x8FDF;&#xFF1B;&#x5355;&#x9875;&#x9762;&#x5E94;&#x7528;&#x6570;&#x636E;&#x91CF;&#x5927;&#xFF0C;</p>
-<p>&#x800C;&#x4F20;&#x7EDF;&#x7684;&#x540E;&#x7AEF;&#x6E32;&#x67D3;&#x9875;&#x9762;&#xFF0C;&#x76F4;&#x63A5;&#x7ED9;&#x6D4F;&#x89C8;&#x5668;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x5DF2;&#x7ECF;&#x5305;&#x542B;&#x8981;&#x586B;&#x5145;&#x7684;&#x6570;&#x636E;&#x7684;HTML&#x9875;&#x9762;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x5B58;&#x5728;&#x9996;&#x5C4F;&#x6E32;&#x67D3;&#x95EE;&#x9898;&#x3002;</p>
-<h3 id="&#x4F20;&#x7EDF;&#x89E3;&#x51B3;&#x65B9;&#x6848;">&#x4F20;&#x7EDF;&#x89E3;&#x51B3;&#x65B9;&#x6848;</h3>
-<h3 id="&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x6E32;&#x67D3;ssr">&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x6E32;&#x67D3;SSR</h3>
-<h3 id="vue-&#x89E3;&#x51B3;&#x65B9;&#x6848;">vue &#x89E3;&#x51B3;&#x65B9;&#x6848;</h3>
-<h3 id="react-&#x89E3;&#x51B3;&#x65B9;&#x6848;">react &#x89E3;&#x51B3;&#x65B9;&#x6848;</h3>
+                                <h1 id="&#x51FD;&#x6570;&#x67EF;&#x91CC;&#x5316;">&#x51FD;&#x6570;&#x67EF;&#x91CC;&#x5316;</h1>
+<p>&#x51FD;&#x6570;&#x7684;&#x67EF;&#x91CC;&#x5316;&#x662F;&#x6307;&#x628A;&#x591A;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x51FD;&#x6570;&#x901A;&#x8FC7;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x51FD;&#x6570;&#x8F6C;&#x6362;&#x6210; &#x90E8;&#x5206;&#x53C2;&#x6570; &#x751A;&#x81F3; &#x5355;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x6BD4;&#x5982;&#x4E0B;&#x9762;&#x7684;&#x52A0;&#x6CD5;&#x51FD;&#x6570;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// &#x67EF;&#x91CC;&#x5316;&#x4E4B;&#x524D;&#x7684;&#x51FD;&#x6570;</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">x, y</span>) </span>{
+  <span class="hljs-keyword">return</span> x+y
+}
+<span class="hljs-built_in">console</span>.log(add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>))  <span class="hljs-comment">// 3</span>
+
+<span class="hljs-comment">// &#x67EF;&#x91CC;&#x5316;</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">x</span>) </span>{
+  <span class="hljs-comment">// &#x51FD;&#x6570;&#x4E2D;&#x4FDD;&#x7559; x &#x53C2;&#x6570;</span>
+  <span class="hljs-keyword">let</span> num = x
+  <span class="hljs-comment">// &#x8FD4;&#x56DE;&#x53EA;&#x9700;&#x8981; y &#x53C2;&#x6570;&#x7684;&#x51FD;&#x6570;</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">y</span>) </span>{
+    <span class="hljs-keyword">return</span> num+y
+  }
+}
+<span class="hljs-keyword">let</span> add1 = add(<span class="hljs-number">1</span>)
+<span class="hljs-built_in">console</span>.log(add1(<span class="hljs-number">2</span>))  <span class="hljs-comment">// 3</span>
+</code></pre>
+<p>&#x67EF;&#x91CC;&#x5316;&#x4E00;&#x822C;&#x7528;&#x95ED;&#x5305;&#x5B9E;&#x73B0;&#x3002;</p>
+<h3 id="&#x67EF;&#x91CC;&#x5316;&#x5DE5;&#x5177;&#x51FD;&#x6570;&#x2014;&#x2014;&#x7B80;&#x5355;&#x7248;">&#x67EF;&#x91CC;&#x5316;&#x5DE5;&#x5177;&#x51FD;&#x6570;&#x2014;&#x2014;&#x7B80;&#x5355;&#x7248;</h3>
+<p>&#x5728;&#x5F00;&#x53D1;&#x4E2D;&#x5F88;&#x591A;&#x5730;&#x65B9;&#x90FD;&#x53EF;&#x4EE5;&#x7528;&#x5230;&#x67EF;&#x91CC;&#x5316;&#xFF0C;&#x6BCF;&#x6B21;&#x90FD;&#x81EA;&#x5DF1;&#x5199;&#x6709;&#x4E9B;&#x9EBB;&#x70E6;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x628A;&#x4ED6;&#x5C01;&#x88C5;&#x6210;&#x5DE5;&#x5177;&#x51FD;&#x6570;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// &#x67EF;&#x91CC;&#x5316; &#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x51FD;&#x6570;</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">x, y, z</span>) </span>{
+  <span class="hljs-keyword">return</span> x + y+ z
+}
+</code></pre>
+<p>&#x6839;&#x636E;&#x5F62;&#x53C2;&#x6570;&#x7EC4; arguments &#x4F1A;&#x5B58;&#x50A8;&#x6240;&#x6709;&#x7684;&#x5F62;&#x53C2;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;&#x5F62;&#x53C2;&#x5355;&#x72EC;&#x62FF;&#x51FA;&#x6765;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">currying</span>(<span class="hljs-params">fn</span>) </span>{
+  <span class="hljs-comment">// &#x622A;&#x53D6; &#x5269;&#x4F59;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x9664;&#x4E86;&#x51FD;&#x6570; fn</span>
+  <span class="hljs-keyword">let</span> args = <span class="hljs-built_in">Array</span>.prototype.slice.call(<span class="hljs-built_in">arguments</span>, <span class="hljs-number">1</span>)
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// &#x62FC;&#x63A5;&#x53C2;&#x6570;</span>
+    _args = args.concat(<span class="hljs-built_in">Array</span>.prototype.slice.call(<span class="hljs-built_in">arguments</span>))
+    <span class="hljs-keyword">return</span> fn(..._args)
+  }
+}
+<span class="hljs-keyword">let</span> a = currying(sum, <span class="hljs-number">1</span>)
+<span class="hljs-built_in">console</span>.log(a(<span class="hljs-number">2</span>,<span class="hljs-number">3</span>))     <span class="hljs-comment">// 3</span>
+
+<span class="hljs-keyword">let</span> b = currying(sum, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>)
+<span class="hljs-built_in">console</span>.log(b(<span class="hljs-number">3</span>))     <span class="hljs-comment">// 3</span>
+</code></pre>
+<h3 id="&#x67EF;&#x91CC;&#x5316;&#x5DE5;&#x5177;&#x51FD;&#x6570;&#x2014;&#x2014;&#x8FDE;&#x7EED;&#x8C03;&#x7528;&#x7248;">&#x67EF;&#x91CC;&#x5316;&#x5DE5;&#x5177;&#x51FD;&#x6570;&#x2014;&#x2014;&#x8FDE;&#x7EED;&#x8C03;&#x7528;&#x7248;</h3>
+<p>&#x7B80;&#x5355;&#x7248;&#x51FD;&#x6570;&#x5DF2;&#x7ECF;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x67EF;&#x91CC;&#x5316;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x652F;&#x6301;&#x591A;&#x53C2;&#x6570;&#x8FDE;&#x7EED;&#x8C03;&#x7528;<code>fn(a)(b)(c)</code>&#xFF0C;&#x6240;&#x4EE5;&#x5229;&#x7528;&#x9012;&#x5F52;&#x4FEE;&#x6539;&#x7B80;&#x5355;&#x7248;&#x51FD;&#x6570;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">processCurrying</span>(<span class="hljs-params">fn</span>) </span>{
+  <span class="hljs-comment">// &#x51FD;&#x6570;&#x7684;length&#x5C5E;&#x6027; &#x662F; &#x53C2;&#x6570;&#x7684;&#x957F;&#x5EA6;</span>
+  <span class="hljs-keyword">let</span> len = fn.length
+  <span class="hljs-keyword">let</span> args = <span class="hljs-built_in">Array</span>.prototype.slice.call(<span class="hljs-built_in">arguments</span>, <span class="hljs-number">1</span>)
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    _args = args.concat(<span class="hljs-built_in">Array</span>.prototype.slice.call(<span class="hljs-built_in">arguments</span>))
+    <span class="hljs-comment">// &#x53C2;&#x6570;&#x957F;&#x5EA6;&#x8FD8;&#x4E0D;&#x591F;</span>
+    <span class="hljs-keyword">if</span>(_args.length &lt; len) {
+      <span class="hljs-comment">// &#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x5DF2;&#x6709;&#x90E8;&#x5206;&#x53C2;&#x6570;&#x7684; &#x51FD;&#x6570;</span>
+      <span class="hljs-keyword">return</span> processCurrying(fn, ..._args)
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-comment">// &#x8FD4;&#x56DE;&#x7ED3;&#x679C;</span>
+      <span class="hljs-keyword">return</span> fn(..._args)
+    }
+  }
+}
+<span class="hljs-keyword">let</span> c= processCurrying(sum, <span class="hljs-number">1</span>)
+<span class="hljs-built_in">console</span>.log(c(<span class="hljs-number">2</span>)(<span class="hljs-number">3</span>))
+</code></pre>
+<h3 id="&#x67EF;&#x91CC;&#x5316;&#x6027;&#x80FD;">&#x67EF;&#x91CC;&#x5316;&#x6027;&#x80FD;</h3>
+<ul>
+<li>&#x5B58;&#x53D6;arguments&#x5BF9;&#x8C61;&#x901A;&#x5E38;&#x8981;&#x6BD4;&#x5B58;&#x53D6;&#x547D;&#x540D;&#x53C2;&#x6570;&#x8981;&#x6162;&#x4E00;&#x70B9;</li>
+<li>&#x4E00;&#x4E9B;&#x8001;&#x7248;&#x672C;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x5728;arguments.length&#x7684;&#x5B9E;&#x73B0;&#x4E0A;&#x662F;&#x76F8;&#x5F53;&#x6162;&#x7684;</li>
+<li>&#x4F7F;&#x7528;fn.apply( &#x2026; ) &#x548C; fn.call( &#x2026; )&#x901A;&#x5E38;&#x6BD4;&#x76F4;&#x63A5;&#x8C03;&#x7528;fn( &#x2026; ) &#x7A0D;&#x5FAE;&#x6162;&#x70B9;</li>
+<li>&#x521B;&#x5EFA;&#x5927;&#x91CF;&#x5D4C;&#x5957;&#x4F5C;&#x7528;&#x57DF;&#x548C;&#x95ED;&#x5305;&#x51FD;&#x6570;&#x4F1A;&#x5E26;&#x6765;&#x82B1;&#x9500;&#xFF0C;&#x65E0;&#x8BBA;&#x662F;&#x5728;&#x5185;&#x5B58;&#x8FD8;&#x662F;&#x901F;&#x5EA6;&#x4E0A;</li>
+</ul>
+<p>&#x603B;&#x4F53;&#x800C;&#x8A00;&#xFF0C;&#x67EF;&#x91CC;&#x5316;&#x6027;&#x80FD;&#x5728;&#x67D0;&#x4E9B;&#x89D2;&#x5EA6;&#x8BB2;&#x5E76;&#x4E0D;&#x9AD8;&#xFF0C;&#x4F46;&#x524D;&#x7AEF;&#x4E3B;&#x8981;&#x7684;&#x6027;&#x80FD;&#x74F6;&#x9888;&#x662F;&#x5728;&#x64CD;&#x4F5C;DOM&#x8282;&#x70B9;&#x4E0A;&#xFF0C;&#x8FD9;js&#x7684;&#x6027;&#x80FD;&#x635F;&#x8017;&#x57FA;&#x672C;&#x662F;&#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#x4E0D;&#x8BA1;&#x7684;&#xFF0C;&#x6240;&#x4EE5;curry&#x662F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x653E;&#x5FC3;&#x7684;&#x4F7F;&#x7528;&#x3002;</p>
+<h3 id="&#x4F18;&#x70B9;">&#x4F18;&#x70B9;</h3>
+<ul>
+<li>&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x7684;&#x91CD;&#x8981;&#x6807;&#x5FD7;</li>
+<li>&#x7075;&#x6D3B;&#x6027;&#x9AD8;<h3 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h3>
+<a href="https://www.cnblogs.com/plBlog/p/12356042.html" target="_blank">JS&#x51FD;&#x6570;&#x67EF;&#x91CC;&#x5316;</a></li>
+</ul>
 
                                 
                                 </section>
@@ -829,12 +900,12 @@
 
             
                 
-                <a href="currying.html" class="navigation navigation-prev " aria-label="Previous page: 函数柯里化">
+                <a href="add.html" class="navigation navigation-prev " aria-label="Previous page: 高阶函数之返回函数的函数">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="throttle.html" class="navigation navigation-next " aria-label="Next page: 防抖">
+                <a href="screen.html" class="navigation navigation-next " aria-label="Next page: 首屏渲染">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -845,7 +916,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"首屏渲染","level":"1.6.3","depth":2,"next":{"title":"防抖","level":"1.6.4","depth":2,"path":"interview/throttle.md","ref":"./interview/throttle.md","articles":[]},"previous":{"title":"函数柯里化","level":"1.6.2","depth":2,"path":"interview/currying.md","ref":"./interview/currying.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interview/screen.md","mtime":"2020-07-08T08:06:20.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-21T14:51:47.503Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"函数柯里化","level":"1.6.2","depth":2,"next":{"title":"首屏渲染","level":"1.6.3","depth":2,"path":"interview/screen.md","ref":"./interview/screen.md","articles":[]},"previous":{"title":"高阶函数之返回函数的函数","level":"1.6.1","depth":2,"path":"interview/add.md","ref":"./interview/add.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interview/currying.md","mtime":"2020-07-19T01:50:15.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-21T14:51:47.503Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

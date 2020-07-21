@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>首屏渲染 · GitBook</title>
+        <title>版本控制 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="throttle.html" />
+    <link rel="next" href="difference.html" />
     
-    
-    <link rel="prev" href="currying.html" />
     
 
     </head>
@@ -595,9 +593,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="add.html">
+        <li class="chapter " data-level="1.6.1" data-path="../interview/add.html">
             
-                <a href="add.html">
+                <a href="../interview/add.html">
             
                     
                     高阶函数之返回函数的函数
@@ -608,9 +606,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="currying.html">
+        <li class="chapter " data-level="1.6.2" data-path="../interview/currying.html">
             
-                <a href="currying.html">
+                <a href="../interview/currying.html">
             
                     
                     函数柯里化
@@ -621,9 +619,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6.3" data-path="screen.html">
+        <li class="chapter " data-level="1.6.3" data-path="../interview/screen.html">
             
-                <a href="screen.html">
+                <a href="../interview/screen.html">
             
                     
                     首屏渲染
@@ -634,9 +632,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.4" data-path="throttle.html">
+        <li class="chapter " data-level="1.6.4" data-path="../interview/throttle.html">
             
-                <a href="throttle.html">
+                <a href="../interview/throttle.html">
             
                     
                     防抖
@@ -647,9 +645,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.5" data-path="debounce.html">
+        <li class="chapter " data-level="1.6.5" data-path="../interview/debounce.html">
             
-                <a href="debounce.html">
+                <a href="../interview/debounce.html">
             
                     
                     节流
@@ -660,9 +658,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.6" data-path="reg.html">
+        <li class="chapter " data-level="1.6.6" data-path="../interview/reg.html">
             
-                <a href="reg.html">
+                <a href="../interview/reg.html">
             
                     
                     正则表达式
@@ -673,9 +671,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.7" data-path="setInterval.html">
+        <li class="chapter " data-level="1.6.7" data-path="../interview/setInterval.html">
             
-                <a href="setInterval.html">
+                <a href="../interview/setInterval.html">
             
                     
                     setTimeout 和 setInterval
@@ -705,9 +703,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="../framework/git.html">
+        <li class="chapter active" data-level="1.7.1" data-path="git.html">
             
-                <a href="../framework/git.html">
+                <a href="git.html">
             
                     
                     版本控制
@@ -718,9 +716,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2" data-path="../framework/difference.html">
+        <li class="chapter " data-level="1.7.2" data-path="difference.html">
             
-                <a href="../framework/difference.html">
+                <a href="difference.html">
             
                     
                     react和vue的区别
@@ -731,9 +729,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.3" data-path="../framework/router.html">
+        <li class="chapter " data-level="1.7.3" data-path="router.html">
             
-                <a href="../framework/router.html">
+                <a href="router.html">
             
                     
                     路由
@@ -779,7 +777,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >首屏渲染</a>
+        <a href=".." >版本控制</a>
     </h1>
 </div>
 
@@ -794,14 +792,8 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x9996;&#x5C4F;&#x6E32;&#x67D3;">&#x9996;&#x5C4F;&#x6E32;&#x67D3;</h1>
-<h3 id="&#x4EA7;&#x751F;&#x539F;&#x56E0;">&#x4EA7;&#x751F;&#x539F;&#x56E0;</h3>
-<p>&#x524D;&#x540E;&#x7AEF;&#x5206;&#x79BB;&#x5E94;&#x7528;&#xFF0C;&#x6709;&#x4E00;&#x4E2A;&#x81F4;&#x547D;&#x7F3A;&#x70B9;&#xFF1A;&#x9996;&#x5C4F;&#x6E32;&#x67D3;&#x3002;&#x7528;&#x6237;&#x7B2C;&#x4E00;&#x6B21;&#x6253;&#x5F00;&#x9875;&#x9762;&#xFF0C;&#x8981;&#x901A;&#x8FC7;ajax&#x52A0;&#x8F7D;&#x540E;&#x7AEF;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x56E0;&#x4E3A;&#x662F;&#x9996;&#x6B21;&#x6253;&#x5F00;&#xFF0C;&#x6240;&#x4EE5;&#x8981;&#x52A0;&#x8F7D;&#x7684;&#x6570;&#x636E;&#x8F83;&#x591A;&#xFF0C;&#x7528;&#x6237;&#x5C31;&#x611F;&#x77E5;&#x5230;&#x4E86;&#x5EF6;&#x8FDF;&#xFF1B;&#x5355;&#x9875;&#x9762;&#x5E94;&#x7528;&#x6570;&#x636E;&#x91CF;&#x5927;&#xFF0C;</p>
-<p>&#x800C;&#x4F20;&#x7EDF;&#x7684;&#x540E;&#x7AEF;&#x6E32;&#x67D3;&#x9875;&#x9762;&#xFF0C;&#x76F4;&#x63A5;&#x7ED9;&#x6D4F;&#x89C8;&#x5668;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x5DF2;&#x7ECF;&#x5305;&#x542B;&#x8981;&#x586B;&#x5145;&#x7684;&#x6570;&#x636E;&#x7684;HTML&#x9875;&#x9762;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x5B58;&#x5728;&#x9996;&#x5C4F;&#x6E32;&#x67D3;&#x95EE;&#x9898;&#x3002;</p>
-<h3 id="&#x4F20;&#x7EDF;&#x89E3;&#x51B3;&#x65B9;&#x6848;">&#x4F20;&#x7EDF;&#x89E3;&#x51B3;&#x65B9;&#x6848;</h3>
-<h3 id="&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x6E32;&#x67D3;ssr">&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x6E32;&#x67D3;SSR</h3>
-<h3 id="vue-&#x89E3;&#x51B3;&#x65B9;&#x6848;">vue &#x89E3;&#x51B3;&#x65B9;&#x6848;</h3>
-<h3 id="react-&#x89E3;&#x51B3;&#x65B9;&#x6848;">react &#x89E3;&#x51B3;&#x65B9;&#x6848;</h3>
+                                <h1 id="&#x7248;&#x672C;&#x63A7;&#x5236;">&#x7248;&#x672C;&#x63A7;&#x5236;</h1>
+<p>&#x5728;&#x591A;&#x4EBA;&#x534F;&#x4F5C;&#x65F6;&#x9700;&#x8981;&#x7B2C;&#x4E09;&#x65B9;&#x5DE5;&#x5177;&#x6765;</p>
 
                                 
                                 </section>
@@ -829,12 +821,8 @@
 
             
                 
-                <a href="currying.html" class="navigation navigation-prev " aria-label="Previous page: 函数柯里化">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
-                
-                <a href="throttle.html" class="navigation navigation-next " aria-label="Next page: 防抖">
+                <a href="difference.html" class="navigation navigation-next navigation-unique" aria-label="Next page: react和vue的区别">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -845,7 +833,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"首屏渲染","level":"1.6.3","depth":2,"next":{"title":"防抖","level":"1.6.4","depth":2,"path":"interview/throttle.md","ref":"./interview/throttle.md","articles":[]},"previous":{"title":"函数柯里化","level":"1.6.2","depth":2,"path":"interview/currying.md","ref":"./interview/currying.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interview/screen.md","mtime":"2020-07-08T08:06:20.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-21T14:51:47.503Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"版本控制","level":"1.7.1","depth":2,"next":{"title":"react和vue的区别","level":"1.7.2","depth":2,"path":"framework/difference.md","ref":"./framework/difference.md","articles":[]},"previous":{"title":"框架","level":"1.7","depth":1,"ref":"","articles":[{"title":"版本控制","level":"1.7.1","depth":2,"path":"framework/git.md","ref":"./framework/git.md","articles":[]},{"title":"react和vue的区别","level":"1.7.2","depth":2,"path":"framework/difference.md","ref":"./framework/difference.md","articles":[]},{"title":"路由","level":"1.7.3","depth":2,"path":"framework/router.md","ref":"./framework/router.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"framework/git.md","mtime":"2020-07-20T03:01:35.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-21T14:51:47.503Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
