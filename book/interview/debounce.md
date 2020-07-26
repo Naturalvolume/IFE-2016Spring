@@ -27,13 +27,13 @@
         // 这里这是清除了定时器，而不是把timeout变为null
         if(timeout) clearTimeout(timeout);
 
-        let callNow = !timeout;
+        let flag = !timeout;
         timeout = setTimeout(() => {
           // 在定时器里才把它变为null
             timeout = null;
         }, wait)
 
-        if(callNow) func.apply(context, args)
+        if(flag) func.apply(context, args)
       }
     }
 ```

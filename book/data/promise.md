@@ -167,7 +167,97 @@ let a = new Promise((resolve) => {
 // 错误被浏览器捕获，而不是被 catch 函数捕获
 ```
 [深刻理解Promise系列(四):catch](https://www.jianshu.com/p/1c829edec185)
+### 9.promise .then可以被调用多次
 ```javascript
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log('once')
+    resolve('success')
+  }, 1000)
+})
+
+const start = Date.now()
+promise.then((res) => {
+  console.log(res, Date.now() - start)
+})
+promise.then((res) => {
+  console.log(res, Date.now() - start)
+})
+
+// once
+// success 1005
+// success 1007
 ```
+解释：promise 的 .then 或者 .catch 可以被调用多次，但这里 Promise 构造函数只执行一次。或者说 promise 内部状态一经改变，并且有了一个值，那么后续每次调用 .then 或者 .catch 都会直接拿到该值。
+### 10.console.log(promise) 是输出promise的状态
 ```javascript
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('success')
+  }, 1000)
+})
+console.log('promise1', promise1)   // pendding
 ```
+### 11. 被抛出的错误能够被.catch捕获，return的error不会被捕获
+Error 是一个对象，只有在 throw 关键字时抛出的错误才是能够被捕捉的。
+```javascript
+Promise.resolve()
+  .then(() => {
+    return new Error('error!!!')
+  })
+  .then((res) => {
+    console.log('then: ', res)
+  })
+  .catch((err) => {
+    console.log('catch: ', err)
+  })
+/*
+then: Error: error!!!
+    at Promise.resolve.then (...)
+    at ...
+*/
+```
+**解释**：
+- .then 或者 .catch 中 return 一个error对象不会抛出错误，所以不会被catch捕获
+- 任意返回一个**非promise的值**都会被包裹成promise对象，即 `return new Error('error!!!')` 等价于 `return Promise.resolve(new Error('error!!!'))`
+
+可以改成下面其中一种
+```javascript
+return Promise.reject(new Error('error!!!'))
+throw new Error('error!!!')
+```
+### 12. .then 或 .catch 返回的值不能是 promise 本身，否则会造成死循环
+```javascript
+const promise = Promise.resolve()
+  .then(() => {
+    return promise
+  })
+promise.catch(console.error)
+/*
+TypeError: Chaining cycle detected for promise #<Promise>
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+    at Function.Module.runMain (module.js:667:11)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:607:3
+*/ 
+```
+### 13. 向 .then 和 .catch 传入非函数参数，会发生值穿透
+.then 和 .catch的期望参数是函数。
+```javascript
+  Promise.resolve('foo')
+    .then(Promise.resolve('bar'))
+    .then(function(result){
+      console.log(result)})
+    // foo
+Promise.resolve(1)
+  .then(function(){return 2})
+  .then(Promise.resolve(3))
+  .then(console.log)
+  // 2
+Promise.resolve(1)
+  .then(function(){return 2})
+  .then(function(){return Promise.resolve(3)})
+  .then(console.log)
+```
+ Promise方法链通过return传值，没有return就只是相互独立的任务而已

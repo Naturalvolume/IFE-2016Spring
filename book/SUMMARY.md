@@ -30,10 +30,11 @@
   * [自定义类型的错误对象](./data/throw.md)
   * [数组、字符串的存储原理](./data/array.md)
   * [caller和callee](./data/caller.md)
-  * [Object.defineProperty()](./data/defineProperty.md)
+  * [几个对象方法](./data/defineProperty.md)
   * [map forEach for...in for...of遍历的区别](./data/traversal.md)
 * 手写源码
   * [url分割](./origin/queryString.md) 
+  * [实现call apply bind](./origin/call.md)
 * 面试常见
   * [高阶函数之返回函数的函数](./interview/add.md)
   * [函数柯里化](./interview/currying.md)

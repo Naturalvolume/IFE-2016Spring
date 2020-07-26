@@ -8,6 +8,23 @@ console.log(9007199254740992 === 9007199254740993;)    // → true 居然是true
 ```
 - Bigint可以表示超过 number 范围的数，克服大数据的精度损失问题，使用Bigint只需要在数字末尾追加`n`即可或使用构造函数`new Bigint`，具体可看[谈谈对bigint对理解](http://47.98.159.95/my_blog/js-base/007.html#%E4%BB%80%E4%B9%88%E6%98%AFbigint)
 - Symbol克服了对象属性重叠的情况，具体看[javascript变量和基本类型](https://juejin.im/post/5cc94723f265da034c7036e6)
+### null 和 undefined 的不同
+`null`是**空对象指针**
+- 作为函数参数，表示该函数的参数不是对象
+- 作为原型链的终点
+- 清除闭包
+```javascript
+let obj = {}; // 开辟一块堆内存，里面内容是空的，有16进制的地址AAAFFF000
+obj = null; // 把变量obj指向空对象指针，AAAFFF000这个堆内存会成为垃圾等待回收，但不会立即回收
+// 加速对象回收
+```
+
+
+`undefined`是变量已定义但未赋值。
+- 调用函数时，应该提供的参数没有提供，该参数等于undefined
+- 对象没有赋值的属性，该属性的值为undefined
+- 函数没有返回值时，默认返回undefined
+
 ### 实现一个symbol
 
 
