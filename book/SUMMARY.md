@@ -35,6 +35,7 @@
 * 手写源码
   * [url分割](./origin/queryString.md) 
   * [实现call apply bind](./origin/call.md)
+  * [实现ajax请求](./origin/ajax.md)
 * 面试常见
   * [高阶函数之返回函数的函数](./interview/add.md)
   * [函数柯里化](./interview/currying.md)

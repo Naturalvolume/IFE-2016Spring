@@ -64,7 +64,42 @@ Function.prototype.call = function (context, args) {
   return result;
 }
 ```
+### bind 实现
+bind改变this指向是隐式调用 call 方法
 ```javascript
+Function.prototype._bind = function(context, ...args) {
+  // 异常处理，判断要改变指向的是不是函数
+  if(typeof this != 'function') throw new Error('what is trying to be bound is not callable')
+  // 保存调用的函数
+  var fn = this
+
+  let fBound = function() {
+    // new 的时候隐式创建 this，指向实例
+    // 判断 this 是否是由new创建的，是的话就让函数的this变为实例的this
+    return fn.apply(this instanceof fBound ? this : context, args.concat(Array.prototype.slice.call(arguments)))
+  }
+  // 用空对象当作 fBound 继承 fn 的桥梁
+  let fNOP = function() {}
+  if(fn.prototype) {
+    fNOP.prototype = fn.prototype
+  }
+  // 这样防止修改 fBound 原型的时候，也改变 fn 的原型
+  fBound.prototype = new fNOP()
+  return fBound
+}
+
+// 调用
+function run(a, b) {
+  this.val = '1'
+  console.log(this.name + a + 'running'+b)
+}
+
+let obj = {
+  name: 'kathy'
+}
+let Irun = run._bind(obj, 'a')
+
+let instance = new Irun('b')
+console.log(instance.val)
 ```
-```javascript
-```
+参考：[前端面试题——自己实现bind](https://zhuanlan.zhihu.com/p/85438296)

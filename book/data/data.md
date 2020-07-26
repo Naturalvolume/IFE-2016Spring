@@ -7,6 +7,34 @@ console.log(999999999999999);  //=>10000000000000000
 console.log(9007199254740992 === 9007199254740993;)    // → true 居然是true!
 ```
 - Bigint可以表示超过 number 范围的数，克服大数据的精度损失问题，使用Bigint只需要在数字末尾追加`n`即可或使用构造函数`new Bigint`，具体可看[谈谈对bigint对理解](http://47.98.159.95/my_blog/js-base/007.html#%E4%BB%80%E4%B9%88%E6%98%AFbigint)
+
+在力扣上有一道题就用到了Bigint:[剑指 Offer 14- II. 剪绳子 II](https://leetcode-cn.com/problems/jian-sheng-zi-ii-lcof/)
+```javascript
+var cuttingRope = function(n) {
+    if(n<=2) return 1
+    if(n==3) return 2
+    // 所有和 BigInt 数据进行运算的数字都要是BigInt数据类型
+    let num = BigInt(n)
+    // BigInt数据的除法会自动四舍五入，不能用Math.floor
+    let count = num/3n
+    let residual = num%3n
+    let max
+
+    switch(residual) {
+        case 0n:
+          // 指数也不能用Math.pow，用两个乘法运算符代替
+            max = 3n ** count
+            break
+        case 1n:
+            max = 3n ** (count-1n) * 2n * 2n
+            break
+        case 2n:
+            max = 3n ** count * 2n
+            break
+    }
+    return max%1000000007n
+};
+```
 - Symbol克服了对象属性重叠的情况，具体看[javascript变量和基本类型](https://juejin.im/post/5cc94723f265da034c7036e6)
 ### null 和 undefined 的不同
 `null`是**空对象指针**
