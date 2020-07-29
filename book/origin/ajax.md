@@ -70,7 +70,6 @@ function ajax(options) {
   // 开始发送请求
   if(options.type == 'GET') {
     // 发送请求，设置异步
-    console.log('send')
     xhr.open('GET', options.url + '?' + params, true)
     xhr.send(null)  // 内容主体为null
   } else if(options.type == 'POST') {
@@ -122,7 +121,7 @@ ajax({
   url: 'http://baidu.com',
   type: 'get',
   data: {
-  username:'username',
+    username:'username',
     password:'password'
   },
   dataType:'json',
