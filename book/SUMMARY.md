@@ -13,6 +13,7 @@
   * [css画几何图形](./css/geometric.md)
   * [a标签（inline-block）空白问题](./css/a.md)
   * [三栏布局](./css/layout.md)
+  * [flex换行问题](./css/flexWrap.md)
 * JavaScript基础
   * [底层数据结构](./data/data.md)
   * [数据深度克隆](./data/deepclone.md)
@@ -50,6 +51,9 @@
   * [路由](./framework/router.md)
 * React
   * [JSX](./React/JSX.md)
-
+* 项目
+  * [画板布局](./project/drawCSS.md)
+  * [canvas](./project/canvas.md)
+  * [图标编码](./project/icon.md)
 
 
