@@ -289,6 +289,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.10" data-path="../css/flexWrap.html">
+            
+                <a href="../css/flexWrap.html">
+            
+                    
+                    flex换行问题
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -521,7 +534,7 @@
                 <a href="defineProperty.html">
             
                     
-                    Object.defineProperty()
+                    几个对象方法
             
                 </a>
             
@@ -567,6 +580,32 @@
             
                     
                     url分割
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../origin/call.html">
+            
+                <a href="../origin/call.html">
+            
+                    
+                    实现call apply bind
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../origin/ajax.html">
+            
+                <a href="../origin/ajax.html">
+            
+                    
+                    实现ajax请求
             
                 </a>
             
@@ -747,6 +786,128 @@
             
         </li>
     
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    React
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../React/JSX.html">
+            
+                <a href="../React/JSX.html">
+            
+                    
+                    JSX
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    vue
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../vue/framework.html">
+            
+                <a href="../vue/framework.html">
+            
+                    
+                    项目目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    项目
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../project/drawCSS.html">
+            
+                <a href="../project/drawCSS.html">
+            
+                    
+                    画板布局
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../project/canvas.html">
+            
+                <a href="../project/canvas.html">
+            
+                    
+                    canvas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../project/icon.html">
+            
+                <a href="../project/icon.html">
+            
+                    
+                    图标编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -801,9 +962,51 @@
 </code></pre>
 </li>
 <li>Bigint&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x8D85;&#x8FC7; number &#x8303;&#x56F4;&#x7684;&#x6570;&#xFF0C;&#x514B;&#x670D;&#x5927;&#x6570;&#x636E;&#x7684;&#x7CBE;&#x5EA6;&#x635F;&#x5931;&#x95EE;&#x9898;&#xFF0C;&#x4F7F;&#x7528;Bigint&#x53EA;&#x9700;&#x8981;&#x5728;&#x6570;&#x5B57;&#x672B;&#x5C3E;&#x8FFD;&#x52A0;<code>n</code>&#x5373;&#x53EF;&#x6216;&#x4F7F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;<code>new Bigint</code>&#xFF0C;&#x5177;&#x4F53;&#x53EF;&#x770B;<a href="http://47.98.159.95/my_blog/js-base/007.html#%E4%BB%80%E4%B9%88%E6%98%AFbigint" target="_blank">&#x8C08;&#x8C08;&#x5BF9;bigint&#x5BF9;&#x7406;&#x89E3;</a></li>
-<li>Symbol&#x514B;&#x670D;&#x4E86;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;&#x91CD;&#x53E0;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5177;&#x4F53;&#x770B;<a href="https://juejin.im/post/5cc94723f265da034c7036e6" target="_blank">javascript&#x53D8;&#x91CF;&#x548C;&#x57FA;&#x672C;&#x7C7B;&#x578B;</a><h3 id="&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;symbol">&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;symbol</h3>
+</ul>
+<p>&#x5728;&#x529B;&#x6263;&#x4E0A;&#x6709;&#x4E00;&#x9053;&#x9898;&#x5C31;&#x7528;&#x5230;&#x4E86;Bigint:<a href="https://leetcode-cn.com/problems/jian-sheng-zi-ii-lcof/" target="_blank">&#x5251;&#x6307; Offer 14- II. &#x526A;&#x7EF3;&#x5B50; II</a></p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> cuttingRope = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">n</span>) </span>{
+    <span class="hljs-keyword">if</span>(n&lt;=<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+    <span class="hljs-keyword">if</span>(n==<span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>
+    <span class="hljs-comment">// &#x6240;&#x6709;&#x548C; BigInt &#x6570;&#x636E;&#x8FDB;&#x884C;&#x8FD0;&#x7B97;&#x7684;&#x6570;&#x5B57;&#x90FD;&#x8981;&#x662F;BigInt&#x6570;&#x636E;&#x7C7B;&#x578B;</span>
+    <span class="hljs-keyword">let</span> num = BigInt(n)
+    <span class="hljs-comment">// BigInt&#x6570;&#x636E;&#x7684;&#x9664;&#x6CD5;&#x4F1A;&#x81EA;&#x52A8;&#x56DB;&#x820D;&#x4E94;&#x5165;&#xFF0C;&#x4E0D;&#x80FD;&#x7528;Math.floor</span>
+    <span class="hljs-keyword">let</span> count = num/<span class="hljs-number">3</span>n
+    <span class="hljs-keyword">let</span> residual = num%<span class="hljs-number">3</span>n
+    <span class="hljs-keyword">let</span> max
+
+    <span class="hljs-keyword">switch</span>(residual) {
+        <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>n:
+          <span class="hljs-comment">// &#x6307;&#x6570;&#x4E5F;&#x4E0D;&#x80FD;&#x7528;Math.pow&#xFF0C;&#x7528;&#x4E24;&#x4E2A;&#x4E58;&#x6CD5;&#x8FD0;&#x7B97;&#x7B26;&#x4EE3;&#x66FF;</span>
+            max = <span class="hljs-number">3</span>n ** count
+            <span class="hljs-keyword">break</span>
+        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>n:
+            max = <span class="hljs-number">3</span>n ** (count<span class="hljs-number">-1</span>n) * <span class="hljs-number">2</span>n * <span class="hljs-number">2</span>n
+            <span class="hljs-keyword">break</span>
+        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>n:
+            max = <span class="hljs-number">3</span>n ** count * <span class="hljs-number">2</span>n
+            <span class="hljs-keyword">break</span>
+    }
+    <span class="hljs-keyword">return</span> max%<span class="hljs-number">1000000007</span>n
+};
+</code></pre>
+<ul>
+<li>Symbol&#x514B;&#x670D;&#x4E86;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;&#x91CD;&#x53E0;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5177;&#x4F53;&#x770B;<a href="https://juejin.im/post/5cc94723f265da034c7036e6" target="_blank">javascript&#x53D8;&#x91CF;&#x548C;&#x57FA;&#x672C;&#x7C7B;&#x578B;</a><h3 id="null-&#x548C;-undefined-&#x7684;&#x4E0D;&#x540C;">null &#x548C; undefined &#x7684;&#x4E0D;&#x540C;</h3>
+<code>null</code>&#x662F;<strong>&#x7A7A;&#x5BF9;&#x8C61;&#x6307;&#x9488;</strong></li>
+<li>&#x4F5C;&#x4E3A;&#x51FD;&#x6570;&#x53C2;&#x6570;&#xFF0C;&#x8868;&#x793A;&#x8BE5;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x4E0D;&#x662F;&#x5BF9;&#x8C61;</li>
+<li>&#x4F5C;&#x4E3A;&#x539F;&#x578B;&#x94FE;&#x7684;&#x7EC8;&#x70B9;</li>
+<li>&#x6E05;&#x9664;&#x95ED;&#x5305;<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> obj = {}; <span class="hljs-comment">// &#x5F00;&#x8F9F;&#x4E00;&#x5757;&#x5806;&#x5185;&#x5B58;&#xFF0C;&#x91CC;&#x9762;&#x5185;&#x5BB9;&#x662F;&#x7A7A;&#x7684;&#xFF0C;&#x6709;16&#x8FDB;&#x5236;&#x7684;&#x5730;&#x5740;AAAFFF000</span>
+obj = <span class="hljs-literal">null</span>; <span class="hljs-comment">// &#x628A;&#x53D8;&#x91CF;obj&#x6307;&#x5411;&#x7A7A;&#x5BF9;&#x8C61;&#x6307;&#x9488;&#xFF0C;AAAFFF000&#x8FD9;&#x4E2A;&#x5806;&#x5185;&#x5B58;&#x4F1A;&#x6210;&#x4E3A;&#x5783;&#x573E;&#x7B49;&#x5F85;&#x56DE;&#x6536;&#xFF0C;&#x4F46;&#x4E0D;&#x4F1A;&#x7ACB;&#x5373;&#x56DE;&#x6536;</span>
+<span class="hljs-comment">// &#x52A0;&#x901F;&#x5BF9;&#x8C61;&#x56DE;&#x6536;</span>
+</code></pre>
 </li>
 </ul>
+<p><code>undefined</code>&#x662F;&#x53D8;&#x91CF;&#x5DF2;&#x5B9A;&#x4E49;&#x4F46;&#x672A;&#x8D4B;&#x503C;&#x3002;</p>
+<ul>
+<li>&#x8C03;&#x7528;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x5E94;&#x8BE5;&#x63D0;&#x4F9B;&#x7684;&#x53C2;&#x6570;&#x6CA1;&#x6709;&#x63D0;&#x4F9B;&#xFF0C;&#x8BE5;&#x53C2;&#x6570;&#x7B49;&#x4E8E;undefined</li>
+<li>&#x5BF9;&#x8C61;&#x6CA1;&#x6709;&#x8D4B;&#x503C;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x7684;&#x503C;&#x4E3A;undefined</li>
+<li>&#x51FD;&#x6570;&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#x65F6;&#xFF0C;&#x9ED8;&#x8BA4;&#x8FD4;&#x56DE;undefined</li>
+</ul>
+<h3 id="&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;symbol">&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;symbol</h3>
 <h3 id="typeof-null--object">typeof null === &apos;object&apos;</h3>
 <p><code>typeof</code>&#x53EF;&#x4EE5;&#x51C6;&#x786E;&#x8F93;&#x51FA;&#x6240;&#x6709;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x9664;&#x4E86;<code>null</code>&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;javascript&#x6570;&#x636E;&#x5728;&#x5E95;&#x5C42;&#x90FD;&#x662F;&#x4EE5;<strong>32&#x4F4D;&#x4E8C;&#x8FDB;&#x5236;</strong>&#x5B58;&#x50A8;&#x7684;&#xFF0C;&#x51FA;&#x4E8E;&#x6027;&#x80FD;&#x8003;&#x8651;&#x7528;&#x4F4E;&#x4F4D;&#x5B58;&#x50A8;&#x53D8;&#x91CF;&#x7684;&#x7C7B;&#x578B;&#x4FE1;&#x606F;&#xFF0C;&#x5982;&#x524D;&#x4E09;&#x4F4D;&#x4E3A;0&#x7684;&#x4F1A;&#x88AB;&#x8BC6;&#x522B;&#x6210;<code>object</code>&#xFF0C;&#x800C;<code>null</code>&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x662F;<code>00..0000</code>&#xFF0C;&#x5C31;&#x4F1A;&#x88AB;&#x8BC6;&#x522B;&#x6210;<code>object</code>&#xFF0C;&#x8FD9;&#x662F;js&#x5E95;&#x5C42;&#x7684;&#x9057;&#x7559;&#x95EE;&#x9898;&#x3002;</p>
 <h3 id="&#x57FA;&#x672C;&#x5305;&#x88C5;&#x7C7B;&#x578B;">&#x57FA;&#x672C;&#x5305;&#x88C5;&#x7C7B;&#x578B;</h3>
@@ -876,7 +1079,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"底层数据结构","level":"1.4.1","depth":2,"next":{"title":"数据深度克隆","level":"1.4.2","depth":2,"path":"data/deepclone.md","ref":"./data/deepclone.md","articles":[]},"previous":{"title":"JavaScript基础","level":"1.4","depth":1,"ref":"","articles":[{"title":"底层数据结构","level":"1.4.1","depth":2,"path":"data/data.md","ref":"./data/data.md","articles":[]},{"title":"数据深度克隆","level":"1.4.2","depth":2,"path":"data/deepclone.md","ref":"./data/deepclone.md","articles":[]},{"title":"空对象判断","level":"1.4.3","depth":2,"path":"data/objectJudge.md","ref":"./data/objectJudge.md","articles":[]},{"title":"类数组","level":"1.4.4","depth":2,"path":"data/arguments.md","ref":"./data/arguments.md","articles":[]},{"title":"数组去重","level":"1.4.5","depth":2,"path":"data/distinct.md","ref":"./data/distinct.md","articles":[]},{"title":"数组扁平化","level":"1.4.6","depth":2,"path":"data/flat.md","ref":"./data/flat.md","articles":[]},{"title":"this指向","level":"1.4.7","depth":2,"path":"data/this.md","ref":"./data/this.md","articles":[]},{"title":"实现new","level":"1.4.8","depth":2,"path":"data/new.md","ref":"./data/new.md","articles":[]},{"title":"手动实现instanceof","level":"1.4.9","depth":2,"path":"data/instanceof.md","ref":"./data/instanceof.md","articles":[]},{"title":"作用域","level":"1.4.10","depth":2,"path":"data/scope.md","ref":"./data/scope.md","articles":[]},{"title":"es6 class的底层实现","level":"1.4.11","depth":2,"path":"data/class.md","ref":"./data/class.md","articles":[]},{"title":"内存泄露和堆栈溢出","level":"1.4.12","depth":2,"path":"data/overflow.md","ref":"./data/overflow.md","articles":[]},{"title":"promise","level":"1.4.13","depth":2,"path":"data/promise.md","ref":"./data/promise.md","articles":[]},{"title":"自定义类型的错误对象","level":"1.4.14","depth":2,"path":"data/throw.md","ref":"./data/throw.md","articles":[]},{"title":"数组、字符串的存储原理","level":"1.4.15","depth":2,"path":"data/array.md","ref":"./data/array.md","articles":[]},{"title":"caller和callee","level":"1.4.16","depth":2,"path":"data/caller.md","ref":"./data/caller.md","articles":[]},{"title":"Object.defineProperty()","level":"1.4.17","depth":2,"path":"data/defineProperty.md","ref":"./data/defineProperty.md","articles":[]},{"title":"map forEach for...in for...of遍历的区别","level":"1.4.18","depth":2,"path":"data/traversal.md","ref":"./data/traversal.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"data/data.md","mtime":"2020-07-12T13:47:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-21T14:51:47.503Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"底层数据结构","level":"1.4.1","depth":2,"next":{"title":"数据深度克隆","level":"1.4.2","depth":2,"path":"data/deepclone.md","ref":"./data/deepclone.md","articles":[]},"previous":{"title":"JavaScript基础","level":"1.4","depth":1,"ref":"","articles":[{"title":"底层数据结构","level":"1.4.1","depth":2,"path":"data/data.md","ref":"./data/data.md","articles":[]},{"title":"数据深度克隆","level":"1.4.2","depth":2,"path":"data/deepclone.md","ref":"./data/deepclone.md","articles":[]},{"title":"空对象判断","level":"1.4.3","depth":2,"path":"data/objectJudge.md","ref":"./data/objectJudge.md","articles":[]},{"title":"类数组","level":"1.4.4","depth":2,"path":"data/arguments.md","ref":"./data/arguments.md","articles":[]},{"title":"数组去重","level":"1.4.5","depth":2,"path":"data/distinct.md","ref":"./data/distinct.md","articles":[]},{"title":"数组扁平化","level":"1.4.6","depth":2,"path":"data/flat.md","ref":"./data/flat.md","articles":[]},{"title":"this指向","level":"1.4.7","depth":2,"path":"data/this.md","ref":"./data/this.md","articles":[]},{"title":"实现new","level":"1.4.8","depth":2,"path":"data/new.md","ref":"./data/new.md","articles":[]},{"title":"手动实现instanceof","level":"1.4.9","depth":2,"path":"data/instanceof.md","ref":"./data/instanceof.md","articles":[]},{"title":"作用域","level":"1.4.10","depth":2,"path":"data/scope.md","ref":"./data/scope.md","articles":[]},{"title":"es6 class的底层实现","level":"1.4.11","depth":2,"path":"data/class.md","ref":"./data/class.md","articles":[]},{"title":"内存泄露和堆栈溢出","level":"1.4.12","depth":2,"path":"data/overflow.md","ref":"./data/overflow.md","articles":[]},{"title":"promise","level":"1.4.13","depth":2,"path":"data/promise.md","ref":"./data/promise.md","articles":[]},{"title":"自定义类型的错误对象","level":"1.4.14","depth":2,"path":"data/throw.md","ref":"./data/throw.md","articles":[]},{"title":"数组、字符串的存储原理","level":"1.4.15","depth":2,"path":"data/array.md","ref":"./data/array.md","articles":[]},{"title":"caller和callee","level":"1.4.16","depth":2,"path":"data/caller.md","ref":"./data/caller.md","articles":[]},{"title":"几个对象方法","level":"1.4.17","depth":2,"path":"data/defineProperty.md","ref":"./data/defineProperty.md","articles":[]},{"title":"map forEach for...in for...of遍历的区别","level":"1.4.18","depth":2,"path":"data/traversal.md","ref":"./data/traversal.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"data/data.md","mtime":"2020-07-26T07:07:13.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-03T08:57:05.052Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
