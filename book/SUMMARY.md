@@ -2,6 +2,7 @@
 * html
   * [页面加载海量数据而不冻结前端ui](./html/bigDate.md)
   * [html常用标签及其属性](./html/tag.md)
+  * [meta标签](./html/meta.md)
   * [doctype和盒模型](./html/doctype.md)
 * css
   * [用css实现弹出框](./css/popup.md)
@@ -9,7 +10,6 @@
   * [浏览器默认标签样式总结及css初始化程序](./css/default.md)
   * [雪碧图](./css/sprite.md)
   * [可继承属性](./css/inherit.md)
-  * [完整的响应式布局方案](./css/media.md)
   * [css画几何图形](./css/geometric.md)
   * [a标签（inline-block）空白问题](./css/a.md)
   * [三栏布局](./css/layout.md)
@@ -45,17 +45,28 @@
   * [节流](./interview/debounce.md)
   * [正则表达式](./interview/reg.md)
   * [setTimeout 和 setInterval](./interview/setInterval.md) 
+  * [移动端开发要点](./interview/point.md)
 * 框架
   * [版本控制](./framework/git.md)
   * [react和vue的区别](./framework/difference.md)
   * [路由](./framework/router.md)
 * React
+  * [介绍项目](./project/introduction.md)
   * [JSX](./React/JSX.md)
+  * [immutable](./React/immutable.md)
+  * [hooks的使用](./React/hooks.md)
+  * [轮播图](./React/swiper.md)
+  * [引用传递](./React/Ref.md)
+  * [axios请求](./React/axios.md)
 * vue
   * [项目目录](./vue/framework.md)
-* 项目
   * [画板布局](./project/drawCSS.md)
   * [canvas](./project/canvas.md)
   * [图标编码](./project/icon.md)
+  
+  
+  
+  
+
 
 

@@ -109,9 +109,11 @@ setTimeout(function() {
 ### 6.如何处理循环的异步操作
 ```javascript
 ```
+
 ### 7.使用Promise实现串行
 ```javascript
 ```
+
 ### 8. promise 的异常捕获
 有两种方式：
 - 在 .then() 中定义第二个函数，捕获错误
@@ -196,7 +198,8 @@ const promise1 = new Promise((resolve, reject) => {
     resolve('success')
   }, 1000)
 })
-console.log('promise1', promise1)   // pendding
+console.log('promise1', promise1)   
+// promise1 Promise {<pending>}
 ```
 ### 11. 被抛出的错误能够被.catch捕获，return的error不会被捕获
 Error 是一个对象，只有在 throw 关键字时抛出的错误才是能够被捕捉的。
