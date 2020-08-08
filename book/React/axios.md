@@ -11,4 +11,8 @@ axios基于原生 XMLHttpRequest 和 promise 实现，具有以下特征：
 - 自动转换JSON数据
 - 客户端防止CSRF/XSS
 
-在本项目中用 axios.create 创建axios的实例，配置拦截器将数据从res变为res.data.
+在本项目中用 axios.create 创建axios的实例，配置拦截器将数据从res变为res.data
+
+### 数据请求的时间
+- 用useEffect在第一次渲染时发送http
+- 在dispatch中

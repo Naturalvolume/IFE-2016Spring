@@ -56,8 +56,10 @@
   * [immutable](./React/immutable.md)
   * [hooks的使用](./React/hooks.md)
   * [轮播图](./React/swiper.md)
-  * [引用传递](./React/Ref.md)
   * [axios请求](./React/axios.md)
+  * [实现loading动画](./React/loading.md)
+  * [性能优化](./React/performance.md)
+  * [组件封装和复用](./React/components.md)
 * vue
   * [项目目录](./vue/framework.md)
   * [画板布局](./project/drawCSS.md)
