@@ -18,3 +18,4 @@ immutable和react.memo结合，提高渲染性能
 - 符合react全员js的思想，不需要组件和样式之间的映射，创建后就是一个正常的react组件，直接在JSX中引入即可
 - 虽然结构、样式、逻辑不分离，但是**有利于组件间的隔离**
 - 可以把全局样式风格(如颜色、字体等)抽离在一个单独的文件，使用时用import引入，然后`${style["background-color"]}`使用样式。
+- 可以从props中传入数据，如把从后端传过来的专辑封面显示出来，在js文件中通过`<TopDesc background={currentAlbum.coverImgUrl}>`把coverImgUrl设置到背景上，然后在style.js中，`background: url(${props => props.background}) no-repeat;`可以取到props的值。
