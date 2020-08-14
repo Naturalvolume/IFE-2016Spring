@@ -4,6 +4,7 @@
   * [html常用标签及其属性](./html/tag.md)
   * [meta标签](./html/meta.md)
   * [doctype和盒模型](./html/doctype.md)
+  * [async、defer与DOMContentLoaded的执行关系](./html/DOMContentLoaded.md)
 * css
   * [用css实现弹出框](./css/popup.md)
   * [css3动画](./css/animate.md)
@@ -37,6 +38,7 @@
   * [url分割](./origin/queryString.md) 
   * [实现call apply bind](./origin/call.md)
   * [实现ajax请求](./origin/ajax.md)
+  * [实现promise](./origin/promise.md)
 * 面试常见
   * [高阶函数之返回函数的函数](./interview/add.md)
   * [函数柯里化](./interview/currying.md)
