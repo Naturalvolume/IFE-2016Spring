@@ -10,7 +10,7 @@
         let context = this
         // arguments 是dom事件
         let args = arguments
-        console.log(args)
+
         // 没到时间
         if(!flag) return
         flag = false

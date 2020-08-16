@@ -26,10 +26,10 @@ RegExp.prototype.clone = function() {
 }
 
 function cloneobj(obj) {
-  // 截取 [Object Array] 中的Array，slice可以有负值
+  // 截取 [object Array] 中的Array，slice可以有负值
   // 一定要注意后面的 -1 表示不要 ']'
   const type = Object.prototype.toString.call(obj).slice(8, -1)
-  console.log(type)
+
   let res
   switch(type) {
     // 包装对象和基本类型

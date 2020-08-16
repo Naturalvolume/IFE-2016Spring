@@ -74,7 +74,7 @@ person.setAge.getAge()   // 等价于 person.setAge.getAge.call(person.setAge)
 // 严格模式
 "use strict";
 var a = 1
-console.log(this.a)   // 1    this -> window
+console.log(this.a)   // undefined   this -> window
 
 // 非严格模式
 var a = 1

@@ -1,5 +1,5 @@
 ## caller 和 callee
-caller 和 callee之间的关系就像是雇员employer 和 店员employee之间的关系，就是调用和被调用的关系，二者都返回函数对象的引用。
+caller 和 callee之间的关系就像是店长employer 和 店员employee之间的关系，就是调用和被调用的关系，二者都返回函数对象的引用。
 ```javascript
   function parent(param1, param2, param3) {
 		child(param1, param2, param3);

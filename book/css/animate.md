@@ -7,7 +7,7 @@ css3 动画分为两种：一种是改变元素形状的`transform`，它没有�
 - 缩放：`scale(水平倍数，垂直倍数)`
 - 扭曲：skew
 - 重设参照点: `transform-origin: X || Y || Z`，单位可以是em、px、百分比、left／right等 
-`transform`还可以启用gpu加速
+`transform`还可以启用gpu加速，`will-change: transform`
 ### transition
 `transition`是`transition-property`、`transition-duration`、`transition-timing-function`、`transition-delay`的简写形式。
 它们可以取值为：

@@ -184,3 +184,180 @@ class MyPromise {
   }
 }
 ```
+
+```javascript
+class MyPromise {
+  constructor(executor) {
+    this.status = 'pending'
+    this.successVal = null
+    this.failVal = null
+    this.resolvedCallback = []
+    this.rejectedCallback = []
+
+    const _resolve = (value) => {
+      if(this.status !== 'pending') return 
+      setTimeout(() => {
+        this.status = 'fulfilled'
+        this.successVal = value
+        //console.log(value)
+        this.resolvedCallback.forEach(fn => fn(this.successVal))
+      }, 0)
+    }
+
+    const _reject = (error) => {
+      if(this.status !== 'pending') return
+      setTimeout(() => {
+        this.status = 'rejected'
+        this.failval = error
+        this.rejectedCallback.forEach(fn => fn(this.failval))
+      }, 0)
+    }
+    // 只要执行resolve reject的地方，都要加上错误捕捉
+    try {
+      executor(_resolve, _reject)
+    } catch (e) {
+      _reject(e)
+    }
+  }
+
+  then(onresloved, onrejected) {
+    onresloved = typeof onresloved === 'function' ? onresloved : value => value
+    onrejected = typeof onrejected === 'function' ? onrejected : error => {throw error}
+
+    let resPromise 
+    switch(this.status) {
+      case 'pending':
+        resPromise = new MyPromise((res, rej) => {
+          this.resolvedCallback.push((value) => {
+            try {
+              let data = onresloved(value)
+              this.resolvePromise(resPromise, data, res, rej)
+            } catch (e) {
+              rej(e)
+            }
+          
+        })
+        this.rejectedCallback.push((error) => {
+          try {
+            let data = onrejected(error)
+            res(data)
+          } catch (e) {
+            rej(e)
+          }
+          
+        })
+      })
+      break
+      case 'fulfilled':
+        resPromise = new Promise((res, rej) => {
+          setTimeout(() => {
+            try {
+              let data = onresloved(this.successVal)
+              res(data)
+            } catch (e) {
+              rej(e)
+            }
+            
+          }, 0)
+        })
+        break
+      case 'rejected':
+        resPromise = new Promise((res, rej) => {
+          setTimeout(() => {
+            try {
+              let data = onrejected(this.failVal)
+              rej(data)
+            } catch (e) {
+              rej(e)
+            }           
+          }, 0)
+        })
+    }
+    
+    return resPromise
+  }
+
+  resolvePromise(resPromise, data, resFunction, rejFunction) {   
+    if(!(data instanceof MyPromise)) {
+      return resFunction(data)
+    }
+    if(resPromise === data) return rejFunction(new TypeError("循环引用错误"))
+    // 执行data promise的then
+    data.then((value => {
+      // 如果返回的 value 还是promise对象，递归拆解
+      // 其实就是把本来返回的promise中resolve(value)，拆解出来，放到现在要返回的resPromise中
+      this.resolvePromise(resPromise, value, resFunction, rejFunction)
+    }), (error) => {
+      rejFunction(error)
+    })
+  }
+  catch (onrejected) {
+    return this.then(null, onrejected)
+  }
+  // 无论当前promise是成功还是失败，都执行回调函数，且把值传递下去
+  finally(callback) {
+    this.then((value) => {
+      return MyPromise.resolve(callback()).then(() => {
+        return value
+      })
+    }, err => {
+      return MyPromise.reject(callback()).then(() => {
+        return err
+      })
+    })
+  }
+
+  static resolve(value) {
+    // 1. 若value是promise，直接返回promise，后续可继续调用.then
+    if(value instanceof MyPromise) return data
+    // 2. thenable对象是含有then方法的对象，如let obj = {then: (res, rej) => {}}
+    return new MyPromise((res, rej) => {
+      if(value && value.then && typeof value.then === "function") {
+        // 执行then方法，用要返回的promise对象的回调
+        value.then(res, rej)
+      } else {
+        res(value)
+      }
+    }) 
+  }
+  static reject(value) {
+    return new MyPromise((res, rej) => {
+      rej(value)
+    })
+  }
+  static all (promiseArr) {
+    if(!Array.isArray(promiseArr)) return _reject(new TypeError("param error"))
+    let reslute = []
+    return new MyPromise((res, rej) => {
+      for(let i = 0; i < promiseArr.length; i++) {
+        console.log(reslute)
+        MyPromise.resolve(promiseArr[i]).then((value) => {
+          reslute[i] = value
+          console.log(reslute)
+          if(i === promiseArr.length-1) {
+            console.log(reslute)
+            res(reslute)
+          }
+          // 有一个错误就全部错误
+        }).catch(e => {
+          rej(e)
+        })
+      }
+    })
+  }
+  static race(promiseArr) {
+    if(!Array.isArray(promiseArr)) return _reject(new TypeError("param error"))
+    return new MyPromise((res, rej) => {
+      // 只要有一个状态改变且执行完成，就返回
+      for(let i = 0; i < promiseArr.length; i++) {
+        MyPromise.resolve(promiseArr[i]).then((value) => {
+          return res(value)
+        }).catch((e) => {
+          rej(e)
+          return
+        })
+      }
+    })
+  }
+}
+```

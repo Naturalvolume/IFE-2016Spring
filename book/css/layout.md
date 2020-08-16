@@ -115,7 +115,7 @@ body {
 
 #left {
   width: 200px; 
-  margin-left: 100%;
+  margin-left: -100%;
   /* 一直以为浮动元素不能用定位了呢，孤陋寡闻了 */
   position: relative;
   right: 200px;
@@ -143,6 +143,7 @@ float，浮动，使元素的边界和相邻的同一个方向浮动的元素边
 这里 100% 的百分比是相对于父元素的宽度而言的。元素设置了 margin-left: -100%，就会往左边移动父元素的宽度的100%
 
 **问题**：
+- 中间栏没有用到float的性质，但是还是给它设置了float:left，是因为，只有三个元素都是浮动的了，它们才会紧挨着，设置margin-left才管用。
 - 为什么要给 body 设置 min-width: 550px;
 - 中间栏设置宽度 width: 100%; 是什么意思？若设置 width:1200px 会有什么现象？
 - 为什么 footer 要设置 clear:both，还有哪些方法可以实现同样的效果？
