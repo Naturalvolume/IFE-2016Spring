@@ -6,6 +6,7 @@ setTimeout(callback, time) 是处理异步的一种传统方式，在 time 毫�
 - 最后执行的时间会 大于等于 time 
 - 会出现回调地狱
 - 清除定时器用 clearTimeout
+- html5规定time最小值不得低于4ms，若低于这个值就会自动增加，并且，对于**dom的变动（尤其是涉及到页面重新渲染的部分）**，通常不会立即执行，而是每16ms执行一次（此时用**requestAnimationFrame()**效果更好）
 
 ### setInterval
 setInterval(callback, time) 是间隔 time 时间循环执行回调函数，除非用 clearInterval 清除setInterval
