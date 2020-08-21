@@ -64,3 +64,17 @@ animation 需要跟 keyframe 配合使用，在 keyframe 中定义动画的各�
 
 ### css动画的性能
 能开启gpu加速的属性`transform`和`opacity`，所以放大字体时，用`transform: scale()`比`font-size`性能更好，还有`will-change`
+### 题目
+让div元素1s后变大，2s后变圆
+```css
+@keyframes change {
+  50% { 
+    width: 100px;
+    height: 200px;
+  }
+  100% { 
+    border-radius: 50%;
+  }
+}
+animation: change 2 linear;
+```
