@@ -39,7 +39,7 @@
   - application/x-www-form-urlencoded
 
 对于简单请求，浏览器直接发出一个CORS请求，并在请求头中加入一个Origin段来描述本次请求来自哪个源（协议＋域名＋端口），服务器在返回头中返回包含`Access-Control-Allow-Origin`段，表示哪些外域可以访问：
-- Access-Control-Allow-Origin: *   表示该资源可以被任意外域访问
+- Access-Control-Allow-Origin: *   表示该资源可以被任意外域访问（不能携带cookie）
 - Access-Control-Allow-Origin: http://foo.example    表示只能被这个网址访问，其它外域不可以
 #### 例子二：预检请求
 若不是简单请求，就要对请求先使用 options 方法确认服务器是否允许该请求，添加如以下的请求头：
@@ -56,7 +56,7 @@
 - 浏览器不支持预检请求的重定向，否则会报错
 
 #### 附带身份凭证的请求
-CORS 的 XMLHttpRequest 和Fetch 可以基于cookies发送身份凭证，默认的跨域请求并不会发送身份凭证，需要设置XMLHttpRequest的特殊标志位 withCredentials 为 true，且服务器响应Access-Control-Allow-Credentials: true 和 Access-Control-Allow-Origin：http://foo.example （不能是*）才是请求成功。
+CORS 的 XMLHttpRequest 和Fetch 可以基于cookies发送身份凭证，默认的跨域请求并不会发送身份凭证，需要设置XMLHttpRequest的特殊标志位 withCredentials 为 true，且服务器响应Access-Control-Allow-Credentials: true 和 Access-Control-Allow-Origin：http://foo.example **（不能是*）**才是请求成功。
 ### localStorage的跨域存储
 同一浏览器的相同域名和端口的不同页面间可以共享相同的loaclStorage，但是不同页面间无法共享sessionStorage的信息（iframe的同源页面可以共享）。
 
