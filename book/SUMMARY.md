@@ -8,6 +8,7 @@
 * css
   * [用css实现弹出框](./css/popup.md)
   * [css3动画](./css/animate.md)
+  * [css3新增选择器](./css/selector.md)
   * [浏览器默认标签样式总结及css初始化程序](./css/default.md)
   * [雪碧图](./css/sprite.md)
   * [可继承属性](./css/inherit.md)
@@ -37,6 +38,7 @@
   * [caller和callee](./data/caller.md)
   * [几个对象方法](./data/defineProperty.md)
   * [map forEach for...in for...of遍历的区别](./data/traversal.md)
+  * [不用语法糖实现十进制转二进制](./data/change.md)
 * 手写源码
   * [url分割](./origin/queryString.md) 
   * [实现call apply bind](./origin/call.md)

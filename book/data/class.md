@@ -1,7 +1,7 @@
 ## Class
 es6 提供了面向对象的语法糖，在es5的实现中，每个对象都有 __proto__属性，指向对应构造函数的prototype属性，class同时有prototype属性和 __proto__ 属性，所以存在两条继承链。
 - 子类的 __proto__ 属性，表示构造函数继承，总是指向父类对象（在es5中子类作为构造函数__proto__本来应该指向Function.prototype）
-- 子类prototype属性的 __proto__ 属性，表示方法的继承，总是指向父类的 prototype 属性
+- 子类prototype属性的 __proto__ 属性，表示方法的继承，总是指向父类的 prototype 属性（本来指向object.prototype)
 
 类继承的实现:
 ```javascript

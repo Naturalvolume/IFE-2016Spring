@@ -327,16 +327,16 @@ class MyPromise {
   }
   static all (promiseArr) {
     if(!Array.isArray(promiseArr)) return _reject(new TypeError("param error"))
-    let reslute = []
+    let result = []
     return new MyPromise((res, rej) => {
       for(let i = 0; i < promiseArr.length; i++) {
-        console.log(reslute)
+        console.log(result)
         MyPromise.resolve(promiseArr[i]).then((value) => {
-          reslute[i] = value
-          console.log(reslute)
+          result[i] = value
+          console.log(result)
           if(i === promiseArr.length-1) {
-            console.log(reslute)
-            res(reslute)
+            console.log(result)
+            res(result)
           }
           // 有一个错误就全部错误
         }).catch(e => {

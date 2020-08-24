@@ -8,9 +8,14 @@
 
     var args = [];
     for(var i = 1, len = arguments.length; i < len; i++) {
+      // 传递字符串参数时，在这里会先解析字符串参数，
+      // 然后在 eval 中，" " + args + " " 这样的字符串拼接，会让原来的字符串参数变成普通参数
+      // 所以 eval执行时，就不是字符串参数了，会报错
+      // 因此把 arguments 解析的过程放在eval中
         args.push('arguments[' + i + ']');
     }
-
+    // 数组转换成字符串，会变成 1,2,3形式
+    // context.fn(arguments[1], arguments[2], auguments[3])
     eval('context.fn(' + args +')');
 
     delete context.fn
