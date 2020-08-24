@@ -41,18 +41,21 @@
   * [url分割](./origin/queryString.md) 
   * [实现call apply bind](./origin/call.md)
   * [实现ajax请求](./origin/ajax.md)
+  * [promise实现ajax](./origin/axios.md)
   * [实现promise](./origin/promise.md)
 * 面试常见
   * [高阶函数之返回函数的函数](./interview/add.md)
   * [函数柯里化](./interview/currying.md)
   * [首屏渲染](./interview/screen.md)
-  * [防抖](./interview/throttle.md)
-  * [节流](./interview/debounce.md)
+  * [节流](./interview/throttle.md)
+  * [防抖](./interview/debounce.md)
   * [正则表达式](./interview/reg.md)
   * [setTimeout 和 setInterval](./interview/setInterval.md) 
   * [移动端开发要点](./interview/point.md)
   * [实现一个JSONP、CORS](./interview/JSONP.md)
   * [用户登陆信息存储在哪里](./interview/cookie.md)
+  * [实现图片懒加载](./interview/lazyLoad.md)
+  * [实现轮播图](./interview/tabbar.md)
 * 框架
   * [版本控制](./framework/git.md)
   * [react和vue的区别](./framework/difference.md)
@@ -75,7 +78,10 @@
   * [画板布局](./project/drawCSS.md)
   * [canvas](./project/canvas.md)
   * [图标编码](./project/icon.md)
-  
+* node
+  * [核心模块](./node/center.md)
+  * [Restful架构](./node/Restful.md)
+  * [中间件](./node/middleware.md)
   
   
   

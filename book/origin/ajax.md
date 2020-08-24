@@ -9,10 +9,10 @@ ajax的核心是 XMLHttpRequest，完整的ajax请求包括以下几个步骤：
 - xhr.open(method, url, async)：发送请求
 - xhr.readyState：返回当前请求状态
   - 0(未初始化)还没有调用send()方法
-  - 1-(载入)已调用send()方法，正在发送请求
-  - 2-(载入完成)send()方法执行完成，已经接收到全部响应内容
-  - 3-(交互)正在解析响应内容
-  - 4-(完成)响应内容解析完成，可以在客户端调用了
+  - 1-(启动) 调用open()方法发送请求
+  - 2-(发送) 调用send()方法  
+  - 3-(接收) 接收到部分响应内容
+  - 4-(完成) 响应内容解析完成，可以在客户端调用了
 - xhr.status：http状态码
 - xhr.onreadystatechange()：readyState改变时，会触发onreadystatechange 事件
 ### 发送请求
@@ -39,7 +39,7 @@ var xhr=new XMLHttpRequest();
 xhr.open('post','/abc',true);
 xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 xhr.send('username=weiwei&age=19');
-xhr.onreadystatechange=function(){
+xhr.onreadystatechange = function() {
     if(xhr.readyState===4){
         if(xhr.status===200){
             console.log(JSON.parse(xhr.responseText));
@@ -56,7 +56,7 @@ function ajax(options) {
   options = options || {}     // 没有传入参数时，就指定参数
   options.type = (options.type || 'GET').toUpperCase()  // 请求方式默认为大写
   options.dataType = options.dataType || 'json'   // 设置响应数据格式，默认为json
-  console.log(options.type)
+
   var params = formatParams(options.data)   // 格式化请求数据
 
   var xhr

@@ -5,7 +5,7 @@
     // 1.用定时器实现，不是立即执行，是在time时间后执行
     var throttle1 = function(fun, time) {
       flag = true
-      return () => {
+      return function() {
         // 保存上下文
         let context = this
         // arguments 是dom事件
@@ -14,12 +14,13 @@
         // 没到时间
         if(!flag) return
         flag = false
-        setTimeout(function() {
+        setTimeout(() => {
           flag = true
           fun.call(context)
         }, time)
       }
     }
+
     // throttle在这里调用，保存content的this
     // content.onmousemove = throttle1(count, 10000);
     // 2.用时间戳实现，立即执行

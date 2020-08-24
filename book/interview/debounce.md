@@ -11,7 +11,7 @@
         // 如果timeout保存了定时器，就清除定时器
         if (timeout) clearTimeout(timeout);
         
-        timeout = setTimeout(() => {
+        timeout = setTimeout(function() {
             func.apply(context, args)
         }, wait);
       }
