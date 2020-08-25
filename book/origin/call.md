@@ -21,13 +21,18 @@
     delete context.fn
 }
 ```
-es6的实现方式，用展开字符接收 不是数组的 参数
+es6的实现方式，用剩余操作符接收 没有对应形参的参数，剩余操作符和arguments的不同：
+- 剩余参数只包含没有对应形参的实参
+- 剩余数组是真的数组，不是类数组，所以可以使用数组方法
+- arguments对象有其他附加的属性（比如callee属性）
 ```javascript
-Function.prototype.call = function (context, ...args) {
+Function.prototype.call = function (context, ...restArgs) {
   var context = context || window;
   context.fn = this;
-  // console.log(args)    输出 1,2,3
-  var result = eval('context.fn(...args)');
+  // console.log(restArgs)    输出 1,2,3
+  // 一定要记住！！！eval相当于直接执行
+  // 不要再用字符串拼接，直接调用！！！否则还是会字符串先解析一次
+  var result = eval('context.fn(...restArgs)');
 
   delete context.fn
   return result;
@@ -70,9 +75,9 @@ Function.prototype.call = function (context, args) {
 }
 ```
 ### bind 实现
-bind改变this指向是隐式调用 call 方法
+bind改变this指向是隐式调用 call 方法，注意 构造函数 也可以用bind重新绑定this
 ```javascript
-Function.prototype._bind = function(context, ...args) {
+Function.prototype._bind = function(obj, ...args) {
   // 异常处理，判断要改变指向的是不是函数
   if(typeof this != 'function') throw new Error('what is trying to be bound is not callable')
   // 保存调用的函数
@@ -81,9 +86,9 @@ Function.prototype._bind = function(context, ...args) {
   let fBound = function() {
     // new 的时候隐式创建 this，指向实例
     // 判断 this 是否是由new创建的，是的话就让函数的this变为实例的this
-    return fn.apply(this instanceof fBound ? this : context, args.concat(Array.prototype.slice.call(arguments)))
+    return fn.apply(this instanceof fBound ? this : obj, args.concat(Array.prototype.slice.call(arguments)))
   }
-  // 用空对象当作 fBound 继承 fn 的桥梁
+  // 用空对象当作 fBound构造函数和实例 继承 fn 的桥梁
   let fNOP = function() {}
   if(fn.prototype) {
     fNOP.prototype = fn.prototype
@@ -107,4 +112,5 @@ let Irun = run._bind(obj, 'a')
 let instance = new Irun('b')
 console.log(instance.val)
 ```
+最后把 new fn() 的效果和 new fBound 的效果是一致的
 参考：[前端面试题——自己实现bind](https://zhuanlan.zhihu.com/p/85438296)

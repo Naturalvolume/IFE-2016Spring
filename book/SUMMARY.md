@@ -64,6 +64,7 @@
   * [路由](./framework/router.md)
   * [移动端、小程序、flutter、weex的异同](./framework/weex.md)
   * [babel 的原理](./framework/babel.md)
+  * [热加载和热刷新](./framework/flash.md)
 * React
   * [介绍项目](./project/introduction.md)
   * [JSX](./React/JSX.md)

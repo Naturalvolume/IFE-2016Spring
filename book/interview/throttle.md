@@ -1,5 +1,10 @@
 ## 节流
 节流就像是公交车的发车时间，只能每隔一段时间发出，未到时间就不会发车。
+
+应用场景：
+- 页面调整（resize）
+- 页面滚动（scroll）
+- 抢购疯狂点击（mousedown）
 ```javascript
 // 节流，每隔固定时间执行一次，稀释执行频率
     // 1.用定时器实现，不是立即执行，是在time时间后执行
@@ -14,6 +19,7 @@
         // 没到时间
         if(!flag) return
         flag = false
+        // 定时器中不管是箭头函数还是函数this都指向window
         setTimeout(() => {
           flag = true
           fun.call(context)
