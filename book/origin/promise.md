@@ -42,6 +42,7 @@ class MyPromise {
     console.log(this.status)
     // 判断参数是否确实为函数
     // 若不是函数，继续向下传递 resolve 的值，称为返回值穿透
+    // 是特意用typeof判断，这样catch方法调用then(null, rej)时，不会再给res补值，执行成功回调
     onResolved = typeof onResolved === 'function' ? onResolved : value => value
     // 若失败回调不是函数，或者没有传入失败回调，就继续向下抛出错误
     // 注意 throw error要加大括号，不加大括号 代表 return throw error 是错误的语法
@@ -141,7 +142,7 @@ class MyPromise {
       let resArr = new Array(promiseArr.length)
       // 保存执行成功的promise数量
       let count = 0
-      for(let i = 0; i < promiseArr.length; i++) {
+      for(let i = 0; i < promiseAr］r.length; i++) {
         // 不需要判断是否为promise类型，因为all的参数可以不是promise的
         // if(!(promiseArr[i] instanceof MyPromise)) return rej(new TypeError(""))
         // promise数组中 可能不是promise对象，所以用 resolve 再包裹一下

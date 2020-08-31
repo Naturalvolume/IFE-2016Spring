@@ -17,7 +17,7 @@ if (true) {
 typeof undeclared_variable // "undefined"
 ```
 
-例子三：行参也存在暂时性死区
+例子三：形参也存在暂时性死区
 ```javascript
 function bar(x = y, y = 2) {
   return [x, y];
