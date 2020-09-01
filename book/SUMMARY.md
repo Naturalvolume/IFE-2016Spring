@@ -19,7 +19,7 @@
   * [flex换行问题](./css/flexWrap.md)
   * [z-index、transformZ和perspective]
 * JavaScript基础
-  * [let](./data/let.md)
+  * [let和const](./data/let.md)
   * [javascript的单线程](./data/js.md)
   * [底层数据结构](./data/data.md)
   * [数据深度克隆](./data/deepclone.md)
@@ -40,6 +40,7 @@
   * [几个对象方法](./data/defineProperty.md)
   * [map forEach for...in for...of遍历的区别](./data/traversal.md)
   * [不用语法糖实现十进制转二进制](./data/change.md)
+  * [Proxy和reflect](./data/proxy.md)
 * 手写源码
   * [url分割](./origin/queryString.md) 
   * [实现call apply bind](./origin/call.md)
@@ -56,9 +57,6 @@
   * [首屏渲染](./interview/screen.md)
   * [正则表达式](./interview/reg.md) 
   * [移动端开发要点](./interview/point.md)
-  * [实现一个JSONP、CORS](./interview/JSONP.md)
-  * [DNS预解析](./interview/dns.md)
-  * [用户登陆信息存储在哪里](./interview/cookie.md)
   * [实现图片懒加载](./interview/lazyLoad.md)
   * [实现轮播图](./interview/tabbar.md)
 * 框架
@@ -88,7 +86,11 @@
   * [核心模块](./node/center.md)
   * [Restful架构](./node/Restful.md)
   * [中间件](./node/middleware.md)
-  
+* http
+  * [实现一个JSONP、CORS](./interview/JSONP.md)
+  * [DNS预解析](./interview/dns.md)
+  * [用户登陆信息存储在哪里](./interview/cookie.md)
+  * [CSP](./http/CSP.md)
   
   
 

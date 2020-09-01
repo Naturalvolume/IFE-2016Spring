@@ -111,6 +111,35 @@ setTimeout(function() {
 ```
 
 ### 7.使用Promise实现串行
+假设有如下promise数组：
+```javascript
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(5)
+  }, 200)
+})
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(3)
+  }, 100)
+})
+const promise3 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(5)
+  }, 200)
+})
+let arr = [promise1, promise2, promise3]
+```
+**实现方式一**：async await
+```javascript
+var fn = async function(arr) {
+  for(let i=0; i<arr.length; i++) {
+    var result = await arr[i]
+  }
+}
+```
+```javascript
+```
 ```javascript
 ```
 
