@@ -134,13 +134,31 @@ let arr = [promise1, promise2, promise3]
 ```javascript
 var fn = async function(arr) {
   for(let i=0; i<arr.length; i++) {
+    // 每个 promise 执行完毕变成resolved后，才会返回值
     var result = await arr[i]
+    result.then((value) => {
+      console.log(value)
+    }, (err) => {
+      console.log(err)
+    })
   }
 }
+
+fn(arr)
 ```
+**实现方式二**: forEach
 ```javascript
-```
-```javascript
+const promiseThen = function(arr) {
+  arr.forEach(item => {
+    Promise.resolve().then(() => {
+      return item
+    }).then((value) => {
+      console.log(value)
+    }, (err) => {
+      console.log(err)
+    })
+  })
+}
 ```
 
 ### 8. promise 的异常捕获
