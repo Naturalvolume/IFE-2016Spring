@@ -97,6 +97,7 @@
   * [CSP](./http/CSP.md)
   * [代理](./http/proxy.md)
   * [websocket](./http/websocket.md)
+  * [get和post](./http/get.md)
   
   
 
