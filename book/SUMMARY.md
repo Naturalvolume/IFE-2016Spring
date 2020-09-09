@@ -6,6 +6,9 @@
   * [doctype和盒模型](./html/doctype.md)
   * [async、defer与DOMContentLoaded的执行关系](./html/DOMContentLoaded.md)
   * [事件捕获和冒泡](./html/bubble.md)
+  * [浏览器的相关知识](./html/browser.md)
+  * [垃圾回收机制和内存泄露](./html/scavenge.md)
+  * [前端异常的处理方案](./html/error.md)
 * css
   * [用css实现弹出框](./css/popup.md)
   * [css3动画](./css/animate.md)
@@ -98,6 +101,8 @@
   * [代理](./http/proxy.md)
   * [websocket](./http/websocket.md)
   * [get和post](./http/get.md)
+  * [保证页面文件被完整送达浏览器](./http/send.md)
+  * [web安全](./http/secure.md)
   
   
 
