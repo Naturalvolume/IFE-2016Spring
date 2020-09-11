@@ -75,3 +75,35 @@ function interval(func, w, t){
 };
 interval(()=>{console.log('success')}, 1000,10)
 ```
+
+### setTimeout的实现原理
+chrome中除了正常的消息队列外，还有一个**延迟消息队列**，用来维护要延迟执行的任务列表，包括定时器和chromium内部一些需要延迟执行的任务。
+
+当通过js创建一个定时器，渲染进程会将该定时器的回调任务包装成有基本信息的回调任务添加到延迟队列中：
+```javascript
+// 原有的回调函数
+function foo(){
+  console.log("test")
+}
+var timeoutID = setTimeout(foo,100);
+
+// 包装成包含 回调函数、当前发起时间、延迟执行时间等
+struct DelayTask{
+  int64 id；
+  CallBackFunction cbf;
+  int start_time;
+  int delay_time;
+};
+DelayTask timerTask;
+timerTask.cbf = foo;
+timerTask.start_time = getCurrentTime(); //获取当前时间
+timerTask.delay_time = 100;//设置延迟执行时间
+```
+
+把包装好的回调函数添加到延迟执行队列中，由用来处理延迟执行任务的函数`ProcessDelayTask`处理，`ProcessDelayTask`函数会根据发起时间和延迟时间计算出到期的任务，然后依次执行到期的任务。
+
+**setTimeout的注意事项**：
+- 回调函数执行的时间不一定是定时时间
+- this指向window
+- 嵌套调用5次后，系统会设置最短执行时间间隔为**4ms**，是因为chrom源码中当定时器被嵌套5次以上，系统会判断该函数方法被阻塞了，然后设置时间间隔为**4ms**
+- 延迟执行时间的最大值：chrome、safari、firefox都是以32比特存储延时值的，32比特最大能存放的数字是 2147483647 毫秒，所以当设置的延迟值大于2147483647 毫秒（大约 24.8 天）时就会溢出，导致定时器被立即执行
