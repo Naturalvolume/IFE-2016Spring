@@ -142,7 +142,7 @@ class MyPromise {
       let resArr = new Array(promiseArr.length)
       // 保存执行成功的promise数量
       let count = 0
-      for(let i = 0; i < promiseAr］r.length; i++) {
+      for(let i = 0; i < promiseArr.length; i++) {
         // 不需要判断是否为promise类型，因为all的参数可以不是promise的
         // if(!(promiseArr[i] instanceof MyPromise)) return rej(new TypeError(""))
         // promise数组中 可能不是promise对象，所以用 resolve 再包裹一下

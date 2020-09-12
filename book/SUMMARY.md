@@ -9,6 +9,7 @@
   * [浏览器的相关知识](./html/browser.md)
   * [垃圾回收机制和内存泄露](./html/scavenge.md)
   * [前端异常的处理方案](./html/error.md)
+  * [会话跟踪的方法](./html/session.md)
 * css
   * [用css实现弹出框](./css/popup.md)
   * [css3动画](./css/animate.md)
@@ -75,6 +76,7 @@
   * [移动端、小程序、flutter、weex的异同](./framework/weex.md)
   * [babel 的原理](./framework/babel.md)
   * [热加载和热刷新](./framework/flash.md)
+  * [source Map](./framework/source.md)
 * React
   * [介绍项目](./project/introduction.md)
   * [JSX](./React/JSX.md)
@@ -86,11 +88,17 @@
   * [性能优化](./React/performance.md)
   * [组件封装和复用](./React/components.md)
   * [遇到的问题](./React/question.md)
+  * [react中refs作用](./React/refs.md)
+  * [react事件](./React/event.md)
+  * [react严格模式](./React/strictMode.md)
+  * [context](./React/context.md)
 * vue
   * [项目目录](./vue/framework.md)
   * [画板布局](./project/drawCSS.md)
   * [canvas](./project/canvas.md)
   * [图标编码](./project/icon.md)
+  * [父组件监听子组件的生命周期](./vue/watcher.md)
+  * [虚拟dom的缺点](./vue/weak.md)
 * node
   * [核心模块](./node/center.md)
   * [Restful架构](./node/Restful.md)
