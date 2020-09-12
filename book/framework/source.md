@@ -25,3 +25,5 @@ mappings 是 source map 文件对象的一个属性，存储着位置信息，�
 
 ### VLQ编码
 可以非常精简的表示很大的数值
+
+参考：[JavaScript Source Map 详解](http://www.ruanyifeng.com/blog/2013/01/javascript_source_map.html)
