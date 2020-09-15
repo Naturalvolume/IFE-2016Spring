@@ -69,6 +69,7 @@
   * [移动端开发要点](./interview/point.md)
   * [实现图片懒加载](./interview/lazyLoad.md)
   * [实现轮播图](./interview/tabbar.md)
+  * [实现sleep函数](./interview/sleep.md)
 * 框架
   * [版本控制](./framework/git.md)
   * [react和vue的区别](./framework/difference.md)

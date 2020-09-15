@@ -130,34 +130,24 @@ const promise3 = new Promise((resolve, reject) => {
 })
 let arr = [promise1, promise2, promise3]
 ```
+
 **实现方式一**：async await
 ```javascript
 var fn = async function(arr) {
   for(let i=0; i<arr.length; i++) {
     // 每个 promise 执行完毕变成resolved后，才会返回值
     var result = await arr[i]
-    result.then((value) => {
-      console.log(value)
-    }, (err) => {
-      console.log(err)
-    })
+    console.log(result)
   }
 }
 
 fn(arr)
 ```
-**实现方式二**: forEach
+
+**实现方式二**: reduce
 ```javascript
 const promiseThen = function(arr) {
-  arr.forEach(item => {
-    Promise.resolve().then(() => {
-      return item
-    }).then((value) => {
-      console.log(value)
-    }, (err) => {
-      console.log(err)
-    })
-  })
+  
 }
 ```
 
