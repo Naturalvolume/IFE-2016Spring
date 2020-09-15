@@ -105,9 +105,9 @@
   * [Restful架构](./node/Restful.md)
   * [中间件](./node/middleware.md)
 * http
-  * [实现一个JSONP、CORS](./interview/JSONP.md)
   * [DNS预解析](./interview/dns.md)
   * [用户登陆信息存储在哪里](./interview/cookie.md)
+  * [同源限制与跨域](./interview/cros.md)
   * [CSP](./http/CSP.md)
   * [代理](./http/proxy.md)
   * [websocket](./http/websocket.md)
