@@ -1,12 +1,13 @@
 # 对象
 ### 一、判断对象是否为空
-1. Object.getOwnPropertyNames()
-返回对象中属性名生成对数组
+1.Object.getOwnPropertyNames()
+返回对象中属性名生成的数组
+
 ```javascript
 var obj = {}
 Object.getOwnPropertyNames(obj).length === 0; // true
 ```
-2. 把对象内容转换成字符串
+2.把对象内容转换成字符串
 
 不能用`toString`方法转换对象为字符串，因为`{}.toString()`，输出`[object Object]`
 ```javascript
@@ -15,7 +16,7 @@ var a = JSON.stringify(obj);
 a === "{}"; // true
 // a === {}; // false
 ```
-3. for...in循环
+3.for...in循环
 
 `for...in`循环能用来遍历对象类型，但是`for...of`只能用来遍历具有`Symbol.iterator`属性的对象，比如`Array、Set、Map`等。
 
@@ -31,7 +32,7 @@ function judgeObj(obj) {
 
 judgeObj(obj); // true
 ```
-4. Object.keys(obj)
+4.Object.keys(obj)
 
 `Object.keys(obj)`是`Object`的构造函数方法，返回`obj`的键值，它与`Symbol.iterator`对象的`keys`是不一样的：
 ```javascript

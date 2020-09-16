@@ -1,5 +1,6 @@
 # 类数组
 类数组是看起来像数组，实际上不是数组，而是键值为数字的对象，不能使用数组方法的数组，它只有自身定义的`length`属性是跟数组一样的。
+
 ```javascript
 let arguments = {
   // 键值从 0-n
@@ -12,10 +13,12 @@ let arguments = {
 ```
 类数组变成数组的几种方式
 - Array.from
+
 ```javascript
 let arr = Array.from(arguments) // ['a','b','c']
 ```
 - ES5中 Array.prototype.slice.call()
+
 ```javascript
 function test(a,b,c,d) 
    { 

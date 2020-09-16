@@ -58,7 +58,7 @@ function distinct(arr) {
 
 **优势**：虽然 Set 底层也是用`===`实现的，但是 Set 还是能去重 NaN
 ### 5. Object键值对
-利用object去重，把数组元素当作对象对键值，最后用`Object.keys(obj)`返回对象的键值数组。
+利用object去重，把数组元素当作对象的键值，最后用`Object.keys(obj)`返回对象的键值数组。
 ```javascript
 let arr = [1,1,2,3,'3','4','5']
 function distinct(arr) {

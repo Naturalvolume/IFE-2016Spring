@@ -1,12 +1,14 @@
 # js中的进制转换
 ### 十进制转其它进制，数字转字符
 用 toString(n) 方法可以实现十进制转n进制，并且会把数字转成字符串。
+
 ```javascript
 let num = 234
 console.log(num.toString(2))  
 console.log(num.toString(8))  
 console.log(num.toString(16))  
 ```
+
 ### 其它进制转十进制，字符转数字
 用 parseInt(str, n) 可以将 n 进制的 str 转成十进制
 ```javascript

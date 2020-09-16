@@ -6,6 +6,7 @@ var proxy = new Proxy(target, handler)
 // target: 要拦截的目标对象
 // handler: 也是对象，用来定制拦截行为
 ```
+
 ### Proxy支持的拦截操作
 - get(target, propKey, receiver): 拦截对象属性的读取，如`proxy.foo`和`proxy[foo]`会被拦截
 - set(target, propKey, receiver): 拦截对象属性的设置，如`proxy.foo = v`和`proxy[foo] = v`，返回布尔值
@@ -42,6 +43,7 @@ proxy.m()  // true
 - 修改某些Object方法的返回结果，让其变得更合理
 - 让Object操作都变成函数行为，如`name in obj`变成`Reflect.has(obj, name)`
 - Reflect对象和Proxy对象的方法一一对应，目的是让Proxy对象可以方便的调用对象的Reflect方法，完成默认行为，作为修改行为的基础
+
 ```javascript
 Proxy(target, {
   set: function(target, name, value, receiver) {

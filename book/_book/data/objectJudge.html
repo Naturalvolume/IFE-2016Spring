@@ -369,9 +369,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.9" data-path="../caa/equal.md">
+        <li class="chapter " data-level="1.3.9" data-path="../css/equal.html">
             
-                <span>
+                <a href="../css/equal.html">
             
                     
                     两栏等高
@@ -731,7 +731,7 @@
                 <a href="change.html">
             
                     
-                    不用语法糖实现十进制转二进制
+                    不用语法糖实现十进制转八进制
             
                 </a>
             
@@ -1704,23 +1704,19 @@
                                 
                                 <h1 id="&#x5BF9;&#x8C61;">&#x5BF9;&#x8C61;</h1>
 <h3 id="&#x4E00;&#x3001;&#x5224;&#x65AD;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x4E3A;&#x7A7A;">&#x4E00;&#x3001;&#x5224;&#x65AD;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x4E3A;&#x7A7A;</h3>
-<ol>
-<li>Object.getOwnPropertyNames()
-&#x8FD4;&#x56DE;&#x5BF9;&#x8C61;&#x4E2D;&#x5C5E;&#x6027;&#x540D;&#x751F;&#x6210;&#x5BF9;&#x6570;&#x7EC4;<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> obj = {}
+<p>1.Object.getOwnPropertyNames()
+&#x8FD4;&#x56DE;&#x5BF9;&#x8C61;&#x4E2D;&#x5C5E;&#x6027;&#x540D;&#x751F;&#x6210;&#x7684;&#x6570;&#x7EC4;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> obj = {}
 <span class="hljs-built_in">Object</span>.getOwnPropertyNames(obj).length === <span class="hljs-number">0</span>; <span class="hljs-comment">// true</span>
 </code></pre>
-</li>
-<li>&#x628A;&#x5BF9;&#x8C61;&#x5185;&#x5BB9;&#x8F6C;&#x6362;&#x6210;&#x5B57;&#x7B26;&#x4E32;</li>
-</ol>
+<p>2.&#x628A;&#x5BF9;&#x8C61;&#x5185;&#x5BB9;&#x8F6C;&#x6362;&#x6210;&#x5B57;&#x7B26;&#x4E32;</p>
 <p>&#x4E0D;&#x80FD;&#x7528;<code>toString</code>&#x65B9;&#x6CD5;&#x8F6C;&#x6362;&#x5BF9;&#x8C61;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x56E0;&#x4E3A;<code>{}.toString()</code>&#xFF0C;&#x8F93;&#x51FA;<code>[object Object]</code></p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> obj = {};
 <span class="hljs-keyword">var</span> a = <span class="hljs-built_in">JSON</span>.stringify(obj);
 a === <span class="hljs-string">&quot;{}&quot;</span>; <span class="hljs-comment">// true</span>
 <span class="hljs-comment">// a === {}; // false</span>
 </code></pre>
-<ol>
-<li>for...in&#x5FAA;&#x73AF;</li>
-</ol>
+<p>3.for...in&#x5FAA;&#x73AF;</p>
 <p><code>for...in</code>&#x5FAA;&#x73AF;&#x80FD;&#x7528;&#x6765;&#x904D;&#x5386;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#xFF0C;&#x4F46;&#x662F;<code>for...of</code>&#x53EA;&#x80FD;&#x7528;&#x6765;&#x904D;&#x5386;&#x5177;&#x6709;<code>Symbol.iterator</code>&#x5C5E;&#x6027;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x6BD4;&#x5982;<code>Array&#x3001;Set&#x3001;Map</code>&#x7B49;&#x3002;</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> obj = {};
 
@@ -1733,9 +1729,7 @@ a === <span class="hljs-string">&quot;{}&quot;</span>; <span class="hljs-comment
 
 judgeObj(obj); <span class="hljs-comment">// true</span>
 </code></pre>
-<ol>
-<li>Object.keys(obj)</li>
-</ol>
+<p>4.Object.keys(obj)</p>
 <p><code>Object.keys(obj)</code>&#x662F;<code>Object</code>&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD4;&#x56DE;<code>obj</code>&#x7684;&#x952E;&#x503C;&#xFF0C;&#x5B83;&#x4E0E;<code>Symbol.iterator</code>&#x5BF9;&#x8C61;&#x7684;<code>keys</code>&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#xFF1A;</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">let</span> set = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>()
 set.add(<span class="hljs-number">1</span>)
@@ -1813,7 +1807,7 @@ o.hasOwnProperty(<span class="hljs-string">&apos;prop&apos;</span>); <span class
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"空对象判断","level":"1.4.5","depth":2,"next":{"title":"类数组","level":"1.4.6","depth":2,"path":"data/arguments.md","ref":"./data/arguments.md","articles":[]},"previous":{"title":"数据深度克隆","level":"1.4.4","depth":2,"path":"data/deepclone.md","ref":"./data/deepclone.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"data/objectJudge.md","mtime":"2020-07-06T13:39:31.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-15T03:58:50.792Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"空对象判断","level":"1.4.5","depth":2,"next":{"title":"类数组","level":"1.4.6","depth":2,"path":"data/arguments.md","ref":"./data/arguments.md","articles":[]},"previous":{"title":"数据深度克隆","level":"1.4.4","depth":2,"path":"data/deepclone.md","ref":"./data/deepclone.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"data/objectJudge.md","mtime":"2020-09-15T12:15:40.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-15T03:58:50.792Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

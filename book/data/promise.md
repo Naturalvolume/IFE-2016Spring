@@ -5,12 +5,14 @@ Promise.resolve(1)
   .then(Promise.resolve(3))
   .then(console.log)
 ```
+
 Promise.resolve 方法的参数如果是一个原始值，或者是一个不具有 then 方法的对象，则 Promise.resolve 方法返回一个新的 Promise 对象，状态为resolved，Promise.resolve 方法的参数，会同时传给回调函数。
 then 方法接受的参数是函数，而如果传递的并非是一个函数，它实际上会将其解释为 then(null)，这就会导致前一个 Promise 的结果会穿透下面。
 
 输出1
 ### 2.红灯三秒亮一次，绿灯一秒亮一次，黄灯2秒亮一次；如何让三个灯不断交替重复亮灯？
 用递归实现 和 promise 实现
+
 ```javascript
 function red() {
     console.log('red');
@@ -45,6 +47,7 @@ var step = function () {
 
 step();
 ```
+
 [处理循环异步的方法](https://www.cnblogs.com/xiaole9924/p/11841629.html)
 
 ### 3.promise.all()
@@ -63,6 +66,7 @@ Promise.all([promise1, promise2, promise3]).then((values) => {
 ```
 只要有一个 失败reject，promise就失败，全部都 成功resolve，才会执行成功的回调。
 ### 4.微事件宏事件执行顺序
+
 ```javascript
 console.log('1');
 
@@ -155,6 +159,7 @@ const promiseThen = function(arr) {
 有两种方式：
 - 在 .then() 中定义第二个函数，捕获错误
 - 用promise .catch() 全部捕获错误，.catch放的位置会影响能否捕获到错误，因为promise会按顺序执行
+
 ```javascript
 // .then中定义两个函数
 let a = new Promise((resolve) => {
@@ -190,6 +195,7 @@ let a = new Promise((resolve) => {
     // 2
     // ReferenceError: resolve is not defined at demo.html:29
 ```
+
 当同时定义 .then 的err函数 和 .catch 时，会优先使用 .then 捕获，这跟代码的定义位置也有关系，若 .catch 定义在 .then 后面，就无法捕获错误。
 ```javascript
 let a = new Promise((resolve) => {
@@ -205,8 +211,10 @@ let a = new Promise((resolve) => {
 })
 // 错误被浏览器捕获，而不是被 catch 函数捕获
 ```
+
 [深刻理解Promise系列(四):catch](https://www.jianshu.com/p/1c829edec185)
 ### 9.promise .then可以被调用多次
+
 ```javascript
 const promise = new Promise((resolve, reject) => {
   setTimeout(() => {
@@ -227,8 +235,10 @@ promise.then((res) => {
 // success 1005
 // success 1007
 ```
+
 解释：promise 的 .then 或者 .catch 可以被调用多次，但这里 Promise 构造函数只执行一次。或者说 promise 内部状态一经改变，并且有了一个值，那么后续每次调用 .then 或者 .catch 都会直接拿到该值。
 ### 10.console.log(promise) 是输出promise的状态
+
 ```javascript
 const promise1 = new Promise((resolve, reject) => {
   setTimeout(() => {
@@ -238,6 +248,7 @@ const promise1 = new Promise((resolve, reject) => {
 console.log('promise1', promise1)   
 // promise1 Promise {<pending>}
 ```
+
 ### 11. 被抛出的错误能够被.catch捕获，return的error不会被捕获
 Error 是一个对象，只有在 throw 关键字时抛出的错误才是能够被捕捉的。
 ```javascript
@@ -282,6 +293,7 @@ TypeError: Chaining cycle detected for promise #<Promise>
     at bootstrap_node.js:607:3
 */ 
 ```
+
 ### 13. 向 .then 和 .catch 传入非函数参数，会发生值穿透
 .then 和 .catch的期望参数是函数。
 ```javascript
@@ -300,4 +312,5 @@ Promise.resolve(1)
   .then(function(){return Promise.resolve(3)})
   .then(console.log)
 ```
+
  Promise方法链通过return传值，没有return就只是相互独立的任务而已

@@ -8,12 +8,14 @@
 - 父元素要设置 overflow:hidden:
   - 触发父元素的BFC，使高度自适应浮动元素高度
   - 将超过部分隐藏，主要是隐藏多余的背景色
+  
 ```html
 <div class="container">
   <div class="son left"></div>
   <div class="son right"></div>
 </div>
 ```
+
 ```css
 .container {
   overflow: hidden;

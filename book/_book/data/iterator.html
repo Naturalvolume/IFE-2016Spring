@@ -369,9 +369,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.9" data-path="../caa/equal.md">
+        <li class="chapter " data-level="1.3.9" data-path="../css/equal.html">
             
-                <span>
+                <a href="../css/equal.html">
             
                     
                     两栏等高
@@ -731,7 +731,7 @@
                 <a href="change.html">
             
                     
-                    不用语法糖实现十进制转二进制
+                    不用语法糖实现十进制转八进制
             
                 </a>
             
@@ -1776,56 +1776,60 @@ iter.next() <span class="hljs-comment">// { value: undefined, done: true }</span
 <ul>
 <li>&#x89E3;&#x6784;&#x8D4B;&#x503C;</li>
 <li>&#x6269;&#x5C55;&#x8FD0;&#x7B97;&#x7B26;(...)&#xFF1A; &#x5C06;&#x4EFB;&#x4F55;&#x90E8;&#x7F72;&#x4E86;Iterator&#x63A5;&#x53E3;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x8F6C;&#x4E3A;&#x6570;&#x7EC4;</li>
-<li><code>yield *</code>: &#x540E;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x904D;&#x5386;&#x7ED3;&#x6784;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;&#x8BE5;&#x7ED3;&#x6784;&#x7684;&#x904D;&#x5386;&#x5668;&#x63A5;&#x53E3;
-```javascript
-let generator = function<em> () {
-yield 1;
-yield</em> [2,3,4];
-yield 5;
-};</li>
+<li><code>yield *</code>: &#x540E;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x904D;&#x5386;&#x7ED3;&#x6784;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;&#x8BE5;&#x7ED3;&#x6784;&#x7684;&#x904D;&#x5386;&#x5668;&#x63A5;&#x53E3;</li>
 </ul>
-<p>var iterator = generator();</p>
-<p>iterator.next() // { value: 1, done: false }
-iterator.next() // { value: 2, done: false }
-iterator.next() // { value: 3, done: false }
-iterator.next() // { value: 4, done: false }
-iterator.next() // { value: 5, done: false }
-iterator.next() // { value: undefined, done: true }</p>
-<pre><code>
-- &#x6570;&#x7EC4;&#x7684;&#x904D;&#x5386;&#x4F1A;&#x8C03;&#x7528;&#x904D;&#x5386;&#x5668;&#x63A5;&#x53E3;
-  - for...of
-  - Array.from()
-  - Map&#x3001;Set&#x3001;WeakMap&#x3001;WeakSet
-  - Promise.all()
-  - Promise.race()
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> generator = <span class="hljs-function"><span class="hljs-keyword">function</span>* (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">yield</span>* [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>];
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">5</span>;
+};
 
-### for...of&#x5FAA;&#x73AF;&#x548C;&#x5176;&#x5B83;&#x5FAA;&#x73AF;&#x7684;&#x533A;&#x522B;
-- &#x904D;&#x5386;&#x5177;&#x6709;`Symbol.iterator`&#x5C5E;&#x6027;&#x7684;&#x6570;&#x636E;
-- &#x76F4;&#x63A5;&#x53D6;&#x5230; value &#x503C;
-- &#x80FD;&#x7528;break&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;
+<span class="hljs-keyword">var</span> iterator = generator();
 
-
-### Generator&#x51FD;&#x6570;
-`Generator`&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x6700;&#x7B80;&#x5355;&#x7684;&#x5B9E;&#x73B0;`Symbol.iterator`
-```javascript
-let myIterable = {
-  [Symbol.iterator]: function* () {
-    yield 1;
-    yield 2;
-    yield 3;
+iterator.next() <span class="hljs-comment">// { value: 1, done: false }</span>
+iterator.next() <span class="hljs-comment">// { value: 2, done: false }</span>
+iterator.next() <span class="hljs-comment">// { value: 3, done: false }</span>
+iterator.next() <span class="hljs-comment">// { value: 4, done: false }</span>
+iterator.next() <span class="hljs-comment">// { value: 5, done: false }</span>
+iterator.next() <span class="hljs-comment">// { value: undefined, done: true }</span>
+</code></pre>
+<ul>
+<li>&#x6570;&#x7EC4;&#x7684;&#x904D;&#x5386;&#x4F1A;&#x8C03;&#x7528;&#x904D;&#x5386;&#x5668;&#x63A5;&#x53E3;<ul>
+<li>for...of</li>
+<li>Array.from()</li>
+<li>Map&#x3001;Set&#x3001;WeakMap&#x3001;WeakSet</li>
+<li>Promise.all()</li>
+<li>Promise.race()</li>
+</ul>
+</li>
+</ul>
+<h3 id="forof&#x5FAA;&#x73AF;&#x548C;&#x5176;&#x5B83;&#x5FAA;&#x73AF;&#x7684;&#x533A;&#x522B;">for...of&#x5FAA;&#x73AF;&#x548C;&#x5176;&#x5B83;&#x5FAA;&#x73AF;&#x7684;&#x533A;&#x522B;</h3>
+<ul>
+<li>&#x904D;&#x5386;&#x5177;&#x6709;<code>Symbol.iterator</code>&#x5C5E;&#x6027;&#x7684;&#x6570;&#x636E;</li>
+<li>&#x76F4;&#x63A5;&#x53D6;&#x5230; value &#x503C;</li>
+<li>&#x80FD;&#x7528;break&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;</li>
+</ul>
+<h3 id="generator&#x51FD;&#x6570;">Generator&#x51FD;&#x6570;</h3>
+<p><code>Generator</code>&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x6700;&#x7B80;&#x5355;&#x7684;&#x5B9E;&#x73B0;<code>Symbol.iterator</code></p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> myIterable = {
+  [<span class="hljs-built_in">Symbol</span>.iterator]: <span class="hljs-function"><span class="hljs-keyword">function</span>* (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">yield</span> <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">yield</span> <span class="hljs-number">3</span>;
   }
 }
-[...myIterable] // [1, 2, 3]
+[...myIterable] <span class="hljs-comment">// [1, 2, 3]</span>
 
-// &#x6216;&#x8005;&#x91C7;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x7B80;&#x6D01;&#x5199;&#x6CD5;
+<span class="hljs-comment">// &#x6216;&#x8005;&#x91C7;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x7B80;&#x6D01;&#x5199;&#x6CD5;</span>
 
-let obj = {
-  * [Symbol.iterator]() {
-    yield &apos;hello&apos;;
-    yield &apos;world&apos;;
+<span class="hljs-keyword">let</span> obj = {
+  * [<span class="hljs-built_in">Symbol</span>.iterator]() {
+    <span class="hljs-keyword">yield</span> <span class="hljs-string">&apos;hello&apos;</span>;
+    <span class="hljs-keyword">yield</span> <span class="hljs-string">&apos;world&apos;</span>;
   }
 };
 </code></pre>
+
                                 
                                 </section>
                             
@@ -1868,7 +1872,7 @@ let obj = {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Iterator和for...of","level":"1.4.25","depth":2,"next":{"title":"Generator函数","level":"1.4.26","depth":2,"path":"data/Generator.md","ref":"./data/Generator.md","articles":[]},"previous":{"title":"Proxy和reflect","level":"1.4.24","depth":2,"path":"data/proxy.md","ref":"./data/proxy.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"data/iterator.md","mtime":"2020-09-02T03:44:08.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-15T03:58:50.792Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Iterator和for...of","level":"1.4.25","depth":2,"next":{"title":"Generator函数","level":"1.4.26","depth":2,"path":"data/Generator.md","ref":"./data/Generator.md","articles":[]},"previous":{"title":"Proxy和reflect","level":"1.4.24","depth":2,"path":"data/proxy.md","ref":"./data/proxy.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"data/iterator.md","mtime":"2020-09-15T14:50:37.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-15T03:58:50.792Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

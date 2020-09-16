@@ -9,6 +9,7 @@ DOMContentLoaded的触发时间为：
 DOMContentLoaded 可能会在js执行之前或之后触发，因为DOMContentLoaded就是在dom树加载完成后触发
 ### 有defer属性的script时
 DOMContentLoaded 会在js执行之前触发，因为DOMContentLoaded就是在dom树加载完成后触发
+
 参考：[async、defer与DOMContentLoaded的执行先后关系](https://blog.csdn.net/zyj0209/article/details/79698430)
 
 ### window.OnLoad 和 DOMContentLoaded 触发的顺序

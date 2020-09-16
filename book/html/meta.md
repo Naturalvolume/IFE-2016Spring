@@ -7,6 +7,7 @@
 ```
 
 ### name + content属性
+主要用于设置网页的搜索关键字、版权信息、作者等
 ```css
 <!-- 网页作者 -->
 <meta name="author" content="开源技术团队"/>
@@ -35,7 +36,8 @@
  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 ```
 
-### http-equiv属性
+### http-equiv属性 + content
+模拟http协议文件头信息，当信息从服务器端传到客户端时，告诉浏览器如何正确的显示网页内容
 ```css
 <!-- expires指定网页的过期时间。一旦网页过期，必须从服务器上下载。 -->
 <meta http-equiv="expires" content="Fri, 12 Jan 2020 18:18:18 GMT"/>

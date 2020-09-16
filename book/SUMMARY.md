@@ -19,7 +19,7 @@
   * [可继承属性](./css/inherit.md)
   * [css画几何图形](./css/geometric.md)
   * [a标签（inline-block）空白问题](./css/a.md)
-  * [两栏等高](./caa/equal.md)
+  * [两栏等高](./css/equal.md)
   * [三栏布局](./css/layout.md)
   * [flex换行问题](./css/flexWrap.md)
   * [z-index、transformZ和perspective]
@@ -46,7 +46,7 @@
   * [caller和callee](./data/caller.md)
   * [几个对象方法](./data/defineProperty.md)
   * [map forEach for...in for...of遍历的区别](./data/traversal.md)
-  * [不用语法糖实现十进制转二进制](./data/change.md)
+  * [不用语法糖实现十进制转八进制](./data/change.md)
   * [Proxy和reflect](./data/proxy.md)
   * [Iterator和for...of](./data/iterator.md)
   * [Generator函数](./data/Generator.md)

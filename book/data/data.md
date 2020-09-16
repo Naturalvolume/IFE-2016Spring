@@ -2,6 +2,7 @@
 ### 内置类型
 javascript 目前有八种数据类型：number string boolean null undefined symbol Bigint object。 
 - number 数据表示的是双精度64位浮点数，能表示的范围为-9007199254740991(-(2^53-1))和9007199254740991（(2^53-1)），所以超过此范围的会失去精度。
+
 ```javascript
 console.log(999999999999999);  //=>10000000000000000
 console.log(9007199254740992 === 9007199254740993;)    // → true 居然是true!
@@ -36,6 +37,7 @@ var cuttingRope = function(n) {
 };
 ```
 - Symbol克服了对象属性重叠的情况，具体看[javascript变量和基本类型](https://juejin.im/post/5cc94723f265da034c7036e6)
+
 ### null 和 undefined 的不同
 `null`是**空对象指针**
 - 作为函数参数，表示该函数的参数不是对象
@@ -67,24 +69,28 @@ obj = null; // 把变量obj指向空对象指针，AAAFFF000这个堆内存会�
 基本类型可以被当作包装对象使用，如调用`toString`和`valueOf`，javascript 引擎在运行时会自动把**基本类型的值**转换成**包装对象实例**，使用完后立即销毁，这就是`num = 1`和`Number(1)`的区别。
 
 **拆箱操作**：从包装对象转成基本类型，用 valueOf 或 toString
+
 **装箱操作**：从基本类型转成包装对象，分为 隐式装箱 和 显式装箱。
+
 ```javascript
 // 隐式装箱
-let a = 'sun'
+  let a = 'sun'
 	let b = a.indexof('s') // 0 // 返回下标
 	// 上面代码在后台实际的步骤为：
 	let a = new String('sun')
 	let b = a.indexof('s')
-    a = null
+  a = null
 
 // 显式装箱
 let a = new String('sun	')
 ```
+
 **注意**：包装对象是只读的，不能修改值
 ### javascript 底层存储结构
 常见的数据存储类型有：数组、队列、链表、栈、堆、树、图、散列表，在javascript中使用的是堆和栈：
 - 基本数据类型按值直接存储在栈中，这样每种类型的大小是确定的，并且由系统自动分配和释放，优势有：内存可以及时得到回收、比堆更方便管理内存等；
 - 引用数据类型的地址用栈存储，数据用堆存储，`new`出来的布尔、数字也存储在堆中。
+
 ### 对象的底层实现
 散列表／哈西表
 更底层的可看：[javascript对象底层原理](https://www.cnblogs.com/full-stack-engineer/p/9684072.html)

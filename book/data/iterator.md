@@ -76,6 +76,7 @@ iter.next() // { value: undefined, done: true }
 - 解构赋值
 - 扩展运算符(...)： 将任何部署了Iterator接口的数据结构，转为数组
 - `yield *`: 后面是一个可遍历结构，会调用该结构的遍历器接口
+
 ```javascript
 let generator = function* () {
   yield 1;
@@ -104,7 +105,6 @@ iterator.next() // { value: undefined, done: true }
 - 遍历具有`Symbol.iterator`属性的数据
 - 直接取到 value 值
 - 能用break跳出循环
-
 
 ### Generator函数
 `Generator`函数可以最简单的实现`Symbol.iterator`

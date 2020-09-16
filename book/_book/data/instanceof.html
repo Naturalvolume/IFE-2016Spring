@@ -369,9 +369,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.9" data-path="../caa/equal.md">
+        <li class="chapter " data-level="1.3.9" data-path="../css/equal.html">
             
-                <span>
+                <a href="../css/equal.html">
             
                     
                     两栏等高
@@ -731,7 +731,7 @@
                 <a href="change.html">
             
                     
-                    不用语法糖实现十进制转二进制
+                    不用语法糖实现十进制转八进制
             
                 </a>
             
@@ -1702,7 +1702,23 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="&#x5B9E;&#x73B0;instanceof">&#x5B9E;&#x73B0;instanceof</h1>
+<p>&#x9996;&#x5148;&#xFF0C;&#x660E;&#x786E;&#x4E00;&#x70B9;&#xFF0C;<strong>instanceof&#x5DE6;&#x4FA7;&#x5FC5;&#x987B;&#x662F;&#x5BF9;&#x8C61;</strong>&#xFF0C;&#x624D;&#x80FD;&#x627E;&#x5230;&#x5B83;&#x7684;&#x539F;&#x578B;&#x94FE;&#xFF1B;&#x53F3;&#x4FA7;&#x5FC5;&#x987B;&#x662F;<strong>&#x51FD;&#x6570;&#xFF0C;&#x51FD;&#x6570;&#x624D;&#x4F1A;&#x6709;prototype&#x5C5E;&#x6027;</strong></p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">instance_of</span>(<span class="hljs-params">obj, funcObj</span>)</span>{    
+    <span class="hljs-comment">// &#x9A8C;&#x8BC1;&#x5982;&#x679C;&#x4E3A;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x5C31;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;false</span>
+    <span class="hljs-keyword">const</span> baseType = [<span class="hljs-string">&apos;string&apos;</span>, <span class="hljs-string">&apos;number&apos;</span>,<span class="hljs-string">&apos;boolean&apos;</span>,<span class="hljs-string">&apos;undefined&apos;</span>,<span class="hljs-string">&apos;symbol&apos;</span>]
+    <span class="hljs-keyword">if</span>(baseType.includes(<span class="hljs-keyword">typeof</span>(obj))) { <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span> }
+
+    <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>){           <span class="hljs-comment">// &#x65E0;&#x7EBF;&#x5FAA;&#x73AF;&#x7684;&#x5199;&#x6CD5;&#xFF08;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F; for(;;) &#xFF09;</span>
+        <span class="hljs-keyword">if</span>(obj.__proto__ === <span class="hljs-literal">null</span>){    <span class="hljs-comment">//&#x627E;&#x5230;&#x6700;&#x9876;&#x5C42;</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(obj.__proto__ === funcObj.prototype){       <span class="hljs-comment">//&#x4E25;&#x683C;&#x76F8;&#x7B49;</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+    }
+}
+</code></pre>
+
                                 
                                 </section>
                             
@@ -1745,7 +1761,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"手动实现instanceof","level":"1.4.12","depth":2,"next":{"title":"作用域","level":"1.4.13","depth":2,"path":"data/scope.md","ref":"./data/scope.md","articles":[]},"previous":{"title":"实现new","level":"1.4.11","depth":2,"path":"data/new.md","ref":"./data/new.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"data/instanceof.md","mtime":"2020-07-12T02:21:21.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-15T03:58:50.792Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"手动实现instanceof","level":"1.4.12","depth":2,"next":{"title":"作用域","level":"1.4.13","depth":2,"path":"data/scope.md","ref":"./data/scope.md","articles":[]},"previous":{"title":"实现new","level":"1.4.11","depth":2,"path":"data/new.md","ref":"./data/new.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"data/instanceof.md","mtime":"2020-09-15T13:41:20.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-15T03:58:50.792Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

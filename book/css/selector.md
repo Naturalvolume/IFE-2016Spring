@@ -5,6 +5,7 @@
 - E[attr^=“val”]: 属性值以 val 开头
 - E[attr$=“val”]: 以 val 结尾
 - E[attr*=“val”]: 包含 val
+
 ### 结构伪类选择器
 通过文档结构的先后关系匹配特定的元素，减少结构代码中id属性和class属性的定义，使文档更加简洁。
 
@@ -30,3 +31,9 @@ n的取值有：
 - E:enabled
 - E:disabled
 - E:checked
+
+### 伪元素选择器
+- ::first-letter：第一个字
+- ::first-line：第一行
+- ::selection：被选中的字段
+- ::before 和 ::after：必须有`content`属性
