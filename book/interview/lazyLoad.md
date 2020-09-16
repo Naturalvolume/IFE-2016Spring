@@ -8,6 +8,7 @@
 当元素超过父元素的高度，父元素就会出现滚动条，在滚动过程中元素有部分被隐藏，以下几个属性才有意义
 - element.scrollHeight: 包括当前不可见部分的元素的高度，而可见部分高度就是clientHeight，也就是scrollHeight >= clientHeight是一直成立的（没有滚动条时 scrollHeight == clientHeight）
 - element.scrollTop: 有滚动条时，滚动条向下滚动的距离也就是元素顶部被遮住部分的高度，也即被滚动条滚走的距离（没有滚动条时 scrollTop == 0恒成立）
+
 ### 实现
 - 给图片一个占位资源
 ```css
@@ -41,7 +42,9 @@ function lazyload() {
   }
 }
 ```
+
 - 加上节流，避免频繁触发
+
 为什么要用节流，而不是防抖
 ```javascript
 window.addEventListener('scroll', throttle(lazyload, 200));

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>页面渲染顺序 · GitBook</title>
+        <title>html文件解析过程 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -936,7 +936,7 @@
                 <a href="document.html">
             
                     
-                    页面渲染顺序
+                    html文件解析过程
             
                 </a>
             
@@ -1572,7 +1572,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.4" data-path="../http/CSP.html">
+        <li class="chapter " data-level="1.11.4" data-path="../http/jsonp.html">
+            
+                <a href="../http/jsonp.html">
+            
+                    
+                    实现jsonp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../http/CSP.html">
             
                 <a href="../http/CSP.html">
             
@@ -1585,7 +1598,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.5" data-path="../http/proxy.html">
+        <li class="chapter " data-level="1.11.6" data-path="../http/proxy.html">
             
                 <a href="../http/proxy.html">
             
@@ -1598,7 +1611,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.6" data-path="../http/websocket.html">
+        <li class="chapter " data-level="1.11.7" data-path="../http/websocket.html">
             
                 <a href="../http/websocket.html">
             
@@ -1611,7 +1624,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.7" data-path="../http/get.html">
+        <li class="chapter " data-level="1.11.8" data-path="../http/get.html">
             
                 <a href="../http/get.html">
             
@@ -1624,7 +1637,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.8" data-path="../http/send.html">
+        <li class="chapter " data-level="1.11.9" data-path="../http/send.html">
             
                 <a href="../http/send.html">
             
@@ -1637,7 +1650,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.9" data-path="../http/secure.html">
+        <li class="chapter " data-level="1.11.10" data-path="../http/secure.html">
             
                 <a href="../http/secure.html">
             
@@ -1685,7 +1698,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >页面渲染顺序</a>
+        <a href=".." >html文件解析过程</a>
     </h1>
 </div>
 
@@ -1701,6 +1714,22 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x9875;&#x9762;&#x7684;&#x52A0;&#x8F7D;&#x987A;&#x5E8F;">&#x9875;&#x9762;&#x7684;&#x52A0;&#x8F7D;&#x987A;&#x5E8F;</h1>
+<ul>
+<li>&#x6784;&#x5EFA;dom&#x6811;&#xFF0C;&#x521B;&#x5EFA;document&#x5BF9;&#x8C61;&#xFF0C;&#x89E3;&#x6790;&#x6587;&#x6863;&#x8282;&#x70B9;&#xFF0C;&#x6B64;&#x65F6;<code>document.readyState = &apos;loading&apos;</code></li>
+<li>&#x9047;&#x5230;link&#x5F15;&#x5165;&#x7684;css&#x6807;&#x7B7E;&#xFF0C;&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#x4E0B;&#x8F7D;css&#x6587;&#x4EF6;&#xFF0C;&#x4E0D;&#x963B;&#x585E;dom&#x7684;&#x89E3;&#x6790;</li>
+<li>&#x9047;&#x5230;script&#x6807;&#x7B7E;<ul>
+<li>&#x4E0B;&#x8F7D;&#x5E76;&#x6267;&#x884C;js&#xFF0C;&#x963B;&#x585E;dom&#x7684;&#x89E3;&#x6790;</li>
+<li>&#x6709;async&#x5C5E;&#x6027;&#x7684;script&#xFF0C;&#x5F02;&#x6B65;&#x52A0;&#x8F7D;js&#xFF0C;&#x52A0;&#x8F7D;&#x5B8C;&#x6210;&#x540E;&#x7ACB;&#x523B;&#x6267;&#x884C;js&#xFF0C;&#x963B;&#x585E;dom&#x89E3;&#x6790;</li>
+<li>&#x6709;defer&#x5C5E;&#x6027;&#x7684;script&#xFF0C;&#x63A8;&#x8FDF;&#x52A0;&#x8F7D;js&#xFF0C;dom&#x6811;&#x89E3;&#x6790;&#x5B8C;&#x6210;&#x540E;&#x5F00;&#x59CB;&#x52A0;&#x8F7D;&#x5E76;&#x6267;&#x884C;js</li>
+</ul>
+</li>
+<li>&#x9047;&#x5230;&#x542B;&#x6709;src&#x5C5E;&#x6027;&#x7684;&#x5176;&#x4ED6;&#x6807;&#x7B7E;&#xFF0C;&#x5982;<code>&lt;img&gt;</code>&#xFF0C;&#x5F02;&#x6B65;&#x52A0;&#x8F7D;src&#xFF0C;&#x7EE7;&#x7EED;&#x89E3;&#x6790;dom&#x7ED3;&#x6784;</li>
+<li>dom&#x6811;&#x6784;&#x5EFA;&#x5B8C;&#x6BD5;&#xFF0C;&#x6B64;&#x65F6;<code>document.readyState=&apos;interactive&apos;</code>&#xFF0C;&#x89E6;&#x53D1;<code>DOMContentLoaded</code>&#x4E8B;&#x4EF6;&#xFF0C;&#x6807;&#x5FD7;&#x7740;<strong>&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x7531;&#x540C;&#x6B65;&#x811A;&#x672C;&#x6267;&#x884C;&#x9636;&#x6BB5;&#x8F6C;&#x6362;&#x4E3A;&#x4E8B;&#x4EF6;&#x9A71;&#x52A8;&#x9636;&#x6BB5;</strong></li>
+<li>&#x6709;defer&#x5C5E;&#x6027;&#x7684;js&#x811A;&#x672C;&#x6267;&#x884C;</li>
+<li>&#x9875;&#x9762;&#x52A0;&#x8F7D;&#x6E32;&#x67D3;&#x5B8C;&#x6210;&#xFF0C;&#x72B6;&#x6001;&#x6539;&#x4E3A;<code>document.readyState=&apos;complete&apos;</code>&#xFF0C;&#x89E6;&#x53D1;<code>window.onLoad()</code>&#x4E8B;&#x4EF6;</li>
+<li>&#x6B64;&#x540E;&#xFF0C;&#x4EE5;&#x5F02;&#x6B65;&#x54CD;&#x5E94;&#x65B9;&#x5F0F;&#x5904;&#x7406;&#x7528;&#x6237;&#x8F93;&#x5165;&#x3001;&#x7F51;&#x7EDC;&#x4E8B;&#x4EF6;&#x7B49;</li>
+</ul>
+<h3 id="&#x4E0B;&#x8F7D;css&#x548C;js&#x7684;&#x5F71;&#x54CD;">&#x4E0B;&#x8F7D;css&#x548C;js&#x7684;&#x5F71;&#x54CD;</h3>
 <ul>
 <li>&#x73B0;&#x4EE3;&#x6D4F;&#x89C8;&#x5668;&#x4F1A;&#x5728;&#x5141;&#x8BB8;&#x8303;&#x56F4;&#x5185;&#xFF0C;&#x5E76;&#x884C;&#x53D1;&#x9001;&#x4E0B;&#x8F7D;&#x8BF7;&#x6C42;&#xFF0C;&#x4F46;&#x662F;&#x6309;&#x7167;&#x4E66;&#x5199;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x4EE3;&#x7801;</li>
 <li>&#x52A0;&#x8F7D;&#x548C;&#x6267;&#x884C;js&#x4F1A;&#x963B;&#x585E; dom &#x6811;&#x7684;&#x6E32;&#x67D3;&#xFF0C;&#x56E0;&#x4E3A;dom&#x6811;&#x5F62;&#x6210;&#x3001;js&#x6267;&#x884C;&#x3001;&#x9875;&#x9762;&#x6E32;&#x67D3;&#x90FD;&#x662F;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;</li>
@@ -1747,7 +1776,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"页面渲染顺序","level":"1.6.1","depth":2,"next":{"title":"高阶函数之返回函数的函数","level":"1.6.2","depth":2,"path":"interview/add.md","ref":"./interview/add.md","articles":[]},"previous":{"title":"面试常见","level":"1.6","depth":1,"ref":"","articles":[{"title":"页面渲染顺序","level":"1.6.1","depth":2,"path":"interview/document.md","ref":"./interview/document.md","articles":[]},{"title":"高阶函数之返回函数的函数","level":"1.6.2","depth":2,"path":"interview/add.md","ref":"./interview/add.md","articles":[]},{"title":"函数柯里化","level":"1.6.3","depth":2,"path":"interview/currying.md","ref":"./interview/currying.md","articles":[]},{"title":"首屏渲染","level":"1.6.4","depth":2,"path":"interview/screen.md","ref":"./interview/screen.md","articles":[]},{"title":"正则表达式","level":"1.6.5","depth":2,"path":"interview/reg.md","ref":"./interview/reg.md","articles":[]},{"title":"移动端开发要点","level":"1.6.6","depth":2,"path":"interview/point.md","ref":"./interview/point.md","articles":[]},{"title":"实现图片懒加载","level":"1.6.7","depth":2,"path":"interview/lazyLoad.md","ref":"./interview/lazyLoad.md","articles":[]},{"title":"实现轮播图","level":"1.6.8","depth":2,"path":"interview/tabbar.md","ref":"./interview/tabbar.md","articles":[]},{"title":"实现sleep函数","level":"1.6.9","depth":2,"path":"interview/sleep.md","ref":"./interview/sleep.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interview/document.md","mtime":"2020-08-27T07:32:15.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-15T03:58:50.792Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"html文件解析过程","level":"1.6.1","depth":2,"next":{"title":"高阶函数之返回函数的函数","level":"1.6.2","depth":2,"path":"interview/add.md","ref":"./interview/add.md","articles":[]},"previous":{"title":"面试常见","level":"1.6","depth":1,"ref":"","articles":[{"title":"html文件解析过程","level":"1.6.1","depth":2,"path":"interview/document.md","ref":"./interview/document.md","articles":[]},{"title":"高阶函数之返回函数的函数","level":"1.6.2","depth":2,"path":"interview/add.md","ref":"./interview/add.md","articles":[]},{"title":"函数柯里化","level":"1.6.3","depth":2,"path":"interview/currying.md","ref":"./interview/currying.md","articles":[]},{"title":"首屏渲染","level":"1.6.4","depth":2,"path":"interview/screen.md","ref":"./interview/screen.md","articles":[]},{"title":"正则表达式","level":"1.6.5","depth":2,"path":"interview/reg.md","ref":"./interview/reg.md","articles":[]},{"title":"移动端开发要点","level":"1.6.6","depth":2,"path":"interview/point.md","ref":"./interview/point.md","articles":[]},{"title":"实现图片懒加载","level":"1.6.7","depth":2,"path":"interview/lazyLoad.md","ref":"./interview/lazyLoad.md","articles":[]},{"title":"实现轮播图","level":"1.6.8","depth":2,"path":"interview/tabbar.md","ref":"./interview/tabbar.md","articles":[]},{"title":"实现sleep函数","level":"1.6.9","depth":2,"path":"interview/sleep.md","ref":"./interview/sleep.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interview/document.md","mtime":"2020-09-16T13:08:38.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-15T03:58:50.792Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

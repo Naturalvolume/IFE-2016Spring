@@ -938,7 +938,7 @@
                 <a href="../interview/document.html">
             
                     
-                    页面渲染顺序
+                    html文件解析过程
             
                 </a>
             
@@ -1574,7 +1574,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.4" data-path="../http/CSP.html">
+        <li class="chapter " data-level="1.11.4" data-path="../http/jsonp.html">
+            
+                <a href="../http/jsonp.html">
+            
+                    
+                    实现jsonp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../http/CSP.html">
             
                 <a href="../http/CSP.html">
             
@@ -1587,7 +1600,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.5" data-path="../http/proxy.html">
+        <li class="chapter " data-level="1.11.6" data-path="../http/proxy.html">
             
                 <a href="../http/proxy.html">
             
@@ -1600,7 +1613,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.6" data-path="../http/websocket.html">
+        <li class="chapter " data-level="1.11.7" data-path="../http/websocket.html">
             
                 <a href="../http/websocket.html">
             
@@ -1613,7 +1626,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.7" data-path="../http/get.html">
+        <li class="chapter " data-level="1.11.8" data-path="../http/get.html">
             
                 <a href="../http/get.html">
             
@@ -1626,7 +1639,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.8" data-path="../http/send.html">
+        <li class="chapter " data-level="1.11.9" data-path="../http/send.html">
             
                 <a href="../http/send.html">
             
@@ -1639,7 +1652,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.9" data-path="../http/secure.html">
+        <li class="chapter " data-level="1.11.10" data-path="../http/secure.html">
             
                 <a href="../http/secure.html">
             
@@ -1836,11 +1849,30 @@ setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span
 
 fn(arr)
 </code></pre>
-<p><strong>&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x4E8C;</strong>: reduce</p>
+<p>&#x4E0D;&#x80FD;&#x5728;<code>forEach</code>&#x5FAA;&#x73AF;&#x4E2D;&#x7528;&#x540C;&#x6837;&#x7684;&#x65B9;&#x5F0F;&#x5B9E;&#x73B0;&#x4E32;&#x884C;&#xFF0C;&#x56E0;&#x4E3A;&#x662F;&#x8FD9;&#x6837;&#x8C03;&#x7528;&#x7684;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> fn = <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">arr</span>) </span>{
+  arr.forEach((item) =&gt; {
+    <span class="hljs-keyword">let</span> res = <span class="hljs-keyword">await</span> item
+    <span class="hljs-built_in">console</span>.log(result)
+  })
+}
+<span class="hljs-comment">// &#x62A5;&#x9519; Uncaught SyntaxError: await is only valid in async function</span>
+<span class="hljs-comment">// &#x56E0;&#x4E3A;&#x5728;forEach&#x4E2D;&#x662F;&#x975E;asynv&#x51FD;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;await</span>
+</code></pre>
+<p><strong>&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x4E8C;</strong>: Promise.resolve()</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">const</span> promiseThen = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">arr</span>) </span>{
-
+  <span class="hljs-keyword">let</span> res = <span class="hljs-built_in">Promise</span>.resolve()
+  arr.forEach(item =&gt; {
+    res.then(() =&gt; {
+      item
+    }).then((val) =&gt; {
+      <span class="hljs-built_in">console</span>.log(val)
+    })
+  })
 }
 </code></pre>
+<p><code>forEach</code>&#x9ED8;&#x8BA4;&#x662F;&#x4E0D;&#x80FD;&#x963B;&#x585E;&#x7684;&#xFF0C;&#x8BF7;&#x6C42;&#x5E76;&#x53D1;&#x53D1;&#x8D77;&#xFF0C;&#x6240;&#x4EE5;&#x7528;promise&#x518D;&#x5305;&#x88F9;&#x5904;&#x7406;&#x4E00;&#x4E0B;</p>
+<p><a href="https://blog.csdn.net/qq_39816673/article/details/94209106" target="_blank">Promise&#x4E32;&#x884C;&#x6267;&#x884C;</a></p>
 <h3 id="8-promise-&#x7684;&#x5F02;&#x5E38;&#x6355;&#x83B7;">8. promise &#x7684;&#x5F02;&#x5E38;&#x6355;&#x83B7;</h3>
 <p>&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;</p>
 <ul>
@@ -1970,11 +2002,11 @@ TypeError: Chaining cycle detected for promise #&lt;Promise&gt;
 </code></pre>
 <h3 id="13-&#x5411;-then-&#x548C;-catch-&#x4F20;&#x5165;&#x975E;&#x51FD;&#x6570;&#x53C2;&#x6570;&#xFF0C;&#x4F1A;&#x53D1;&#x751F;&#x503C;&#x7A7F;&#x900F;">13. &#x5411; .then &#x548C; .catch &#x4F20;&#x5165;&#x975E;&#x51FD;&#x6570;&#x53C2;&#x6570;&#xFF0C;&#x4F1A;&#x53D1;&#x751F;&#x503C;&#x7A7F;&#x900F;</h3>
 <p>.then &#x548C; .catch&#x7684;&#x671F;&#x671B;&#x53C2;&#x6570;&#x662F;&#x51FD;&#x6570;&#x3002;</p>
-<pre><code class="lang-javascript">  <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-string">&apos;foo&apos;</span>)
-    .then(<span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-string">&apos;bar&apos;</span>))
-    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>)</span>{
-      <span class="hljs-built_in">console</span>.log(result)})
-    <span class="hljs-comment">// foo</span>
+<pre><code class="lang-javascript"><span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-string">&apos;foo&apos;</span>)
+  .then(<span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-string">&apos;bar&apos;</span>))
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(result)})
+  <span class="hljs-comment">// foo</span>
 <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">1</span>)
   .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-number">2</span>})
   .then(<span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">3</span>))
@@ -2029,7 +2061,7 @@ TypeError: Chaining cycle detected for promise #&lt;Promise&gt;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"promise","level":"1.4.16","depth":2,"next":{"title":"事件循环机制","level":"1.4.17","depth":2,"path":"data/eventLoop.md","ref":"./data/eventLoop.md","articles":[]},"previous":{"title":"内存泄露和堆栈溢出","level":"1.4.15","depth":2,"path":"data/overflow.md","ref":"./data/overflow.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"data/promise.md","mtime":"2020-09-15T13:53:30.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-15T03:58:50.792Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"promise","level":"1.4.16","depth":2,"next":{"title":"事件循环机制","level":"1.4.17","depth":2,"path":"data/eventLoop.md","ref":"./data/eventLoop.md","articles":[]},"previous":{"title":"内存泄露和堆栈溢出","level":"1.4.15","depth":2,"path":"data/overflow.md","ref":"./data/overflow.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"data/promise.md","mtime":"2020-09-16T09:20:31.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-15T03:58:50.792Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

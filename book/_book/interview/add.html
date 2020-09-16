@@ -938,7 +938,7 @@
                 <a href="document.html">
             
                     
-                    页面渲染顺序
+                    html文件解析过程
             
                 </a>
             
@@ -1574,7 +1574,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.4" data-path="../http/CSP.html">
+        <li class="chapter " data-level="1.11.4" data-path="../http/jsonp.html">
+            
+                <a href="../http/jsonp.html">
+            
+                    
+                    实现jsonp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../http/CSP.html">
             
                 <a href="../http/CSP.html">
             
@@ -1587,7 +1600,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.5" data-path="../http/proxy.html">
+        <li class="chapter " data-level="1.11.6" data-path="../http/proxy.html">
             
                 <a href="../http/proxy.html">
             
@@ -1600,7 +1613,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.6" data-path="../http/websocket.html">
+        <li class="chapter " data-level="1.11.7" data-path="../http/websocket.html">
             
                 <a href="../http/websocket.html">
             
@@ -1613,7 +1626,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.7" data-path="../http/get.html">
+        <li class="chapter " data-level="1.11.8" data-path="../http/get.html">
             
                 <a href="../http/get.html">
             
@@ -1626,7 +1639,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.8" data-path="../http/send.html">
+        <li class="chapter " data-level="1.11.9" data-path="../http/send.html">
             
                 <a href="../http/send.html">
             
@@ -1639,7 +1652,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.9" data-path="../http/secure.html">
+        <li class="chapter " data-level="1.11.10" data-path="../http/secure.html">
             
                 <a href="../http/secure.html">
             
@@ -1764,6 +1777,43 @@
 <li>&#x5F53;<code>console.log(add(1)(2))</code>&#x65F6;
 <code>add(1)</code>&#x8FD4;&#x56DE;&#x4E86;<code>sum</code>&#x51FD;&#x6570;&#xFF0C;&#x4E14;&#x7ED9;<code>a</code>&#x8D4B;&#x503C;1&#xFF0C;&#x6240;&#x4EE5;&#x63A5;&#x4E0B;&#x6765;&#x6267;&#x884C;<code>sum(2)</code>&#xFF0C;&#x6253;&#x5370;&#x51FA;b&#x7684;&#x503C;2&#xFF0C;a&#x7D2F;&#x52A0;&#x4E3A;3&#xFF0C;&#x8FD4;&#x56DE;<code>sum</code>&#x51FD;&#x6570;&#xFF0C;&#x6700;&#x540E;<code>console.log(sum)</code>&#x81EA;&#x52A8;&#x8C03;&#x7528;<code>toString()</code>&#x65B9;&#x6CD5;&#x6253;&#x5370;&#x51FA;3</li>
 </ol>
+<h3 id="&#x65E0;&#x9650;&#x7D2F;&#x52A0;&#x51FD;&#x6570;&#x2014;&#x2014;&#x8FDB;&#x9636;&#x7248;">&#x65E0;&#x9650;&#x7D2F;&#x52A0;&#x51FD;&#x6570;&#x2014;&#x2014;&#x8FDB;&#x9636;&#x7248;</h3>
+<p>&#x5B9E;&#x73B0; 
+<code>add(2,3,4) = 9</code>
+<code>add()()()(2)(3,4) = 9</code></p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">let</span> initial
+  <span class="hljs-keyword">if</span>(<span class="hljs-built_in">arguments</span>.length &gt; <span class="hljs-number">1</span>) {
+    initial = [...arguments].reduce((accu, curr) =&gt; {
+      <span class="hljs-keyword">return</span> accu + curr
+    }, <span class="hljs-number">0</span>)
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-built_in">arguments</span>.length == <span class="hljs-number">1</span>) {
+    initial = <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>]
+  } <span class="hljs-keyword">else</span> {
+    initial = <span class="hljs-number">0</span>
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">helper</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">let</span> args = [...arguments]
+    initial = args.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">accu, curr</span>) </span>{
+      <span class="hljs-keyword">return</span> accu + curr
+    }, initial)
+    <span class="hljs-keyword">return</span> helper
+  }
+  helper.toString = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> initial
+  }
+
+  <span class="hljs-keyword">return</span> helper
+}
+
+<span class="hljs-built_in">console</span>.log(add(<span class="hljs-number">1</span>))
+<span class="hljs-built_in">console</span>.log(add())
+<span class="hljs-built_in">console</span>.log(add()(<span class="hljs-number">2</span>,<span class="hljs-number">3</span>))
+<span class="hljs-built_in">console</span>.log(add(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)(<span class="hljs-number">4</span>))
+<span class="hljs-built_in">console</span>.log(add(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)(<span class="hljs-number">4</span>, <span class="hljs-number">5</span>))
+<span class="hljs-built_in">console</span>.log(add(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>))
+</code></pre>
 
                                 
                                 </section>
@@ -1791,7 +1841,7 @@
 
             
                 
-                <a href="document.html" class="navigation navigation-prev " aria-label="Previous page: 页面渲染顺序">
+                <a href="document.html" class="navigation navigation-prev " aria-label="Previous page: html文件解析过程">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1807,7 +1857,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"高阶函数之返回函数的函数","level":"1.6.2","depth":2,"next":{"title":"函数柯里化","level":"1.6.3","depth":2,"path":"interview/currying.md","ref":"./interview/currying.md","articles":[]},"previous":{"title":"页面渲染顺序","level":"1.6.1","depth":2,"path":"interview/document.md","ref":"./interview/document.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interview/add.md","mtime":"2020-07-19T01:44:28.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-15T03:58:50.792Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"高阶函数之返回函数的函数","level":"1.6.2","depth":2,"next":{"title":"函数柯里化","level":"1.6.3","depth":2,"path":"interview/currying.md","ref":"./interview/currying.md","articles":[]},"previous":{"title":"html文件解析过程","level":"1.6.1","depth":2,"path":"interview/document.md","ref":"./interview/document.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interview/add.md","mtime":"2020-09-16T13:57:14.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-15T03:58:50.792Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

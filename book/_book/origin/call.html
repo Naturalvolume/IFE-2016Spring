@@ -938,7 +938,7 @@
                 <a href="../interview/document.html">
             
                     
-                    页面渲染顺序
+                    html文件解析过程
             
                 </a>
             
@@ -1574,7 +1574,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.4" data-path="../http/CSP.html">
+        <li class="chapter " data-level="1.11.4" data-path="../http/jsonp.html">
+            
+                <a href="../http/jsonp.html">
+            
+                    
+                    实现jsonp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../http/CSP.html">
             
                 <a href="../http/CSP.html">
             
@@ -1587,7 +1600,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.5" data-path="../http/proxy.html">
+        <li class="chapter " data-level="1.11.6" data-path="../http/proxy.html">
             
                 <a href="../http/proxy.html">
             
@@ -1600,7 +1613,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.6" data-path="../http/websocket.html">
+        <li class="chapter " data-level="1.11.7" data-path="../http/websocket.html">
             
                 <a href="../http/websocket.html">
             
@@ -1613,7 +1626,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.7" data-path="../http/get.html">
+        <li class="chapter " data-level="1.11.8" data-path="../http/get.html">
             
                 <a href="../http/get.html">
             
@@ -1626,7 +1639,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.8" data-path="../http/send.html">
+        <li class="chapter " data-level="1.11.9" data-path="../http/send.html">
             
                 <a href="../http/send.html">
             
@@ -1639,7 +1652,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.9" data-path="../http/secure.html">
+        <li class="chapter " data-level="1.11.10" data-path="../http/secure.html">
             
                 <a href="../http/secure.html">
             
@@ -1728,37 +1741,38 @@
 <ul>
 <li>&#x5269;&#x4F59;&#x53C2;&#x6570;&#x53EA;&#x5305;&#x542B;&#x6CA1;&#x6709;&#x5BF9;&#x5E94;&#x5F62;&#x53C2;&#x7684;&#x5B9E;&#x53C2;</li>
 <li>&#x5269;&#x4F59;&#x6570;&#x7EC4;&#x662F;&#x771F;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x4E0D;&#x662F;&#x7C7B;&#x6570;&#x7EC4;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6570;&#x7EC4;&#x65B9;&#x6CD5;</li>
-<li><p>arguments&#x5BF9;&#x8C61;&#x6709;&#x5176;&#x4ED6;&#x9644;&#x52A0;&#x7684;&#x5C5E;&#x6027;&#xFF08;&#x6BD4;&#x5982;callee&#x5C5E;&#x6027;&#xFF09;</p>
+<li>arguments&#x5BF9;&#x8C61;&#x6709;&#x5176;&#x4ED6;&#x9644;&#x52A0;&#x7684;&#x5C5E;&#x6027;&#xFF08;&#x6BD4;&#x5982;callee&#x5C5E;&#x6027;&#xFF09;</li>
+</ul>
 <pre><code class="lang-javascript"><span class="hljs-built_in">Function</span>.prototype.call = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">context, ...restArgs</span>) </span>{
-<span class="hljs-keyword">var</span> context = context || <span class="hljs-built_in">window</span>;
-context.fn = <span class="hljs-keyword">this</span>;
-<span class="hljs-comment">// console.log(restArgs)    &#x8F93;&#x51FA; 1,2,3</span>
-<span class="hljs-comment">// &#x4E00;&#x5B9A;&#x8981;&#x8BB0;&#x4F4F;&#xFF01;&#xFF01;&#xFF01;eval&#x76F8;&#x5F53;&#x4E8E;&#x76F4;&#x63A5;&#x6267;&#x884C;</span>
-<span class="hljs-comment">// &#x4E0D;&#x8981;&#x518D;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x62FC;&#x63A5;&#xFF0C;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#xFF01;&#xFF01;&#xFF01;&#x5426;&#x5219;&#x8FD8;&#x662F;&#x4F1A;&#x5B57;&#x7B26;&#x4E32;&#x5148;&#x89E3;&#x6790;&#x4E00;&#x6B21;</span>
-<span class="hljs-keyword">var</span> result = <span class="hljs-built_in">eval</span>(<span class="hljs-string">&apos;context.fn(...restArgs)&apos;</span>);
+  <span class="hljs-keyword">var</span> context = context || <span class="hljs-built_in">window</span>;
+  context.fn = <span class="hljs-keyword">this</span>;
+  <span class="hljs-comment">// console.log(restArgs)    &#x8F93;&#x51FA; 1,2,3</span>
+  <span class="hljs-comment">// &#x4E00;&#x5B9A;&#x8981;&#x8BB0;&#x4F4F;&#xFF01;&#xFF01;&#xFF01;eval&#x76F8;&#x5F53;&#x4E8E;&#x76F4;&#x63A5;&#x6267;&#x884C;</span>
+  <span class="hljs-comment">// &#x4E0D;&#x8981;&#x518D;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x62FC;&#x63A5;&#xFF0C;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#xFF01;&#xFF01;&#xFF01;&#x5426;&#x5219;&#x8FD8;&#x662F;&#x4F1A;&#x5B57;&#x7B26;&#x4E32;&#x5148;&#x89E3;&#x6790;&#x4E00;&#x6B21;</span>
+  <span class="hljs-keyword">var</span> result = <span class="hljs-built_in">eval</span>(<span class="hljs-string">&apos;context.fn(...restArgs)&apos;</span>);
 
-<span class="hljs-keyword">delete</span> context.fn
-<span class="hljs-keyword">return</span> result;
+  <span class="hljs-keyword">delete</span> context.fn
+  <span class="hljs-keyword">return</span> result;
 }
 </code></pre>
 <h3 id="apply-&#x5B9E;&#x73B0;">apply &#x5B9E;&#x73B0;</h3>
 <pre><code class="lang-javascript"><span class="hljs-comment">// arr &#x63A5;&#x53D7;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#x6570;&#x7EC4;</span>
 <span class="hljs-built_in">Function</span>.prototype.apply_ = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj, arr</span>) </span>{
-  obj = obj ? <span class="hljs-built_in">Object</span>(obj) : <span class="hljs-built_in">window</span>;
-  obj.fn = <span class="hljs-keyword">this</span>;
-  <span class="hljs-comment">// &#x6CA1;&#x6709;&#x53C2;&#x6570;&#x6570;&#x7EC4;&#xFF0C;&#x76F4;&#x63A5;&#x6267;&#x884C;</span>
-  <span class="hljs-keyword">if</span> (!arr) {
-      obj.fn();
-  <span class="hljs-comment">// &#x6709;&#x53C2;&#x6570;&#xFF0C;&#x7528;&#x6570;&#x7EC4;&#x5B58;&#x50A8;</span>
-  } <span class="hljs-keyword">else</span> {
-      <span class="hljs-keyword">var</span> args = [];
-      <span class="hljs-comment">// &#x6CE8;&#x610F;&#x8FD9;&#x91CC;&#x7684;i&#x4ECE;0&#x5F00;&#x59CB;</span>
-      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, len = arr.length; i &lt; len; i++) {
-          args.push(<span class="hljs-string">&quot;arr[&quot;</span> + i + <span class="hljs-string">&quot;]&quot;</span>);
-      };
-      <span class="hljs-built_in">eval</span>(<span class="hljs-string">&quot;obj.fn(&quot;</span> + args + <span class="hljs-string">&quot;)&quot;</span>); <span class="hljs-comment">// &#x6267;&#x884C;fn</span>
-  };
-  <span class="hljs-keyword">delete</span> obj.fn; <span class="hljs-comment">//&#x5220;&#x9664;fn</span>
+    obj = obj ? <span class="hljs-built_in">Object</span>(obj) : <span class="hljs-built_in">window</span>;
+    obj.fn = <span class="hljs-keyword">this</span>;
+    <span class="hljs-comment">// &#x6CA1;&#x6709;&#x53C2;&#x6570;&#x6570;&#x7EC4;&#xFF0C;&#x76F4;&#x63A5;&#x6267;&#x884C;</span>
+    <span class="hljs-keyword">if</span> (!arr) {
+        obj.fn();
+    <span class="hljs-comment">// &#x6709;&#x53C2;&#x6570;&#xFF0C;&#x7528;&#x6570;&#x7EC4;&#x5B58;&#x50A8;</span>
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">var</span> args = [];
+        <span class="hljs-comment">// &#x6CE8;&#x610F;&#x8FD9;&#x91CC;&#x7684;i&#x4ECE;0&#x5F00;&#x59CB;</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, len = arr.length; i &lt; len; i++) {
+            args.push(<span class="hljs-string">&quot;arr[&quot;</span> + i + <span class="hljs-string">&quot;]&quot;</span>);
+        };
+        <span class="hljs-built_in">eval</span>(<span class="hljs-string">&quot;obj.fn(&quot;</span> + args + <span class="hljs-string">&quot;)&quot;</span>); <span class="hljs-comment">// &#x6267;&#x884C;fn</span>
+    };
+    <span class="hljs-keyword">delete</span> obj.fn; <span class="hljs-comment">//&#x5220;&#x9664;fn</span>
 };
 fn.apply_(obj, [<span class="hljs-string">&quot;&#x6211;&#x7684;&quot;</span>, <span class="hljs-string">&quot;&#x540D;&#x5B57;&quot;</span>, <span class="hljs-string">&quot;&#x662F;&quot;</span>]); <span class="hljs-comment">// &#x6211;&#x7684;&#x540D;&#x5B57;&#x662F;&#x542C;&#x98CE;&#x662F;&#x98CE;</span>
 fn.apply_(<span class="hljs-literal">null</span>, [<span class="hljs-string">&quot;&#x6211;&#x7684;&quot;</span>, <span class="hljs-string">&quot;&#x540D;&#x5B57;&quot;</span>, <span class="hljs-string">&quot;&#x662F;&quot;</span>]); <span class="hljs-comment">// &#x6211;&#x7684;&#x540D;&#x5B57;&#x662F;&#x65F6;&#x95F4;&#x8DF3;&#x8DC3;</span>
@@ -1766,53 +1780,54 @@ fn.apply_(<span class="hljs-literal">undefined</span>, [<span class="hljs-string
 </code></pre>
 <p>es6&#x5B9E;&#x73B0;&#xFF0C;&#x6CE8;&#x610F;&#x4E0E;call&#x7684;&#x4E0D;&#x540C;</p>
 <pre><code class="lang-javascript"><span class="hljs-built_in">Function</span>.prototype.call = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">context, args</span>) </span>{
-<span class="hljs-keyword">var</span> context = context || <span class="hljs-built_in">window</span>;
-context.fn = <span class="hljs-keyword">this</span>;
+  <span class="hljs-keyword">var</span> context = context || <span class="hljs-built_in">window</span>;
+  context.fn = <span class="hljs-keyword">this</span>;
 
-<span class="hljs-keyword">var</span> result = <span class="hljs-built_in">eval</span>(<span class="hljs-string">&apos;context.fn(...args)&apos;</span>);
+  <span class="hljs-keyword">var</span> result = <span class="hljs-built_in">eval</span>(<span class="hljs-string">&apos;context.fn(...args)&apos;</span>);
 
-<span class="hljs-keyword">delete</span> context.fn
-<span class="hljs-keyword">return</span> result;
+  <span class="hljs-keyword">delete</span> context.fn
+  <span class="hljs-keyword">return</span> result;
 }
 </code></pre>
 <h3 id="bind-&#x5B9E;&#x73B0;">bind &#x5B9E;&#x73B0;</h3>
-<p>bind&#x6539;&#x53D8;this&#x6307;&#x5411;&#x662F;&#x9690;&#x5F0F;&#x8C03;&#x7528; call &#x65B9;&#x6CD5;&#xFF0C;&#x6CE8;&#x610F; &#x6784;&#x9020;&#x51FD;&#x6570; &#x4E5F;&#x53EF;&#x4EE5;&#x7528;bind&#x91CD;&#x65B0;&#x7ED1;&#x5B9A;this
-```javascript
-Function.prototype._bind = function(obj, ...args) {
-// &#x5F02;&#x5E38;&#x5904;&#x7406;&#xFF0C;&#x5224;&#x65AD;&#x8981;&#x6539;&#x53D8;&#x6307;&#x5411;&#x7684;&#x662F;&#x4E0D;&#x662F;&#x51FD;&#x6570;
-if(typeof this != &apos;function&apos;) throw new Error(&apos;what is trying to be bound is not callable&apos;)
-// &#x4FDD;&#x5B58;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;
-var fn = this</p>
-<p>let fBound = function() {
-  // new &#x7684;&#x65F6;&#x5019;&#x9690;&#x5F0F;&#x521B;&#x5EFA; this&#xFF0C;&#x6307;&#x5411;&#x5B9E;&#x4F8B;
-  // &#x5224;&#x65AD; this &#x662F;&#x5426;&#x662F;&#x7531;new&#x521B;&#x5EFA;&#x7684;&#xFF0C;&#x662F;&#x7684;&#x8BDD;&#x5C31;&#x8BA9;&#x51FD;&#x6570;&#x7684;this&#x53D8;&#x4E3A;&#x5B9E;&#x4F8B;&#x7684;this
-  return fn.apply(this instanceof fBound ? this : obj, args.concat(Array.prototype.slice.call(arguments)))
+<p>bind&#x6539;&#x53D8;this&#x6307;&#x5411;&#x662F;&#x9690;&#x5F0F;&#x8C03;&#x7528; call &#x65B9;&#x6CD5;&#xFF0C;&#x6CE8;&#x610F; &#x6784;&#x9020;&#x51FD;&#x6570; &#x4E5F;&#x53EF;&#x4EE5;&#x7528;bind&#x91CD;&#x65B0;&#x7ED1;&#x5B9A;this</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">Function</span>.prototype._bind = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">obj, ...args</span>) </span>{
+  <span class="hljs-comment">// &#x5F02;&#x5E38;&#x5904;&#x7406;&#xFF0C;&#x5224;&#x65AD;&#x8981;&#x6539;&#x53D8;&#x6307;&#x5411;&#x7684;&#x662F;&#x4E0D;&#x662F;&#x51FD;&#x6570;</span>
+  <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> <span class="hljs-keyword">this</span> != <span class="hljs-string">&apos;function&apos;</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&apos;what is trying to be bound is not callable&apos;</span>)
+  <span class="hljs-comment">// &#x4FDD;&#x5B58;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;</span>
+  <span class="hljs-keyword">var</span> fn = <span class="hljs-keyword">this</span>
+
+  <span class="hljs-keyword">let</span> fBound = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// new &#x7684;&#x65F6;&#x5019;&#x9690;&#x5F0F;&#x521B;&#x5EFA; this&#xFF0C;&#x6307;&#x5411;&#x5B9E;&#x4F8B;</span>
+    <span class="hljs-comment">// &#x5224;&#x65AD; this &#x662F;&#x5426;&#x662F;&#x7531;new&#x521B;&#x5EFA;&#x7684;&#xFF0C;&#x662F;&#x7684;&#x8BDD;&#x5C31;&#x8BA9;&#x51FD;&#x6570;&#x7684;this&#x53D8;&#x4E3A;&#x5B9E;&#x4F8B;&#x7684;this</span>
+    <span class="hljs-keyword">return</span> fn.apply(<span class="hljs-keyword">this</span> <span class="hljs-keyword">instanceof</span> fBound ? <span class="hljs-keyword">this</span> : obj, args.concat(<span class="hljs-built_in">Array</span>.prototype.slice.call(<span class="hljs-built_in">arguments</span>)))
+  }
+  <span class="hljs-comment">// &#x7528;&#x7A7A;&#x5BF9;&#x8C61;&#x5F53;&#x4F5C; fBound&#x6784;&#x9020;&#x51FD;&#x6570;&#x548C;&#x5B9E;&#x4F8B; &#x7EE7;&#x627F; fn &#x7684;&#x6865;&#x6881;</span>
+  <span class="hljs-keyword">let</span> fNOP = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{}
+  <span class="hljs-keyword">if</span>(fn.prototype) {
+    fNOP.prototype = fn.prototype
+  }
+  <span class="hljs-comment">// &#x8FD9;&#x6837;&#x9632;&#x6B62;&#x4FEE;&#x6539; fBound &#x539F;&#x578B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E5F;&#x6539;&#x53D8; fn &#x7684;&#x539F;&#x578B;</span>
+  fBound.prototype = <span class="hljs-keyword">new</span> fNOP()
+  <span class="hljs-keyword">return</span> fBound
 }
-// &#x7528;&#x7A7A;&#x5BF9;&#x8C61;&#x5F53;&#x4F5C; fBound&#x6784;&#x9020;&#x51FD;&#x6570;&#x548C;&#x5B9E;&#x4F8B; &#x7EE7;&#x627F; fn &#x7684;&#x6865;&#x6881;
-let fNOP = function() {}
-if(fn.prototype) {
-  fNOP.prototype = fn.prototype
+
+<span class="hljs-comment">// &#x8C03;&#x7528;</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span>(<span class="hljs-params">a, b</span>) </span>{
+  <span class="hljs-keyword">this</span>.val = <span class="hljs-string">&apos;1&apos;</span>
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name + a + <span class="hljs-string">&apos;running&apos;</span>+b)
 }
-// &#x8FD9;&#x6837;&#x9632;&#x6B62;&#x4FEE;&#x6539; fBound &#x539F;&#x578B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E5F;&#x6539;&#x53D8; fn &#x7684;&#x539F;&#x578B;
-fBound.prototype = new fNOP()
-return fBound
-}</p>
-</li>
-</ul>
-<p>// &#x8C03;&#x7528;
-function run(a, b) {
-  this.val = &apos;1&apos;
-  console.log(this.name + a + &apos;running&apos;+b)
-}</p>
-<p>let obj = {
-  name: &apos;kathy&apos;
+
+<span class="hljs-keyword">let</span> obj = {
+  name: <span class="hljs-string">&apos;kathy&apos;</span>
 }
-let Irun = run._bind(obj, &apos;a&apos;)</p>
-<p>let instance = new Irun(&apos;b&apos;)
-console.log(instance.val)
-```
-&#x6700;&#x540E;&#x628A; new fn() &#x7684;&#x6548;&#x679C;&#x548C; new fBound &#x7684;&#x6548;&#x679C;&#x662F;&#x4E00;&#x81F4;&#x7684;
-&#x53C2;&#x8003;&#xFF1A;<a href="https://zhuanlan.zhihu.com/p/85438296" target="_blank">&#x524D;&#x7AEF;&#x9762;&#x8BD5;&#x9898;&#x2014;&#x2014;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;bind</a></p>
+<span class="hljs-keyword">let</span> Irun = run._bind(obj, <span class="hljs-string">&apos;a&apos;</span>)
+
+<span class="hljs-keyword">let</span> instance = <span class="hljs-keyword">new</span> Irun(<span class="hljs-string">&apos;b&apos;</span>)
+<span class="hljs-built_in">console</span>.log(instance.val)
+</code></pre>
+<p>&#x6700;&#x540E;&#x628A; new fn() &#x7684;&#x6548;&#x679C;&#x548C; new fBound &#x7684;&#x6548;&#x679C;&#x662F;&#x4E00;&#x81F4;&#x7684;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://zhuanlan.zhihu.com/p/85438296" target="_blank">&#x524D;&#x7AEF;&#x9762;&#x8BD5;&#x9898;&#x2014;&#x2014;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;bind</a></p>
 
                                 
                                 </section>
@@ -1856,7 +1871,7 @@ console.log(instance.val)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"实现call apply bind","level":"1.5.2","depth":2,"next":{"title":"实现ajax请求","level":"1.5.3","depth":2,"path":"origin/ajax.md","ref":"./origin/ajax.md","articles":[]},"previous":{"title":"url分割","level":"1.5.1","depth":2,"path":"origin/queryString.md","ref":"./origin/queryString.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"origin/call.md","mtime":"2020-08-25T14:36:34.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-15T03:58:50.792Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"实现call apply bind","level":"1.5.2","depth":2,"next":{"title":"实现ajax请求","level":"1.5.3","depth":2,"path":"origin/ajax.md","ref":"./origin/ajax.md","articles":[]},"previous":{"title":"url分割","level":"1.5.1","depth":2,"path":"origin/queryString.md","ref":"./origin/queryString.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"origin/call.md","mtime":"2020-09-16T01:40:28.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-15T03:58:50.792Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

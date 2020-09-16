@@ -61,3 +61,42 @@ function add(a) {
 ```
 2. 当`console.log(add(1)(2)) `时
 `add(1)`返回了`sum`函数，且给`a`赋值1，所以接下来执行`sum(2)`，打印出b的值2，a累加为3，返回`sum`函数，最后`console.log(sum)`自动调用`toString()`方法打印出3
+
+### 无限累加函数——进阶版
+实现 
+`add(2,3,4) = 9`
+`add()()()(2)(3,4) = 9`
+```javascript
+function add() {
+  let initial
+  if(arguments.length > 1) {
+    initial = [...arguments].reduce((accu, curr) => {
+      return accu + curr
+    }, 0)
+  } else if(arguments.length == 1) {
+    initial = arguments[0]
+  } else {
+    initial = 0
+  }
+
+  function helper() {
+    let args = [...arguments]
+    initial = args.reduce(function(accu, curr) {
+      return accu + curr
+    }, initial)
+    return helper
+  }
+  helper.toString = function() {
+    return initial
+  }
+
+  return helper
+}
+
+console.log(add(1))
+console.log(add())
+console.log(add()(2,3))
+console.log(add(1)(2,3)(4))
+console.log(add(2, 3)(4, 5))
+console.log(add(1)(2))
+```

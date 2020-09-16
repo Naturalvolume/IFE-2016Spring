@@ -148,13 +148,35 @@ var fn = async function(arr) {
 fn(arr)
 ```
 
-**实现方式二**: reduce
+不能在`forEach`循环中用同样的方式实现串行，因为是这样调用的
+```javascript
+var fn = async function(arr) {
+  arr.forEach((item) => {
+    let res = await item
+    console.log(result)
+  })
+}
+// 报错 Uncaught SyntaxError: await is only valid in async function
+// 因为在forEach中是非asynv函数，所以不能使用await
+```
+
+**实现方式二**: Promise.resolve()
 ```javascript
 const promiseThen = function(arr) {
-  
+  let res = Promise.resolve()
+  arr.forEach(item => {
+    res.then(() => {
+      item
+    }).then((val) => {
+      console.log(val)
+    })
+  })
 }
 ```
 
+`forEach`默认是不能阻塞的，请求并发发起，所以用promise再包裹处理一下
+
+[Promise串行执行](https://blog.csdn.net/qq_39816673/article/details/94209106)
 ### 8. promise 的异常捕获
 有两种方式：
 - 在 .then() 中定义第二个函数，捕获错误
@@ -268,6 +290,7 @@ then: Error: error!!!
     at ...
 */
 ```
+
 **解释**：
 - .then 或者 .catch 中 return 一个error对象不会抛出错误，所以不会被catch捕获
 - 任意返回一个**非promise的值**都会被包裹成promise对象，即 `return new Error('error!!!')` 等价于 `return Promise.resolve(new Error('error!!!'))`
@@ -297,11 +320,11 @@ TypeError: Chaining cycle detected for promise #<Promise>
 ### 13. 向 .then 和 .catch 传入非函数参数，会发生值穿透
 .then 和 .catch的期望参数是函数。
 ```javascript
-  Promise.resolve('foo')
-    .then(Promise.resolve('bar'))
-    .then(function(result){
-      console.log(result)})
-    // foo
+Promise.resolve('foo')
+  .then(Promise.resolve('bar'))
+  .then(function(result){
+    console.log(result)})
+  // foo
 Promise.resolve(1)
   .then(function(){return 2})
   .then(Promise.resolve(3))

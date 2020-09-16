@@ -21,10 +21,12 @@
     delete context.fn
 }
 ```
+
 es6的实现方式，用剩余操作符接收 没有对应形参的参数，剩余操作符和arguments的不同：
 - 剩余参数只包含没有对应形参的实参
 - 剩余数组是真的数组，不是类数组，所以可以使用数组方法
 - arguments对象有其他附加的属性（比如callee属性）
+
 ```javascript
 Function.prototype.call = function (context, ...restArgs) {
   var context = context || window;
@@ -39,6 +41,7 @@ Function.prototype.call = function (context, ...restArgs) {
 }
 ```
 ### apply 实现
+
 ```javascript
 // arr 接受传入的参数数组
 Function.prototype.apply_ = function (obj, arr) {
@@ -62,6 +65,7 @@ fn.apply_(obj, ["我的", "名字", "是"]); // 我的名字是听风是风
 fn.apply_(null, ["我的", "名字", "是"]); // 我的名字是时间跳跃
 fn.apply_(undefined, ["我的", "名字", "是"]); // 我的名字是时间跳跃
 ```
+
 es6实现，注意与call的不同
 ```javascript
 Function.prototype.call = function (context, args) {
@@ -74,6 +78,7 @@ Function.prototype.call = function (context, args) {
   return result;
 }
 ```
+
 ### bind 实现
 bind改变this指向是隐式调用 call 方法，注意 构造函数 也可以用bind重新绑定this
 ```javascript
@@ -113,4 +118,5 @@ let instance = new Irun('b')
 console.log(instance.val)
 ```
 最后把 new fn() 的效果和 new fBound 的效果是一致的
+
 参考：[前端面试题——自己实现bind](https://zhuanlan.zhihu.com/p/85438296)

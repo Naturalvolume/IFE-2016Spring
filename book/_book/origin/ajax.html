@@ -938,7 +938,7 @@
                 <a href="../interview/document.html">
             
                     
-                    页面渲染顺序
+                    html文件解析过程
             
                 </a>
             
@@ -1574,7 +1574,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.4" data-path="../http/CSP.html">
+        <li class="chapter " data-level="1.11.4" data-path="../http/jsonp.html">
+            
+                <a href="../http/jsonp.html">
+            
+                    
+                    实现jsonp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../http/CSP.html">
             
                 <a href="../http/CSP.html">
             
@@ -1587,7 +1600,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.5" data-path="../http/proxy.html">
+        <li class="chapter " data-level="1.11.6" data-path="../http/proxy.html">
             
                 <a href="../http/proxy.html">
             
@@ -1600,7 +1613,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.6" data-path="../http/websocket.html">
+        <li class="chapter " data-level="1.11.7" data-path="../http/websocket.html">
             
                 <a href="../http/websocket.html">
             
@@ -1613,7 +1626,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.7" data-path="../http/get.html">
+        <li class="chapter " data-level="1.11.8" data-path="../http/get.html">
             
                 <a href="../http/get.html">
             
@@ -1626,7 +1639,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.8" data-path="../http/send.html">
+        <li class="chapter " data-level="1.11.9" data-path="../http/send.html">
             
                 <a href="../http/send.html">
             
@@ -1639,7 +1652,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.9" data-path="../http/secure.html">
+        <li class="chapter " data-level="1.11.10" data-path="../http/secure.html">
             
                 <a href="../http/secure.html">
             
@@ -1709,11 +1722,13 @@
 <li>&#x5B9E;&#x4F8B;&#x5316; XMLHttpRequest</li>
 <li>&#x8FDE;&#x63A5;&#x670D;&#x52A1;&#x5668;</li>
 <li>&#x53D1;&#x9001;&#x8BF7;&#x6C42;</li>
-<li>&#x63A5;&#x6536;&#x54CD;&#x5E94;&#x6570;&#x636E;<h3 id="xmlhttprequest&#x7684;&#x65B9;&#x6CD5;">XMLHttpRequest&#x7684;&#x65B9;&#x6CD5;</h3>
-</li>
+<li>&#x63A5;&#x6536;&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<h3 id="xmlhttprequest&#x7684;&#x65B9;&#x6CD5;">XMLHttpRequest&#x7684;&#x65B9;&#x6CD5;</h3>
+<ul>
 <li>xhr.open(method, url, async)&#xFF1A;&#x53D1;&#x9001;&#x8BF7;&#x6C42;</li>
 <li>xhr.readyState&#xFF1A;&#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x8BF7;&#x6C42;&#x72B6;&#x6001;<ul>
-<li>0(&#x672A;&#x521D;&#x59CB;&#x5316;)&#x8FD8;&#x6CA1;&#x6709;&#x8C03;&#x7528;send()&#x65B9;&#x6CD5;</li>
+<li>0-(&#x672A;&#x521D;&#x59CB;&#x5316;) &#x8FD8;&#x6CA1;&#x6709;&#x8C03;&#x7528;send()&#x65B9;&#x6CD5;</li>
 <li>1-(&#x542F;&#x52A8;) &#x8C03;&#x7528;open()&#x65B9;&#x6CD5;&#x53D1;&#x9001;&#x8BF7;&#x6C42;</li>
 <li>2-(&#x53D1;&#x9001;) &#x8C03;&#x7528;send()&#x65B9;&#x6CD5;  </li>
 <li>3-(&#x63A5;&#x6536;) &#x63A5;&#x6536;&#x5230;&#x90E8;&#x5206;&#x54CD;&#x5E94;&#x5185;&#x5BB9;</li>
@@ -1721,140 +1736,149 @@
 </ul>
 </li>
 <li>xhr.status&#xFF1A;http&#x72B6;&#x6001;&#x7801;</li>
-<li>xhr.onreadystatechange()&#xFF1A;readyState&#x6539;&#x53D8;&#x65F6;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1;onreadystatechange &#x4E8B;&#x4EF6;<h3 id="&#x53D1;&#x9001;&#x8BF7;&#x6C42;">&#x53D1;&#x9001;&#x8BF7;&#x6C42;</h3>
-</li>
-<li><p>get&#x8BF7;&#x6C42;
-&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x62FC;&#x5728;url&#x4E0A;&#x9762;</p>
+<li>xhr.onreadystatechange()&#xFF1A;readyState&#x6539;&#x53D8;&#x65F6;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1;onreadystatechange &#x4E8B;&#x4EF6;</li>
+</ul>
+<h3 id="&#x53D1;&#x9001;&#x8BF7;&#x6C42;">&#x53D1;&#x9001;&#x8BF7;&#x6C42;</h3>
+<ul>
+<li>get&#x8BF7;&#x6C42;
+&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x62FC;&#x5728;url&#x4E0A;&#x9762;</li>
+</ul>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> xhr=<span class="hljs-keyword">new</span> XMLHttpRequest();<span class="hljs-comment">//&#x5B9E;&#x4F8B;&#x5316;</span>
 xhr.open(<span class="hljs-string">&apos;get&apos;</span>,<span class="hljs-string">&apos;/abc?username=lili&apos;</span>,<span class="hljs-literal">true</span>);
 xhr.send();                <span class="hljs-comment">//&#x5C06;&#x8BF7;&#x6C42;&#x53D1;&#x9001;&#x5230;&#x670D;&#x52A1;&#x5668;</span>
-xhr.onreadystatechange=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-  <span class="hljs-keyword">if</span>(xhr.readyState===<span class="hljs-number">4</span>){
-      <span class="hljs-keyword">if</span>(xhr.status===<span class="hljs-number">200</span>){
-          $(<span class="hljs-string">&apos;.h1&apos;</span>).html(xhr.responseText);
-      }<span class="hljs-keyword">else</span>{
-          $(<span class="hljs-string">&apos;.h1&apos;</span>).html(<span class="hljs-string">&apos;ERROR&apos;</span>);
-      }
-  }
+xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-keyword">if</span>(xhr.readyState === <span class="hljs-number">4</span>){
+        <span class="hljs-keyword">if</span>(xhr.status === <span class="hljs-number">200</span>){
+            $(<span class="hljs-string">&apos;.h1&apos;</span>).html(xhr.responseText);
+        }<span class="hljs-keyword">else</span>{
+            $(<span class="hljs-string">&apos;.h1&apos;</span>).html(<span class="hljs-string">&apos;ERROR&apos;</span>);
+        }
+    }
 }
 </code></pre>
 <h3 id="post&#x8BF7;&#x6C42;">post&#x8BF7;&#x6C42;</h3>
 <p>&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x653E;&#x5230;send&#x4E2D;&#xFF0C;&#x5373;&#x8BF7;&#x6C42;&#x4E3B;&#x4F53;</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> xhr=<span class="hljs-keyword">new</span> XMLHttpRequest();
 xhr.open(<span class="hljs-string">&apos;post&apos;</span>,<span class="hljs-string">&apos;/abc&apos;</span>,<span class="hljs-literal">true</span>);
-xhr.setRequestHeader(<span class="hljs-string">&quot;Content-type&quot;</span>,<span class="hljs-string">&quot;application/x-www-form-urlencoded&quot;</span>);
+xhr.setRequestHeader(<span class="hljs-string">&quot;Content-type&quot;</span>, <span class="hljs-string">&quot;application/x-www-form-urlencoded&quot;</span>);
 xhr.send(<span class="hljs-string">&apos;username=weiwei&amp;age=19&apos;</span>);
 xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">if</span>(xhr.readyState===<span class="hljs-number">4</span>){
-      <span class="hljs-keyword">if</span>(xhr.status===<span class="hljs-number">200</span>){
-          <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.parse(xhr.responseText));
-      }<span class="hljs-keyword">else</span>{
-          <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;ERROR&apos;</span>);
-      }
-  }
+    <span class="hljs-keyword">if</span>(xhr.readyState===<span class="hljs-number">4</span>){
+        <span class="hljs-keyword">if</span>(xhr.status===<span class="hljs-number">200</span>){
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.parse(xhr.responseText));
+        }<span class="hljs-keyword">else</span>{
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;ERROR&apos;</span>);
+        }
+    }
 }
 </code></pre>
 <h3 id="&#x5C01;&#x88C5;ajax">&#x5C01;&#x88C5;ajax</h3>
-<p>```javascript
-function ajax(options) {</p>
-<p>options = options || {}     // &#x6CA1;&#x6709;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x65F6;&#xFF0C;&#x5C31;&#x6307;&#x5B9A;&#x53C2;&#x6570;
-options.type = (options.type || &apos;GET&apos;).toUpperCase()  // &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#x9ED8;&#x8BA4;&#x4E3A;&#x5927;&#x5199;
-options.dataType = options.dataType || &apos;json&apos;   // &#x8BBE;&#x7F6E;&#x54CD;&#x5E94;&#x6570;&#x636E;&#x683C;&#x5F0F;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;json</p>
-<p>var params = formatParams(options.data)   // &#x683C;&#x5F0F;&#x5316;&#x8BF7;&#x6C42;&#x6570;&#x636E;</p>
-<p>var xhr
-// &#x517C;&#x5BB9;&#x6027;&#x5224;&#x65AD;
-if(window.XMLHttpRequest) {
-  xhr = new XMLHttpRequest()
-} else if(window.ActiveXObject) {   //&#x517C;&#x5BB9;ie7&#x4EE5;&#x4E0B;&#x7248;&#x672C;
-  xhr = new ActiveXObject(&apos;Microsoft.XMLHTTP&apos;)
-}</p>
-<p>// &#x5F00;&#x59CB;&#x53D1;&#x9001;&#x8BF7;&#x6C42;
-if(options.type == &apos;GET&apos;) {
-  // &#x53D1;&#x9001;&#x8BF7;&#x6C42;&#xFF0C;&#x8BBE;&#x7F6E;&#x5F02;&#x6B65;
-  xhr.open(&apos;GET&apos;, options.url + &apos;?&apos; + params, true)
-  xhr.send(null)  // &#x5185;&#x5BB9;&#x4E3B;&#x4F53;&#x4E3A;null
-} else if(options.type == &apos;POST&apos;) {
-  xhr.open(&apos;POST&apos;, options.url, true)</p>
-<p>  // &#x8BBE;&#x7F6E;&#x8868;&#x5355;&#x63D0;&#x4EA4;&#x7684;&#x5185;&#x5BB9;&#x7C7B;&#x578B;
-  xhr.setRequestHeader(&apos;Content-type&apos;, &quot;application/x-www-form-urlencoded&quot;)
-  xhr.send(params)  // post&#x8BF7;&#x6C42;&#xFF0C;&#x6570;&#x636E;&#x653E;&#x5230;&#x4E3B;&#x4F53;
-}</p>
-<p>// &#x8BBE;&#x7F6E;&#x6709;&#x6548;&#x65F6;&#x95F4;
-setTimeout(function() {
-  // &#x5DF2;&#x7ECF;&#x5230;&#x8FBE;&#x8BF7;&#x6C42;&#x65F6;&#x95F4;&#x8FD8;&#x672A;&#x8BF7;&#x6C42;&#x5B8C;&#x6BD5;
-  if(xhr.readyState != 4) {</p>
-<pre><code>// &#x5173;&#x95ED;&#x8BF7;&#x6C42;
-xhr.abort()
-</code></pre><p>  }
-}, options.timeout)
-// readyState&#x72B6;&#x6001;&#x6539;&#x53D8;&#x5C31;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;
-xhr.onreadystatechange = function() {
-  console.log(&apos;change&apos;)
-  // &#x5224;&#x65AD;&#x6570;&#x636E;&#x662F;&#x5426;&#x4F20;&#x8F93;&#x5B8C;&#x6BD5;
-  if(xhr.readyState == 4) {</p>
-<pre><code>var status = xhr.status
-// &#x8BF7;&#x6C42;&#x6210;&#x529F;&#xFF0C;&#x8C03;&#x7528;&#x6210;&#x529F;&#x56DE;&#x8C03;&#x51FD;&#x6570;
-if(status &gt;= 200 &amp;&amp; status&lt;300 || status==304) {
-  options.success &amp;&amp; options.success(xhr.responseText, xhr.responseXML)
-} else {
-  // &#x5931;&#x8D25;&#xFF0C;&#x8C03;&#x7528;&#x5931;&#x8D25;&#x56DE;&#x8C03;&#x51FD;&#x6570;
-  options.error &amp;&amp; options.error(status)
-}
-</code></pre><p>  }
-}
-}</p>
-</li>
-</ul>
-<p>// &#x683C;&#x5F0F;&#x5316;&#x8BF7;&#x6C42;&#x53C2;&#x6570;
-function formatParams(data) {
-  var arr = []
-  for(var name in data) {
-    arr.push(encodeURIComponent(name) + &apos;=&apos; + encodeURIComponent(data[name]))
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ajax</span>(<span class="hljs-params">options</span>) </span>{
+
+  options = options || {}     <span class="hljs-comment">// &#x6CA1;&#x6709;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x65F6;&#xFF0C;&#x5C31;&#x6307;&#x5B9A;&#x53C2;&#x6570;</span>
+  options.type = (options.type || <span class="hljs-string">&apos;GET&apos;</span>).toUpperCase()  <span class="hljs-comment">// &#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#x9ED8;&#x8BA4;&#x4E3A;&#x5927;&#x5199;</span>
+  options.dataType = options.dataType || <span class="hljs-string">&apos;json&apos;</span>   <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x54CD;&#x5E94;&#x6570;&#x636E;&#x683C;&#x5F0F;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;json</span>
+
+  <span class="hljs-keyword">var</span> params = formatParams(options.data)   <span class="hljs-comment">// &#x683C;&#x5F0F;&#x5316;&#x8BF7;&#x6C42;&#x6570;&#x636E;</span>
+
+  <span class="hljs-keyword">var</span> xhr
+  <span class="hljs-comment">// &#x517C;&#x5BB9;&#x6027;&#x5224;&#x65AD;</span>
+  <span class="hljs-keyword">if</span>(<span class="hljs-built_in">window</span>.XMLHttpRequest) {
+    xhr = <span class="hljs-keyword">new</span> XMLHttpRequest()
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-built_in">window</span>.ActiveXObject) {   <span class="hljs-comment">//&#x517C;&#x5BB9;ie7&#x4EE5;&#x4E0B;&#x7248;&#x672C;</span>
+    xhr = <span class="hljs-keyword">new</span> ActiveXObject(<span class="hljs-string">&apos;Microsoft.XMLHTTP&apos;</span>)
   }
-  // &#x8BBE;&#x7F6E;&#x968F;&#x673A;&#x503C;
-  arr.push((&apos;v=&apos; + Math.random()).replace(&apos;.&apos;, &apos;&apos;))
-  return arr.join(&apos;&amp;&apos;)
-}</p>
-<p>// &#x4F7F;&#x7528;ajax
+
+  <span class="hljs-comment">// &#x5F00;&#x59CB;&#x53D1;&#x9001;&#x8BF7;&#x6C42;</span>
+  <span class="hljs-keyword">if</span>(options.type == <span class="hljs-string">&apos;GET&apos;</span>) {
+    <span class="hljs-comment">// &#x53D1;&#x9001;&#x8BF7;&#x6C42;&#xFF0C;&#x8BBE;&#x7F6E;&#x5F02;&#x6B65;</span>
+    xhr.open(<span class="hljs-string">&apos;GET&apos;</span>, options.url + <span class="hljs-string">&apos;?&apos;</span> + params, <span class="hljs-literal">true</span>)
+    xhr.send(<span class="hljs-literal">null</span>)  <span class="hljs-comment">// &#x5185;&#x5BB9;&#x4E3B;&#x4F53;&#x4E3A;null</span>
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(options.type == <span class="hljs-string">&apos;POST&apos;</span>) {
+    xhr.open(<span class="hljs-string">&apos;POST&apos;</span>, options.url, <span class="hljs-literal">true</span>)
+
+    <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x8868;&#x5355;&#x63D0;&#x4EA4;&#x7684;&#x5185;&#x5BB9;&#x7C7B;&#x578B;</span>
+    xhr.setRequestHeader(<span class="hljs-string">&apos;Content-type&apos;</span>, <span class="hljs-string">&quot;application/x-www-form-urlencoded&quot;</span>)
+    xhr.send(params)  <span class="hljs-comment">// post&#x8BF7;&#x6C42;&#xFF0C;&#x6570;&#x636E;&#x653E;&#x5230;&#x4E3B;&#x4F53;</span>
+  }
+
+  <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x6709;&#x6548;&#x65F6;&#x95F4;</span>
+  setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// &#x5DF2;&#x7ECF;&#x5230;&#x8FBE;&#x8BF7;&#x6C42;&#x65F6;&#x95F4;&#x8FD8;&#x672A;&#x8BF7;&#x6C42;&#x5B8C;&#x6BD5;</span>
+    <span class="hljs-keyword">if</span>(xhr.readyState != <span class="hljs-number">4</span>) {
+      <span class="hljs-comment">// &#x5173;&#x95ED;&#x8BF7;&#x6C42;</span>
+      xhr.abort()
+    }
+  }, options.timeout)
+  <span class="hljs-comment">// readyState&#x72B6;&#x6001;&#x6539;&#x53D8;&#x5C31;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;</span>
+  xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;change&apos;</span>)
+    <span class="hljs-comment">// &#x5224;&#x65AD;&#x6570;&#x636E;&#x662F;&#x5426;&#x4F20;&#x8F93;&#x5B8C;&#x6BD5;</span>
+    <span class="hljs-keyword">if</span>(xhr.readyState == <span class="hljs-number">4</span>) {
+      <span class="hljs-keyword">var</span> status = xhr.status
+      <span class="hljs-comment">// &#x8BF7;&#x6C42;&#x6210;&#x529F;&#xFF0C;&#x8C03;&#x7528;&#x6210;&#x529F;&#x56DE;&#x8C03;&#x51FD;&#x6570;</span>
+      <span class="hljs-keyword">if</span>(status &gt;= <span class="hljs-number">200</span> &amp;&amp; status&lt;<span class="hljs-number">300</span> || status==<span class="hljs-number">304</span>) {
+        options.success &amp;&amp; options.success(xhr.responseText, xhr.responseXML)
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// &#x5931;&#x8D25;&#xFF0C;&#x8C03;&#x7528;&#x5931;&#x8D25;&#x56DE;&#x8C03;&#x51FD;&#x6570;</span>
+        options.error &amp;&amp; options.error(status)
+      }
+    }
+  }
+}
+
+<span class="hljs-comment">// &#x683C;&#x5F0F;&#x5316;&#x8BF7;&#x6C42;&#x53C2;&#x6570;</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatParams</span>(<span class="hljs-params">data</span>) </span>{
+  <span class="hljs-keyword">var</span> arr = []
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> name <span class="hljs-keyword">in</span> data) {
+    arr.push(<span class="hljs-built_in">encodeURIComponent</span>(name) + <span class="hljs-string">&apos;=&apos;</span> + <span class="hljs-built_in">encodeURIComponent</span>(data[name]))
+  }
+  <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x968F;&#x673A;&#x503C;</span>
+  arr.push((<span class="hljs-string">&apos;v=&apos;</span> + <span class="hljs-built_in">Math</span>.random()).replace(<span class="hljs-string">&apos;.&apos;</span>, <span class="hljs-string">&apos;&apos;</span>))
+  <span class="hljs-keyword">return</span> arr.join(<span class="hljs-string">&apos;&amp;&apos;</span>)
+}
+
+<span class="hljs-comment">// &#x4F7F;&#x7528;ajax</span>
 ajax({
-  url: &apos;<a href="http://baidu.com" target="_blank">http://baidu.com</a>&apos;,
-  type: &apos;get&apos;,
+  url: <span class="hljs-string">&apos;http://baidu.com&apos;</span>,
+  type: <span class="hljs-string">&apos;get&apos;</span>,
   data: {
-    username:&apos;username&apos;,
-    password:&apos;password&apos;
+    username:<span class="hljs-string">&apos;username&apos;</span>,
+    password:<span class="hljs-string">&apos;password&apos;</span>
   },
-  dataType:&apos;json&apos;,
-  timeout:10000,
-  contentType:&quot;application/json&quot;,
-  success: function() {
-    console.log(&apos;success&apos;)
+  dataType:<span class="hljs-string">&apos;json&apos;</span>,
+  timeout:<span class="hljs-number">10000</span>,
+  contentType:<span class="hljs-string">&quot;application/json&quot;</span>,
+  success: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;success&apos;</span>)
   }, 
-  error: function() {
-    console.log(&apos;error&apos;)
+  error: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;error&apos;</span>)
   }
-})</p>
-<pre><code>&#x53C2;&#x8003;&#xFF1A;[&#x539F;&#x751F;js&#x5B9E;&#x73B0;ajax&#x5C01;&#x88C5;](https://www.cnblogs.com/qing-5/p/11368009.html)
-### &#x5173;&#x4E8E;&#x8DE8;&#x57DF;&#x8BF7;&#x6C42;
-jsonp&#x7684;&#x5B9E;&#x73B0;&#xFF1A;[&#x539F;&#x751F;JavaScript&#x5B9E;&#x73B0;AJAX&#x3001;JSONP](https://laixiazheteng.com/article/page/id/AASiankfBJWp)
-### fetch
-fetch &#x57FA;&#x4E8E;promise&#x5B9E;&#x73B0;&#x7684;**&#x539F;&#x751F;js&#x65B9;&#x6CD5;**&#xFF0C;&#x6CA1;&#x6709;&#x4F7F;&#x7528;XMLHttpRequest&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;promise&#x7684;&#x5F62;&#x5F0F;&#x6216;async/await&#x7684;&#x5F62;&#x5F0F;&#x5B9E;&#x73B0;&#x5F02;&#x6B65;&#x8C03;&#x7528;&#xFF0C;
-```javascript
-// fetch(url, options)
-fetch(&apos;http://www.mozotech.cn/bangbang/index/user/login&apos;, {
-  method: &apos;post&apos;,
+})
+</code></pre>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://www.cnblogs.com/qing-5/p/11368009.html" target="_blank">&#x539F;&#x751F;js&#x5B9E;&#x73B0;ajax&#x5C01;&#x88C5;</a></p>
+<h3 id="&#x5173;&#x4E8E;&#x8DE8;&#x57DF;&#x8BF7;&#x6C42;">&#x5173;&#x4E8E;&#x8DE8;&#x57DF;&#x8BF7;&#x6C42;</h3>
+<p>jsonp&#x7684;&#x5B9E;&#x73B0;&#xFF1A;<a href="https://laixiazheteng.com/article/page/id/AASiankfBJWp" target="_blank">&#x539F;&#x751F;JavaScript&#x5B9E;&#x73B0;AJAX&#x3001;JSONP</a></p>
+<h3 id="fetch">fetch</h3>
+<p>fetch &#x57FA;&#x4E8E;promise&#x5B9E;&#x73B0;&#x7684;<strong>&#x539F;&#x751F;js&#x65B9;&#x6CD5;</strong>&#xFF0C;&#x6CA1;&#x6709;&#x4F7F;&#x7528;XMLHttpRequest&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;promise&#x7684;&#x5F62;&#x5F0F;&#x6216;async/await&#x7684;&#x5F62;&#x5F0F;&#x5B9E;&#x73B0;&#x5F02;&#x6B65;&#x8C03;&#x7528;&#xFF0C;</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// fetch(url, options)</span>
+fetch(<span class="hljs-string">&apos;http://www.mozotech.cn/bangbang/index/user/login&apos;</span>, {
+  method: <span class="hljs-string">&apos;post&apos;</span>,
   headers: {
-    &apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded&apos;
+    <span class="hljs-string">&apos;Content-Type&apos;</span>: <span class="hljs-string">&apos;application/x-www-form-urlencoded&apos;</span>
   ,
-  body: new URLSearchParams([[&quot;username&quot;, &quot;Lan&quot;],[&quot;password&quot;, &quot;123456&quot;]]).toString()
-  })
+  body: <span class="hljs-keyword">new</span> URLSearchParams([[<span class="hljs-string">&quot;username&quot;</span>, <span class="hljs-string">&quot;Lan&quot;</span>],[<span class="hljs-string">&quot;password&quot;</span>, <span class="hljs-string">&quot;123456&quot;</span>]]).toString()
+})
 .then(res =&gt; {
-  console.log(res);
-  return res.text();
+  <span class="hljs-built_in">console</span>.log(res);
+  <span class="hljs-keyword">return</span> res.text();
 })
 .then(data =&gt; {
-  console.log(data);
+  <span class="hljs-built_in">console</span>.log(data);
 })
-</code></pre><p>fetch &#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;&#x4E0D;&#x50CF;XHR&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;&#x4E0D;&#x5E26;cookie&#x7684;&#xFF0C;&#x52A0;&#x4E0A;<code>credentials: include</code>&#x5C31;&#x4F1A;&#x5728;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x65F6;&#x5E26;&#x4E0A;cookie&#x4E86;&#x3002;</p>
+</code></pre>
+<p>fetch &#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;&#x4E0D;&#x50CF;XHR&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;&#x4E0D;&#x5E26;cookie&#x7684;&#xFF0C;&#x52A0;&#x4E0A;<code>credentials: include</code>&#x5C31;&#x4F1A;&#x5728;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x65F6;&#x5E26;&#x4E0A;cookie&#x4E86;&#x3002;</p>
 <h3 id="axios">axios</h3>
 <p>axios&#x662F;&#x5BF9;<strong>&#x539F;&#x751F;XHR&#x5BF9;&#x8C61;</strong>&#x7684;<strong>*promise</strong>&#x5B9E;&#x73B0;&#xFF0C;&#x53EF;&#x7528;&#x4E8E;&#x6D4F;&#x89C8;&#x5668;&#x548C;nodejs&#x7684;http&#x5BA2;&#x6237;&#x7AEF;&#x3002;</p>
 <pre><code class="lang-javascript">axios({
@@ -1873,10 +1897,12 @@ fetch(&apos;http://www.mozotech.cn/bangbang/index/user/login&apos;, {
 });
 </code></pre>
 <h3 id="ajax&#x3001;axios&#x3001;fetch&#x5BF9;&#x6BD4;">ajax&#x3001;axios&#x3001;fetch&#x5BF9;&#x6BD4;</h3>
-<p>ajax&#xFF1A;&#x539F;&#x751F;&#x652F;&#x6301;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x4EFB;&#x4F55;&#x63D2;&#x4EF6;&#xFF0C;&#x4F46;&#x5D4C;&#x5957;&#x56DE;&#x8C03;&#xFF0C;&#x96BE;&#x4EE5;&#x5904;&#x7406;&#x3002;
-fetch: &#x89E3;&#x51B3;&#x56DE;&#x8C03;&#x5730;&#x72F1;&#xFF0C;&#x4F7F;&#x7528;&#x4E5F;&#x66F4;&#x52A0;&#x7B80;&#x6D01;&#xFF0C;&#x662F;&#x539F;&#x751F;js&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x4E0D;&#x592A;&#x53CB;&#x597D;&#xFF0C;&#x9700;&#x8981;&#x624B;&#x52A8;&#x6DFB;&#x52A0;cookie&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x652F;&#x6301;&#x60C5;&#x51B5;&#x4E0D;&#x597D;&#xFF0C;ie&#x6D4F;&#x89C8;&#x5668;&#x548C;&#x90E8;&#x5206;&#x624B;&#x673A;&#x6D4F;&#x89C8;&#x5668;&#x5B8C;&#x5168;&#x4E0D;&#x652F;&#x6301;&#x3002;
-axios: &#x9632;&#x6B62;CSRF&#xFF0C;&#x81EA;&#x52A8;&#x8F6C;&#x6362;json&#x6570;&#x636E;&#xFF0C;&#x662F;&#x76EE;&#x524D;&#x6700;&#x5B8C;&#x7F8E;&#x7684;&#x5B9E;&#x73B0;&#x3002;
-<a href="https://www.jianshu.com/p/8bc48f8fde75" target="_blank">ajax&#x548C;axios&#x3001;fetch&#x7684;&#x533A;&#x522B;</a></p>
+<ul>
+<li>ajax&#xFF1A;&#x539F;&#x751F;&#x652F;&#x6301;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x4EFB;&#x4F55;&#x63D2;&#x4EF6;&#xFF0C;&#x4F46;&#x5D4C;&#x5957;&#x56DE;&#x8C03;&#xFF0C;&#x96BE;&#x4EE5;&#x5904;&#x7406;&#x3002;</li>
+<li>fetch: &#x89E3;&#x51B3;&#x56DE;&#x8C03;&#x5730;&#x72F1;&#xFF0C;&#x4F7F;&#x7528;&#x4E5F;&#x66F4;&#x52A0;&#x7B80;&#x6D01;&#xFF0C;&#x662F;&#x539F;&#x751F;js&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x4E0D;&#x592A;&#x53CB;&#x597D;&#xFF0C;&#x9700;&#x8981;&#x624B;&#x52A8;&#x6DFB;&#x52A0;cookie&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x652F;&#x6301;&#x60C5;&#x51B5;&#x4E0D;&#x597D;&#xFF0C;ie&#x6D4F;&#x89C8;&#x5668;&#x548C;&#x90E8;&#x5206;&#x624B;&#x673A;&#x6D4F;&#x89C8;&#x5668;&#x5B8C;&#x5168;&#x4E0D;&#x652F;&#x6301;&#x3002;</li>
+<li>axios: &#x9632;&#x6B62;CSRF&#xFF0C;&#x81EA;&#x52A8;&#x8F6C;&#x6362;json&#x6570;&#x636E;&#xFF0C;&#x662F;&#x76EE;&#x524D;&#x6700;&#x5B8C;&#x7F8E;&#x7684;&#x5B9E;&#x73B0;&#x3002;
+<a href="https://www.jianshu.com/p/8bc48f8fde75" target="_blank">ajax&#x548C;axios&#x3001;fetch&#x7684;&#x533A;&#x522B;</a></li>
+</ul>
 
                                 
                                 </section>
@@ -1920,7 +1946,7 @@ axios: &#x9632;&#x6B62;CSRF&#xFF0C;&#x81EA;&#x52A8;&#x8F6C;&#x6362;json&#x6570;&
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"实现ajax请求","level":"1.5.3","depth":2,"next":{"title":"promise实现ajax","level":"1.5.4","depth":2,"path":"origin/axios.md","ref":"./origin/axios.md","articles":[]},"previous":{"title":"实现call apply bind","level":"1.5.2","depth":2,"path":"origin/call.md","ref":"./origin/call.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"origin/ajax.md","mtime":"2020-08-24T03:41:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-15T03:58:50.792Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"实现ajax请求","level":"1.5.3","depth":2,"next":{"title":"promise实现ajax","level":"1.5.4","depth":2,"path":"origin/axios.md","ref":"./origin/axios.md","articles":[]},"previous":{"title":"实现call apply bind","level":"1.5.2","depth":2,"path":"origin/call.md","ref":"./origin/call.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"origin/ajax.md","mtime":"2020-09-16T02:23:57.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-15T03:58:50.792Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

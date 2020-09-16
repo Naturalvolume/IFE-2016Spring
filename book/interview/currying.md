@@ -78,6 +78,7 @@ console.log(c(2)(3))
 ### 优点
 - 函数式编程的重要标志
 - 灵活性高
+
 ### 参考 
 [JS函数柯里化](https://www.cnblogs.com/plBlog/p/12356042.html)
 

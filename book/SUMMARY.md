@@ -61,7 +61,7 @@
   * [防抖](./interview/debounce.md)
   * [setTimeout 和 setInterval](./interview/setInterval.md) 
 * 面试常见
-  * [页面渲染顺序](./interview/document.md)
+  * [html文件解析过程](./interview/document.md)
   * [高阶函数之返回函数的函数](./interview/add.md)
   * [函数柯里化](./interview/currying.md)
   * [首屏渲染](./interview/screen.md)
@@ -108,6 +108,7 @@
   * [DNS预解析](./interview/dns.md)
   * [用户登陆信息存储在哪里](./interview/cookie.md)
   * [同源限制与跨域](./interview/cros.md)
+  * [实现jsonp](./http/jsonp.md)
   * [CSP](./http/CSP.md)
   * [代理](./http/proxy.md)
   * [websocket](./http/websocket.md)
