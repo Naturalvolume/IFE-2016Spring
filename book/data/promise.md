@@ -107,8 +107,61 @@ setTimeout(function() {
 ```
 输出结果：1 7 6 8 2 4 3 5 9 11 10 12
 每遇到 setTimeout 就新建一个宏事件队列，所以本例中的两个setTimeout不在同一个宏事件中执行，而是会先执行完setTimeout中的微事件 再 执行下一个setTimeout。
-### 5.promise中的错误能够被定位吗
+### 5.Promise.race()异步超时处理
+当网络请求时间过长时，就认为网络请求失败，在这里用`Promise.race()`处理。
 ```javascript
+// 网络请求实例
+var taskPromise = new Promise(function(resolve){
+    //随便一些什么处理
+    var delay = Math.random() * 2000;
+    setTimeout(function(){
+        resolve(delay + "ms");
+    },delay)
+})
+```
+
+方式一：状态变为 rejected
+```javascript
+// 超时处理函数
+function timeoutPromise(promise, ms){
+    var timeout = new Promise(function(resolve,reject){
+        setTimeout(function(){
+            reject("异步操作超时")
+        },ms);
+    })
+    return Promise.race([promise, timeout]);
+}
+// 运行超时处理，设置1000ms没有返回是超时
+timeoutPromise(taskPromise, 1000).then((value) => {
+  console.log('规定时间内返回请求'+'value')
+}).catch((error) => {
+  console.log('超时'+error)
+})
+```
+
+方式二：抛出错误
+```javascript
+// 超时函数
+function delayPromise(ms){
+    return new Promise(function(resolve){
+        setTimeout(resolve,ms);
+    })
+}
+// 超时处理函数
+function timeoutPromise(promise, ms){
+    var timeout = delayPromise(ms).then(function(){
+      // 手动抛出error
+        throw new Error('Operation timed out after ' + ms + 'ms');
+    });
+    return Promise.race([promise, timeout]);
+}
+
+// 调用处理函数
+timeoutPromise(taskPromise, 1000).then(function(value){
+    console.log("taskPromise在规定时间内结束：" + value);
+}).catch(function(error){
+    console.log("发生超时", error);
+})
 ```
 ### 6.如何处理循环的异步操作
 ```javascript

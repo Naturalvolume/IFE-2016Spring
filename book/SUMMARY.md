@@ -10,6 +10,7 @@
   * [垃圾回收机制和内存泄露](./html/scavenge.md)
   * [前端异常的处理方案](./html/error.md)
   * [会话跟踪的方法](./html/session.md)
+  * [原生dom操作api](./html/domApi.md)
 * css
   * [用css实现弹出框](./css/popup.md)
   * [css3动画](./css/animate.md)

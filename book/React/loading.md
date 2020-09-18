@@ -2,6 +2,7 @@
 - 用style-components 的 keyframes 定义动画关键帧
 - 设置 transform: scale() 
 - 通过 animation-delay 和 div:nth-child(2) 设置两个圆交错放大缩小的效果
+
 ```javascript
 import React from 'react';
 import styled, { keyframes } from styled-components';

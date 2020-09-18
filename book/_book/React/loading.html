@@ -1719,25 +1719,27 @@
 <ul>
 <li>&#x7528;style-components &#x7684; keyframes &#x5B9A;&#x4E49;&#x52A8;&#x753B;&#x5173;&#x952E;&#x5E27;</li>
 <li>&#x8BBE;&#x7F6E; transform: scale() </li>
-<li>&#x901A;&#x8FC7; animation-delay &#x548C; div:nth-child(2) &#x8BBE;&#x7F6E;&#x4E24;&#x4E2A;&#x5706;&#x4EA4;&#x9519;&#x653E;&#x5927;&#x7F29;&#x5C0F;&#x7684;&#x6548;&#x679C;
-```javascript
-import React from &apos;react&apos;;
-import styled, { keyframes } from styled-components&apos;;
-import style from &apos;../../assets/global-style&apos;;</li>
+<li>&#x901A;&#x8FC7; animation-delay &#x548C; div:nth-child(2) &#x8BBE;&#x7F6E;&#x4E24;&#x4E2A;&#x5706;&#x4EA4;&#x9519;&#x653E;&#x5927;&#x7F29;&#x5C0F;&#x7684;&#x6548;&#x679C;</li>
 </ul>
-<p>const loading = keyframes<code>0%, 100% {
+<pre><code class="lang-javascript">import React from &apos;react&apos;;
+import styled, { keyframes } from styled-components&apos;;
+import style from &apos;../../assets/global-style&apos;;
+
+const loading = keyframes`
+  0%, 100% {
     transform: scale(0.0);
   }
   50% {
     transform: scale(1.0);
-  }</code>
-const LoadingWrapper = styled.div`</p>
-<blockquote>
-<p>div {
+  }
+`
+const LoadingWrapper = styled.div`
+  &gt;div {
     position: fixed;
     z-index: 1000;
     left: 0; 
-    right: 0;<br>    top: 0;
+    right: 0;  
+    top: 0;
     bottom: 0;
     margin: auto;
     width: 60px;
@@ -1747,21 +1749,22 @@ const LoadingWrapper = styled.div`</p>
     background-color: ${style [&quot;theme-color&quot;]};
     animation: ${loading} 1.4s infinite ease-in;
   }
-div:nth-child (2) {
+  &gt;div:nth-child (2) {
     animation-delay: -0.7s;
   }
-`</p>
-</blockquote>
-<p>function Loading ()  {
+`
+
+function Loading ()  {
   return (
-    <loadingwrapper>
-      <div></div>
-      <div></div>
-    </loadingwrapper>
+    &lt;LoadingWrapper&gt;
+      &lt;div&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;/div&gt;
+    &lt;/LoadingWrapper&gt;
   );
-}</p>
-<p>export default React.memo (Loading);
-```</p>
+}
+
+export default React.memo (Loading);
+</code></pre>
 
                                 
                                 </section>
@@ -1805,7 +1808,7 @@ div:nth-child (2) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"实现loading动画","level":"1.8.7","depth":2,"next":{"title":"性能优化","level":"1.8.8","depth":2,"path":"React/performance.md","ref":"./React/performance.md","articles":[]},"previous":{"title":"axios请求","level":"1.8.6","depth":2,"path":"React/axios.md","ref":"./React/axios.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"React/loading.md","mtime":"2020-08-08T02:31:18.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-15T03:58:50.792Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"实现loading动画","level":"1.8.7","depth":2,"next":{"title":"性能优化","level":"1.8.8","depth":2,"path":"React/performance.md","ref":"./React/performance.md","articles":[]},"previous":{"title":"axios请求","level":"1.8.6","depth":2,"path":"React/axios.md","ref":"./React/axios.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"React/loading.md","mtime":"2020-09-17T07:19:31.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-17T01:52:14.587Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

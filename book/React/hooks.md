@@ -4,8 +4,10 @@ hooks是一种函数，允许从函数式组件 勾住 react状态和生命周�
 hooks规则：
 - 只能在顶层调用hook，不能在循环、条件或嵌套函数中调用hook
 - 只能从react函数式组件中调hook
+
 ### useState
 用解构语法向函数组件中添加状态，如`const [count setCount] = useState(0)`，返回当前状态值`count`和更新它的函数`setCount`，类似于类中的`this.setState`，**且在函数式组件中不需要使用this取值**
+
 ### useEffect
 副作用指函数或表达式的行为（react渲染阶段）依赖于外部世界，数据获取、设置订阅以及手动更改react组件中的dom都是副作用的例子。
 

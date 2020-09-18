@@ -28,6 +28,7 @@ hash 就可以实现一个[简单的单页面应用](https://github.com/Naturalv
 有两种方式可以触发 hash 变化：
 - 设置`a`标签的href属性，当用户点击这个标签后，`url`改变，就会触发`hashchange`事件
 - 直接使用 js 改变 `window.location.hash` 的值，触发`hashchange`事件
+
 ```javascript
 // a 标签方法
 <a href="#search">search</a>
@@ -50,7 +51,7 @@ window.history.pushState(stateObject,title,url)
 // 替换当前的历史记录
 window.history.replaceState(stateObject,title,url)
 ```
-- stateObject: 当浏览器跳转到新的状态时，将触发popState事件，该事件将携带这个stateObject参数的副本
+- stateObject: 当浏览器跳转到新的状态时，将触发**popState事件**，该事件将携带这个stateObject参数的副本
 - title: 所添加记录的标题
 - url: 所添加记录的url
 当调用这两个方法修改浏览器历史栈后：
