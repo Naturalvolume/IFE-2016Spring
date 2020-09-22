@@ -1,5 +1,5 @@
 # Generator
-Generator 函数是 es6 的一种异步编程方案，可以理解为一个状态机，封装了多个内部状态，且执行Generator函数会返回一个遍历器对象，遍历器可以依次遍历函数的每个状态。
+Generator 函数是 es6 的一种异步编程方案，可以理解为一个状态机，封装了多个内部状态，且执行Generator函数会返回一个**遍历器对象**，遍历器可以依次遍历函数的每个状态。
 
 Generator函数的写法：
 ```javascript
@@ -11,8 +11,13 @@ function* helloWorldGenerator() {
 
 var hw = helloWorldGenerator();
 ```
-上面代码有三个状态：hello，world 和 return 语句（结束执行）；调用函数后，并不执行，而是返回指向内部状态的指针，即遍历器对象。
+
+上面代码有三个状态：hello，world 和 return 语句（结束执行）；调用函数后，并不执行，而是**返回指向内部状态的指针**，即**遍历器对象**。
 ```javascript
+console.log(hw)   // 输出 暂停状态，即指向内部状态的指针对象
+                  // 也可称为遍历器对象
+                  // 每次通过 next() 指向遍历器的下一个对象
+
 hw.next()
 // { value: 'hello', done: false }
 

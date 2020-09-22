@@ -11,6 +11,7 @@
   * [前端异常的处理方案](./html/error.md)
   * [会话跟踪的方法](./html/session.md)
   * [原生dom操作api](./html/domApi.md)
+  * [验证码技术](./html/judge.md)
 * css
   * [用css实现弹出框](./css/popup.md)
   * [css3动画](./css/animate.md)
@@ -23,6 +24,7 @@
   * [两栏等高](./css/equal.md)
   * [三栏布局](./css/layout.md)
   * [flex换行问题](./css/flexWrap.md)
+  * [通过css实现文字渐变色的两种方式](./css/textGradient.md)
   * [z-index、transformZ和perspective]
 * JavaScript基础
   * [let和const](./data/let.md)
@@ -34,6 +36,7 @@
   * [数组去重](./data/distinct.md)
   * [数组扁平化](./data/flat.md)
   * [用对象模拟数组](./data/obj.md)
+  * [ArrayBuffer](./data/arrayBuffer.md)
   * [this指向](./data/this.md)
   * [实现new](./data/new.md)
   * [手动实现instanceof](./data/instanceof.md)
@@ -52,6 +55,7 @@
   * [Iterator和for...of](./data/iterator.md)
   * [Generator函数](./data/Generator.md)
   * [async函数](./data/async.md)
+  * [async 和 promise中的微任务](./data/task.md)
 * 手写源码
   * [url分割](./origin/queryString.md) 
   * [实现call apply bind](./origin/call.md)
@@ -61,6 +65,11 @@
   * [节流](./interview/throttle.md)
   * [防抖](./interview/debounce.md)
   * [setTimeout 和 setInterval](./interview/setInterval.md) 
+  * [发布－订阅模式的实现]
+  * [AST语法树的生成]
+  * [vue实现双向数组绑定方法]
+  * [手写loader]
+  * [手写plugin]
 * 面试常见
   * [html文件解析过程](./interview/document.md)
   * [高阶函数之返回函数的函数](./interview/add.md)

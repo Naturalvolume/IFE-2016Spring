@@ -44,14 +44,23 @@ chrome 是第一个采取多进程架构的浏览器
 ### 会引起回流和重绘的操作
 **回流**：
 - 常见的几何属性改变：width、height、padding、margin、left、top、border等
-- 获取一些需要立刻计算得到的属性：offsetTop、offsetLeft、offsetWidth、offsetHeight、scrollTop、scrollLeft、scrollWidth、scrollHeight、clientTop、clientLeft、clientWidth、clientHeight时，浏览器为了获取这些值，也会进行回流
+- 获取一些需要**立刻计算得到的属性**：offsetTop、offsetLeft、offsetWidth、offsetHeight、scrollTop、scrollLeft、scrollWidth、scrollHeight、clientTop、clientLeft、clientWidth、clientHeight时，浏览器为了获取这些值，也会进行回流
 - 调用 getComputedStyle 方法，或IE里的 currentStyle 时，也会触发回流（即时性、准确性）
-**避免方式**：
-- 使用类名合并改变样式
+- 添加或删除可见dom节点
+- 浏览器窗口尺寸的变化（resize事件发生时）
+- 填充内容的改变：如文本的改变或图片大小改变引起的计算值宽度和高度的改变
+
+**优化一**：
+- 浏览器自己的优化：维护一个队列，把所有会引起回流、重绘的操作放入这个队列，等队列中的操作到了一定数量 或 到了一定时间间隔，浏览器就`flush`队列，进行一个批处理，将多次回流、重绘变成一次。
+
+**优化二**：
+- 使用**类名合并**改变样式
 - 提升为合成层，如使用will-change
   - 合成层的位图会交给gpu合成，比cpu处理要快
   - 只会repaint本身，不会影响到其它层
   - 对 transform 和 opacity，不会触发 layout 和 paint
+- 将**需要多次重排的元素**，`position`属性设置为`absolute`或`fixed`，元素脱离了文档流，它的变化不会影响到其他元素
+- 若需创建多个dom节点，可使用`DocumentFragment`创建完后一次性的加入`document`
 
 浏览器使用**flush队列**，缓存触发的回流和重绘任务，待队列中任务多起来 或者 到了一定的时间间隔 或 不得已的时候将任务一口气出队，所以，当访问即时属性时，浏览器会为了获得此时此刻、最准确的属性值，将flush队列的任务出队。
 

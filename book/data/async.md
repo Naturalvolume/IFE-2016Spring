@@ -3,6 +3,7 @@ async 函数是 Generator 函数的语法糖，改进了Generator函数：
 - 内置执行器：Generator 函数需要**调用 next 方法**，或者用 **co 模块**，才能真正执行，而await函数自带执行期，自动执行；
 - 更好的语义
 - 更广的适用性：async函数返回值可以是 Promise 或 原始类型的值（自动转成**立即 resolved 的 Promise 对象**）
+
 async函数 全部执行成功promise状态就为fulfilled，否则为rejected
 - await函数后面的异步函数执行完后（**await 命令就是内部then命令的语法糖**），若是promise：
   - 状态为fulfilled，返回resolve的值
