@@ -12,6 +12,9 @@
   * [会话跟踪的方法](./html/session.md)
   * [原生dom操作api](./html/domApi.md)
   * [验证码技术](./html/judge.md)
+  * [html5-音视频处理](./html/audio.md)
+  * [html5-地理定位](./html/Geolocation.md)
+  * [html5-WebSocket](./html/webSocket.md)
 * css
   * [用css实现弹出框](./css/popup.md)
   * [css3动画](./css/animate.md)
@@ -56,6 +59,9 @@
   * [Generator函数](./data/Generator.md)
   * [async函数](./data/async.md)
   * [async 和 promise中的微任务](./data/task.md)
+  * [装饰器Decorator](./data/decorator.md)
+  * [箭头函数](./data/arrow.md)
+  
 * 手写源码
   * [url分割](./origin/queryString.md) 
   * [实现call apply bind](./origin/call.md)
@@ -125,6 +131,7 @@
   * [get和post](./http/get.md)
   * [保证页面文件被完整送达浏览器](./http/send.md)
   * [web安全](./http/secure.md)
+  * [http3.0](./http/http3.md)
   
   
 

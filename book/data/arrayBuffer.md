@@ -18,3 +18,44 @@
 - file 
 - WebSockets
 - XMLHttpRequest
+
+### 创建二进制数组
+1.DataView视图创建
+
+```javascript
+// 创建生成一段32字节的内存区域，每个字节的值默认都为0
+const buf = new ArrayBuffer(32)
+// 以ArrayBuffer对象实例为参数创建视图
+const dataView = new DataView(buf)
+// 以不带符号的8位整数格式 从头读取8位二进制数据，结果得到0
+dataView.getUint8(0)    // 0
+```
+
+2.TypedArray视图创建
+TypedArray 是一组构造函数，代表不同的数据格式
+```javascript
+const buffer = new ArrayBuffer(12);
+
+const x1 = new Int32Array(buffer);
+x1[0] = 1;
+const x2 = new Uint8Array(buffer);
+x2[0]  = 2;
+// 上面分别在同一块内存区域创建了两种视图
+// 所以在一个视图修改底层内存，会影响到另一个视图
+x1[0] // 2
+```
+
+### ArrayBuffer的属性和方法
+- ArrayBuffer.prototype.byteLength: 返回所分配内存区域的字节长度
+- ArrayBuffer.prototype.slice: 类似数组的slice方法，可以将内存区域的一部分，拷贝生成一个新的`ArrayBuffer`对象
+- ArrayBuffer.isView(): 用来判断参数是否为`ArrayBuffer`的视图实例
+
+### 普通数组和TypeArray数组的差异
+- TypeArray 的所有成员，都是同一种类型
+- TypeArray 的成员是连续的，没有空位
+- TypeArray 成员默认为0，因为没有空位
+- TypeArray 只是一层视图，本身不存储数据，所以要获取底层对象必须使用`buffer`属性
+
+- 普通数组的操作方法和属性，对TypeArray数组完全适用，但是没有`concat`方法
+
+

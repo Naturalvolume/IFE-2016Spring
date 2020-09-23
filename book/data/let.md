@@ -114,3 +114,24 @@ var getGlobal = function () {
 块级作用域：通过let、const声明的变量追加到**词法环境 栈**中，这个块执行结束后，追加到词法作用域的内容被销毁掉
 
 变量提升：在编译阶段把var声明的变量存放到**变量环境（函数上下文）**中
+
+### 作用域相关问题
+```javascript
+(() => {
+  let x, y
+  try {
+    throw new Error()
+  } catch (x) {
+    x = 1
+    y = 2
+    console.log(x)
+  }
+
+  console.log(x)
+  console.log(y)
+})()
+
+// 输出 1 undefined 2
+```
+
+`catch`中的`x`形参，相当于在子作用域中新声明的变量，和上一层的`x`不是同一个。

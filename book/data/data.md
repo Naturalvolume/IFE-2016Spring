@@ -7,7 +7,7 @@ javascript 目前有八种数据类型：number string boolean null undefined sy
 console.log(999999999999999);  //=>10000000000000000
 console.log(9007199254740992 === 9007199254740993;)    // → true 居然是true!
 ```
-- Bigint可以表示超过 number 范围的数，克服大数据的精度损失问题，使用Bigint只需要在数字末尾追加`n`即可或使用构造函数`new Bigint`，具体可看[谈谈对bigint对理解](http://47.98.159.95/my_blog/js-base/007.html#%E4%BB%80%E4%B9%88%E6%98%AFbigint)
+- Bigint（es10）可以表示超过 number 范围的数，克服大数据的精度损失问题，使用Bigint只需要在数字末尾追加`n`即可或使用构造函数`new Bigint`，具体可看[谈谈对bigint对理解](http://47.98.159.95/my_blog/js-base/007.html#%E4%BB%80%E4%B9%88%E6%98%AFbigint)
 
 在力扣上有一道题就用到了Bigint:[剑指 Offer 14- II. 剪绳子 II](https://leetcode-cn.com/problems/jian-sheng-zi-ii-lcof/)
 ```javascript

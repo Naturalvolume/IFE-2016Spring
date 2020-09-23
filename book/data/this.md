@@ -177,7 +177,7 @@ foo();
 上面四种绑定的优先级为：
 new绑定 > 显式绑定 > 隐式绑定 > 默认绑定
 ### 四、箭头函数中的this
-首先，我们要清楚一个概念，箭头函数没有自己的this、auguments、原型、构造函数，所以箭头函数是不能使用`call`、`apply`、`bind`绑定 this 的，但是箭头函数在**运行时**会向上一层查找自己需要的this、arguments等。
+首先，我们要清楚一个概念，箭头函数没有自己的arguments、原型、构造函数，它有自己的`this`，箭头函数初始化时所在环境的this就是它所绑定的，所以箭头函数是不能使用`call`、`apply`、`bind`绑定 this 的，但是箭头函数在**运行时**会向上一层查找自己需要的this、arguments等。
 
 ```javascript
 var a = 10;
@@ -256,4 +256,4 @@ obj.method(fn, 1);//输出是什么？
 
 - 10就是正常的对象上函数调用，但是2是如何来的呢？
 
-这是因为`arguments`是类数组对象，所以它本质上是对象，`arguments[0]()`相当于调用`arguments`对象上的第一个属性，根据函数调用的语法糖，`this`此时指向`arguments`对象，`arguments.length`就是2。
+这是因为`arguments`是类数组对象，所以它本质上是对象，`arguments[0]()`相当于调用`arguments`对象上的第一个属性，根据函数调用的语法糖`arguments.call(arguments, fn)`，`this`此时指向`arguments`对象，`arguments.length`就是2。

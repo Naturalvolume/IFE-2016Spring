@@ -192,5 +192,6 @@ axios({
 - fetch: 解决回调地狱，使用也更加简洁，是原生js，所以使用起来不太友好，需要手动添加cookie，浏览器支持情况不好，ie浏览器和部分手机浏览器完全不支持。
 - axios: 防止CSRF，自动转换json数据，是目前最完美的实现。
 [ajax和axios、fetch的区别](https://www.jianshu.com/p/8bc48f8fde75)
+- ajax 提交数据默认是`FormData`形式，也就是`Content-Type: "application/x-www-form-urlencoded"`，axios 默认使用`Payload`形式提交数据，也就是`Content-type: "application/json"`
 
 
