@@ -2,8 +2,8 @@
 图片懒加载是一种性能优化的形式，当加载大量图片时很有用，这里用与元素尺寸相关的属性实现。
 ### 网页中元素的尺寸
 每个html元素都具有clientHeight、offsetHeight、scrollHeight、offsetTop、scrollTop这5个元素高度、滚动、位置相关的属性。
-- element.clientHeight: 表示element元素包括padding但不包括border、水平滚动条、margin的元素的高度（和元素滚动、位置没有关系）
-- element.offsetHeight: 表示element元素包括padding、border、水平滚动条，但不包括margin的元素的高度（和元素滚动、位置没有关系）
+- element.clientHeight: 表示element元素包括padding但不包括border、水平滚动条、margin的元素的高度（和元素滚动、位置没有关系）    ——常用来获取某个**父元素内容的宽高**
+- element.offsetHeight: 表示element元素包括padding、border、水平滚动条，但不包括margin的元素的高度（和元素滚动、位置没有关系）    ——常用来获取**子元素整体宽高**
 - element.offsetTop: 当前元素顶部距父元素顶部的距离（和有无滚动条无关，但会随着滚动条改变）
 当元素超过父元素的高度，父元素就会出现滚动条，在滚动过程中元素有部分被隐藏，以下几个属性才有意义
 - element.scrollHeight: 包括当前不可见部分的元素的高度，而可见部分高度就是clientHeight，也就是scrollHeight >= clientHeight是一直成立的（没有滚动条时 scrollHeight == clientHeight）
