@@ -100,7 +100,7 @@ Object.prototype.toString.call(new Map())       // '[object Map]'
 Object.prototype.toString.call(new WeakMap())   // '[object WeakMap]'
 ```
 这是因为：
-- 依托Object.prototype.toString()方法得到对象内部属性 [[Class]]
+- 依托Object.prototype.toString()方法得到对象内部属性 `[[Class]]`
 - 传入原始类型却能够判定出结果是因为对值进行了包装
 - null 和 undefined 能够输出结果是内部实现有做处理
 需要注意直接使用对象的`toString()`方法跟用`Object.prototype.toString.call`是不一样的
@@ -108,3 +108,13 @@ Object.prototype.toString.call(new WeakMap())   // '[object WeakMap]'
 console.log([1,[2,3]].toString())    // 1,2,3
 Object.prototype.toString.call([1,[2,3]])     // '[object Array]'
 ```
+
+### JSON.stringify(obj) ＋ JSON.parse(str) 实现深克隆
+用`JSON.stringify(obj)`也可以实现对象深克隆，但是**正则、函数、日期格式数据**会被变成空对象，出现问题。
+
+```javascript
+JSON.stringify({a: function() {}, x: 1000})
+
+// "{"x": 1000}"
+```
+注意：`JSON.stringify(obj)`是把对象转换成字符串

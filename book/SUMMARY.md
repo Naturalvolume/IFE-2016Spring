@@ -30,6 +30,7 @@
   * [三栏布局](./css/layout.md)
   * [flex换行问题](./css/flexWrap.md)
   * [通过css实现文字渐变色的两种方式](./css/textGradient.md)
+  * [浏览器渲染与动画性能](./css/paint.md)
   * [z-index、transformZ和perspective]
 * JavaScript基础
   * [let和const](./data/let.md)
@@ -73,6 +74,7 @@
   * [节流](./interview/throttle.md)
   * [防抖](./interview/debounce.md)
   * [setTimeout 和 setInterval](./interview/setInterval.md) 
+  * [手写Symbol]
   * [发布－订阅模式的实现]
   * [AST语法树的生成]
   * [vue实现双向数组绑定方法]
@@ -89,6 +91,8 @@
   * [实现轮播图](./interview/tabbar.md)
   * [实现sleep函数](./interview/sleep.md)
   * [统计页面中各标签个数](./interview/tag.md)
+  * [当对象作为对象的键值](./data/obj_key.md)
+  * [函数作用域、闭包、变量提升](./interview/scope.md)
 * 框架
   * [版本控制](./framework/git.md)
   * [react和vue的区别](./framework/difference.md)

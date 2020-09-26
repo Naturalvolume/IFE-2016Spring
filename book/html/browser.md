@@ -55,7 +55,7 @@ chrome 是第一个采取多进程架构的浏览器
 
 **优化二**：
 - 使用**类名合并**改变样式
-- 提升为合成层，如使用will-change
+- 提升为合成层，如使用`will-change`
   - 合成层的位图会交给gpu合成，比cpu处理要快
   - 只会repaint本身，不会影响到其它层
   - 对 transform 和 opacity，不会触发 layout 和 paint
