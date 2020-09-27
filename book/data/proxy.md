@@ -22,6 +22,27 @@ var proxy = new Proxy(target, handler)
 - apply(target, object, args): 拦截Proxy实例作为函数调用的操作，比如`proxy(...args)`、`proxy.call(object, ...args)`、`proxy.apply(...)`
 - construct(target, args)：拦截 Proxy 实例作为构造函数调用的操作，比如`new proxy(...args)`
 
+```javascript
+obj = new Proxy(obj, { 
+  // target表示监听的对象
+  // prop表示改变的属性
+  get(target, prop) {
+    return target[prop]
+  }, 
+  // value表示要设置的数据
+  set(target, prop, value) {
+    
+  }
+})
+```
+
+`Proxy`比`Object.defineProperty`的优势：
+- 监听整个对象，而不是对象中的属性
+- 新增加的属性也可以监听到
+- 不需要克隆数据，通过`target[prop]`可以直接取到数据，没有`Object.defineProperty`的堆栈溢出问题
+
+
+
 ### this 问题
 proxy代理时，对象内部的this关键字会指向Proxy代理
 ```javascript

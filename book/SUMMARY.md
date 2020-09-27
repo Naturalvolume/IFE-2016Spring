@@ -92,7 +92,7 @@
   * [实现sleep函数](./interview/sleep.md)
   * [统计页面中各标签个数](./interview/tag.md)
   * [当对象作为对象的键值](./data/obj_key.md)
-  * [函数作用域、闭包、变量提升](./interview/scope.md)
+  * [大厂贼难的面试题](./interview/scope.md)
 * 框架
   * [版本控制](./framework/git.md)
   * [react和vue的区别](./framework/difference.md)
@@ -123,6 +123,7 @@
   * [图标编码](./project/icon.md)
   * [父组件监听子组件的生命周期](./vue/watcher.md)
   * [虚拟dom的缺点](./vue/weak.md)
+  * [数据双向绑定](./vue/bind.md)
 * node
   * [核心模块](./node/center.md)
   * [Restful架构](./node/Restful.md)

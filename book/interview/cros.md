@@ -40,8 +40,8 @@
   - multipart/form-data
   - application/x-www-form-urlencoded
 
-对于简单请求，浏览器直接发出一个CORS请求，并在请求头中加入一个Origin段来描述本次请求来自哪个源（协议＋域名＋端口），服务器在返回头中返回包含`Access-Control-Allow-Origin`段，表示哪些外域可以访问：
-- `Access-Control-Allow-Origin: *`   表示该资源可以被任意外域访问（不能携带cookie）
+对于简单请求，浏览器直接发出一个CORS请求，并在请求头中加入一个Origin段来描述本次请求来自哪个源（协议＋域名＋端口），服务器在返回头中返回包含`Access-Control-Allow-Origin`段，表示哪些外域可以访问，**只能写一个源**：
+- `Access-Control-Allow-Origin: *`   表示该资源可以被任意外域访问（要设置`Access-Control-Allow-Credentials: false`不能携带cookie，防止安全问题）
 - `Access-Control-Allow-Origin: http://foo.example `   表示只能被这个网址访问，其它外域不可以
 
 #### 例子二：预检请求

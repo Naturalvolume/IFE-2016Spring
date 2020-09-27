@@ -51,6 +51,43 @@ axios.jsonp = (url) => {
 
 在本项目中用 axios.create 创建axios的实例，配置拦截器将数据从res变为res.data
 
+### 封装一个axios
+定义一个`axios.js`文件
+
+```javascript
+import axios from 'axios'
+import qs from 'qs'
+// 设置请求的服务器地址
+axios.defaults.baseURL = 'https://127.0.0.1:3000'
+// 设置请求超时时间
+axios.defaults.timeout = 10000
+// 设置为请求携带 cookie
+axios.defaults.withCredentials = true
+// 设置请求传递数据的格式（根据服务器要求的格式）
+axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+axios.defaults.transformRequest = data => qs.stringify(data)
+
+// 设置请求拦截器
+// token校验（用JWT编码）：接收服务器返回的token，存储到vuex/本地
+// 每次向服务器发请求，带上token
+axios.interceptors.request.use(config => {
+  let token = localStorage.getItem('token')
+  // 存在token，设置请求头携带token
+  token && (config.headers.Authorization = token)
+  return config
+}, error => {
+  return Promise.reject(error)
+})
+
+// 响应拦截器
+axios.interceptors.response.use(response => {
+  return response.data
+}, error => {})
+
+export default axios
+```
+
+
 ### 数据请求的时间
 - 用useEffect在第一次渲染时发送http
 - 在dispatch中

@@ -1,5 +1,5 @@
 # 一些比较难的面试题
-案例一：
+#### 案例一：
 ```javascript
 var a = 0, b = 0
 function A(a) {
@@ -14,7 +14,7 @@ A(2)
 
 闭包的优点：保存或保护
 
-案例二：
+#### 案例二：
 ```javascript
 function Foo() {
   getName = function() {
@@ -50,7 +50,7 @@ new new Foo().getName()
 `new Foo()` == 
 
 
-案例二：
+#### 案例二：
 ```javascript
 async function async1() {
   console.log('async1 start')
@@ -73,8 +73,9 @@ new Promise(function(resolve) {
 })
 console.log('script end')
 ```
+注意：`await`是默认执行`promise`的，所以也是微任务。
 
-案例三：
+#### 案例三：
 ```javascript
 function A() {
   alert(1)
@@ -91,22 +92,26 @@ Func.prototype = {
     alert(3)
   }
 }
-A()
-Func.A()
-Func().A()
-new Func.A()
-new Func().A()
-new new Func().A()
+A()   // '1'
+Func.A()  // '1'
+Func().A()  // '2'
+// Func.A 是等于原来的A函数，而不是更改过后的
+new Func.A()  // 错了，答案是 '1'
+new Func().A()  // '3'
+new new Func().A()  // 错了，答案是会报错，因为 箭头函数不能被new
 ```
 
-箭头函数不能被`new`
+箭头函数不能被`new`，因为它没有prototype等属性
 
-案例四：
+#### 案例四：
 ```javascript
-var x = 2
+var x = 2 
 var y = {
-  x: 3,
+  x: 3, // 3*2 = 6
+        // 24
+        // 24 * 2 = 48
   z: (function(x) {
+
     this.x *= x
     x += 2
     return function(n) {
@@ -117,12 +122,12 @@ var y = {
   })(x)
 }
 var m = y.z
-m(4)
-y.z(5)
-console.log(x, y.x)
+m(4)      // 7
+y.z(5)    // 10
+console.log(x, y.x)   // 16 15
 ```
 
-案例五：
+#### 案例五：
 ```javascript
 // 当a等于什么的时候，满足下面的条件，输出 1
 
@@ -161,7 +166,7 @@ if(a == 1 && a == 2 && a == 3) {
   - 对象先调用`toString()`，再`Number()`
 
 
-案例六：
+#### 案例六：
 ```javascript
 var x = 0, y = 1
 function fn() {
@@ -176,7 +181,7 @@ fn(4)
 console.log(x, y)
 ```
 
-案例六：
+#### 案例七：
 ```javascript
 setTimeout(() => {
   console.log(1)
