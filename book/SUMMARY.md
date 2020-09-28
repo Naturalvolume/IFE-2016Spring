@@ -101,6 +101,7 @@
   * [babel 的原理](./framework/babel.md)
   * [热加载和热刷新](./framework/flash.md)
   * [source Map](./framework/source.md)
+  * [代码部署](./framework/arrange.md)
 * React
   * [介绍项目](./project/introduction.md)
   * [JSX](./React/JSX.md)
