@@ -146,7 +146,7 @@ ajax({
 jsonp的实现：[原生JavaScript实现AJAX、JSONP](https://laixiazheteng.com/article/page/id/AASiankfBJWp)
 
 ### fetch
-fetch 基于promise实现的**原生js方法**，没有使用XMLHttpRequest方法，可以用promise的形式或async/await的形式实现异步调用，
+fetch 基于promise实现的**原生js方法**，没有使用`XMLHttpRequest`方法，可以用`promise`的形式或`async/await`的形式实现异步调用，
 
 ```javascript
 // fetch(url, options)
@@ -166,7 +166,11 @@ fetch('http://www.mozotech.cn/bangbang/index/user/login', {
 })
 ```
 
-fetch 发送请求时，不像XHR，默认是不带cookie的，加上`credentials: include`就会在发送请求时带上cookie了。
+- fetch 发送请求时，不像XHR，默认是不带cookie的，加上`credentials: include`就会在发送请求时带上cookie了。
+- 只对网络请求报错，对400、500都当作成功的请求，所以代码不会`reject`，只有网络错误导致的请求不能完成，才会被`reject`
+- 不支持`abort`（终止请求），不支持超时控制，使用`setTimeout`及`Promise.reject`实现的超时控制不能阻止请求过程继续在后台运行，造成流量的浪费
+- 不能监听请求的进度（比如上传大文件的时候，`axios`可以通过回调当前状态，读取到当前进度）
+
 ### axios
 axios是对**原生XHR对象**的***promise**实现，可用于浏览器和nodejs的http客户端。
 

@@ -1,4 +1,17 @@
 # 移动端开发要点
+### 判断手机浏览器型号
+```javascript
+// 获取浏览器的userAgent，并转化为小写
+var ua = window.navigator.userAgent.toLowerCase()
+var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1)
+
+if(isIos) {
+  // 做苹果手机兼容
+} else {
+  // 做安卓手机兼容
+}
+```
+
 ### css3新特性
 - 新选择器：[新增属性选择器、结构伪类选择器](https://www.cnblogs.com/liutianzeng/p/10933351.html)
 - 边框、背景、圆角、阴影
@@ -131,4 +144,22 @@ touch事件对象
 成熟稳定的应用于PC端和移动端的滑动效果插件，一般用来触屏焦点图、触屏整屏滚动等效果。可应用于移动网站、webapp、native app或者hybrid app。
 
 
-### 移动端开发调试
+### 移动端开发方式
+- native App
+  - 只用 native 开发
+  - 代码移植性不好，ios和安卓不兼容
+  - 只能访问特定设备
+  - 有高级图形
+  - 升级灵活性低，只能通过应用商店升级
+  - **可以操作任何手机系统（视频 扫码 读取通讯录等）**
+- hybrid App
+  - native 和 web语言开发
+  - 移植性高
+  - 没有很多高级图形
+  - 可以使用一些框架(react-native、weex、uniapp)帮忙打包嵌套，这些框架也提供了视频、扫码等功能
+- web App
+  - 只用web语言开发
+  - 代码移植性高
+  - 手机操作困难，很多权限都没有
+
+混合app开发时，使用操作系统的api创建嵌入式html等渲染引擎，通过定义安卓应用程序和网页之间的接口，允许网页中的js调用安卓应用程序，提供基于web的应用程序安卓api，将web嵌入到安卓应用程序中。

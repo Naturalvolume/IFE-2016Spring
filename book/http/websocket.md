@@ -72,4 +72,15 @@ socket.on('join', function() {
 var app = require('express')()
 var http = require('http')
 var io = require('socket.io')(http)
+
+app.get('/', function(req, res) {
+})
+// 建立socket连接
+io.on('connection', function(socket) {
+  // 监听前端发送的 自定义事件
+  socket.on('join', function(name) {
+    // 发送自定义事件
+    io.emit('join', name)
+  })
+})
 ```
