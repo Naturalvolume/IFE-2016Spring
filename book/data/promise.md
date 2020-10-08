@@ -390,3 +390,7 @@ Promise.resolve(1)
 ```
 
  Promise方法链通过return传值，没有return就只是相互独立的任务而已
+
+ 14. 多个promise执行的顺序
+
+ 多个promise都放到微任务队列中，执行的顺序和`resolve`的顺序无关，和`then`的顺序有关，因为`then`的时候才是加入回调函数的时候。

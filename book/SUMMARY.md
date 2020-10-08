@@ -15,6 +15,7 @@
   * [html5-音视频处理](./html/audio.md)
   * [html5-地理定位](./html/Geolocation.md)
   * [html5-WebSocket](./html/webSocket.md)
+  * [跨页面通讯](./html/tab.md)
 * css
   * [用css实现弹出框](./css/popup.md)
   * [css3动画](./css/animate.md)
@@ -102,6 +103,9 @@
   * [热加载和热刷新](./framework/flash.md)
   * [source Map](./framework/source.md)
   * [代码部署](./framework/arrange.md)
+  * [权限管理](./framework/authority.md)
+  * [单元测试]
+  * [登陆流程]
 * React
   * [介绍项目](./project/introduction.md)
   * [JSX](./React/JSX.md)
