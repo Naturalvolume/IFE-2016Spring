@@ -23,6 +23,7 @@
   * [css选择器的渲染性能](./css/s_performance.md)
   * [浏览器默认标签样式总结及css初始化程序](./css/default.md)
   * [雪碧图](./css/sprite.md)
+  * [图片base64](./css/base.md)
   * [可继承属性](./css/inherit.md)
   * [css画几何图形](./css/geometric.md)
   * [a标签（inline-block）空白问题](./css/a.md)
@@ -65,7 +66,6 @@
   * [async 和 promise中的微任务](./data/task.md)
   * [装饰器Decorator](./data/decorator.md)
   * [箭头函数](./data/arrow.md)
-  
 * 手写源码
   * [url分割](./origin/queryString.md) 
   * [实现call apply bind](./origin/call.md)
@@ -111,6 +111,7 @@
   * [JSX](./React/JSX.md)
   * [immutable](./React/immutable.md)
   * [hooks的使用](./React/hooks.md)
+  * [redux的使用](./React/redux.md)
   * [轮播图](./React/swiper.md)
   * [axios请求](./React/axios.md)
   * [实现loading动画](./React/loading.md)
@@ -121,6 +122,7 @@
   * [react事件](./React/event.md)
   * [react严格模式](./React/strictMode.md)
   * [context](./React/context.md)
+  * [路由懒加载](./React/lazy.md)
 * vue
   * [项目目录](./vue/framework.md)
   * [画板布局](./project/drawCSS.md)
@@ -145,6 +147,7 @@
   * [保证页面文件被完整送达浏览器](./http/send.md)
   * [web安全](./http/secure.md)
   * [http3.0](./http/http3.md)
+  * [cdn](./http/cdn.md)
   
   
 

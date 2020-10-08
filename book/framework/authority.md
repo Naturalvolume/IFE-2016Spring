@@ -43,7 +43,7 @@ if(token) {
 - 有些页面需要登陆才能看，可以用路由导航守卫`router.beforeEach`判断token
 - 根据不同的用户角色，决定页面要展示的内容，一般的思路是 比如侧边栏是路由，需要循环生成，根据不同的人路由数组不一样，循环生成不同的侧边栏
 
-参考：
+参考：[前端权限控制](https://blog.csdn.net/yin_you_yu/article/details/80408340)
 
 
 

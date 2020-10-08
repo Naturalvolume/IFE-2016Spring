@@ -5,6 +5,11 @@ hooks规则：
 - 只能在顶层调用hook，不能在循环、条件或嵌套函数中调用hook
 - 只能从react函数式组件中调hook
 
+hooks的优点：
+- 可以用函数写所有的组件
+- 可以让函数拥有自己的状态管理（包括state和生命周期函数）
+- 可以通过创建自定义的hooks来抽离可复用的业务组件
+
 ### useState
 用解构语法向函数组件中添加状态，如`const [count setCount] = useState(0)`，返回当前状态值`count`和更新它的函数`setCount`，类似于类中的`this.setState`，**且在函数式组件中不需要使用this取值**
 
