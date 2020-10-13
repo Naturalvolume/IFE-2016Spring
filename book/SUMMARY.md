@@ -30,11 +30,13 @@
   * [居中的方案](./css/center.md)
   * [两栏等高](./css/equal.md)
   * [三栏布局](./css/layout.md)
+  * [垂直方向对布局](./css/vertical.md)
   * [flex换行问题](./css/flexWrap.md)
   * [通过css实现文字渐变色的两种方式](./css/textGradient.md)
   * [浏览器渲染与动画性能](./css/paint.md)
   * [z-index、transformZ和perspective]
 * JavaScript基础
+  * [隐式分号规则](./data/sign.md) 
   * [let和const](./data/let.md)
   * [javascript的单线程](./data/js.md)
   * [底层数据结构](./data/data.md)
