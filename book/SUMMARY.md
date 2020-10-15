@@ -7,6 +7,7 @@
   * [async、defer与DOMContentLoaded的执行关系](./html/DOMContentLoaded.md)
   * [事件捕获和冒泡](./html/bubble.md)
   * [浏览器的相关知识](./html/browser.md)
+  * [浏览器渲染页面过程](./html/render.md)
   * [垃圾回收机制和内存泄露](./html/scavenge.md)
   * [前端异常的处理方案](./html/error.md)
   * [会话跟踪的方法](./html/session.md)
