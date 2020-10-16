@@ -64,6 +64,7 @@ Promise.all([promise1, promise2, promise3]).then((values) => {
 });
 // expected output: Array [3, 42, "foo"]
 ```
+
 只要有一个 失败reject，promise就失败，全部都 成功resolve，才会执行成功的回调。
 ### 4.微事件宏事件执行顺序
 
@@ -105,6 +106,7 @@ setTimeout(function() {
     })
 })
 ```
+
 输出结果：1 7 6 8 2 4 3 5 9 11 10 12
 每遇到 setTimeout 就新建一个宏事件队列，所以本例中的两个setTimeout不在同一个宏事件中执行，而是会先执行完setTimeout中的微事件 再 执行下一个setTimeout。
 ### 5.Promise.race()异步超时处理
@@ -163,12 +165,14 @@ timeoutPromise(taskPromise, 1000).then(function(value){
     console.log("发生超时", error);
 })
 ```
+
 ### 6.如何处理循环的异步操作
 ```javascript
 ```
 
 ### 7.使用Promise实现串行
 假设有如下promise数组：
+
 ```javascript
 const promise1 = new Promise((resolve, reject) => {
   setTimeout(() => {
@@ -210,7 +214,7 @@ var fn = async function(arr) {
   })
 }
 // 报错 Uncaught SyntaxError: await is only valid in async function
-// 因为在forEach中是非asynv函数，所以不能使用await
+// 因为在forEach中是非async函数，所以不能使用await
 ```
 
 **实现方式二**: Promise.resolve()
@@ -228,6 +232,21 @@ const promiseThen = function(arr) {
 ```
 
 `forEach`默认是不能阻塞的，请求并发发起，所以用promise再包裹处理一下
+
+**实现方式三**: reduce函数
+
+```javascript
+let arr = [promise1, promise2, promise3]
+arr.reduce(async (lastPromise, item) => {
+  try {
+    await lastPromise
+    // 
+    console.log(await item)
+  } catch(e) {
+    console.error(e)
+  }
+}, Promise.resolve())
+```
 
 [Promise串行执行](https://blog.csdn.net/qq_39816673/article/details/94209106)
 ### 8. promise 的异常捕获
@@ -391,6 +410,14 @@ Promise.resolve(1)
 
  Promise方法链通过return传值，没有return就只是相互独立的任务而已
 
- 14. 多个promise执行的顺序
+### 14. 多个promise执行的顺序
 
  多个promise都放到微任务队列中，执行的顺序和`resolve`的顺序无关，和`then`的顺序有关，因为`then`的时候才是加入回调函数的时候。
+
+### 15. Promise.allSettled([promise1, ..., promiseN])
+调用函数`Promise.allSettled`会返回一个新的 Promise 实例，类似于`Promise.all`和`Promise.race()`，知识这个函数会在所有promise执行完成后，返回对象数组，不管成功还是失败。
+
+### Promise 的局限性
+`Promise`并不是万能的，它存在以下缺点：
+- 立即执行：`Promise`实例被创建时，就会执行内部代码，且无法从外部停止，如无法取消超时或消耗性能的异步调用，容易导致资源的浪费
+- 单次执行：一个`Promise`实例只能`resolve`或`reject`一次，所以面对一些需要持续响应的场景时就会变得力不从心。如上传文件获取进度时，默认采用通过事件监听的方式来实现。

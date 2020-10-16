@@ -176,8 +176,59 @@ foo();
 
 上面四种绑定的优先级为：
 new绑定 > 显式绑定 > 隐式绑定 > 默认绑定
+
+#### 一些特殊的this绑定
+
+1. 常用数组函数中的this指向
+
+```javascript
+var dx = {
+  arr: [1]
+}
+dx.arr.forEach(function() {console.log(this)}) // this -> window
+```
+
+`forEach`其实有两个参数，第一个是回调函数，第二个是`this`指向的对象，当只传入回调函数时，默认是`window`。
+
+类似的，需要传入`this`指向的函数还有：`every()`、`find()`、`findIndex()`、`map()`、`some()`
+
+2. class 默认为严格模式，所以this指向为undefined
+
+```javascript
+class B {
+  fn() {
+    console.log(this)
+  }
+}
+var b = new B()
+var fun = b.fn
+fun() // undefined
+```
+
+`this`指向全局对象，但`class`内部默认使用严格模式，即实际上是这样的代码。
+
+```javascript
+class B {
+  'use strict';
+  fn() {
+    console.log(this)
+  }
+}
+```
+
+3. 基础数据类型的this
+
+基础数据类型会隐式的进行装箱－拆箱操作。
+
+```javascript
+[0].forEach(function() {console.log(this)}, 0)
+// this -> 值为0的Number类型对象
+```
+
+
+
 ### 四、箭头函数中的this
-首先，我们要清楚一个概念，箭头函数没有自己的arguments、原型、构造函数，它有自己的`this`，箭头函数初始化时所在环境的this就是它所绑定的，所以箭头函数是不能使用`call`、`apply`、`bind`绑定 this 的，但是箭头函数在**运行时**会向上一层查找自己需要的this、arguments等。
+首先，我们要清楚一个概念，箭头函数没有自己的`arguments`、原型`prototype`、构造函数（不能`new`）、不能用作`Generator()`函数、不能使用`yeild`关键字，它有自己的`this`，箭头函数初始化时所在环境的this就是它所绑定的，所以箭头函数是不能使用`call`、`apply`、`bind`绑定 this 的，但是箭头函数在**运行时**会向上一层查找自己需要的this、arguments等。
 
 ```javascript
 var a = 10;
@@ -257,3 +308,10 @@ obj.method(fn, 1);//输出是什么？
 - 10就是正常的对象上函数调用，但是2是如何来的呢？
 
 这是因为`arguments`是类数组对象，所以它本质上是对象，`arguments[0]()`相当于调用`arguments`对象上的第一个属性，根据函数调用的语法糖`arguments.call(arguments, fn)`，`this`此时指向`arguments`对象，`arguments.length`就是2。
+
+### this使用的注意事项
+尽量避免使用this
+- 可写成纯函数形式
+- 可通过参数传递上下文对象
+
+若必须要使用this，可考虑使用`bind`等方式绑定。

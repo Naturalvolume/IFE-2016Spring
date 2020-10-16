@@ -1,6 +1,23 @@
 # javascript 底层数据结构
 ### 内置类型
 javascript 目前有八种数据类型：number string boolean null undefined symbol Bigint object。 
+
+- undefined：特殊数据类型，是一个值
+
+```javascript
+var a; // undefined
+var o = {}
+o.b // undefined
+(() => {})() // undefined
+window.undefined // undefined
+
+void 0 // undefined，通过void表达式可以得到undefined值
+// 在三木运算符中，可以表示不执行任何操作
+x>0 && x<5 ? fn() : void 0;
+```
+
+- null：与undefined类似，但是null是**保留关键字**，即变量不能命名为null，但可以命名为`undefined`。
+
 - number 数据表示的是双精度64位浮点数，能表示的范围为-9007199254740991(-(2^53-1))和9007199254740991（(2^53-1)），所以超过此范围的会失去精度。
 
 ```javascript
@@ -43,12 +60,13 @@ var cuttingRope = function(n) {
 - 作为函数参数，表示该函数的参数不是对象
 - 作为原型链的终点
 - 清除闭包
+- null是保留关键字，不可以作为变量名称，而undefined可以
+
 ```javascript
 let obj = {}; // 开辟一块堆内存，里面内容是空的，有16进制的地址AAAFFF000
 obj = null; // 把变量obj指向空对象指针，AAAFFF000这个堆内存会成为垃圾等待回收，但不会立即回收
 // 加速对象回收
 ```
-
 
 `undefined`是变量已定义但未赋值。
 - 调用函数时，应该提供的参数没有提供，该参数等于undefined
@@ -100,3 +118,9 @@ let a = new String('sun	')
 ### 处理精度损失的方法
 - 用 Bigint
 - 用字符串
+- 先转换成整数进行计算，再转换回小数，这种方式适合在小数位不是很多的时候。
+- 舍弃末尾的小数位，如可以先调用`toPrecision`截取12位，然后调用`parseFloat`函数转换回浮点数。
+
+```javascript
+parseFloat((0.1 + 0.2).toPrecision(12)) // 0.3
+```

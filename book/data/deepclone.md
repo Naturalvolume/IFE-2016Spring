@@ -99,11 +99,14 @@ Object.prototype.toString.call(new WeakSet())   // '[object WeakSet]'
 Object.prototype.toString.call(new Map())       // '[object Map]'
 Object.prototype.toString.call(new WeakMap())   // '[object WeakMap]'
 ```
+
 这是因为：
 - 依托Object.prototype.toString()方法得到对象内部属性 `[[Class]]`
 - 传入原始类型却能够判定出结果是因为对值进行了包装
 - null 和 undefined 能够输出结果是内部实现有做处理
+
 需要注意直接使用对象的`toString()`方法跟用`Object.prototype.toString.call`是不一样的
+
 ```javascript
 console.log([1,[2,3]].toString())    // 1,2,3
 Object.prototype.toString.call([1,[2,3]])     // '[object Array]'
@@ -117,4 +120,12 @@ JSON.stringify({a: function() {}, x: 1000})
 
 // "{"x": 1000}"
 ```
+
 注意：`JSON.stringify(obj)`是把对象转换成字符串
+
+### instanceof 类型检测原理
+用`instanceof`作为类型检测的原理是：通过检测**构造函数**的`prototype`属性是否出现在某个实例对象的原型链上。
+
+```javascript
+left.__proto__.__proto__... =?= right.prototype
+```
