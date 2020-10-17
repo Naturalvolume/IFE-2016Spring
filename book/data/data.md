@@ -24,6 +24,7 @@ x>0 && x<5 ? fn() : void 0;
 console.log(999999999999999);  //=>10000000000000000
 console.log(9007199254740992 === 9007199254740993;)    // → true 居然是true!
 ```
+
 - Bigint（es10）可以表示超过 number 范围的数，克服大数据的精度损失问题，使用Bigint只需要在数字末尾追加`n`即可或使用构造函数`new Bigint`，具体可看[谈谈对bigint对理解](http://47.98.159.95/my_blog/js-base/007.html#%E4%BB%80%E4%B9%88%E6%98%AFbigint)
 
 在力扣上有一道题就用到了Bigint:[剑指 Offer 14- II. 剪绳子 II](https://leetcode-cn.com/problems/jian-sheng-zi-ii-lcof/)
@@ -53,7 +54,10 @@ var cuttingRope = function(n) {
     return max%1000000007n
 };
 ```
+
 - Symbol克服了对象属性重叠的情况，具体看[javascript变量和基本类型](https://juejin.im/post/5cc94723f265da034c7036e6)
+
+`Object.keys()`和`for...in`方式遍历时，获取不到`Symbol`类型的属性，可以通过`Object.getOwnPropertySymbols()`获取。
 
 ### null 和 undefined 的不同
 `null`是**空对象指针**

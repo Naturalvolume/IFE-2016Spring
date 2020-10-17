@@ -1,5 +1,7 @@
 ## 数据的深度克隆
-深度克隆基本数据类型和 Date、RegExp、Array、Object 类型。
+- 深度克隆基本数据类型和 Date、RegExp、Array、Object 类型。
+- 遍历Object类型数据时，还需要考虑`Symbol`数据类型，所以不能通过`Object.keys`获取键名 或 `for...in`遍历，而是通过`getOwnPropertyNames`和`getOwnPropertySymbols`函数将键名组合成数组，然后进行遍历，这种的实现方式可参考[Object深度克隆](https://kaiwu.lagou.com/course/courseInfo.htm?courseId=180#/detail/pc?id=3178)。
+
 ```javascript
 // 一、深度克隆
 // 给Date对象添加原型方法克隆

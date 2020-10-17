@@ -17,6 +17,7 @@
   * [html5-地理定位](./html/Geolocation.md)
   * [html5-WebSocket](./html/webSocket.md)
   * [跨页面通讯](./html/tab.md)
+  * [客户端存储](./html/storage.md)
 * css
   * [用css实现弹出框](./css/popup.md)
   * [css3动画](./css/animate.md)
@@ -99,6 +100,7 @@
   * [大厂贼难的面试题](./interview/scope.md)
 * 框架
   * [版本控制](./framework/git.md)
+  * [复用代码的方式——模块](./framework/module.md)
   * [react和vue的区别](./framework/difference.md)
   * [路由](./framework/router.md)
   * [移动端、小程序、flutter、weex的异同](./framework/weex.md)
