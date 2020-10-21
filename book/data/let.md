@@ -54,6 +54,7 @@ function fun() {
 }
 ```
 
+`var`用立即执行函数优化函数作用域的缺陷。
 ```javascript
 // IIFE 写法
 (function () {
