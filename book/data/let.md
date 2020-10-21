@@ -33,6 +33,27 @@ bar(); // error
 - 不能重复声明
 - 块级作用域：让曾经被广泛使用的匿名立即执行函数表达式（IIFE）不再必要了
 
+`var`是函数作用域，在函数内重复定义会覆盖，而`let`块级作用域则不会。
+```javascript
+// var 函数作用域
+function fun() {
+  var n = 10
+  if(true) {
+    var n = 100
+  }
+  console.log(n)  // 100  在{}中定义的还是在函数作用域内，不构成块级作用域
+}
+
+// let 块级作用域
+function fun() {
+  let n = 10
+  if(true) {
+    let n = 100
+  }
+  console.log(n)  // 10  在{}中定义的let是块级作用域，会把n限制在{}中
+}
+```
+
 ```javascript
 // IIFE 写法
 (function () {
