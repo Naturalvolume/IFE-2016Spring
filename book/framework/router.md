@@ -11,14 +11,18 @@
 - 可使用浏览器的前进后退功能
 
 在开发者角度，要做到：
-- 改变 url 但不让浏览器向服务器发出请求
+- 改变 url 但**不让浏览器向服务器发出请求**
 - 检测 url 的变化
 - 截获 url 地址，并解析出需要的信息匹配路由规则
 
 前端路由的**本质**是：根据路由的映射函数进行一些dom的显示和隐藏操作。
 实现路由功能，有两种方法：hash模式 和 html5提供的history模式
+
 ### 路由模式一：hash模式
-hash 是指 url 最后的#号以及后面的字符，这也是css中的锚点，本来是超链接`a`加锚点实现页面中位置跳转，如点击章节名跳转到对应位置。
+hash 是指 url 最后的#号以及后面的字符，当hash值变化时不会触发浏览器发起请求，这也是css中的锚点，本来是超链接`a`加锚点实现页面中位置跳转，如点击章节名跳转到对应位置。
+
+> hash值是指 # 号后面的内容，通过 location.hash 属性可以读写 hash 值，这个值可以让浏览器将页面滚动到ID与hash值相等的dom元素位置，不会传给服务端。
+> 这种路由实现方式占用了hash值，导致默认的页面滚动行为失效，对于有滚动定位需求的情况需要自行手动获取元素的位置并调用BOM相关API进行滚动。
 
 hash 就可以实现一个[简单的单页面应用](https://github.com/Naturalvolume/IFE-2016Spring/blob/master/SPA.html)， 这是因为hash具有以下特点：
 - url 中的 hash值只是客户端的一种状态，**发送请求时不会带hash值**，所以hash 值变化不会导致浏览器向服务器发送请求
@@ -40,17 +44,21 @@ window.addEventListener('hashchange', function(){
 })
 ```
 **使用场景**：hash 模式常用于开发阶段，方便开发
-**限制**：不利于seo，因为一个hash不是一个新的url地址，不会收录；基于url的，不利于传参，复杂数据有体积限制。
+**限制**：不利于seo，因为一个hash不是一个新的url地址，不会收录；基于url的，不利于传参，复杂数据有体积限制；页面默认滚动行为失效，需要手动获取元素位置并调用相关API进行滚动。
+
 ### 路由模式二：history
 history 是**浏览器历史记录栈提供的接口**，通过`back()`、`forward()`、`go()`等方法，可以读取浏览器历史记录栈信息，进行各种跳转操作。
 
-在html5中，新增了两个 history 方法：`pushState()`、`replaceState()`可以在**不刷新页面**的情况下，实现对浏览器历史记录栈的修改.
+在html5中，新增了两个 history 方法：`pushState()`、`replaceState()`可以在**不刷新页面**的情况下，实现对浏览器历史记录栈的修改。但这两个方法不会触发监听url变化的`popstate()`事件，这时需要手动触发页面渲染。
+
+
 ```javascript
 // 新增一个历史记录
 window.history.pushState(stateObject,title,url)
 // 替换当前的历史记录
 window.history.replaceState(stateObject,title,url)
 ```
+
 - stateObject: 当浏览器跳转到新的状态时，将触发**popState事件**，该事件将携带这个stateObject参数的副本
 - title: 所添加记录的标题
 - url: 所添加记录的url
@@ -58,9 +66,29 @@ window.history.replaceState(stateObject,title,url)
 - 它们的标题（title）属性，一般浏览器会忽略，最好传入`null`
 - 用 `popstate`事件监听 url 的变化
 - 它们不会触发`popstate`事件，需要手动触发页面渲染
+
 **使用场景**：hash 模式常在上线之后使用，history 有利于seo，且url简洁美观
-**限制**：需要服务器端对路由进行相应配合设置
+**限制**：需要服务器端对路由进行相应配合设置，因为并不能拦截浏览器默认的请求行为，当用户修改地址栏网址时还是会向服务端发起请求，所以需要对服务端进行设置，将所有URL请求转向前端页面，交给前端进行解析。
+
 
 #### 参考：[深度剖析：前端路由原理](https://juejin.im/post/5d469f1e5188254e1c49ae78#heading-11)
 
 
+### 路由解析
+阻止浏览器在URL变化时向后端发送请求之后，需要对路由进行解析。vue-router 和 react-router 同时依赖了一个第三方库`Path-to-RegExp`进行路由解析，路由解析分为两个操作：路由匹配 和 路由生成。
+
+##### 路由匹配
+路由匹配就是当获取到请求路径后，如何找到对应的配置路径。在`Path-to-RegExp`源码中对应的是默认导出函数`pathToRegExp()`，接收3个参数：
+- `path`，必传参数，值可以为自定义的请求路径，如`/user/:id`，也可以是正则表达式，还可以是两者组成的数组
+- `keys`，值为数组，数组元素为解析正则表达式风格的字符串或冒号开头的占位符（特殊字符串）生成的令牌，比如字符串`/user/:id`对应的 keys 为`{ name: 'id', delimiter: '/', optional: false, repeat: false }`，这个参数的值最终会被保存到返回的正则表达式对象的keys属性中，可用于后面的路由生成
+- `options`，执行过程中的配置信息，比如是否大小写敏感
+
+函数返回值是一个带有 keys 属性的正则表达式，keys属性值类型和keys参数相同，也是一个包含特殊字符串描述信息的数组。
+
+由于 path 参数可以是正则表达式、字符串、数组3种类型数据，所以在处理path参数的时候分别对应3个函数`regexpToRegexp()`、`stringToRegexp()`、`arrayToRegexp()`
+
+##### 路由生成
+路由生成是指通过配置的请求路径字符串和参数生成对应的请求路径，比如配置的请求路径字符串`/user/:id`和参数`{id: 'la'}`可以生成`/user/la`，通过`complie()`函数将配置的请求路径字符串转换成一个匿名函数，这个函数可以传入参数并生成一个请求路径字符串。
+
+
+**总体流程**：vue-router 和 react-router 共同依赖库 `path-to-regexp`中的两个核心函数`pathToRegexp()`和`compile()`。`pathToRegexp()`先将配置的请求路径字符串拆分成令牌数组，然后再转化成正则表达式对象，路由库可以通过正则表达式来进行路由匹配，从而将对应的组件渲染到页面；`compile()`函数会将配置的请求路径字符串转化成一个匿名函数，这个函数可以传入参数并生成一个请求路径字符串。
