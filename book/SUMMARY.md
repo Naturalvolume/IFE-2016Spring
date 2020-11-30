@@ -34,7 +34,7 @@
   * [居中的方案](./css/center.md)
   * [两栏等高](./css/equal.md)
   * [三栏布局](./css/layout.md)
-  * [垂直方向对布局](./css/vertical.md)
+  * [垂直方向的布局](./css/vertical.md)
   * [flex换行问题](./css/flexWrap.md)
   * [setAttribute()与.style.property=''的区别](./css/setAttribute.md)
   * [通过css实现文字渐变色的两种方式](./css/textGradient.md)
@@ -157,7 +157,8 @@
   * [web安全](./http/secure.md)
   * [http3.0](./http/http3.md)
   * [cdn](./http/cdn.md)
-  
+* 项目相关[./project/readme.md]
+  * [事件绑定中的this指向问题](./project/bindEvent.md)
   
 
 
