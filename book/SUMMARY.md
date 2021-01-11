@@ -101,6 +101,7 @@
   * [统计页面中各标签个数](./interview/tag.md)
   * [当对象作为对象的键值](./data/obj_key.md)
   * [大厂贼难的面试题](./interview/scope.md)
+  * [浏览器缓存机制](./interview/cache.md)
 * 框架
   * [版本控制](./framework/git.md)
   * [复用代码的方式——模块](./framework/module.md)
@@ -159,7 +160,8 @@
   * [cdn](./http/cdn.md)
 * 项目相关[./project/readme.md]
   * [事件绑定中的this指向问题](./project/bindEvent.md)
-  
+* webpack
+ * [打包优化策略](./webpack/timer.md)
 
 
 
