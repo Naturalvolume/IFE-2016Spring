@@ -43,6 +43,7 @@
 * JavaScript基础
   * [隐式分号规则](./data/sign.md) 
   * [let和const](./data/let.md)
+  * [闭包的使用场景](./data/closure.md)
   * [javascript的单线程](./data/js.md)
   * [底层数据结构](./data/data.md)
   * [数据深度克隆](./data/deepclone.md)
