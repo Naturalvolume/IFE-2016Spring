@@ -193,3 +193,24 @@ fn(1,2,3,4,5,6);
 ```
 
 参考：[理解JavaScript闭包9大使用场景](https://mp.weixin.qq.com/s/Mk-q1WdZ8tVnxzBNiKgDrQ)
+
+### 闭包的缺点
+- 内存泄漏
+
+```javascript
+  function outer(){
+  var num=0;//内部变量
+  return function add(){//通过return返回add函数，就可以在outer函数外访问了
+  num++;//内部函数有引用，作为add函数的一部分了
+  console.log(num);
+  };
+ }
+  var func1=outer();
+  func1();//实际上是调用add函数， 输出1
+  func1();//输出2 因为outer函数内部的私有作用域会一直被占用
+  var func2=outer();
+  func2();// 输出1  每次重新引用函数的时候，闭包是全新的。
+  func2();// 输出2
+```
+
+参考：[深入浅出Javascript闭包](https://mp.weixin.qq.com/s/0zqlr0AS8SQRrocO5f_k0g)

@@ -104,6 +104,7 @@
   * [大厂贼难的面试题](./interview/scope.md)
   * [浏览器缓存机制](./interview/cache.md)
 * 框架
+  * [virtual dom认知误区](./framework/virtual.md)
   * [版本控制](./framework/git.md)
   * [复用代码的方式——模块](./framework/module.md)
   * [react和vue的区别](./framework/difference.md)
