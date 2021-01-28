@@ -65,6 +65,7 @@
   * [数组、字符串的存储原理](./data/array.md)
   * [caller和callee](./data/caller.md)
   * [几个对象方法](./data/defineProperty.md)
+  * [Map和Object的异同及转换](./data/Map.md)
   * [map forEach for...in for...of遍历的区别](./data/traversal.md)
   * [不用语法糖实现十进制转八进制](./data/change.md)
   * [Proxy和reflect](./data/proxy.md)
